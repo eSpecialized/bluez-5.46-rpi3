@@ -39,6 +39,7 @@
 
 #include "src/error.h"
 
+#include <stdlib.h>
 #include <pthread.h>
 static bool __terminated = false;
 struct characteristic *mainchr;
@@ -246,7 +247,21 @@ static gboolean chr_get_value(const GDBusPropertyTable *property,
 {
 	struct characteristic *chr = user_data;
 
-	printf("Characteristic(%s): Get(\"Value\")\n", chr->uuid);
+	printf("Characteristic(%s): Get(\"Value\")\n value: ", chr->uuid);
+
+	int i =0;
+	for(; i < chr->vlen; i++)
+	{
+		printf("%x ",chr->value[i]);
+	}
+	
+	int len = chr->vlen + 1;
+	char *newStr = (char*)malloc(len * sizeof(char));
+	memset(newStr,0,len);
+	strncpy(newStr, chr->value, len);
+	newStr[len - 1]='\0';
+	printf(" : [%s]\n",newStr);
+	free(newStr);
 
 	return chr_read(chr, iter);
 }
@@ -781,12 +796,15 @@ void* inputLoopThread(void *arg)
 	int lineSize=40;
 	char *inputLine = (char*)malloc(lineSize*sizeof(char));
 	int readBytes=0;
+	sleep(1);
 	while (!__terminated)
 	{
 		printf("Type something to send via BLE (quit):");
 		readBytes=getline(&inputLine,&lineSize, stdin);
 		if(readBytes != -1)
 		{
+
+			inputLine[strlen(inputLine) - 1] = '\0';
 			if(strcmp(inputLine,"quit")==0)
 			{
 				__terminated=true;
@@ -797,6 +815,9 @@ void* inputLoopThread(void *arg)
 			}
 		}
 	}
+	g_main_loop_quit(main_loop);
+	printf("Exited inputLoop thread\n");
+	free(inputLine);
 }
 
 int main(int argc, char *argv[])
