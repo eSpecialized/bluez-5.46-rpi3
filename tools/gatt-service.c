@@ -82,7 +82,7 @@ struct descriptor {
  * properties are defined at doc/gatt-api.txt. See "Flags"
  * property of the GattCharacteristic1.
  */
-static const char *ias_alert_level_props[] = { "write-without-response", NULL };
+static const char *ias_alert_level_props[] = {"read", "write-without-response", "notify", NULL };
 static const char *desc_props[] = { "read", "write", NULL };
 
 static gboolean desc_get_uuid(const GDBusPropertyTable *property,
@@ -823,7 +823,7 @@ int main(int argc, char *argv[])
 
 	g_dbus_client_set_proxy_handlers(client, proxy_added_cb, NULL, NULL,
 									NULL);
-	int tid;
+	pthread_t tid;
 	int err = pthread_create(&tid, NULL, &inputLoopThread, NULL);
 	if(err !=0)
 		printf("\n Unable to create input loop thread!! Error: [%s]\n",strerror(err));
