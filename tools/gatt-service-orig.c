@@ -39,10 +39,6 @@
 
 #include "src/error.h"
 
-#include <pthread.h>
-static bool __terminated = false;
-struct characteristic *mainchr;
-
 #define GATT_MGR_IFACE			"org.bluez.GattManager1"
 #define GATT_SERVICE_IFACE		"org.bluez.GattService1"
 #define GATT_CHR_IFACE			"org.bluez.GattCharacteristic1"
@@ -608,8 +604,6 @@ static gboolean register_characteristic(const char *chr_uuid,
 		return FALSE;
 	}
 
-	mainchr = chr;
-
 	return TRUE;
 }
 
@@ -711,6 +705,7 @@ static void proxy_added_cb(GDBusProxy *proxy, void *user_data)
 static gboolean signal_handler(GIOChannel *channel, GIOCondition cond,
 							gpointer user_data)
 {
+	static bool __terminated = false;
 	struct signalfd_siginfo si;
 	ssize_t result;
 	int fd;
@@ -776,29 +771,6 @@ static guint setup_signalfd(void)
 	return source;
 }
 
-void* inputLoopThread(void *arg)
-{
-	int lineSize=40;
-	char *inputLine = (char*)malloc(lineSize*sizeof(char));
-	int readBytes=0;
-	while (!__terminated)
-	{
-		printf("Type something to send via BLE (quit):");
-		readBytes=getline(&inputLine,&lineSize, stdin);
-		if(readBytes != -1)
-		{
-			if(strcmp(inputLine,"quit")==0)
-			{
-				__terminated=true;
-			}
-			else
-			{
-				chr_write(mainchr,(uint8_t*)inputLine,readBytes);
-			}
-		}
-	}
-}
-
 int main(int argc, char *argv[])
 {
 	GDBusClient *client;
@@ -823,10 +795,6 @@ int main(int argc, char *argv[])
 
 	g_dbus_client_set_proxy_handlers(client, proxy_added_cb, NULL, NULL,
 									NULL);
-	int tid;
-	int err = pthread_create(&tid, NULL, &inputLoopThread, NULL);
-	if(err !=0)
-		printf("\n Unable to create input loop thread!! Error: [%s]\n",strerror(err));
 
 	g_main_loop_run(main_loop);
 
