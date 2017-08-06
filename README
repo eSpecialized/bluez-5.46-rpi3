@@ -5,9 +5,27 @@ Copyright (C) 2000-2001  Qualcomm Incorporated
 Copyright (C) 2002-2003  Maxim Krasnyansky <maxk@qualcomm.com>
 Copyright (C) 2002-2010  Marcel Holtmann <marcel@holtmann.org>
 
+Compilation and installation Debian Jessie
+=============================================
+sudo apt-get install build-essential fakeroot devscripts
+sudo apt-get build-dep bluez
 
-Compilation and installation
-============================
+git clone https://github.com/eSpecialized/bluez-5.46-rpi3.git
+cd bluez-5.46-rpi3
+time dpkg-buildpackage -rfakeroot -uc -b
+
+
+Improving Compiling Performance
+=============================================
+sudo apt-get install ccache
+
+#Then add ccache to your path /usr/lib/ccache
+env | grep -i path
+PATH=/usr/lib/ccache:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
+
+
+Compilation and installation (configure/make)
+=============================================
 
 In order to compile Bluetooth utilities you need following software packages:
 	- GCC compiler
@@ -17,8 +35,25 @@ In order to compile Bluetooth utilities you need following software packages:
 	- readline (command line clients)
 
 To configure run:
-	./configure --prefix=/usr --mandir=/usr/share/man \
-				--sysconfdir=/etc --localstatedir=/var
+	./configure --disable-silent-rules \
+	--libdir=/lib/ \
+	--libexec=/lib/ \
+	--enable-static \
+	--enable-usb \
+	--enable-tools \
+	--enable-cups \
+	--enable-datafiles \
+	--enable-debug \
+	--enable-library \
+	--enable-monitor \
+	--enable-udev \
+	--enable-obex \
+	--enable-client \
+	--enable-systemd \
+	--enable-threads \
+	--enable-deprecated \
+	--enable-sixaxis \
+	--enable-experimental
 
 Configure automatically searches for all required components and packages.
 
