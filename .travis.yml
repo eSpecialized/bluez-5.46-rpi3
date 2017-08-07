@@ -5,7 +5,7 @@ services:
   - docker
 
 script:
-  - script.sh
+  - ./bluez-5.46-rpi3/script.sh
 
 branches:
   except:
