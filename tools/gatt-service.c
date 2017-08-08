@@ -793,9 +793,9 @@ static guint setup_signalfd(void)
 
 void* inputLoopThread(void *arg)
 {
-	int lineSize=40;
+	size_t lineSize=40;
 	char *inputLine = (char*)malloc(lineSize*sizeof(char));
-	int readBytes=0;
+	size_t readBytes=0;
 	sleep(1);
 	while (!__terminated)
 	{
