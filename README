@@ -23,10 +23,28 @@ sudo apt-get install ccache
 env | grep -i path
 PATH=/usr/lib/ccache:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
 
+Included Debian Patches
+=============================================
+0001-work-around-Logitech-diNovo-Edge-keyboard-firmware-i.patch
+0001-Allow-using-obexd-without-systemd-in-the-user-sessio.patch
+0001-obex-Use-GLib-helper-function-to-manipulate-paths.patch
+0002-autopair-Don-t-handle-the-iCade.patch
+0004-agent-Assert-possible-infinite-loop.patch
+bluetooth.conf.patch
+change_path_of_hogsuspend.patch
+fix_udevadm_in_hid2hci.patch
+org.bluez.obex.service.in.patch
+hciattach_bcm43xx.patch  <<key for bluez to work on rpi3.
+main.conf.patch
+
 
 Compilation and installation (configure/make)
 =============================================
-
+On debian linux rpi3 with Raspbian build and install;
+	time dpkg-buildpackage -rfakeroot -uc -b
+	dpkg -l | grep blue  #replace only the packages already installed
+	dpkg -i <packages>
+	
 In order to compile Bluetooth utilities you need following software packages:
 	- GCC compiler
 	- GLib library
