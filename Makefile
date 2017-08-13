@@ -81,15 +81,15 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-build_triplet = x86_64-unknown-linux-gnu
-host_triplet = x86_64-unknown-linux-gnu
+build_triplet = arm-unknown-linux-gnueabihf
+host_triplet = arm-unknown-linux-gnueabihf
 bin_PROGRAMS = $(am__EXEEXT_1) $(am__EXEEXT_2) $(am__EXEEXT_3) \
 	$(am__EXEEXT_4)
 noinst_PROGRAMS = $(am__EXEEXT_5) $(am__EXEEXT_6) $(am__EXEEXT_7) \
 	$(am__EXEEXT_8) $(am__EXEEXT_9) $(am__EXEEXT_13)
 libexec_PROGRAMS = src/bluetoothd$(EXEEXT) obexd/src/obexd$(EXEEXT)
-#am__append_1 = $(lib_headers)
-#am__append_2 = lib/libbluetooth.la
+am__append_1 = $(lib_headers)
+am__append_2 = lib/libbluetooth.la
 DIST_COMMON = $(srcdir)/Makefile.plugins $(srcdir)/Makefile.tools \
 	$(srcdir)/Makefile.obexd $(srcdir)/android/Makefile.am \
 	$(srcdir)/Makefile.in $(srcdir)/Makefile.am \
@@ -158,7 +158,7 @@ am__append_17 = profiles/input/suspend-dummy.c
 #			profiles/midi/libmidi.c
 
 #am__append_22 = 
-#am__append_23 = plugins/sixaxis.la
+am__append_23 = plugins/sixaxis.la
 #am__append_24 = plugins/external-dummy.la
 am__append_25 = client/bluetoothctl
 am__append_26 = monitor/btmon
@@ -189,16 +189,16 @@ am__append_29 = tools/bdaddr tools/avinfo tools/avtest \
 
 am__append_30 = tools/rctest.1 tools/l2ping.1 tools/bccmd.1 tools/btattach.1
 am__append_31 = tools/bdaddr.1
-#am__append_32 = tools/hciattach tools/hciconfig tools/hcitool tools/hcidump \
-#			tools/rfcomm tools/sdptool tools/ciptool
+am__append_32 = tools/hciattach tools/hciconfig tools/hcitool tools/hcidump \
+			tools/rfcomm tools/sdptool tools/ciptool
 
-#am__append_33 = tools/hciattach.1 tools/hciconfig.1 \
-#			tools/hcitool.1 tools/hcidump.1 \
-#			tools/rfcomm.1 tools/sdptool.1 tools/ciptool.1
-
-am__append_34 = tools/hciattach.1 tools/hciconfig.1 \
+am__append_33 = tools/hciattach.1 tools/hciconfig.1 \
 			tools/hcitool.1 tools/hcidump.1 \
 			tools/rfcomm.1 tools/sdptool.1 tools/ciptool.1
+
+#am__append_34 = tools/hciattach.1 tools/hciconfig.1 \
+#			tools/hcitool.1 tools/hcidump.1 \
+#			tools/rfcomm.1 tools/sdptool.1 tools/ciptool.1
 
 #am__append_35 = tools/rctest.1 tools/l2ping.1 tools/bccmd.1 tools/btattach.1
 udev_PROGRAMS = tools/hid2hci$(EXEEXT)
@@ -207,10 +207,10 @@ am__append_36 = tools/hid2hci.1
 am__append_38 = tools/btmgmt tools/obex-client-tool tools/obex-server-tool \
 			tools/bluetooth-player tools/obexctl
 
-#am__append_39 = attrib/gatttool
+am__append_39 = attrib/gatttool
 cups_PROGRAMS = profiles/cups/bluetooth$(EXEEXT)
-#am__append_40 = pcsuite
-#am__append_41 = obexd/plugins/pcsuite.c
+am__append_40 = pcsuite
+am__append_41 = obexd/plugins/pcsuite.c
 am__append_42 = irmc pbap
 am__append_43 = obexd/plugins/irmc.c obexd/plugins/pbap.c \
 	obexd/plugins/vcard.h obexd/plugins/vcard.c \
@@ -382,14 +382,14 @@ am__lib_libbluetooth_la_SOURCES_DIST = lib/bluetooth.h lib/hci.h \
 	lib/hci_lib.h lib/sco.h lib/l2cap.h lib/sdp.h lib/sdp_lib.h \
 	lib/rfcomm.h lib/bnep.h lib/cmtp.h lib/hidp.h lib/bluetooth.c \
 	lib/hci.c lib/sdp.c
-#am_lib_libbluetooth_la_OBJECTS = $(am__objects_1) \
-#	$(am__objects_2)
+am_lib_libbluetooth_la_OBJECTS = $(am__objects_1) \
+	$(am__objects_2)
 lib_libbluetooth_la_OBJECTS = $(am_lib_libbluetooth_la_OBJECTS)
 lib_libbluetooth_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
 	$(AM_CFLAGS) $(CFLAGS) $(lib_libbluetooth_la_LDFLAGS) \
 	$(LDFLAGS) -o $@
-#am_lib_libbluetooth_la_rpath = -rpath $(libdir)
+am_lib_libbluetooth_la_rpath = -rpath $(libdir)
 plugins_external_dummy_la_LIBADD =
 am__plugins_external_dummy_la_SOURCES_DIST = plugins/external-dummy.c
 #am_plugins_external_dummy_la_OBJECTS = plugins/plugins_external_dummy_la-external-dummy.lo
@@ -403,14 +403,14 @@ plugins_external_dummy_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
 #	$(plugindir)
 plugins_sixaxis_la_LIBADD =
 am__plugins_sixaxis_la_SOURCES_DIST = plugins/sixaxis.c
-#am_plugins_sixaxis_la_OBJECTS =  \
-#	plugins/plugins_sixaxis_la-sixaxis.lo
+am_plugins_sixaxis_la_OBJECTS =  \
+	plugins/plugins_sixaxis_la-sixaxis.lo
 plugins_sixaxis_la_OBJECTS = $(am_plugins_sixaxis_la_OBJECTS)
 plugins_sixaxis_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
 	$(plugins_sixaxis_la_CFLAGS) $(CFLAGS) \
 	$(plugins_sixaxis_la_LDFLAGS) $(LDFLAGS) -o $@
-#am_plugins_sixaxis_la_rpath = -rpath $(plugindir)
+am_plugins_sixaxis_la_rpath = -rpath $(plugindir)
 src_libshared_glib_la_LIBADD =
 am__objects_4 = src/shared/queue.lo src/shared/util.lo \
 	src/shared/mgmt.lo src/shared/crypto.lo src/shared/ecc.lo \
@@ -435,13 +435,13 @@ am__EXEEXT_3 = tools/rctest$(EXEEXT) tools/l2test$(EXEEXT) \
 	tools/l2ping$(EXEEXT) tools/bccmd$(EXEEXT) \
 	tools/bluemoon$(EXEEXT) tools/hex2hcd$(EXEEXT) \
 	tools/mpris-proxy$(EXEEXT) tools/btattach$(EXEEXT)
-#am__EXEEXT_4 = tools/hciattach$(EXEEXT) \
-#	tools/hciconfig$(EXEEXT) \
-#	tools/hcitool$(EXEEXT) \
-#	tools/hcidump$(EXEEXT) \
-#	tools/rfcomm$(EXEEXT) \
-#	tools/sdptool$(EXEEXT) \
-#	tools/ciptool$(EXEEXT)
+am__EXEEXT_4 = tools/hciattach$(EXEEXT) \
+	tools/hciconfig$(EXEEXT) \
+	tools/hcitool$(EXEEXT) \
+	tools/hcidump$(EXEEXT) \
+	tools/rfcomm$(EXEEXT) \
+	tools/sdptool$(EXEEXT) \
+	tools/ciptool$(EXEEXT)
 #am__EXEEXT_5 = emulator/btvirt$(EXEEXT) \
 #	emulator/b1ee$(EXEEXT) emulator/hfp$(EXEEXT) \
 #	peripheral/btsensor$(EXEEXT) tools/3dsp$(EXEEXT) \
@@ -477,8 +477,8 @@ am__EXEEXT_7 = tools/btmgmt$(EXEEXT) \
 	tools/obex-server-tool$(EXEEXT) \
 	tools/bluetooth-player$(EXEEXT) \
 	tools/obexctl$(EXEEXT)
-#am__EXEEXT_8 =  \
-#	attrib/gatttool$(EXEEXT)
+am__EXEEXT_8 =  \
+	attrib/gatttool$(EXEEXT)
 #am__EXEEXT_9 = android/system-emulator$(EXEEXT) \
 #	android/bluetoothd-snoop$(EXEEXT) \
 #	android/bluetoothd$(EXEEXT) \
@@ -703,20 +703,20 @@ am__attrib_gatttool_SOURCES_DIST = attrib/gatttool.c attrib/att.c \
 	attrib/gatt.c attrib/gattrib.c btio/btio.c attrib/gatttool.h \
 	attrib/interactive.c attrib/utils.c src/log.c client/display.c \
 	client/display.h
-#am_attrib_gatttool_OBJECTS =  \
-#	attrib/gatttool.$(OBJEXT) \
-#	attrib/att.$(OBJEXT) \
-#	attrib/gatt.$(OBJEXT) \
-#	attrib/gattrib.$(OBJEXT) \
-#	btio/btio.$(OBJEXT) \
-#	attrib/interactive.$(OBJEXT) \
-#	attrib/utils.$(OBJEXT) \
-#	src/log.$(OBJEXT) \
-#	client/display.$(OBJEXT)
+am_attrib_gatttool_OBJECTS =  \
+	attrib/gatttool.$(OBJEXT) \
+	attrib/att.$(OBJEXT) \
+	attrib/gatt.$(OBJEXT) \
+	attrib/gattrib.$(OBJEXT) \
+	btio/btio.$(OBJEXT) \
+	attrib/interactive.$(OBJEXT) \
+	attrib/utils.$(OBJEXT) \
+	src/log.$(OBJEXT) \
+	client/display.$(OBJEXT)
 attrib_gatttool_OBJECTS = $(am_attrib_gatttool_OBJECTS)
-#attrib_gatttool_DEPENDENCIES =  \
-#	lib/libbluetooth-internal.la \
-#	src/libshared-glib.la
+attrib_gatttool_DEPENDENCIES =  \
+	lib/libbluetooth-internal.la \
+	src/libshared-glib.la
 am__client_bluetoothctl_SOURCES_DIST = client/main.c client/display.h \
 	client/display.c client/agent.h client/agent.c \
 	client/advertising.h client/advertising.c client/gatt.h \
@@ -827,8 +827,8 @@ am__objects_6 = gobex/obexd-gobex.$(OBJEXT) \
 	gobex/obexd-gobex-header.$(OBJEXT) \
 	gobex/obexd-gobex-transfer.$(OBJEXT) \
 	gobex/obexd-gobex-apparam.$(OBJEXT)
-#am__objects_7 =  \
-#	obexd/plugins/obexd-pcsuite.$(OBJEXT)
+am__objects_7 =  \
+	obexd/plugins/obexd-pcsuite.$(OBJEXT)
 am__objects_8 = obexd/plugins/obexd-irmc.$(OBJEXT) \
 	obexd/plugins/obexd-pbap.$(OBJEXT) \
 	obexd/plugins/obexd-vcard.$(OBJEXT) \
@@ -1174,8 +1174,8 @@ tools_check_selftest_OBJECTS = tools/check-selftest.$(OBJEXT)
 tools_check_selftest_LDADD = $(LDADD)
 tools_ciptool_SOURCES = tools/ciptool.c
 tools_ciptool_OBJECTS = tools/ciptool.$(OBJEXT)
-#tools_ciptool_DEPENDENCIES =  \
-#	lib/libbluetooth-internal.la
+tools_ciptool_DEPENDENCIES =  \
+	lib/libbluetooth-internal.la
 am__tools_cltest_SOURCES_DIST = tools/cltest.c
 am_tools_cltest_OBJECTS = tools/cltest.$(OBJEXT)
 tools_cltest_OBJECTS = $(am_tools_cltest_OBJECTS)
@@ -1219,26 +1219,26 @@ am__tools_hciattach_SOURCES_DIST = tools/hciattach.c tools/hciattach.h \
 	tools/hciattach_tialt.c tools/hciattach_ath3k.c \
 	tools/hciattach_qualcomm.c tools/hciattach_intel.c \
 	tools/hciattach_bcm43xx.c
-#am_tools_hciattach_OBJECTS =  \
-#	tools/hciattach.$(OBJEXT) \
-#	tools/hciattach_st.$(OBJEXT) \
-#	tools/hciattach_ti.$(OBJEXT) \
-#	tools/hciattach_tialt.$(OBJEXT) \
-#	tools/hciattach_ath3k.$(OBJEXT) \
-#	tools/hciattach_qualcomm.$(OBJEXT) \
-#	tools/hciattach_intel.$(OBJEXT) \
-#	tools/hciattach_bcm43xx.$(OBJEXT)
+am_tools_hciattach_OBJECTS =  \
+	tools/hciattach.$(OBJEXT) \
+	tools/hciattach_st.$(OBJEXT) \
+	tools/hciattach_ti.$(OBJEXT) \
+	tools/hciattach_tialt.$(OBJEXT) \
+	tools/hciattach_ath3k.$(OBJEXT) \
+	tools/hciattach_qualcomm.$(OBJEXT) \
+	tools/hciattach_intel.$(OBJEXT) \
+	tools/hciattach_bcm43xx.$(OBJEXT)
 tools_hciattach_OBJECTS = $(am_tools_hciattach_OBJECTS)
-#tools_hciattach_DEPENDENCIES =  \
-#	lib/libbluetooth-internal.la
+tools_hciattach_DEPENDENCIES =  \
+	lib/libbluetooth-internal.la
 am__tools_hciconfig_SOURCES_DIST = tools/hciconfig.c tools/csr.h \
 	tools/csr.c
-#am_tools_hciconfig_OBJECTS =  \
-#	tools/hciconfig.$(OBJEXT) \
-#	tools/csr.$(OBJEXT)
+am_tools_hciconfig_OBJECTS =  \
+	tools/hciconfig.$(OBJEXT) \
+	tools/csr.$(OBJEXT)
 tools_hciconfig_OBJECTS = $(am_tools_hciconfig_OBJECTS)
-#tools_hciconfig_DEPENDENCIES =  \
-#	lib/libbluetooth-internal.la
+tools_hciconfig_DEPENDENCIES =  \
+	lib/libbluetooth-internal.la
 am__tools_hcidump_SOURCES_DIST = tools/hcidump.c tools/parser/parser.h \
 	tools/parser/parser.c tools/parser/lmp.c tools/parser/hci.c \
 	tools/parser/l2cap.h tools/parser/l2cap.c tools/parser/amp.c \
@@ -1249,35 +1249,35 @@ am__tools_hcidump_SOURCES_DIST = tools/hcidump.c tools/parser/parser.h \
 	tools/parser/avrcp.c tools/parser/sap.c tools/parser/obex.c \
 	tools/parser/capi.c tools/parser/ppp.c tools/parser/tcpip.c \
 	tools/parser/ericsson.c tools/parser/csr.c tools/parser/bpa.c
-#am_tools_hcidump_OBJECTS =  \
-#	tools/hcidump.$(OBJEXT) \
-#	tools/parser/parser.$(OBJEXT) \
-#	tools/parser/lmp.$(OBJEXT) \
-#	tools/parser/hci.$(OBJEXT) \
-#	tools/parser/l2cap.$(OBJEXT) \
-#	tools/parser/amp.$(OBJEXT) \
-#	tools/parser/smp.$(OBJEXT) \
-#	tools/parser/att.$(OBJEXT) \
-#	tools/parser/sdp.$(OBJEXT) \
-#	tools/parser/rfcomm.$(OBJEXT) \
-#	tools/parser/bnep.$(OBJEXT) \
-#	tools/parser/cmtp.$(OBJEXT) \
-#	tools/parser/hidp.$(OBJEXT) \
-#	tools/parser/hcrp.$(OBJEXT) \
-#	tools/parser/avdtp.$(OBJEXT) \
-#	tools/parser/avctp.$(OBJEXT) \
-#	tools/parser/avrcp.$(OBJEXT) \
-#	tools/parser/sap.$(OBJEXT) \
-#	tools/parser/obex.$(OBJEXT) \
-#	tools/parser/capi.$(OBJEXT) \
-#	tools/parser/ppp.$(OBJEXT) \
-#	tools/parser/tcpip.$(OBJEXT) \
-#	tools/parser/ericsson.$(OBJEXT) \
-#	tools/parser/csr.$(OBJEXT) \
-#	tools/parser/bpa.$(OBJEXT)
+am_tools_hcidump_OBJECTS =  \
+	tools/hcidump.$(OBJEXT) \
+	tools/parser/parser.$(OBJEXT) \
+	tools/parser/lmp.$(OBJEXT) \
+	tools/parser/hci.$(OBJEXT) \
+	tools/parser/l2cap.$(OBJEXT) \
+	tools/parser/amp.$(OBJEXT) \
+	tools/parser/smp.$(OBJEXT) \
+	tools/parser/att.$(OBJEXT) \
+	tools/parser/sdp.$(OBJEXT) \
+	tools/parser/rfcomm.$(OBJEXT) \
+	tools/parser/bnep.$(OBJEXT) \
+	tools/parser/cmtp.$(OBJEXT) \
+	tools/parser/hidp.$(OBJEXT) \
+	tools/parser/hcrp.$(OBJEXT) \
+	tools/parser/avdtp.$(OBJEXT) \
+	tools/parser/avctp.$(OBJEXT) \
+	tools/parser/avrcp.$(OBJEXT) \
+	tools/parser/sap.$(OBJEXT) \
+	tools/parser/obex.$(OBJEXT) \
+	tools/parser/capi.$(OBJEXT) \
+	tools/parser/ppp.$(OBJEXT) \
+	tools/parser/tcpip.$(OBJEXT) \
+	tools/parser/ericsson.$(OBJEXT) \
+	tools/parser/csr.$(OBJEXT) \
+	tools/parser/bpa.$(OBJEXT)
 tools_hcidump_OBJECTS = $(am_tools_hcidump_OBJECTS)
-#tools_hcidump_DEPENDENCIES =  \
-#	lib/libbluetooth-internal.la
+tools_hcidump_DEPENDENCIES =  \
+	lib/libbluetooth-internal.la
 tools_hcieventmask_SOURCES = tools/hcieventmask.c
 tools_hcieventmask_OBJECTS = tools/hcieventmask.$(OBJEXT)
 tools_hcieventmask_DEPENDENCIES =  \
@@ -1286,12 +1286,12 @@ tools_hcisecfilter_SOURCES = tools/hcisecfilter.c
 tools_hcisecfilter_OBJECTS = tools/hcisecfilter.$(OBJEXT)
 tools_hcisecfilter_LDADD = $(LDADD)
 am__tools_hcitool_SOURCES_DIST = tools/hcitool.c src/oui.h src/oui.c
-#am_tools_hcitool_OBJECTS =  \
-#	tools/hcitool.$(OBJEXT) \
-#	src/oui.$(OBJEXT)
+am_tools_hcitool_OBJECTS =  \
+	tools/hcitool.$(OBJEXT) \
+	src/oui.$(OBJEXT)
 tools_hcitool_OBJECTS = $(am_tools_hcitool_OBJECTS)
-#tools_hcitool_DEPENDENCIES =  \
-#	lib/libbluetooth-internal.la
+tools_hcitool_DEPENDENCIES =  \
+	lib/libbluetooth-internal.la
 am__tools_hex2hcd_SOURCES_DIST = tools/hex2hcd.c
 am_tools_hex2hcd_OBJECTS = tools/hex2hcd.$(OBJEXT)
 tools_hex2hcd_OBJECTS = $(am_tools_hex2hcd_OBJECTS)
@@ -1402,8 +1402,8 @@ tools_rctest_OBJECTS = tools/rctest.$(OBJEXT)
 tools_rctest_DEPENDENCIES = lib/libbluetooth-internal.la
 tools_rfcomm_SOURCES = tools/rfcomm.c
 tools_rfcomm_OBJECTS = tools/rfcomm.$(OBJEXT)
-#tools_rfcomm_DEPENDENCIES =  \
-#	lib/libbluetooth-internal.la
+tools_rfcomm_DEPENDENCIES =  \
+	lib/libbluetooth-internal.la
 am__tools_rfcomm_tester_SOURCES_DIST = tools/rfcomm-tester.c \
 	monitor/bt.h emulator/hciemu.h emulator/hciemu.c \
 	emulator/btdev.h emulator/btdev.c emulator/bthost.h \
@@ -1435,12 +1435,12 @@ tools_scotest_OBJECTS = tools/scotest.$(OBJEXT)
 tools_scotest_DEPENDENCIES = lib/libbluetooth-internal.la
 am__tools_sdptool_SOURCES_DIST = tools/sdptool.c src/sdp-xml.h \
 	src/sdp-xml.c
-#am_tools_sdptool_OBJECTS =  \
-#	tools/sdptool.$(OBJEXT) \
-#	src/sdp-xml.$(OBJEXT)
+am_tools_sdptool_OBJECTS =  \
+	tools/sdptool.$(OBJEXT) \
+	src/sdp-xml.$(OBJEXT)
 tools_sdptool_OBJECTS = $(am_tools_sdptool_OBJECTS)
-#tools_sdptool_DEPENDENCIES =  \
-#	lib/libbluetooth-internal.la
+tools_sdptool_DEPENDENCIES =  \
+	lib/libbluetooth-internal.la
 am__tools_seq2bseq_SOURCES_DIST = tools/seq2bseq.c
 am_tools_seq2bseq_OBJECTS = tools/seq2bseq.$(OBJEXT)
 tools_seq2bseq_OBJECTS = $(am_tools_seq2bseq_OBJECTS)
@@ -2007,26 +2007,26 @@ distuninstallcheck_listfiles = find . -type f -print
 am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \
   | sed 's|^\./|$(prefix)/|' | grep -v '$(infodir)/dir$$'
 distcleancheck_listfiles = find . -type f -print
-ACLOCAL = ${SHELL} /home/bill/src/bluez-5.46-rpi3/missing aclocal-1.14
+ACLOCAL = ${SHELL} /usr/src/bluez-5.46-rpi3/missing aclocal-1.14
 ALSA_CFLAGS = 
 ALSA_LIBS = 
 AMTAR = $${TAR-tar}
-AM_DEFAULT_VERBOSITY = 0
+AM_DEFAULT_VERBOSITY = 1
 AR = ar
-AUTOCONF = ${SHELL} /home/bill/src/bluez-5.46-rpi3/missing autoconf
-AUTOHEADER = ${SHELL} /home/bill/src/bluez-5.46-rpi3/missing autoheader
-AUTOMAKE = ${SHELL} /home/bill/src/bluez-5.46-rpi3/missing automake-1.14
-AWK = gawk
+AUTOCONF = ${SHELL} /usr/src/bluez-5.46-rpi3/missing autoconf
+AUTOHEADER = ${SHELL} /usr/src/bluez-5.46-rpi3/missing autoheader
+AUTOMAKE = ${SHELL} /usr/src/bluez-5.46-rpi3/missing automake-1.14
+AWK = mawk
 BACKTRACE_CFLAGS = 
 BACKTRACE_LIBS = 
 CC = gcc
-CCDEPMODE = depmode=gcc3
-CFLAGS = -g -O2
-CONFIGDIR = /usr/local/etc/bluetooth
+CCDEPMODE = depmode=none
+CFLAGS = -g -O2 -fPIE -fstack-protector-strong -Wformat -Werror=format-security
+CONFIGDIR = /etc/bluetooth
 CPP = gcc -E
-CPPFLAGS = 
+CPPFLAGS = -D_FORTIFY_SOURCE=2
 CYGPATH_W = echo
-DBUS_CFLAGS = -I/usr/include/dbus-1.0 -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include 
+DBUS_CFLAGS = -I/usr/include/dbus-1.0 -I/usr/lib/arm-linux-gnueabihf/dbus-1.0/include 
 DBUS_CONFDIR = /etc
 DBUS_LIBS = -ldbus-1 
 DBUS_SESSIONBUSDIR = /usr/share/dbus-1/services
@@ -2042,11 +2042,11 @@ ECHO_T =
 EGREP = /bin/grep -E
 EXEEXT = 
 FGREP = /bin/grep -F
-GLIB_CFLAGS = -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include 
-GLIB_LIBS = -lglib-2.0 
+GLIB_CFLAGS = -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include  -pthread -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include 
+GLIB_LIBS = -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 GREP = /bin/grep
-GTHREAD_CFLAGS = 
-GTHREAD_LIBS = 
+GTHREAD_CFLAGS = -pthread -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include 
+GTHREAD_LIBS = -lgthread-2.0 -pthread -lglib-2.0 
 ICAL_CFLAGS = 
 ICAL_LIBS = -lical -licalss -licalvcal -lpthread 
 INSTALL = /usr/bin/install -c
@@ -2054,8 +2054,8 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
-LD = /usr/bin/ld -m elf_x86_64
-LDFLAGS = 
+LD = /usr/bin/ld
+LDFLAGS = -fPIE -pie -Wl,-z,relro -Wl,-z,now
 LIBOBJS = 
 LIBS = 
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
@@ -2063,9 +2063,9 @@ LIPO =
 LN_S = ln -s
 LTLIBOBJS = 
 MAINT = #
-MAKEINFO = ${SHELL} /home/bill/src/bluez-5.46-rpi3/missing makeinfo
+MAKEINFO = ${SHELL} /usr/src/bluez-5.46-rpi3/missing makeinfo
 MANIFEST_TOOL = :
-MISC_CFLAGS = 
+MISC_CFLAGS =  -g
 MISC_LDFLAGS = 
 MKDIR_P = /bin/mkdir -p
 NM = /usr/bin/nm -B
@@ -2101,10 +2101,10 @@ UDEV_DIR = /lib/udev
 UDEV_LIBS = -ludev 
 VERSION = 5.46
 WARNING_CFLAGS = 
-abs_builddir = /home/bill/src/bluez-5.46-rpi3
-abs_srcdir = /home/bill/src/bluez-5.46-rpi3
-abs_top_builddir = /home/bill/src/bluez-5.46-rpi3
-abs_top_srcdir = /home/bill/src/bluez-5.46-rpi3
+abs_builddir = /usr/src/bluez-5.46-rpi3
+abs_srcdir = /usr/src/bluez-5.46-rpi3
+abs_top_builddir = /usr/src/bluez-5.46-rpi3
+abs_top_srcdir = /usr/src/bluez-5.46-rpi3
 ac_ct_AR = ar
 ac_ct_CC = gcc
 ac_ct_DUMPBIN = 
@@ -2114,10 +2114,10 @@ am__quote =
 am__tar = tar --format=posix -chf - "$$tardir"
 am__untar = tar -xf -
 bindir = ${exec_prefix}/bin
-build = x86_64-unknown-linux-gnu
-build_alias = 
-build_cpu = x86_64
-build_os = linux-gnu
+build = arm-unknown-linux-gnueabihf
+build_alias = arm-linux-gnueabihf
+build_cpu = arm
+build_os = linux-gnueabihf
 build_vendor = unknown
 builddir = .
 datadir = ${datarootdir}
@@ -2128,30 +2128,30 @@ enable_coverage =
 enable_dbus_run_session = 
 enable_valgrind = 
 exec_prefix = ${prefix}
-host = x86_64-unknown-linux-gnu
+host = arm-unknown-linux-gnueabihf
 host_alias = 
-host_cpu = x86_64
-host_os = linux-gnu
+host_cpu = arm
+host_os = linux-gnueabihf
 host_vendor = unknown
 htmldir = ${docdir}
 includedir = ${prefix}/include/bluetooth
-infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/bill/src/bluez-5.46-rpi3/install-sh
-libdir = ${exec_prefix}/lib
-libexecdir = ${exec_prefix}/libexec/bluetooth
+infodir = ${prefix}/share/info
+install_sh = ${SHELL} /usr/src/bluez-5.46-rpi3/install-sh
+libdir = ${prefix}/lib/arm-linux-gnueabihf
+libexecdir = ${prefix}/lib/bluetooth
 localedir = ${datarootdir}/locale
 localstatedir = /var
-mandir = ${datarootdir}/man
+mandir = ${prefix}/share/man
 mkdir_p = $(MKDIR_P)
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /usr/local
+prefix = /usr
 program_transform_name = s,x,x,
 psdir = ${docdir}
 sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 srcdir = .
-sysconfdir = ${prefix}/etc
+sysconfdir = /etc
 target_alias = 
 top_build_prefix = 
 top_builddir = .
@@ -2232,7 +2232,7 @@ EXTRA_DIST = src/bluetooth.service.in src/org.bluez.service \
 	$(manual_pages:.1=.txt)
 include_HEADERS = $(am__append_1)
 AM_CFLAGS = $(WARNING_CFLAGS) $(MISC_CFLAGS) $(am__append_44) \
-	-I/usr/include/dbus-1.0 -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include  -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include  $(am__empty)
+	-I/usr/include/dbus-1.0 -I/usr/lib/arm-linux-gnueabihf/dbus-1.0/include  -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include  -pthread -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include  $(am__empty)
 AM_LDFLAGS = $(MISC_LDFLAGS)
 dbusdir = /etc/dbus-1/system.d
 dbus_DATA = src/bluetooth.conf
@@ -2258,9 +2258,9 @@ extra_headers = lib/mgmt.h lib/uuid.h lib/a2mp.h lib/amp.h
 extra_sources = lib/uuid.c
 local_headers = $(foreach file,$(lib_headers), lib/bluetooth/$(notdir $(file)))
 BUILT_SOURCES = $(local_headers) src/builtin.h obexd/src/builtin.h
-#lib_libbluetooth_la_SOURCES = $(lib_headers) $(lib_sources)
-#lib_libbluetooth_la_LDFLAGS = $(AM_LDFLAGS) -version-info 21:15:18
-#lib_libbluetooth_la_DEPENDENCIES = $(local_headers)
+lib_libbluetooth_la_SOURCES = $(lib_headers) $(lib_sources)
+lib_libbluetooth_la_LDFLAGS = $(AM_LDFLAGS) -version-info 21:15:18
+lib_libbluetooth_la_DEPENDENCIES = $(local_headers)
 lib_libbluetooth_internal_la_SOURCES = $(lib_headers) $(lib_sources) \
 					$(extra_headers) $(extra_sources)
 
@@ -2326,11 +2326,11 @@ builtin_sources = plugins/hostname.c plugins/wiimote.c \
 	profiles/deviceinfo/deviceinfo.c $(am__append_21)
 builtin_nodist = 
 builtin_ldadd = $(am__append_22)
-#plugins_sixaxis_la_SOURCES = plugins/sixaxis.c
-#plugins_sixaxis_la_LDFLAGS = $(AM_LDFLAGS) -module -avoid-version \
-#						-no-undefined -ludev 
+plugins_sixaxis_la_SOURCES = plugins/sixaxis.c
+plugins_sixaxis_la_LDFLAGS = $(AM_LDFLAGS) -module -avoid-version \
+						-no-undefined -ludev 
 
-#plugins_sixaxis_la_CFLAGS = $(AM_CFLAGS) -fvisibility=hidden 
+plugins_sixaxis_la_CFLAGS = $(AM_CFLAGS) -fvisibility=hidden 
 #plugins_external_dummy_la_SOURCES = plugins/external-dummy.c
 #plugins_external_dummy_la_LDFLAGS = $(AM_LDFLAGS) -module -avoid-version \
 #				    -no-undefined
@@ -2368,7 +2368,7 @@ src_bluetoothd_SOURCES = $(builtin_sources) \
 src_bluetoothd_LDADD = lib/libbluetooth-internal.la \
 			gdbus/libgdbus-internal.la \
 			src/libshared-glib.la \
-			 -lglib-2.0  -ldbus-1  -ldl -lrt \
+			 -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0  -ldbus-1  -ldl -lrt \
 			$(builtin_ldadd)
 
 src_bluetoothd_LDFLAGS = $(AM_LDFLAGS) -Wl,--export-dynamic \
@@ -2418,7 +2418,7 @@ client_bluetoothctl_SOURCES = client/main.c \
 					monitor/uuid.h monitor/uuid.c
 
 client_bluetoothctl_LDADD = gdbus/libgdbus-internal.la src/libshared-glib.la \
-				-lglib-2.0  -ldbus-1  -lreadline
+				-lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0  -ldbus-1  -lreadline
 
 monitor_btmon_SOURCES = monitor/main.c monitor/bt.h \
 				monitor/display.h monitor/display.c \
@@ -2483,7 +2483,7 @@ monitor_btmon_LDADD = lib/libbluetooth-internal.la \
 #				emulator/smp.c
 
 #tools_mgmt_tester_LDADD = lib/libbluetooth-internal.la \
-#				src/libshared-glib.la -lglib-2.0 
+#				src/libshared-glib.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 
 #tools_l2cap_tester_SOURCES = tools/l2cap-tester.c monitor/bt.h \
 #				emulator/hciemu.h emulator/hciemu.c \
@@ -2492,7 +2492,7 @@ monitor_btmon_LDADD = lib/libbluetooth-internal.la \
 #				emulator/smp.c
 
 #tools_l2cap_tester_LDADD = lib/libbluetooth-internal.la \
-#				src/libshared-glib.la -lglib-2.0 
+#				src/libshared-glib.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 
 #tools_rfcomm_tester_SOURCES = tools/rfcomm-tester.c monitor/bt.h \
 #				emulator/hciemu.h emulator/hciemu.c \
@@ -2501,7 +2501,7 @@ monitor_btmon_LDADD = lib/libbluetooth-internal.la \
 #				emulator/smp.c
 
 #tools_rfcomm_tester_LDADD = lib/libbluetooth-internal.la \
-#				src/libshared-glib.la -lglib-2.0 
+#				src/libshared-glib.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 
 #tools_bnep_tester_SOURCES = tools/bnep-tester.c monitor/bt.h \
 #				emulator/hciemu.h emulator/hciemu.c \
@@ -2510,7 +2510,7 @@ monitor_btmon_LDADD = lib/libbluetooth-internal.la \
 #				emulator/smp.c
 
 #tools_bnep_tester_LDADD = lib/libbluetooth-internal.la \
-#				src/libshared-glib.la -lglib-2.0 
+#				src/libshared-glib.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 
 #tools_smp_tester_SOURCES = tools/smp-tester.c monitor/bt.h \
 #				emulator/hciemu.h emulator/hciemu.c \
@@ -2519,7 +2519,7 @@ monitor_btmon_LDADD = lib/libbluetooth-internal.la \
 #				emulator/smp.c
 
 #tools_smp_tester_LDADD = lib/libbluetooth-internal.la \
-#				src/libshared-glib.la -lglib-2.0 
+#				src/libshared-glib.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 
 #tools_gap_tester_SOURCES = tools/gap-tester.c monitor/bt.h \
 #				emulator/hciemu.h emulator/hciemu.c \
@@ -2530,7 +2530,7 @@ monitor_btmon_LDADD = lib/libbluetooth-internal.la \
 #tools_gap_tester_LDADD = lib/libbluetooth-internal.la \
 #				gdbus/libgdbus-internal.la \
 #				src/libshared-glib.la \
-#				-lglib-2.0  -ldbus-1 
+#				-lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0  -ldbus-1 
 
 #tools_sco_tester_SOURCES = tools/sco-tester.c monitor/bt.h \
 #				emulator/hciemu.h emulator/hciemu.c \
@@ -2539,10 +2539,10 @@ monitor_btmon_LDADD = lib/libbluetooth-internal.la \
 #				emulator/smp.c
 
 #tools_sco_tester_LDADD = lib/libbluetooth-internal.la \
-#				src/libshared-glib.la -lglib-2.0 
+#				src/libshared-glib.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 
 #tools_hci_tester_SOURCES = tools/hci-tester.c monitor/bt.h
-#tools_hci_tester_LDADD = src/libshared-glib.la -lglib-2.0 
+#tools_hci_tester_LDADD = src/libshared-glib.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 #tools_userchan_tester_SOURCES = tools/userchan-tester.c monitor/bt.h \
 #				emulator/hciemu.h emulator/hciemu.c \
 #				emulator/btdev.h emulator/btdev.c \
@@ -2550,7 +2550,7 @@ monitor_btmon_LDADD = lib/libbluetooth-internal.la \
 #				emulator/smp.c
 
 #tools_userchan_tester_LDADD = lib/libbluetooth-internal.la \
-#				src/libshared-glib.la -lglib-2.0 
+#				src/libshared-glib.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 
 tools_bdaddr_SOURCES = tools/bdaddr.c src/oui.h src/oui.c
 tools_bdaddr_LDADD = lib/libbluetooth-internal.la -ludev 
@@ -2569,19 +2569,19 @@ tools_btsnoop_LDADD = src/libshared-mainloop.la
 tools_btproxy_SOURCES = tools/btproxy.c monitor/bt.h
 tools_btproxy_LDADD = src/libshared-mainloop.la
 tools_btiotest_SOURCES = tools/btiotest.c btio/btio.h btio/btio.c
-tools_btiotest_LDADD = lib/libbluetooth-internal.la -lglib-2.0 
+tools_btiotest_LDADD = lib/libbluetooth-internal.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 tools_mcaptest_SOURCES = tools/mcaptest.c \
 				btio/btio.h btio/btio.c \
 				src/log.c src/log.h \
 				profiles/health/mcap.h profiles/health/mcap.c
 
-tools_mcaptest_LDADD = lib/libbluetooth-internal.la -lglib-2.0  -lrt
+tools_mcaptest_LDADD = lib/libbluetooth-internal.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0  -lrt
 tools_bneptest_SOURCES = tools/bneptest.c \
 				btio/btio.h btio/btio.c \
 				src/log.h src/log.c \
 				profiles/network/bnep.h profiles/network/bnep.c
 
-tools_bneptest_LDADD = lib/libbluetooth-internal.la -lglib-2.0 
+tools_bneptest_LDADD = lib/libbluetooth-internal.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 tools_cltest_SOURCES = tools/cltest.c
 tools_cltest_LDADD = lib/libbluetooth-internal.la src/libshared-mainloop.la
 tools_oobtest_SOURCES = tools/oobtest.c
@@ -2616,92 +2616,92 @@ tools_bluemoon_SOURCES = tools/bluemoon.c monitor/bt.h
 tools_bluemoon_LDADD = src/libshared-mainloop.la
 tools_hex2hcd_SOURCES = tools/hex2hcd.c
 tools_mpris_proxy_SOURCES = tools/mpris-proxy.c
-tools_mpris_proxy_LDADD = gdbus/libgdbus-internal.la -lglib-2.0  -ldbus-1 
+tools_mpris_proxy_LDADD = gdbus/libgdbus-internal.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0  -ldbus-1 
 tools_gatt_service_SOURCES = tools/gatt-service.c
-tools_gatt_service_LDADD = -lglib-2.0  -ldbus-1  gdbus/libgdbus-internal.la -lpthread
+tools_gatt_service_LDADD = -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0  -ldbus-1  gdbus/libgdbus-internal.la -lpthread
 profiles_iap_iapd_SOURCES = profiles/iap/main.c
-profiles_iap_iapd_LDADD = gdbus/libgdbus-internal.la -lglib-2.0  -ldbus-1 
-#tools_hciattach_SOURCES = tools/hciattach.c tools/hciattach.h \
-#						tools/hciattach_st.c \
-#						tools/hciattach_ti.c \
-#						tools/hciattach_tialt.c \
-#						tools/hciattach_ath3k.c \
-#						tools/hciattach_qualcomm.c \
-#						tools/hciattach_intel.c \
-#						tools/hciattach_bcm43xx.c
+profiles_iap_iapd_LDADD = gdbus/libgdbus-internal.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0  -ldbus-1 
+tools_hciattach_SOURCES = tools/hciattach.c tools/hciattach.h \
+						tools/hciattach_st.c \
+						tools/hciattach_ti.c \
+						tools/hciattach_tialt.c \
+						tools/hciattach_ath3k.c \
+						tools/hciattach_qualcomm.c \
+						tools/hciattach_intel.c \
+						tools/hciattach_bcm43xx.c
 
-#tools_hciattach_LDADD = lib/libbluetooth-internal.la
-#tools_hciconfig_SOURCES = tools/hciconfig.c tools/csr.h tools/csr.c
-#tools_hciconfig_LDADD = lib/libbluetooth-internal.la
-#tools_hcitool_SOURCES = tools/hcitool.c src/oui.h src/oui.c
-#tools_hcitool_LDADD = lib/libbluetooth-internal.la -ludev 
-#tools_hcidump_SOURCES = tools/hcidump.c \
-#				tools/parser/parser.h tools/parser/parser.c \
-#				tools/parser/lmp.c \
-#				tools/parser/hci.c \
-#				tools/parser/l2cap.h tools/parser/l2cap.c \
-#				tools/parser/amp.c \
-#				tools/parser/smp.c \
-#				tools/parser/att.c \
-#				tools/parser/sdp.h tools/parser/sdp.c \
-#				tools/parser/rfcomm.h tools/parser/rfcomm.c \
-#				tools/parser/bnep.c \
-#				tools/parser/cmtp.c \
-#				tools/parser/hidp.c \
-#				tools/parser/hcrp.c \
-#				tools/parser/avdtp.c \
-#				tools/parser/avctp.c \
-#				tools/parser/avrcp.c \
-#				tools/parser/sap.c \
-#				tools/parser/obex.c \
-#				tools/parser/capi.c \
-#				tools/parser/ppp.c \
-#				tools/parser/tcpip.c \
-#				tools/parser/ericsson.c \
-#				tools/parser/csr.c \
-#				tools/parser/bpa.c
+tools_hciattach_LDADD = lib/libbluetooth-internal.la
+tools_hciconfig_SOURCES = tools/hciconfig.c tools/csr.h tools/csr.c
+tools_hciconfig_LDADD = lib/libbluetooth-internal.la
+tools_hcitool_SOURCES = tools/hcitool.c src/oui.h src/oui.c
+tools_hcitool_LDADD = lib/libbluetooth-internal.la -ludev 
+tools_hcidump_SOURCES = tools/hcidump.c \
+				tools/parser/parser.h tools/parser/parser.c \
+				tools/parser/lmp.c \
+				tools/parser/hci.c \
+				tools/parser/l2cap.h tools/parser/l2cap.c \
+				tools/parser/amp.c \
+				tools/parser/smp.c \
+				tools/parser/att.c \
+				tools/parser/sdp.h tools/parser/sdp.c \
+				tools/parser/rfcomm.h tools/parser/rfcomm.c \
+				tools/parser/bnep.c \
+				tools/parser/cmtp.c \
+				tools/parser/hidp.c \
+				tools/parser/hcrp.c \
+				tools/parser/avdtp.c \
+				tools/parser/avctp.c \
+				tools/parser/avrcp.c \
+				tools/parser/sap.c \
+				tools/parser/obex.c \
+				tools/parser/capi.c \
+				tools/parser/ppp.c \
+				tools/parser/tcpip.c \
+				tools/parser/ericsson.c \
+				tools/parser/csr.c \
+				tools/parser/bpa.c
 
-#tools_sdptool_SOURCES = tools/sdptool.c src/sdp-xml.h src/sdp-xml.c
-#tools_sdptool_LDADD = lib/libbluetooth-internal.la -lglib-2.0 
-#tools_ciptool_LDADD = lib/libbluetooth-internal.la
-#tools_hcidump_LDADD = lib/libbluetooth-internal.la
-#tools_rfcomm_LDADD = lib/libbluetooth-internal.la
+tools_sdptool_SOURCES = tools/sdptool.c src/sdp-xml.h src/sdp-xml.c
+tools_sdptool_LDADD = lib/libbluetooth-internal.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
+tools_ciptool_LDADD = lib/libbluetooth-internal.la
+tools_hcidump_LDADD = lib/libbluetooth-internal.la
+tools_rfcomm_LDADD = lib/libbluetooth-internal.la
 udevdir = /lib/udev
 tools_hid2hci_LDADD = -ludev 
 tools_obex_client_tool_SOURCES = $(gobex_sources) $(btio_sources) \
 						tools/obex-client-tool.c
 
 tools_obex_client_tool_LDADD = lib/libbluetooth-internal.la \
-						-lglib-2.0  -lreadline
+						-lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0  -lreadline
 
 tools_obex_server_tool_SOURCES = $(gobex_sources) $(btio_sources) \
 						tools/obex-server-tool.c
 
-tools_obex_server_tool_LDADD = lib/libbluetooth-internal.la -lglib-2.0 
+tools_obex_server_tool_LDADD = lib/libbluetooth-internal.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 tools_bluetooth_player_SOURCES = tools/bluetooth-player.c \
 				client/display.h client/display.c
 
 tools_bluetooth_player_LDADD = gdbus/libgdbus-internal.la \
-				-lglib-2.0  -ldbus-1  -lreadline
+				-lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0  -ldbus-1  -lreadline
 
 tools_obexctl_SOURCES = tools/obexctl.c \
 				client/display.h client/display.c
 
 tools_obexctl_LDADD = gdbus/libgdbus-internal.la \
-				-lglib-2.0  -ldbus-1  -lreadline
+				-lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0  -ldbus-1  -lreadline
 
 tools_btmgmt_SOURCES = tools/btmgmt.c src/uuid-helper.c client/display.c
 tools_btmgmt_LDADD = lib/libbluetooth-internal.la src/libshared-mainloop.la \
 				-lreadline
 
-#attrib_gatttool_SOURCES = attrib/gatttool.c attrib/att.c attrib/gatt.c \
-#				attrib/gattrib.c btio/btio.c \
-#				attrib/gatttool.h attrib/interactive.c \
-#				attrib/utils.c src/log.c client/display.c \
-#				client/display.h
+attrib_gatttool_SOURCES = attrib/gatttool.c attrib/att.c attrib/gatt.c \
+				attrib/gattrib.c btio/btio.c \
+				attrib/gatttool.h attrib/interactive.c \
+				attrib/utils.c src/log.c client/display.c \
+				client/display.h
 
-#attrib_gatttool_LDADD = lib/libbluetooth-internal.la \
-#			src/libshared-glib.la -lglib-2.0  -lreadline
+attrib_gatttool_LDADD = lib/libbluetooth-internal.la \
+			src/libshared-glib.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0  -lreadline
 
 cupsdir = $(libdir)/cups/backend
 profiles_cups_bluetooth_SOURCES = profiles/cups/main.c \
@@ -2710,7 +2710,7 @@ profiles_cups_bluetooth_SOURCES = profiles/cups/main.c \
 					profiles/cups/spp.c \
 					profiles/cups/hcrp.c
 
-profiles_cups_bluetooth_LDADD = -lglib-2.0  -ldbus-1  \
+profiles_cups_bluetooth_LDADD = -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0  -ldbus-1  \
 				lib/libbluetooth-internal.la \
 				gdbus/libgdbus-internal.la
 
@@ -2757,10 +2757,10 @@ obexd_src_obexd_SOURCES = $(btio_sources) $(gobex_sources) \
 
 obexd_src_obexd_LDADD = lib/libbluetooth-internal.la \
 			gdbus/libgdbus-internal.la \
-			-lical -licalss -licalvcal -lpthread  -ldbus-1  -lglib-2.0  -ldl
+			-lical -licalss -licalvcal -lpthread  -ldbus-1  -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0  -ldl
 
 obexd_src_obexd_LDFLAGS = -Wl,--export-dynamic
-obexd_src_obexd_CFLAGS = $(AM_CFLAGS) -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include  -I/usr/include/dbus-1.0 -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include  \
+obexd_src_obexd_CFLAGS = $(AM_CFLAGS) -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include  -pthread -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include  -I/usr/include/dbus-1.0 -I/usr/lib/arm-linux-gnueabihf/dbus-1.0/include  \
 				 -DOBEX_PLUGIN_BUILTIN \
 				-DPLUGINDIR=\""$(obex_plugindir)"\" \
 				-fPIC -D_FILE_OFFSET_BITS=64
@@ -2773,7 +2773,7 @@ nodist_obexd_src_obexd_SOURCES = $(obexd_builtin_files)
 #android_system_emulator_SOURCES = android/system-emulator.c
 #android_system_emulator_LDADD = src/libshared-mainloop.la
 #android_bluetoothd_snoop_SOURCES = android/bluetoothd-snoop.c src/log.c
-#android_bluetoothd_snoop_LDADD = src/libshared-mainloop.la -lglib-2.0 
+#android_bluetoothd_snoop_LDADD = src/libshared-mainloop.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 #android_bluetoothd_SOURCES = android/main.c \
 #				src/log.c \
 #				android/hal-msg.h \
@@ -2818,7 +2818,7 @@ nodist_obexd_src_obexd_SOURCES = $(obexd_builtin_files)
 #				profiles/network/bnep.h profiles/network/bnep.c
 
 #android_bluetoothd_LDADD = lib/libbluetooth-internal.la \
-#				src/libshared-glib.la -lglib-2.0 
+#				src/libshared-glib.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 
 #android_bluetooth_default_la_SOURCES = android/hal.h android/hal-bluetooth.c \
 #					android/hal-socket.c \
@@ -2866,7 +2866,7 @@ nodist_obexd_src_obexd_SOURCES = $(obexd_builtin_files)
 #				android/avdtp.h android/avdtp.c
 
 #android_avdtptest_CFLAGS = $(AM_CFLAGS)
-#android_avdtptest_LDADD = lib/libbluetooth-internal.la -lglib-2.0 
+#android_avdtptest_LDADD = lib/libbluetooth-internal.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 #android_haltest_SOURCES = android/client/haltest.c \
 #				android/client/pollhandler.h \
 #				android/client/pollhandler.c \
@@ -2919,7 +2919,7 @@ nodist_obexd_src_obexd_SOURCES = $(obexd_builtin_files)
 #				-DPLUGINDIR=\""$(android_plugindir)"\"
 
 #android_android_tester_LDADD = lib/libbluetooth-internal.la \
-#				src/libshared-glib.la -lglib-2.0 
+#				src/libshared-glib.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 
 #android_android_tester_LDFLAGS = -pthread -ldl
 #android_ipc_tester_SOURCES = emulator/hciemu.h emulator/hciemu.c \
@@ -2931,7 +2931,7 @@ nodist_obexd_src_obexd_SOURCES = $(obexd_builtin_files)
 
 #android_ipc_tester_CFLAGS = $(AM_CFLAGS) -I$(srcdir)/android
 #android_ipc_tester_LDADD = lib/libbluetooth-internal.la \
-#				src/libshared-glib.la -lglib-2.0 
+#				src/libshared-glib.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 
 #android_audio_a2dp_default_la_SOURCES = android/audio-msg.h \
 #					android/hal-msg.h \
@@ -2971,7 +2971,7 @@ nodist_obexd_src_obexd_SOURCES = $(obexd_builtin_files)
 #				android/ipc-common.h \
 #				android/ipc.c android/ipc.h
 
-#android_test_ipc_LDADD = src/libshared-glib.la -lglib-2.0 
+#android_test_ipc_LDADD = src/libshared-glib.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 rulesdir = /lib/udev/rules.d
 rules_DATA = tools/97-hid2hci.rules
 #testdir = $(pkglibdir)/test
@@ -2979,87 +2979,87 @@ rules_DATA = tools/97-hid2hci.rules
 AM_CPPFLAGS = -I$(builddir)/lib
 unit_test_eir_SOURCES = unit/test-eir.c src/eir.c src/uuid-helper.c
 unit_test_eir_LDADD = src/libshared-glib.la lib/libbluetooth-internal.la \
-								-lglib-2.0 
+								-lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 
 unit_test_uuid_SOURCES = unit/test-uuid.c
 unit_test_uuid_LDADD = src/libshared-glib.la lib/libbluetooth-internal.la \
-								-lglib-2.0 
+								-lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 
 unit_test_textfile_SOURCES = unit/test-textfile.c src/textfile.h src/textfile.c
-unit_test_textfile_LDADD = src/libshared-glib.la -lglib-2.0 
+unit_test_textfile_LDADD = src/libshared-glib.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 unit_test_crc_SOURCES = unit/test-crc.c monitor/crc.h monitor/crc.c
-unit_test_crc_LDADD = src/libshared-glib.la -lglib-2.0 
+unit_test_crc_LDADD = src/libshared-glib.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 unit_test_crypto_SOURCES = unit/test-crypto.c
-unit_test_crypto_LDADD = src/libshared-glib.la -lglib-2.0 
+unit_test_crypto_LDADD = src/libshared-glib.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 unit_test_ecc_SOURCES = unit/test-ecc.c
-unit_test_ecc_LDADD = src/libshared-glib.la -lglib-2.0 
+unit_test_ecc_LDADD = src/libshared-glib.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 unit_test_ringbuf_SOURCES = unit/test-ringbuf.c
-unit_test_ringbuf_LDADD = src/libshared-glib.la -lglib-2.0 
+unit_test_ringbuf_LDADD = src/libshared-glib.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 unit_test_queue_SOURCES = unit/test-queue.c
-unit_test_queue_LDADD = src/libshared-glib.la -lglib-2.0 
+unit_test_queue_LDADD = src/libshared-glib.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 unit_test_mgmt_SOURCES = unit/test-mgmt.c
-unit_test_mgmt_LDADD = src/libshared-glib.la -lglib-2.0 
+unit_test_mgmt_LDADD = src/libshared-glib.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 unit_test_uhid_SOURCES = unit/test-uhid.c
-unit_test_uhid_LDADD = src/libshared-glib.la -lglib-2.0 
+unit_test_uhid_LDADD = src/libshared-glib.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 unit_test_sdp_SOURCES = unit/test-sdp.c \
 				src/sdpd.h src/sdpd-database.c \
 				src/log.h src/log.c \
 				src/sdpd-service.c src/sdpd-request.c
 
 unit_test_sdp_LDADD = lib/libbluetooth-internal.la \
-				src/libshared-glib.la -lglib-2.0 
+				src/libshared-glib.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 
 unit_test_avdtp_SOURCES = unit/test-avdtp.c \
 				src/log.h src/log.c \
 				android/avdtp.c android/avdtp.h
 
-unit_test_avdtp_LDADD = src/libshared-glib.la -lglib-2.0 
+unit_test_avdtp_LDADD = src/libshared-glib.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 unit_test_avctp_SOURCES = unit/test-avctp.c \
 				src/log.h src/log.c \
 				android/avctp.c android/avctp.h
 
-unit_test_avctp_LDADD = src/libshared-glib.la -lglib-2.0 
+unit_test_avctp_LDADD = src/libshared-glib.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 unit_test_avrcp_SOURCES = unit/test-avrcp.c \
 				src/log.h src/log.c \
 				android/avctp.c android/avctp.h \
 				android/avrcp-lib.c android/avrcp-lib.h
 
 unit_test_avrcp_LDADD = lib/libbluetooth-internal.la \
-				src/libshared-glib.la -lglib-2.0 
+				src/libshared-glib.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 
 unit_test_hfp_SOURCES = unit/test-hfp.c
-unit_test_hfp_LDADD = src/libshared-glib.la -lglib-2.0 
+unit_test_hfp_LDADD = src/libshared-glib.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 unit_test_gdbus_client_SOURCES = unit/test-gdbus-client.c
 unit_test_gdbus_client_LDADD = gdbus/libgdbus-internal.la \
-				src/libshared-glib.la -lglib-2.0  -ldbus-1 
+				src/libshared-glib.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0  -ldbus-1 
 
 unit_test_gobex_SOURCES = $(gobex_sources) unit/util.c unit/util.h \
 						unit/test-gobex.c
 
-unit_test_gobex_LDADD = -lglib-2.0 
+unit_test_gobex_LDADD = -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 unit_test_gobex_packet_SOURCES = $(gobex_sources) unit/util.c unit/util.h \
 						unit/test-gobex-packet.c
 
-unit_test_gobex_packet_LDADD = -lglib-2.0 
+unit_test_gobex_packet_LDADD = -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 unit_test_gobex_header_SOURCES = $(gobex_sources) unit/util.c unit/util.h \
 						unit/test-gobex-header.c
 
-unit_test_gobex_header_LDADD = -lglib-2.0 
+unit_test_gobex_header_LDADD = -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 unit_test_gobex_transfer_SOURCES = $(gobex_sources) unit/util.c unit/util.h \
 						unit/test-gobex-transfer.c
 
-unit_test_gobex_transfer_LDADD = -lglib-2.0 
+unit_test_gobex_transfer_LDADD = -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 unit_test_gobex_apparam_SOURCES = $(gobex_sources) unit/util.c unit/util.h \
 						unit/test-gobex-apparam.c
 
-unit_test_gobex_apparam_LDADD = -lglib-2.0 
+unit_test_gobex_apparam_LDADD = -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 unit_test_lib_SOURCES = unit/test-lib.c
 unit_test_lib_LDADD = src/libshared-glib.la \
-				lib/libbluetooth-internal.la -lglib-2.0 
+				lib/libbluetooth-internal.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 
 unit_test_gatt_SOURCES = unit/test-gatt.c
 unit_test_gatt_LDADD = src/libshared-glib.la \
-				lib/libbluetooth-internal.la -lglib-2.0 
+				lib/libbluetooth-internal.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 
 unit_test_hog_SOURCES = unit/test-hog.c \
 			$(btio_sources) \
@@ -3073,12 +3073,12 @@ unit_test_hog_SOURCES = unit/test-hog.c \
 			attrib/gattrib.h attrib/gattrib.c
 
 unit_test_hog_LDADD = src/libshared-glib.la \
-				lib/libbluetooth-internal.la -lglib-2.0 
+				lib/libbluetooth-internal.la -lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0 
 
 unit_test_gattrib_SOURCES = unit/test-gattrib.c attrib/gattrib.c $(btio_sources) src/log.h src/log.c
 unit_test_gattrib_LDADD = lib/libbluetooth-internal.la \
 			src/libshared-glib.la \
-			-lglib-2.0  -ldbus-1  -ldl -lrt
+			-lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0  -ldbus-1  -ldl -lrt
 
 #unit_test_midi_CFLAGS = $(AM_CFLAGS)  -DMIDI_TEST
 #unit_test_midi_SOURCES = unit/test-midi.c \
@@ -3086,7 +3086,7 @@ unit_test_gattrib_LDADD = lib/libbluetooth-internal.la \
 #			profiles/midi/libmidi.c
 
 #unit_test_midi_LDADD = src/libshared-glib.la \
-#			-lglib-2.0  
+#			-lglib-2.0  -lgthread-2.0 -pthread -lglib-2.0  
 
 AM_TESTS_ENVIRONMENT = MALLOC_CHECK_=3 MALLOC_PERTURB_=69 \
 	$(am__append_51)
@@ -3095,7 +3095,7 @@ AM_TESTS_ENVIRONMENT = MALLOC_CHECK_=3 MALLOC_PERTURB_=69 \
 #		--suppressions=$(srcdir)/tools/valgrind.supp --quiet
 
 pkgconfigdir = $(libdir)/pkgconfig
-#pkgconfig_DATA = lib/bluez.pc
+pkgconfig_DATA = lib/bluez.pc
 manual_pages = doc/btmon.1
 DISTCHECK_CONFIGURE_FLAGS = --disable-datafiles --enable-library \
 					--enable-manpages --enable-android \
@@ -5135,2955 +5135,2955 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-include android/$(DEPDIR)/a2dp-sink.Po
-include android/$(DEPDIR)/a2dp.Po
-include android/$(DEPDIR)/android_android_tester-tester-a2dp.Po
-include android/$(DEPDIR)/android_android_tester-tester-avrcp.Po
-include android/$(DEPDIR)/android_android_tester-tester-bluetooth.Po
-include android/$(DEPDIR)/android_android_tester-tester-gatt.Po
-include android/$(DEPDIR)/android_android_tester-tester-hdp.Po
-include android/$(DEPDIR)/android_android_tester-tester-hidhost.Po
-include android/$(DEPDIR)/android_android_tester-tester-main.Po
-include android/$(DEPDIR)/android_android_tester-tester-map-client.Po
-include android/$(DEPDIR)/android_android_tester-tester-pan.Po
-include android/$(DEPDIR)/android_android_tester-tester-socket.Po
-include android/$(DEPDIR)/android_audio_a2dp_default_la-hal-audio-aptx.Plo
-include android/$(DEPDIR)/android_audio_a2dp_default_la-hal-audio-sbc.Plo
-include android/$(DEPDIR)/android_audio_a2dp_default_la-hal-audio.Plo
-include android/$(DEPDIR)/android_audio_sco_default_la-hal-sco.Plo
-include android/$(DEPDIR)/android_avdtptest-avdtp.Po
-include android/$(DEPDIR)/android_avdtptest-avdtptest.Po
-include android/$(DEPDIR)/android_bluetooth_default_la-hal-a2dp-sink.Plo
-include android/$(DEPDIR)/android_bluetooth_default_la-hal-a2dp.Plo
-include android/$(DEPDIR)/android_bluetooth_default_la-hal-avrcp-ctrl.Plo
-include android/$(DEPDIR)/android_bluetooth_default_la-hal-avrcp.Plo
-include android/$(DEPDIR)/android_bluetooth_default_la-hal-bluetooth.Plo
-include android/$(DEPDIR)/android_bluetooth_default_la-hal-gatt.Plo
-include android/$(DEPDIR)/android_bluetooth_default_la-hal-handsfree-client.Plo
-include android/$(DEPDIR)/android_bluetooth_default_la-hal-handsfree.Plo
-include android/$(DEPDIR)/android_bluetooth_default_la-hal-health.Plo
-include android/$(DEPDIR)/android_bluetooth_default_la-hal-hidhost.Plo
-include android/$(DEPDIR)/android_bluetooth_default_la-hal-ipc.Plo
-include android/$(DEPDIR)/android_bluetooth_default_la-hal-map-client.Plo
-include android/$(DEPDIR)/android_bluetooth_default_la-hal-pan.Plo
-include android/$(DEPDIR)/android_bluetooth_default_la-hal-socket.Plo
-include android/$(DEPDIR)/android_bluetooth_default_la-hal-utils.Plo
-include android/$(DEPDIR)/android_haltest-hal-utils.Po
-include android/$(DEPDIR)/android_ipc_tester-hal-utils.Po
-include android/$(DEPDIR)/android_ipc_tester-ipc-tester.Po
-include android/$(DEPDIR)/avctp.Po
-include android/$(DEPDIR)/avdtp.Po
-include android/$(DEPDIR)/avrcp-lib.Po
-include android/$(DEPDIR)/avrcp.Po
-include android/$(DEPDIR)/bluetooth.Po
-include android/$(DEPDIR)/bluetoothd-snoop.Po
-include android/$(DEPDIR)/gatt.Po
-include android/$(DEPDIR)/handsfree-client.Po
-include android/$(DEPDIR)/handsfree.Po
-include android/$(DEPDIR)/health.Po
-include android/$(DEPDIR)/hidhost.Po
-include android/$(DEPDIR)/ipc.Po
-include android/$(DEPDIR)/main.Po
-include android/$(DEPDIR)/map-client.Po
-include android/$(DEPDIR)/pan.Po
-include android/$(DEPDIR)/sco.Po
-include android/$(DEPDIR)/socket.Po
-include android/$(DEPDIR)/system-emulator.Po
-include android/$(DEPDIR)/test-ipc.Po
-include android/audio_utils/$(DEPDIR)/android_audio_sco_default_la-resampler.Plo
-include android/client/$(DEPDIR)/android_haltest-haltest.Po
-include android/client/$(DEPDIR)/android_haltest-history.Po
-include android/client/$(DEPDIR)/android_haltest-if-audio.Po
-include android/client/$(DEPDIR)/android_haltest-if-av-sink.Po
-include android/client/$(DEPDIR)/android_haltest-if-av.Po
-include android/client/$(DEPDIR)/android_haltest-if-bt.Po
-include android/client/$(DEPDIR)/android_haltest-if-gatt.Po
-include android/client/$(DEPDIR)/android_haltest-if-hf-client.Po
-include android/client/$(DEPDIR)/android_haltest-if-hf.Po
-include android/client/$(DEPDIR)/android_haltest-if-hh.Po
-include android/client/$(DEPDIR)/android_haltest-if-hl.Po
-include android/client/$(DEPDIR)/android_haltest-if-mce.Po
-include android/client/$(DEPDIR)/android_haltest-if-pan.Po
-include android/client/$(DEPDIR)/android_haltest-if-rc-ctrl.Po
-include android/client/$(DEPDIR)/android_haltest-if-rc.Po
-include android/client/$(DEPDIR)/android_haltest-if-sco.Po
-include android/client/$(DEPDIR)/android_haltest-if-sock.Po
-include android/client/$(DEPDIR)/android_haltest-pollhandler.Po
-include android/client/$(DEPDIR)/android_haltest-tabcompletion.Po
-include android/client/$(DEPDIR)/android_haltest-terminal.Po
-include android/hardware/$(DEPDIR)/android_android_tester-hardware.Po
-include android/hardware/$(DEPDIR)/android_haltest-hardware.Po
-include attrib/$(DEPDIR)/att.Po
-include attrib/$(DEPDIR)/bluetoothd-att.Po
-include attrib/$(DEPDIR)/bluetoothd-gatt-service.Po
-include attrib/$(DEPDIR)/bluetoothd-gatt.Po
-include attrib/$(DEPDIR)/bluetoothd-gattrib.Po
-include attrib/$(DEPDIR)/gatt.Po
-include attrib/$(DEPDIR)/gattrib.Po
-include attrib/$(DEPDIR)/gatttool.Po
-include attrib/$(DEPDIR)/interactive.Po
-include attrib/$(DEPDIR)/utils.Po
-include btio/$(DEPDIR)/android_avdtptest-btio.Po
-include btio/$(DEPDIR)/bluetoothd-btio.Po
-include btio/$(DEPDIR)/btio.Po
-include btio/$(DEPDIR)/obexd-btio.Po
-include client/$(DEPDIR)/advertising.Po
-include client/$(DEPDIR)/agent.Po
-include client/$(DEPDIR)/display.Po
-include client/$(DEPDIR)/gatt.Po
-include client/$(DEPDIR)/main.Po
-include emulator/$(DEPDIR)/amp.Po
-include emulator/$(DEPDIR)/android_android_tester-btdev.Po
-include emulator/$(DEPDIR)/android_android_tester-bthost.Po
-include emulator/$(DEPDIR)/android_android_tester-hciemu.Po
-include emulator/$(DEPDIR)/android_android_tester-smp.Po
-include emulator/$(DEPDIR)/android_ipc_tester-btdev.Po
-include emulator/$(DEPDIR)/android_ipc_tester-bthost.Po
-include emulator/$(DEPDIR)/android_ipc_tester-hciemu.Po
-include emulator/$(DEPDIR)/android_ipc_tester-smp.Po
-include emulator/$(DEPDIR)/b1ee.Po
-include emulator/$(DEPDIR)/btdev.Po
-include emulator/$(DEPDIR)/bthost.Po
-include emulator/$(DEPDIR)/hciemu.Po
-include emulator/$(DEPDIR)/hfp.Po
-include emulator/$(DEPDIR)/le.Po
-include emulator/$(DEPDIR)/main.Po
-include emulator/$(DEPDIR)/phy.Po
-include emulator/$(DEPDIR)/serial.Po
-include emulator/$(DEPDIR)/server.Po
-include emulator/$(DEPDIR)/smp.Po
-include emulator/$(DEPDIR)/vhci.Po
-include gdbus/$(DEPDIR)/client.Plo
-include gdbus/$(DEPDIR)/mainloop.Plo
-include gdbus/$(DEPDIR)/object.Plo
-include gdbus/$(DEPDIR)/polkit.Plo
-include gdbus/$(DEPDIR)/watch.Plo
-include gobex/$(DEPDIR)/gobex-apparam.Po
-include gobex/$(DEPDIR)/gobex-defs.Po
-include gobex/$(DEPDIR)/gobex-header.Po
-include gobex/$(DEPDIR)/gobex-packet.Po
-include gobex/$(DEPDIR)/gobex-transfer.Po
-include gobex/$(DEPDIR)/gobex.Po
-include gobex/$(DEPDIR)/obexd-gobex-apparam.Po
-include gobex/$(DEPDIR)/obexd-gobex-defs.Po
-include gobex/$(DEPDIR)/obexd-gobex-header.Po
-include gobex/$(DEPDIR)/obexd-gobex-packet.Po
-include gobex/$(DEPDIR)/obexd-gobex-transfer.Po
-include gobex/$(DEPDIR)/obexd-gobex.Po
-include lib/$(DEPDIR)/bluetooth.Plo
-include lib/$(DEPDIR)/hci.Plo
-include lib/$(DEPDIR)/sdp.Plo
-include lib/$(DEPDIR)/uuid.Plo
-include monitor/$(DEPDIR)/a2dp.Po
-include monitor/$(DEPDIR)/analyze.Po
-include monitor/$(DEPDIR)/avctp.Po
-include monitor/$(DEPDIR)/avdtp.Po
-include monitor/$(DEPDIR)/bnep.Po
-include monitor/$(DEPDIR)/broadcom.Po
-include monitor/$(DEPDIR)/control.Po
-include monitor/$(DEPDIR)/crc.Po
-include monitor/$(DEPDIR)/display.Po
-include monitor/$(DEPDIR)/ellisys.Po
-include monitor/$(DEPDIR)/hcidump.Po
-include monitor/$(DEPDIR)/hwdb.Po
-include monitor/$(DEPDIR)/intel.Po
-include monitor/$(DEPDIR)/keys.Po
-include monitor/$(DEPDIR)/l2cap.Po
-include monitor/$(DEPDIR)/ll.Po
-include monitor/$(DEPDIR)/lmp.Po
-include monitor/$(DEPDIR)/main.Po
-include monitor/$(DEPDIR)/packet.Po
-include monitor/$(DEPDIR)/rfcomm.Po
-include monitor/$(DEPDIR)/sdp.Po
-include monitor/$(DEPDIR)/uuid.Po
-include monitor/$(DEPDIR)/vendor.Po
-include obexd/client/$(DEPDIR)/obexd-bluetooth.Po
-include obexd/client/$(DEPDIR)/obexd-dbus.Po
-include obexd/client/$(DEPDIR)/obexd-driver.Po
-include obexd/client/$(DEPDIR)/obexd-ftp.Po
-include obexd/client/$(DEPDIR)/obexd-manager.Po
-include obexd/client/$(DEPDIR)/obexd-map-event.Po
-include obexd/client/$(DEPDIR)/obexd-map.Po
-include obexd/client/$(DEPDIR)/obexd-mns.Po
-include obexd/client/$(DEPDIR)/obexd-opp.Po
-include obexd/client/$(DEPDIR)/obexd-pbap.Po
-include obexd/client/$(DEPDIR)/obexd-session.Po
-include obexd/client/$(DEPDIR)/obexd-sync.Po
-include obexd/client/$(DEPDIR)/obexd-transfer.Po
-include obexd/client/$(DEPDIR)/obexd-transport.Po
-include obexd/plugins/$(DEPDIR)/obexd-bluetooth.Po
-include obexd/plugins/$(DEPDIR)/obexd-filesystem.Po
-include obexd/plugins/$(DEPDIR)/obexd-ftp.Po
-include obexd/plugins/$(DEPDIR)/obexd-irmc.Po
-include obexd/plugins/$(DEPDIR)/obexd-mas.Po
-include obexd/plugins/$(DEPDIR)/obexd-messages-dummy.Po
-include obexd/plugins/$(DEPDIR)/obexd-opp.Po
-include obexd/plugins/$(DEPDIR)/obexd-pbap.Po
-include obexd/plugins/$(DEPDIR)/obexd-pcsuite.Po
-include obexd/plugins/$(DEPDIR)/obexd-phonebook-dummy.Po
-include obexd/plugins/$(DEPDIR)/obexd-vcard.Po
-include obexd/src/$(DEPDIR)/obexd-log.Po
-include obexd/src/$(DEPDIR)/obexd-main.Po
-include obexd/src/$(DEPDIR)/obexd-manager.Po
-include obexd/src/$(DEPDIR)/obexd-mimetype.Po
-include obexd/src/$(DEPDIR)/obexd-obex.Po
-include obexd/src/$(DEPDIR)/obexd-plugin.Po
-include obexd/src/$(DEPDIR)/obexd-server.Po
-include obexd/src/$(DEPDIR)/obexd-service.Po
-include obexd/src/$(DEPDIR)/obexd-transport.Po
-include peripheral/$(DEPDIR)/attach.Po
-include peripheral/$(DEPDIR)/efivars.Po
-include peripheral/$(DEPDIR)/gap.Po
-include peripheral/$(DEPDIR)/gatt.Po
-include peripheral/$(DEPDIR)/log.Po
-include peripheral/$(DEPDIR)/main.Po
-include plugins/$(DEPDIR)/bluetoothd-autopair.Po
-include plugins/$(DEPDIR)/bluetoothd-hostname.Po
-include plugins/$(DEPDIR)/bluetoothd-neard.Po
-include plugins/$(DEPDIR)/bluetoothd-policy.Po
-include plugins/$(DEPDIR)/bluetoothd-wiimote.Po
-include plugins/$(DEPDIR)/plugins_external_dummy_la-external-dummy.Plo
-include plugins/$(DEPDIR)/plugins_sixaxis_la-sixaxis.Plo
-include profiles/audio/$(DEPDIR)/bluetoothd-a2dp.Po
-include profiles/audio/$(DEPDIR)/bluetoothd-avctp.Po
-include profiles/audio/$(DEPDIR)/bluetoothd-avdtp.Po
-include profiles/audio/$(DEPDIR)/bluetoothd-avrcp.Po
-include profiles/audio/$(DEPDIR)/bluetoothd-control.Po
-include profiles/audio/$(DEPDIR)/bluetoothd-media.Po
-include profiles/audio/$(DEPDIR)/bluetoothd-player.Po
-include profiles/audio/$(DEPDIR)/bluetoothd-sink.Po
-include profiles/audio/$(DEPDIR)/bluetoothd-source.Po
-include profiles/audio/$(DEPDIR)/bluetoothd-transport.Po
-include profiles/battery/$(DEPDIR)/bas.Po
-include profiles/battery/$(DEPDIR)/bluetoothd-bas.Po
-include profiles/cups/$(DEPDIR)/hcrp.Po
-include profiles/cups/$(DEPDIR)/main.Po
-include profiles/cups/$(DEPDIR)/sdp.Po
-include profiles/cups/$(DEPDIR)/spp.Po
-include profiles/deviceinfo/$(DEPDIR)/bluetoothd-deviceinfo.Po
-include profiles/deviceinfo/$(DEPDIR)/bluetoothd-dis.Po
-include profiles/deviceinfo/$(DEPDIR)/dis.Po
-include profiles/gap/$(DEPDIR)/bluetoothd-gas.Po
-include profiles/health/$(DEPDIR)/bluetoothd-hdp.Po
-include profiles/health/$(DEPDIR)/bluetoothd-hdp_main.Po
-include profiles/health/$(DEPDIR)/bluetoothd-hdp_manager.Po
-include profiles/health/$(DEPDIR)/bluetoothd-hdp_util.Po
-include profiles/health/$(DEPDIR)/bluetoothd-mcap.Po
-include profiles/health/$(DEPDIR)/mcap.Po
-include profiles/iap/$(DEPDIR)/main.Po
-include profiles/input/$(DEPDIR)/bluetoothd-device.Po
-include profiles/input/$(DEPDIR)/bluetoothd-hog-lib.Po
-include profiles/input/$(DEPDIR)/bluetoothd-hog.Po
-include profiles/input/$(DEPDIR)/bluetoothd-manager.Po
-include profiles/input/$(DEPDIR)/bluetoothd-server.Po
-include profiles/input/$(DEPDIR)/bluetoothd-suspend-none.Po
-include profiles/input/$(DEPDIR)/hog-lib.Po
-include profiles/midi/$(DEPDIR)/bluetoothd-libmidi.Po
-include profiles/midi/$(DEPDIR)/bluetoothd-midi.Po
-include profiles/midi/$(DEPDIR)/unit_test_midi-libmidi.Po
-include profiles/network/$(DEPDIR)/bluetoothd-bnep.Po
-include profiles/network/$(DEPDIR)/bluetoothd-connection.Po
-include profiles/network/$(DEPDIR)/bluetoothd-manager.Po
-include profiles/network/$(DEPDIR)/bluetoothd-server.Po
-include profiles/network/$(DEPDIR)/bnep.Po
-include profiles/sap/$(DEPDIR)/bluetoothd-main.Po
-include profiles/sap/$(DEPDIR)/bluetoothd-manager.Po
-include profiles/sap/$(DEPDIR)/bluetoothd-sap-dummy.Po
-include profiles/sap/$(DEPDIR)/bluetoothd-server.Po
-include profiles/scanparam/$(DEPDIR)/bluetoothd-scan.Po
-include profiles/scanparam/$(DEPDIR)/bluetoothd-scpp.Po
-include profiles/scanparam/$(DEPDIR)/scpp.Po
-include src/$(DEPDIR)/android_avdtptest-log.Po
-include src/$(DEPDIR)/bluetoothd-adapter.Po
-include src/$(DEPDIR)/bluetoothd-advertising.Po
-include src/$(DEPDIR)/bluetoothd-agent.Po
-include src/$(DEPDIR)/bluetoothd-attrib-server.Po
-include src/$(DEPDIR)/bluetoothd-backtrace.Po
-include src/$(DEPDIR)/bluetoothd-dbus-common.Po
-include src/$(DEPDIR)/bluetoothd-device.Po
-include src/$(DEPDIR)/bluetoothd-eir.Po
-include src/$(DEPDIR)/bluetoothd-error.Po
-include src/$(DEPDIR)/bluetoothd-gatt-client.Po
-include src/$(DEPDIR)/bluetoothd-gatt-database.Po
-include src/$(DEPDIR)/bluetoothd-log.Po
-include src/$(DEPDIR)/bluetoothd-main.Po
-include src/$(DEPDIR)/bluetoothd-plugin.Po
-include src/$(DEPDIR)/bluetoothd-profile.Po
-include src/$(DEPDIR)/bluetoothd-rfkill.Po
-include src/$(DEPDIR)/bluetoothd-sdp-client.Po
-include src/$(DEPDIR)/bluetoothd-sdp-xml.Po
-include src/$(DEPDIR)/bluetoothd-sdpd-database.Po
-include src/$(DEPDIR)/bluetoothd-sdpd-request.Po
-include src/$(DEPDIR)/bluetoothd-sdpd-server.Po
-include src/$(DEPDIR)/bluetoothd-sdpd-service.Po
-include src/$(DEPDIR)/bluetoothd-service.Po
-include src/$(DEPDIR)/bluetoothd-storage.Po
-include src/$(DEPDIR)/bluetoothd-systemd.Po
-include src/$(DEPDIR)/bluetoothd-textfile.Po
-include src/$(DEPDIR)/bluetoothd-uuid-helper.Po
-include src/$(DEPDIR)/eir.Po
-include src/$(DEPDIR)/log.Po
-include src/$(DEPDIR)/oui.Po
-include src/$(DEPDIR)/sdp-client.Po
-include src/$(DEPDIR)/sdp-xml.Po
-include src/$(DEPDIR)/sdpd-database.Po
-include src/$(DEPDIR)/sdpd-request.Po
-include src/$(DEPDIR)/sdpd-server.Po
-include src/$(DEPDIR)/sdpd-service.Po
-include src/$(DEPDIR)/textfile.Po
-include src/$(DEPDIR)/uuid-helper.Po
-include src/shared/$(DEPDIR)/ad.Plo
-include src/shared/$(DEPDIR)/android_avdtptest-queue.Po
-include src/shared/$(DEPDIR)/android_avdtptest-util.Po
-include src/shared/$(DEPDIR)/att.Plo
-include src/shared/$(DEPDIR)/btsnoop.Plo
-include src/shared/$(DEPDIR)/crypto.Plo
-include src/shared/$(DEPDIR)/ecc.Plo
-include src/shared/$(DEPDIR)/gap.Plo
-include src/shared/$(DEPDIR)/gatt-client.Plo
-include src/shared/$(DEPDIR)/gatt-db.Plo
-include src/shared/$(DEPDIR)/gatt-helpers.Plo
-include src/shared/$(DEPDIR)/gatt-server.Plo
-include src/shared/$(DEPDIR)/hci-crypto.Plo
-include src/shared/$(DEPDIR)/hci.Plo
-include src/shared/$(DEPDIR)/hfp.Plo
-include src/shared/$(DEPDIR)/io-glib.Plo
-include src/shared/$(DEPDIR)/io-mainloop.Plo
-include src/shared/$(DEPDIR)/mainloop.Plo
-include src/shared/$(DEPDIR)/mgmt.Plo
-include src/shared/$(DEPDIR)/pcap.Plo
-include src/shared/$(DEPDIR)/queue.Plo
-include src/shared/$(DEPDIR)/ringbuf.Plo
-include src/shared/$(DEPDIR)/tester.Plo
-include src/shared/$(DEPDIR)/timeout-glib.Plo
-include src/shared/$(DEPDIR)/timeout-mainloop.Plo
-include src/shared/$(DEPDIR)/uhid.Plo
-include src/shared/$(DEPDIR)/util.Plo
-include tools/$(DEPDIR)/3dsp.Po
-include tools/$(DEPDIR)/advtest.Po
-include tools/$(DEPDIR)/amptest.Po
-include tools/$(DEPDIR)/avinfo.Po
-include tools/$(DEPDIR)/avtest.Po
-include tools/$(DEPDIR)/bccmd.Po
-include tools/$(DEPDIR)/bdaddr.Po
-include tools/$(DEPDIR)/bluemoon.Po
-include tools/$(DEPDIR)/bluetooth-player.Po
-include tools/$(DEPDIR)/bnep-tester.Po
-include tools/$(DEPDIR)/bneptest.Po
-include tools/$(DEPDIR)/btattach.Po
-include tools/$(DEPDIR)/btgatt-client.Po
-include tools/$(DEPDIR)/btgatt-server.Po
-include tools/$(DEPDIR)/btinfo.Po
-include tools/$(DEPDIR)/btiotest.Po
-include tools/$(DEPDIR)/btmgmt.Po
-include tools/$(DEPDIR)/btproxy.Po
-include tools/$(DEPDIR)/btsnoop.Po
-include tools/$(DEPDIR)/check-selftest.Po
-include tools/$(DEPDIR)/ciptool.Po
-include tools/$(DEPDIR)/cltest.Po
-include tools/$(DEPDIR)/create-image.Po
-include tools/$(DEPDIR)/csr.Po
-include tools/$(DEPDIR)/csr_3wire.Po
-include tools/$(DEPDIR)/csr_bcsp.Po
-include tools/$(DEPDIR)/csr_h4.Po
-include tools/$(DEPDIR)/csr_hci.Po
-include tools/$(DEPDIR)/csr_usb.Po
-include tools/$(DEPDIR)/eddystone.Po
-include tools/$(DEPDIR)/gap-tester.Po
-include tools/$(DEPDIR)/gatt-service.Po
-include tools/$(DEPDIR)/hci-tester.Po
-include tools/$(DEPDIR)/hciattach.Po
-include tools/$(DEPDIR)/hciattach_ath3k.Po
-include tools/$(DEPDIR)/hciattach_bcm43xx.Po
-include tools/$(DEPDIR)/hciattach_intel.Po
-include tools/$(DEPDIR)/hciattach_qualcomm.Po
-include tools/$(DEPDIR)/hciattach_st.Po
-include tools/$(DEPDIR)/hciattach_ti.Po
-include tools/$(DEPDIR)/hciattach_tialt.Po
-include tools/$(DEPDIR)/hciconfig.Po
-include tools/$(DEPDIR)/hcidump.Po
-include tools/$(DEPDIR)/hcieventmask.Po
-include tools/$(DEPDIR)/hcisecfilter.Po
-include tools/$(DEPDIR)/hcitool.Po
-include tools/$(DEPDIR)/hex2hcd.Po
-include tools/$(DEPDIR)/hid2hci.Po
-include tools/$(DEPDIR)/hwdb.Po
-include tools/$(DEPDIR)/ibeacon.Po
-include tools/$(DEPDIR)/l2cap-tester.Po
-include tools/$(DEPDIR)/l2ping.Po
-include tools/$(DEPDIR)/l2test.Po
-include tools/$(DEPDIR)/mcaptest.Po
-include tools/$(DEPDIR)/mgmt-tester.Po
-include tools/$(DEPDIR)/mpris-proxy.Po
-include tools/$(DEPDIR)/nokfw.Po
-include tools/$(DEPDIR)/obex-client-tool.Po
-include tools/$(DEPDIR)/obex-server-tool.Po
-include tools/$(DEPDIR)/obexctl.Po
-include tools/$(DEPDIR)/oobtest.Po
-include tools/$(DEPDIR)/rctest.Po
-include tools/$(DEPDIR)/rfcomm-tester.Po
-include tools/$(DEPDIR)/rfcomm.Po
-include tools/$(DEPDIR)/sco-tester.Po
-include tools/$(DEPDIR)/scotest.Po
-include tools/$(DEPDIR)/sdptool.Po
-include tools/$(DEPDIR)/seq2bseq.Po
-include tools/$(DEPDIR)/smp-tester.Po
-include tools/$(DEPDIR)/test-runner.Po
-include tools/$(DEPDIR)/ubcsp.Po
-include tools/$(DEPDIR)/userchan-tester.Po
-include tools/parser/$(DEPDIR)/amp.Po
-include tools/parser/$(DEPDIR)/att.Po
-include tools/parser/$(DEPDIR)/avctp.Po
-include tools/parser/$(DEPDIR)/avdtp.Po
-include tools/parser/$(DEPDIR)/avrcp.Po
-include tools/parser/$(DEPDIR)/bnep.Po
-include tools/parser/$(DEPDIR)/bpa.Po
-include tools/parser/$(DEPDIR)/capi.Po
-include tools/parser/$(DEPDIR)/cmtp.Po
-include tools/parser/$(DEPDIR)/csr.Po
-include tools/parser/$(DEPDIR)/ericsson.Po
-include tools/parser/$(DEPDIR)/hci.Po
-include tools/parser/$(DEPDIR)/hcrp.Po
-include tools/parser/$(DEPDIR)/hidp.Po
-include tools/parser/$(DEPDIR)/l2cap.Po
-include tools/parser/$(DEPDIR)/lmp.Po
-include tools/parser/$(DEPDIR)/obex.Po
-include tools/parser/$(DEPDIR)/parser.Po
-include tools/parser/$(DEPDIR)/ppp.Po
-include tools/parser/$(DEPDIR)/rfcomm.Po
-include tools/parser/$(DEPDIR)/sap.Po
-include tools/parser/$(DEPDIR)/sdp.Po
-include tools/parser/$(DEPDIR)/smp.Po
-include tools/parser/$(DEPDIR)/tcpip.Po
-include unit/$(DEPDIR)/test-avctp.Po
-include unit/$(DEPDIR)/test-avdtp.Po
-include unit/$(DEPDIR)/test-avrcp.Po
-include unit/$(DEPDIR)/test-crc.Po
-include unit/$(DEPDIR)/test-crypto.Po
-include unit/$(DEPDIR)/test-ecc.Po
-include unit/$(DEPDIR)/test-eir.Po
-include unit/$(DEPDIR)/test-gatt.Po
-include unit/$(DEPDIR)/test-gattrib.Po
-include unit/$(DEPDIR)/test-gdbus-client.Po
-include unit/$(DEPDIR)/test-gobex-apparam.Po
-include unit/$(DEPDIR)/test-gobex-header.Po
-include unit/$(DEPDIR)/test-gobex-packet.Po
-include unit/$(DEPDIR)/test-gobex-transfer.Po
-include unit/$(DEPDIR)/test-gobex.Po
-include unit/$(DEPDIR)/test-hfp.Po
-include unit/$(DEPDIR)/test-hog.Po
-include unit/$(DEPDIR)/test-lib.Po
-include unit/$(DEPDIR)/test-mgmt.Po
-include unit/$(DEPDIR)/test-queue.Po
-include unit/$(DEPDIR)/test-ringbuf.Po
-include unit/$(DEPDIR)/test-sdp.Po
-include unit/$(DEPDIR)/test-textfile.Po
-include unit/$(DEPDIR)/test-uhid.Po
-include unit/$(DEPDIR)/test-uuid.Po
-include unit/$(DEPDIR)/unit_test_midi-test-midi.Po
-include unit/$(DEPDIR)/util.Po
+#include android/$(DEPDIR)/a2dp-sink.Po
+#include android/$(DEPDIR)/a2dp.Po
+#include android/$(DEPDIR)/android_android_tester-tester-a2dp.Po
+#include android/$(DEPDIR)/android_android_tester-tester-avrcp.Po
+#include android/$(DEPDIR)/android_android_tester-tester-bluetooth.Po
+#include android/$(DEPDIR)/android_android_tester-tester-gatt.Po
+#include android/$(DEPDIR)/android_android_tester-tester-hdp.Po
+#include android/$(DEPDIR)/android_android_tester-tester-hidhost.Po
+#include android/$(DEPDIR)/android_android_tester-tester-main.Po
+#include android/$(DEPDIR)/android_android_tester-tester-map-client.Po
+#include android/$(DEPDIR)/android_android_tester-tester-pan.Po
+#include android/$(DEPDIR)/android_android_tester-tester-socket.Po
+#include android/$(DEPDIR)/android_audio_a2dp_default_la-hal-audio-aptx.Plo
+#include android/$(DEPDIR)/android_audio_a2dp_default_la-hal-audio-sbc.Plo
+#include android/$(DEPDIR)/android_audio_a2dp_default_la-hal-audio.Plo
+#include android/$(DEPDIR)/android_audio_sco_default_la-hal-sco.Plo
+#include android/$(DEPDIR)/android_avdtptest-avdtp.Po
+#include android/$(DEPDIR)/android_avdtptest-avdtptest.Po
+#include android/$(DEPDIR)/android_bluetooth_default_la-hal-a2dp-sink.Plo
+#include android/$(DEPDIR)/android_bluetooth_default_la-hal-a2dp.Plo
+#include android/$(DEPDIR)/android_bluetooth_default_la-hal-avrcp-ctrl.Plo
+#include android/$(DEPDIR)/android_bluetooth_default_la-hal-avrcp.Plo
+#include android/$(DEPDIR)/android_bluetooth_default_la-hal-bluetooth.Plo
+#include android/$(DEPDIR)/android_bluetooth_default_la-hal-gatt.Plo
+#include android/$(DEPDIR)/android_bluetooth_default_la-hal-handsfree-client.Plo
+#include android/$(DEPDIR)/android_bluetooth_default_la-hal-handsfree.Plo
+#include android/$(DEPDIR)/android_bluetooth_default_la-hal-health.Plo
+#include android/$(DEPDIR)/android_bluetooth_default_la-hal-hidhost.Plo
+#include android/$(DEPDIR)/android_bluetooth_default_la-hal-ipc.Plo
+#include android/$(DEPDIR)/android_bluetooth_default_la-hal-map-client.Plo
+#include android/$(DEPDIR)/android_bluetooth_default_la-hal-pan.Plo
+#include android/$(DEPDIR)/android_bluetooth_default_la-hal-socket.Plo
+#include android/$(DEPDIR)/android_bluetooth_default_la-hal-utils.Plo
+#include android/$(DEPDIR)/android_haltest-hal-utils.Po
+#include android/$(DEPDIR)/android_ipc_tester-hal-utils.Po
+#include android/$(DEPDIR)/android_ipc_tester-ipc-tester.Po
+#include android/$(DEPDIR)/avctp.Po
+#include android/$(DEPDIR)/avdtp.Po
+#include android/$(DEPDIR)/avrcp-lib.Po
+#include android/$(DEPDIR)/avrcp.Po
+#include android/$(DEPDIR)/bluetooth.Po
+#include android/$(DEPDIR)/bluetoothd-snoop.Po
+#include android/$(DEPDIR)/gatt.Po
+#include android/$(DEPDIR)/handsfree-client.Po
+#include android/$(DEPDIR)/handsfree.Po
+#include android/$(DEPDIR)/health.Po
+#include android/$(DEPDIR)/hidhost.Po
+#include android/$(DEPDIR)/ipc.Po
+#include android/$(DEPDIR)/main.Po
+#include android/$(DEPDIR)/map-client.Po
+#include android/$(DEPDIR)/pan.Po
+#include android/$(DEPDIR)/sco.Po
+#include android/$(DEPDIR)/socket.Po
+#include android/$(DEPDIR)/system-emulator.Po
+#include android/$(DEPDIR)/test-ipc.Po
+#include android/audio_utils/$(DEPDIR)/android_audio_sco_default_la-resampler.Plo
+#include android/client/$(DEPDIR)/android_haltest-haltest.Po
+#include android/client/$(DEPDIR)/android_haltest-history.Po
+#include android/client/$(DEPDIR)/android_haltest-if-audio.Po
+#include android/client/$(DEPDIR)/android_haltest-if-av-sink.Po
+#include android/client/$(DEPDIR)/android_haltest-if-av.Po
+#include android/client/$(DEPDIR)/android_haltest-if-bt.Po
+#include android/client/$(DEPDIR)/android_haltest-if-gatt.Po
+#include android/client/$(DEPDIR)/android_haltest-if-hf-client.Po
+#include android/client/$(DEPDIR)/android_haltest-if-hf.Po
+#include android/client/$(DEPDIR)/android_haltest-if-hh.Po
+#include android/client/$(DEPDIR)/android_haltest-if-hl.Po
+#include android/client/$(DEPDIR)/android_haltest-if-mce.Po
+#include android/client/$(DEPDIR)/android_haltest-if-pan.Po
+#include android/client/$(DEPDIR)/android_haltest-if-rc-ctrl.Po
+#include android/client/$(DEPDIR)/android_haltest-if-rc.Po
+#include android/client/$(DEPDIR)/android_haltest-if-sco.Po
+#include android/client/$(DEPDIR)/android_haltest-if-sock.Po
+#include android/client/$(DEPDIR)/android_haltest-pollhandler.Po
+#include android/client/$(DEPDIR)/android_haltest-tabcompletion.Po
+#include android/client/$(DEPDIR)/android_haltest-terminal.Po
+#include android/hardware/$(DEPDIR)/android_android_tester-hardware.Po
+#include android/hardware/$(DEPDIR)/android_haltest-hardware.Po
+#include attrib/$(DEPDIR)/att.Po
+#include attrib/$(DEPDIR)/bluetoothd-att.Po
+#include attrib/$(DEPDIR)/bluetoothd-gatt-service.Po
+#include attrib/$(DEPDIR)/bluetoothd-gatt.Po
+#include attrib/$(DEPDIR)/bluetoothd-gattrib.Po
+#include attrib/$(DEPDIR)/gatt.Po
+#include attrib/$(DEPDIR)/gattrib.Po
+#include attrib/$(DEPDIR)/gatttool.Po
+#include attrib/$(DEPDIR)/interactive.Po
+#include attrib/$(DEPDIR)/utils.Po
+#include btio/$(DEPDIR)/android_avdtptest-btio.Po
+#include btio/$(DEPDIR)/bluetoothd-btio.Po
+#include btio/$(DEPDIR)/btio.Po
+#include btio/$(DEPDIR)/obexd-btio.Po
+#include client/$(DEPDIR)/advertising.Po
+#include client/$(DEPDIR)/agent.Po
+#include client/$(DEPDIR)/display.Po
+#include client/$(DEPDIR)/gatt.Po
+#include client/$(DEPDIR)/main.Po
+#include emulator/$(DEPDIR)/amp.Po
+#include emulator/$(DEPDIR)/android_android_tester-btdev.Po
+#include emulator/$(DEPDIR)/android_android_tester-bthost.Po
+#include emulator/$(DEPDIR)/android_android_tester-hciemu.Po
+#include emulator/$(DEPDIR)/android_android_tester-smp.Po
+#include emulator/$(DEPDIR)/android_ipc_tester-btdev.Po
+#include emulator/$(DEPDIR)/android_ipc_tester-bthost.Po
+#include emulator/$(DEPDIR)/android_ipc_tester-hciemu.Po
+#include emulator/$(DEPDIR)/android_ipc_tester-smp.Po
+#include emulator/$(DEPDIR)/b1ee.Po
+#include emulator/$(DEPDIR)/btdev.Po
+#include emulator/$(DEPDIR)/bthost.Po
+#include emulator/$(DEPDIR)/hciemu.Po
+#include emulator/$(DEPDIR)/hfp.Po
+#include emulator/$(DEPDIR)/le.Po
+#include emulator/$(DEPDIR)/main.Po
+#include emulator/$(DEPDIR)/phy.Po
+#include emulator/$(DEPDIR)/serial.Po
+#include emulator/$(DEPDIR)/server.Po
+#include emulator/$(DEPDIR)/smp.Po
+#include emulator/$(DEPDIR)/vhci.Po
+#include gdbus/$(DEPDIR)/client.Plo
+#include gdbus/$(DEPDIR)/mainloop.Plo
+#include gdbus/$(DEPDIR)/object.Plo
+#include gdbus/$(DEPDIR)/polkit.Plo
+#include gdbus/$(DEPDIR)/watch.Plo
+#include gobex/$(DEPDIR)/gobex-apparam.Po
+#include gobex/$(DEPDIR)/gobex-defs.Po
+#include gobex/$(DEPDIR)/gobex-header.Po
+#include gobex/$(DEPDIR)/gobex-packet.Po
+#include gobex/$(DEPDIR)/gobex-transfer.Po
+#include gobex/$(DEPDIR)/gobex.Po
+#include gobex/$(DEPDIR)/obexd-gobex-apparam.Po
+#include gobex/$(DEPDIR)/obexd-gobex-defs.Po
+#include gobex/$(DEPDIR)/obexd-gobex-header.Po
+#include gobex/$(DEPDIR)/obexd-gobex-packet.Po
+#include gobex/$(DEPDIR)/obexd-gobex-transfer.Po
+#include gobex/$(DEPDIR)/obexd-gobex.Po
+#include lib/$(DEPDIR)/bluetooth.Plo
+#include lib/$(DEPDIR)/hci.Plo
+#include lib/$(DEPDIR)/sdp.Plo
+#include lib/$(DEPDIR)/uuid.Plo
+#include monitor/$(DEPDIR)/a2dp.Po
+#include monitor/$(DEPDIR)/analyze.Po
+#include monitor/$(DEPDIR)/avctp.Po
+#include monitor/$(DEPDIR)/avdtp.Po
+#include monitor/$(DEPDIR)/bnep.Po
+#include monitor/$(DEPDIR)/broadcom.Po
+#include monitor/$(DEPDIR)/control.Po
+#include monitor/$(DEPDIR)/crc.Po
+#include monitor/$(DEPDIR)/display.Po
+#include monitor/$(DEPDIR)/ellisys.Po
+#include monitor/$(DEPDIR)/hcidump.Po
+#include monitor/$(DEPDIR)/hwdb.Po
+#include monitor/$(DEPDIR)/intel.Po
+#include monitor/$(DEPDIR)/keys.Po
+#include monitor/$(DEPDIR)/l2cap.Po
+#include monitor/$(DEPDIR)/ll.Po
+#include monitor/$(DEPDIR)/lmp.Po
+#include monitor/$(DEPDIR)/main.Po
+#include monitor/$(DEPDIR)/packet.Po
+#include monitor/$(DEPDIR)/rfcomm.Po
+#include monitor/$(DEPDIR)/sdp.Po
+#include monitor/$(DEPDIR)/uuid.Po
+#include monitor/$(DEPDIR)/vendor.Po
+#include obexd/client/$(DEPDIR)/obexd-bluetooth.Po
+#include obexd/client/$(DEPDIR)/obexd-dbus.Po
+#include obexd/client/$(DEPDIR)/obexd-driver.Po
+#include obexd/client/$(DEPDIR)/obexd-ftp.Po
+#include obexd/client/$(DEPDIR)/obexd-manager.Po
+#include obexd/client/$(DEPDIR)/obexd-map-event.Po
+#include obexd/client/$(DEPDIR)/obexd-map.Po
+#include obexd/client/$(DEPDIR)/obexd-mns.Po
+#include obexd/client/$(DEPDIR)/obexd-opp.Po
+#include obexd/client/$(DEPDIR)/obexd-pbap.Po
+#include obexd/client/$(DEPDIR)/obexd-session.Po
+#include obexd/client/$(DEPDIR)/obexd-sync.Po
+#include obexd/client/$(DEPDIR)/obexd-transfer.Po
+#include obexd/client/$(DEPDIR)/obexd-transport.Po
+#include obexd/plugins/$(DEPDIR)/obexd-bluetooth.Po
+#include obexd/plugins/$(DEPDIR)/obexd-filesystem.Po
+#include obexd/plugins/$(DEPDIR)/obexd-ftp.Po
+#include obexd/plugins/$(DEPDIR)/obexd-irmc.Po
+#include obexd/plugins/$(DEPDIR)/obexd-mas.Po
+#include obexd/plugins/$(DEPDIR)/obexd-messages-dummy.Po
+#include obexd/plugins/$(DEPDIR)/obexd-opp.Po
+#include obexd/plugins/$(DEPDIR)/obexd-pbap.Po
+#include obexd/plugins/$(DEPDIR)/obexd-pcsuite.Po
+#include obexd/plugins/$(DEPDIR)/obexd-phonebook-dummy.Po
+#include obexd/plugins/$(DEPDIR)/obexd-vcard.Po
+#include obexd/src/$(DEPDIR)/obexd-log.Po
+#include obexd/src/$(DEPDIR)/obexd-main.Po
+#include obexd/src/$(DEPDIR)/obexd-manager.Po
+#include obexd/src/$(DEPDIR)/obexd-mimetype.Po
+#include obexd/src/$(DEPDIR)/obexd-obex.Po
+#include obexd/src/$(DEPDIR)/obexd-plugin.Po
+#include obexd/src/$(DEPDIR)/obexd-server.Po
+#include obexd/src/$(DEPDIR)/obexd-service.Po
+#include obexd/src/$(DEPDIR)/obexd-transport.Po
+#include peripheral/$(DEPDIR)/attach.Po
+#include peripheral/$(DEPDIR)/efivars.Po
+#include peripheral/$(DEPDIR)/gap.Po
+#include peripheral/$(DEPDIR)/gatt.Po
+#include peripheral/$(DEPDIR)/log.Po
+#include peripheral/$(DEPDIR)/main.Po
+#include plugins/$(DEPDIR)/bluetoothd-autopair.Po
+#include plugins/$(DEPDIR)/bluetoothd-hostname.Po
+#include plugins/$(DEPDIR)/bluetoothd-neard.Po
+#include plugins/$(DEPDIR)/bluetoothd-policy.Po
+#include plugins/$(DEPDIR)/bluetoothd-wiimote.Po
+#include plugins/$(DEPDIR)/plugins_external_dummy_la-external-dummy.Plo
+#include plugins/$(DEPDIR)/plugins_sixaxis_la-sixaxis.Plo
+#include profiles/audio/$(DEPDIR)/bluetoothd-a2dp.Po
+#include profiles/audio/$(DEPDIR)/bluetoothd-avctp.Po
+#include profiles/audio/$(DEPDIR)/bluetoothd-avdtp.Po
+#include profiles/audio/$(DEPDIR)/bluetoothd-avrcp.Po
+#include profiles/audio/$(DEPDIR)/bluetoothd-control.Po
+#include profiles/audio/$(DEPDIR)/bluetoothd-media.Po
+#include profiles/audio/$(DEPDIR)/bluetoothd-player.Po
+#include profiles/audio/$(DEPDIR)/bluetoothd-sink.Po
+#include profiles/audio/$(DEPDIR)/bluetoothd-source.Po
+#include profiles/audio/$(DEPDIR)/bluetoothd-transport.Po
+#include profiles/battery/$(DEPDIR)/bas.Po
+#include profiles/battery/$(DEPDIR)/bluetoothd-bas.Po
+#include profiles/cups/$(DEPDIR)/hcrp.Po
+#include profiles/cups/$(DEPDIR)/main.Po
+#include profiles/cups/$(DEPDIR)/sdp.Po
+#include profiles/cups/$(DEPDIR)/spp.Po
+#include profiles/deviceinfo/$(DEPDIR)/bluetoothd-deviceinfo.Po
+#include profiles/deviceinfo/$(DEPDIR)/bluetoothd-dis.Po
+#include profiles/deviceinfo/$(DEPDIR)/dis.Po
+#include profiles/gap/$(DEPDIR)/bluetoothd-gas.Po
+#include profiles/health/$(DEPDIR)/bluetoothd-hdp.Po
+#include profiles/health/$(DEPDIR)/bluetoothd-hdp_main.Po
+#include profiles/health/$(DEPDIR)/bluetoothd-hdp_manager.Po
+#include profiles/health/$(DEPDIR)/bluetoothd-hdp_util.Po
+#include profiles/health/$(DEPDIR)/bluetoothd-mcap.Po
+#include profiles/health/$(DEPDIR)/mcap.Po
+#include profiles/iap/$(DEPDIR)/main.Po
+#include profiles/input/$(DEPDIR)/bluetoothd-device.Po
+#include profiles/input/$(DEPDIR)/bluetoothd-hog-lib.Po
+#include profiles/input/$(DEPDIR)/bluetoothd-hog.Po
+#include profiles/input/$(DEPDIR)/bluetoothd-manager.Po
+#include profiles/input/$(DEPDIR)/bluetoothd-server.Po
+#include profiles/input/$(DEPDIR)/bluetoothd-suspend-none.Po
+#include profiles/input/$(DEPDIR)/hog-lib.Po
+#include profiles/midi/$(DEPDIR)/bluetoothd-libmidi.Po
+#include profiles/midi/$(DEPDIR)/bluetoothd-midi.Po
+#include profiles/midi/$(DEPDIR)/unit_test_midi-libmidi.Po
+#include profiles/network/$(DEPDIR)/bluetoothd-bnep.Po
+#include profiles/network/$(DEPDIR)/bluetoothd-connection.Po
+#include profiles/network/$(DEPDIR)/bluetoothd-manager.Po
+#include profiles/network/$(DEPDIR)/bluetoothd-server.Po
+#include profiles/network/$(DEPDIR)/bnep.Po
+#include profiles/sap/$(DEPDIR)/bluetoothd-main.Po
+#include profiles/sap/$(DEPDIR)/bluetoothd-manager.Po
+#include profiles/sap/$(DEPDIR)/bluetoothd-sap-dummy.Po
+#include profiles/sap/$(DEPDIR)/bluetoothd-server.Po
+#include profiles/scanparam/$(DEPDIR)/bluetoothd-scan.Po
+#include profiles/scanparam/$(DEPDIR)/bluetoothd-scpp.Po
+#include profiles/scanparam/$(DEPDIR)/scpp.Po
+#include src/$(DEPDIR)/android_avdtptest-log.Po
+#include src/$(DEPDIR)/bluetoothd-adapter.Po
+#include src/$(DEPDIR)/bluetoothd-advertising.Po
+#include src/$(DEPDIR)/bluetoothd-agent.Po
+#include src/$(DEPDIR)/bluetoothd-attrib-server.Po
+#include src/$(DEPDIR)/bluetoothd-backtrace.Po
+#include src/$(DEPDIR)/bluetoothd-dbus-common.Po
+#include src/$(DEPDIR)/bluetoothd-device.Po
+#include src/$(DEPDIR)/bluetoothd-eir.Po
+#include src/$(DEPDIR)/bluetoothd-error.Po
+#include src/$(DEPDIR)/bluetoothd-gatt-client.Po
+#include src/$(DEPDIR)/bluetoothd-gatt-database.Po
+#include src/$(DEPDIR)/bluetoothd-log.Po
+#include src/$(DEPDIR)/bluetoothd-main.Po
+#include src/$(DEPDIR)/bluetoothd-plugin.Po
+#include src/$(DEPDIR)/bluetoothd-profile.Po
+#include src/$(DEPDIR)/bluetoothd-rfkill.Po
+#include src/$(DEPDIR)/bluetoothd-sdp-client.Po
+#include src/$(DEPDIR)/bluetoothd-sdp-xml.Po
+#include src/$(DEPDIR)/bluetoothd-sdpd-database.Po
+#include src/$(DEPDIR)/bluetoothd-sdpd-request.Po
+#include src/$(DEPDIR)/bluetoothd-sdpd-server.Po
+#include src/$(DEPDIR)/bluetoothd-sdpd-service.Po
+#include src/$(DEPDIR)/bluetoothd-service.Po
+#include src/$(DEPDIR)/bluetoothd-storage.Po
+#include src/$(DEPDIR)/bluetoothd-systemd.Po
+#include src/$(DEPDIR)/bluetoothd-textfile.Po
+#include src/$(DEPDIR)/bluetoothd-uuid-helper.Po
+#include src/$(DEPDIR)/eir.Po
+#include src/$(DEPDIR)/log.Po
+#include src/$(DEPDIR)/oui.Po
+#include src/$(DEPDIR)/sdp-client.Po
+#include src/$(DEPDIR)/sdp-xml.Po
+#include src/$(DEPDIR)/sdpd-database.Po
+#include src/$(DEPDIR)/sdpd-request.Po
+#include src/$(DEPDIR)/sdpd-server.Po
+#include src/$(DEPDIR)/sdpd-service.Po
+#include src/$(DEPDIR)/textfile.Po
+#include src/$(DEPDIR)/uuid-helper.Po
+#include src/shared/$(DEPDIR)/ad.Plo
+#include src/shared/$(DEPDIR)/android_avdtptest-queue.Po
+#include src/shared/$(DEPDIR)/android_avdtptest-util.Po
+#include src/shared/$(DEPDIR)/att.Plo
+#include src/shared/$(DEPDIR)/btsnoop.Plo
+#include src/shared/$(DEPDIR)/crypto.Plo
+#include src/shared/$(DEPDIR)/ecc.Plo
+#include src/shared/$(DEPDIR)/gap.Plo
+#include src/shared/$(DEPDIR)/gatt-client.Plo
+#include src/shared/$(DEPDIR)/gatt-db.Plo
+#include src/shared/$(DEPDIR)/gatt-helpers.Plo
+#include src/shared/$(DEPDIR)/gatt-server.Plo
+#include src/shared/$(DEPDIR)/hci-crypto.Plo
+#include src/shared/$(DEPDIR)/hci.Plo
+#include src/shared/$(DEPDIR)/hfp.Plo
+#include src/shared/$(DEPDIR)/io-glib.Plo
+#include src/shared/$(DEPDIR)/io-mainloop.Plo
+#include src/shared/$(DEPDIR)/mainloop.Plo
+#include src/shared/$(DEPDIR)/mgmt.Plo
+#include src/shared/$(DEPDIR)/pcap.Plo
+#include src/shared/$(DEPDIR)/queue.Plo
+#include src/shared/$(DEPDIR)/ringbuf.Plo
+#include src/shared/$(DEPDIR)/tester.Plo
+#include src/shared/$(DEPDIR)/timeout-glib.Plo
+#include src/shared/$(DEPDIR)/timeout-mainloop.Plo
+#include src/shared/$(DEPDIR)/uhid.Plo
+#include src/shared/$(DEPDIR)/util.Plo
+#include tools/$(DEPDIR)/3dsp.Po
+#include tools/$(DEPDIR)/advtest.Po
+#include tools/$(DEPDIR)/amptest.Po
+#include tools/$(DEPDIR)/avinfo.Po
+#include tools/$(DEPDIR)/avtest.Po
+#include tools/$(DEPDIR)/bccmd.Po
+#include tools/$(DEPDIR)/bdaddr.Po
+#include tools/$(DEPDIR)/bluemoon.Po
+#include tools/$(DEPDIR)/bluetooth-player.Po
+#include tools/$(DEPDIR)/bnep-tester.Po
+#include tools/$(DEPDIR)/bneptest.Po
+#include tools/$(DEPDIR)/btattach.Po
+#include tools/$(DEPDIR)/btgatt-client.Po
+#include tools/$(DEPDIR)/btgatt-server.Po
+#include tools/$(DEPDIR)/btinfo.Po
+#include tools/$(DEPDIR)/btiotest.Po
+#include tools/$(DEPDIR)/btmgmt.Po
+#include tools/$(DEPDIR)/btproxy.Po
+#include tools/$(DEPDIR)/btsnoop.Po
+#include tools/$(DEPDIR)/check-selftest.Po
+#include tools/$(DEPDIR)/ciptool.Po
+#include tools/$(DEPDIR)/cltest.Po
+#include tools/$(DEPDIR)/create-image.Po
+#include tools/$(DEPDIR)/csr.Po
+#include tools/$(DEPDIR)/csr_3wire.Po
+#include tools/$(DEPDIR)/csr_bcsp.Po
+#include tools/$(DEPDIR)/csr_h4.Po
+#include tools/$(DEPDIR)/csr_hci.Po
+#include tools/$(DEPDIR)/csr_usb.Po
+#include tools/$(DEPDIR)/eddystone.Po
+#include tools/$(DEPDIR)/gap-tester.Po
+#include tools/$(DEPDIR)/gatt-service.Po
+#include tools/$(DEPDIR)/hci-tester.Po
+#include tools/$(DEPDIR)/hciattach.Po
+#include tools/$(DEPDIR)/hciattach_ath3k.Po
+#include tools/$(DEPDIR)/hciattach_bcm43xx.Po
+#include tools/$(DEPDIR)/hciattach_intel.Po
+#include tools/$(DEPDIR)/hciattach_qualcomm.Po
+#include tools/$(DEPDIR)/hciattach_st.Po
+#include tools/$(DEPDIR)/hciattach_ti.Po
+#include tools/$(DEPDIR)/hciattach_tialt.Po
+#include tools/$(DEPDIR)/hciconfig.Po
+#include tools/$(DEPDIR)/hcidump.Po
+#include tools/$(DEPDIR)/hcieventmask.Po
+#include tools/$(DEPDIR)/hcisecfilter.Po
+#include tools/$(DEPDIR)/hcitool.Po
+#include tools/$(DEPDIR)/hex2hcd.Po
+#include tools/$(DEPDIR)/hid2hci.Po
+#include tools/$(DEPDIR)/hwdb.Po
+#include tools/$(DEPDIR)/ibeacon.Po
+#include tools/$(DEPDIR)/l2cap-tester.Po
+#include tools/$(DEPDIR)/l2ping.Po
+#include tools/$(DEPDIR)/l2test.Po
+#include tools/$(DEPDIR)/mcaptest.Po
+#include tools/$(DEPDIR)/mgmt-tester.Po
+#include tools/$(DEPDIR)/mpris-proxy.Po
+#include tools/$(DEPDIR)/nokfw.Po
+#include tools/$(DEPDIR)/obex-client-tool.Po
+#include tools/$(DEPDIR)/obex-server-tool.Po
+#include tools/$(DEPDIR)/obexctl.Po
+#include tools/$(DEPDIR)/oobtest.Po
+#include tools/$(DEPDIR)/rctest.Po
+#include tools/$(DEPDIR)/rfcomm-tester.Po
+#include tools/$(DEPDIR)/rfcomm.Po
+#include tools/$(DEPDIR)/sco-tester.Po
+#include tools/$(DEPDIR)/scotest.Po
+#include tools/$(DEPDIR)/sdptool.Po
+#include tools/$(DEPDIR)/seq2bseq.Po
+#include tools/$(DEPDIR)/smp-tester.Po
+#include tools/$(DEPDIR)/test-runner.Po
+#include tools/$(DEPDIR)/ubcsp.Po
+#include tools/$(DEPDIR)/userchan-tester.Po
+#include tools/parser/$(DEPDIR)/amp.Po
+#include tools/parser/$(DEPDIR)/att.Po
+#include tools/parser/$(DEPDIR)/avctp.Po
+#include tools/parser/$(DEPDIR)/avdtp.Po
+#include tools/parser/$(DEPDIR)/avrcp.Po
+#include tools/parser/$(DEPDIR)/bnep.Po
+#include tools/parser/$(DEPDIR)/bpa.Po
+#include tools/parser/$(DEPDIR)/capi.Po
+#include tools/parser/$(DEPDIR)/cmtp.Po
+#include tools/parser/$(DEPDIR)/csr.Po
+#include tools/parser/$(DEPDIR)/ericsson.Po
+#include tools/parser/$(DEPDIR)/hci.Po
+#include tools/parser/$(DEPDIR)/hcrp.Po
+#include tools/parser/$(DEPDIR)/hidp.Po
+#include tools/parser/$(DEPDIR)/l2cap.Po
+#include tools/parser/$(DEPDIR)/lmp.Po
+#include tools/parser/$(DEPDIR)/obex.Po
+#include tools/parser/$(DEPDIR)/parser.Po
+#include tools/parser/$(DEPDIR)/ppp.Po
+#include tools/parser/$(DEPDIR)/rfcomm.Po
+#include tools/parser/$(DEPDIR)/sap.Po
+#include tools/parser/$(DEPDIR)/sdp.Po
+#include tools/parser/$(DEPDIR)/smp.Po
+#include tools/parser/$(DEPDIR)/tcpip.Po
+#include unit/$(DEPDIR)/test-avctp.Po
+#include unit/$(DEPDIR)/test-avdtp.Po
+#include unit/$(DEPDIR)/test-avrcp.Po
+#include unit/$(DEPDIR)/test-crc.Po
+#include unit/$(DEPDIR)/test-crypto.Po
+#include unit/$(DEPDIR)/test-ecc.Po
+#include unit/$(DEPDIR)/test-eir.Po
+#include unit/$(DEPDIR)/test-gatt.Po
+#include unit/$(DEPDIR)/test-gattrib.Po
+#include unit/$(DEPDIR)/test-gdbus-client.Po
+#include unit/$(DEPDIR)/test-gobex-apparam.Po
+#include unit/$(DEPDIR)/test-gobex-header.Po
+#include unit/$(DEPDIR)/test-gobex-packet.Po
+#include unit/$(DEPDIR)/test-gobex-transfer.Po
+#include unit/$(DEPDIR)/test-gobex.Po
+#include unit/$(DEPDIR)/test-hfp.Po
+#include unit/$(DEPDIR)/test-hog.Po
+#include unit/$(DEPDIR)/test-lib.Po
+#include unit/$(DEPDIR)/test-mgmt.Po
+#include unit/$(DEPDIR)/test-queue.Po
+#include unit/$(DEPDIR)/test-ringbuf.Po
+#include unit/$(DEPDIR)/test-sdp.Po
+#include unit/$(DEPDIR)/test-textfile.Po
+#include unit/$(DEPDIR)/test-uhid.Po
+#include unit/$(DEPDIR)/test-uuid.Po
+#include unit/$(DEPDIR)/unit_test_midi-test-midi.Po
+#include unit/$(DEPDIR)/util.Po
 
 .c.o:
-	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
-	$(COMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
-	$(am__mv) $$depbase.Tpo $$depbase.Po
-#	$(AM_V_CC)source='$<' object='$@' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(COMPILE) -c -o $@ $<
+#	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
+#	$(COMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
+#	$(am__mv) $$depbase.Tpo $$depbase.Po
+#	$(AM_V_CC)source='$<' object='$@' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(COMPILE) -c -o $@ $<
 
 .c.obj:
-	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.obj$$||'`;\
-	$(COMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ `$(CYGPATH_W) '$<'` &&\
-	$(am__mv) $$depbase.Tpo $$depbase.Po
-#	$(AM_V_CC)source='$<' object='$@' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(COMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
+#	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.obj$$||'`;\
+#	$(COMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ `$(CYGPATH_W) '$<'` &&\
+#	$(am__mv) $$depbase.Tpo $$depbase.Po
+#	$(AM_V_CC)source='$<' object='$@' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(COMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 
 .c.lo:
-	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.lo$$||'`;\
-	$(LTCOMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
-	$(am__mv) $$depbase.Tpo $$depbase.Plo
-#	$(AM_V_CC)source='$<' object='$@' libtool=yes \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(LTCOMPILE) -c -o $@ $<
+#	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.lo$$||'`;\
+#	$(LTCOMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
+#	$(am__mv) $$depbase.Tpo $$depbase.Plo
+#	$(AM_V_CC)source='$<' object='$@' libtool=yes 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(LTCOMPILE) -c -o $@ $<
 
 android/android_audio_a2dp_default_la-hal-audio.lo: android/hal-audio.c
-	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_audio_a2dp_default_la_CFLAGS) $(CFLAGS) -MT android/android_audio_a2dp_default_la-hal-audio.lo -MD -MP -MF android/$(DEPDIR)/android_audio_a2dp_default_la-hal-audio.Tpo -c -o android/android_audio_a2dp_default_la-hal-audio.lo `test -f 'android/hal-audio.c' || echo '$(srcdir)/'`android/hal-audio.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_audio_a2dp_default_la-hal-audio.Tpo android/$(DEPDIR)/android_audio_a2dp_default_la-hal-audio.Plo
-#	$(AM_V_CC)source='android/hal-audio.c' object='android/android_audio_a2dp_default_la-hal-audio.lo' libtool=yes \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_audio_a2dp_default_la_CFLAGS) $(CFLAGS) -c -o android/android_audio_a2dp_default_la-hal-audio.lo `test -f 'android/hal-audio.c' || echo '$(srcdir)/'`android/hal-audio.c
+#	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_audio_a2dp_default_la_CFLAGS) $(CFLAGS) -MT android/android_audio_a2dp_default_la-hal-audio.lo -MD -MP -MF android/$(DEPDIR)/android_audio_a2dp_default_la-hal-audio.Tpo -c -o android/android_audio_a2dp_default_la-hal-audio.lo `test -f 'android/hal-audio.c' || echo '$(srcdir)/'`android/hal-audio.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_audio_a2dp_default_la-hal-audio.Tpo android/$(DEPDIR)/android_audio_a2dp_default_la-hal-audio.Plo
+#	$(AM_V_CC)source='android/hal-audio.c' object='android/android_audio_a2dp_default_la-hal-audio.lo' libtool=yes 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_audio_a2dp_default_la_CFLAGS) $(CFLAGS) -c -o android/android_audio_a2dp_default_la-hal-audio.lo `test -f 'android/hal-audio.c' || echo '$(srcdir)/'`android/hal-audio.c
 
 android/android_audio_a2dp_default_la-hal-audio-sbc.lo: android/hal-audio-sbc.c
-	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_audio_a2dp_default_la_CFLAGS) $(CFLAGS) -MT android/android_audio_a2dp_default_la-hal-audio-sbc.lo -MD -MP -MF android/$(DEPDIR)/android_audio_a2dp_default_la-hal-audio-sbc.Tpo -c -o android/android_audio_a2dp_default_la-hal-audio-sbc.lo `test -f 'android/hal-audio-sbc.c' || echo '$(srcdir)/'`android/hal-audio-sbc.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_audio_a2dp_default_la-hal-audio-sbc.Tpo android/$(DEPDIR)/android_audio_a2dp_default_la-hal-audio-sbc.Plo
-#	$(AM_V_CC)source='android/hal-audio-sbc.c' object='android/android_audio_a2dp_default_la-hal-audio-sbc.lo' libtool=yes \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_audio_a2dp_default_la_CFLAGS) $(CFLAGS) -c -o android/android_audio_a2dp_default_la-hal-audio-sbc.lo `test -f 'android/hal-audio-sbc.c' || echo '$(srcdir)/'`android/hal-audio-sbc.c
+#	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_audio_a2dp_default_la_CFLAGS) $(CFLAGS) -MT android/android_audio_a2dp_default_la-hal-audio-sbc.lo -MD -MP -MF android/$(DEPDIR)/android_audio_a2dp_default_la-hal-audio-sbc.Tpo -c -o android/android_audio_a2dp_default_la-hal-audio-sbc.lo `test -f 'android/hal-audio-sbc.c' || echo '$(srcdir)/'`android/hal-audio-sbc.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_audio_a2dp_default_la-hal-audio-sbc.Tpo android/$(DEPDIR)/android_audio_a2dp_default_la-hal-audio-sbc.Plo
+#	$(AM_V_CC)source='android/hal-audio-sbc.c' object='android/android_audio_a2dp_default_la-hal-audio-sbc.lo' libtool=yes 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_audio_a2dp_default_la_CFLAGS) $(CFLAGS) -c -o android/android_audio_a2dp_default_la-hal-audio-sbc.lo `test -f 'android/hal-audio-sbc.c' || echo '$(srcdir)/'`android/hal-audio-sbc.c
 
 android/android_audio_a2dp_default_la-hal-audio-aptx.lo: android/hal-audio-aptx.c
-	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_audio_a2dp_default_la_CFLAGS) $(CFLAGS) -MT android/android_audio_a2dp_default_la-hal-audio-aptx.lo -MD -MP -MF android/$(DEPDIR)/android_audio_a2dp_default_la-hal-audio-aptx.Tpo -c -o android/android_audio_a2dp_default_la-hal-audio-aptx.lo `test -f 'android/hal-audio-aptx.c' || echo '$(srcdir)/'`android/hal-audio-aptx.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_audio_a2dp_default_la-hal-audio-aptx.Tpo android/$(DEPDIR)/android_audio_a2dp_default_la-hal-audio-aptx.Plo
-#	$(AM_V_CC)source='android/hal-audio-aptx.c' object='android/android_audio_a2dp_default_la-hal-audio-aptx.lo' libtool=yes \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_audio_a2dp_default_la_CFLAGS) $(CFLAGS) -c -o android/android_audio_a2dp_default_la-hal-audio-aptx.lo `test -f 'android/hal-audio-aptx.c' || echo '$(srcdir)/'`android/hal-audio-aptx.c
+#	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_audio_a2dp_default_la_CFLAGS) $(CFLAGS) -MT android/android_audio_a2dp_default_la-hal-audio-aptx.lo -MD -MP -MF android/$(DEPDIR)/android_audio_a2dp_default_la-hal-audio-aptx.Tpo -c -o android/android_audio_a2dp_default_la-hal-audio-aptx.lo `test -f 'android/hal-audio-aptx.c' || echo '$(srcdir)/'`android/hal-audio-aptx.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_audio_a2dp_default_la-hal-audio-aptx.Tpo android/$(DEPDIR)/android_audio_a2dp_default_la-hal-audio-aptx.Plo
+#	$(AM_V_CC)source='android/hal-audio-aptx.c' object='android/android_audio_a2dp_default_la-hal-audio-aptx.lo' libtool=yes 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_audio_a2dp_default_la_CFLAGS) $(CFLAGS) -c -o android/android_audio_a2dp_default_la-hal-audio-aptx.lo `test -f 'android/hal-audio-aptx.c' || echo '$(srcdir)/'`android/hal-audio-aptx.c
 
 android/android_audio_sco_default_la-hal-sco.lo: android/hal-sco.c
-	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_audio_sco_default_la_CFLAGS) $(CFLAGS) -MT android/android_audio_sco_default_la-hal-sco.lo -MD -MP -MF android/$(DEPDIR)/android_audio_sco_default_la-hal-sco.Tpo -c -o android/android_audio_sco_default_la-hal-sco.lo `test -f 'android/hal-sco.c' || echo '$(srcdir)/'`android/hal-sco.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_audio_sco_default_la-hal-sco.Tpo android/$(DEPDIR)/android_audio_sco_default_la-hal-sco.Plo
-#	$(AM_V_CC)source='android/hal-sco.c' object='android/android_audio_sco_default_la-hal-sco.lo' libtool=yes \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_audio_sco_default_la_CFLAGS) $(CFLAGS) -c -o android/android_audio_sco_default_la-hal-sco.lo `test -f 'android/hal-sco.c' || echo '$(srcdir)/'`android/hal-sco.c
+#	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_audio_sco_default_la_CFLAGS) $(CFLAGS) -MT android/android_audio_sco_default_la-hal-sco.lo -MD -MP -MF android/$(DEPDIR)/android_audio_sco_default_la-hal-sco.Tpo -c -o android/android_audio_sco_default_la-hal-sco.lo `test -f 'android/hal-sco.c' || echo '$(srcdir)/'`android/hal-sco.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_audio_sco_default_la-hal-sco.Tpo android/$(DEPDIR)/android_audio_sco_default_la-hal-sco.Plo
+#	$(AM_V_CC)source='android/hal-sco.c' object='android/android_audio_sco_default_la-hal-sco.lo' libtool=yes 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_audio_sco_default_la_CFLAGS) $(CFLAGS) -c -o android/android_audio_sco_default_la-hal-sco.lo `test -f 'android/hal-sco.c' || echo '$(srcdir)/'`android/hal-sco.c
 
 android/audio_utils/android_audio_sco_default_la-resampler.lo: android/audio_utils/resampler.c
-	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_audio_sco_default_la_CFLAGS) $(CFLAGS) -MT android/audio_utils/android_audio_sco_default_la-resampler.lo -MD -MP -MF android/audio_utils/$(DEPDIR)/android_audio_sco_default_la-resampler.Tpo -c -o android/audio_utils/android_audio_sco_default_la-resampler.lo `test -f 'android/audio_utils/resampler.c' || echo '$(srcdir)/'`android/audio_utils/resampler.c
-	$(AM_V_at)$(am__mv) android/audio_utils/$(DEPDIR)/android_audio_sco_default_la-resampler.Tpo android/audio_utils/$(DEPDIR)/android_audio_sco_default_la-resampler.Plo
-#	$(AM_V_CC)source='android/audio_utils/resampler.c' object='android/audio_utils/android_audio_sco_default_la-resampler.lo' libtool=yes \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_audio_sco_default_la_CFLAGS) $(CFLAGS) -c -o android/audio_utils/android_audio_sco_default_la-resampler.lo `test -f 'android/audio_utils/resampler.c' || echo '$(srcdir)/'`android/audio_utils/resampler.c
+#	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_audio_sco_default_la_CFLAGS) $(CFLAGS) -MT android/audio_utils/android_audio_sco_default_la-resampler.lo -MD -MP -MF android/audio_utils/$(DEPDIR)/android_audio_sco_default_la-resampler.Tpo -c -o android/audio_utils/android_audio_sco_default_la-resampler.lo `test -f 'android/audio_utils/resampler.c' || echo '$(srcdir)/'`android/audio_utils/resampler.c
+#	$(AM_V_at)$(am__mv) android/audio_utils/$(DEPDIR)/android_audio_sco_default_la-resampler.Tpo android/audio_utils/$(DEPDIR)/android_audio_sco_default_la-resampler.Plo
+#	$(AM_V_CC)source='android/audio_utils/resampler.c' object='android/audio_utils/android_audio_sco_default_la-resampler.lo' libtool=yes 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_audio_sco_default_la_CFLAGS) $(CFLAGS) -c -o android/audio_utils/android_audio_sco_default_la-resampler.lo `test -f 'android/audio_utils/resampler.c' || echo '$(srcdir)/'`android/audio_utils/resampler.c
 
 android/android_bluetooth_default_la-hal-bluetooth.lo: android/hal-bluetooth.c
-	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-bluetooth.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-bluetooth.Tpo -c -o android/android_bluetooth_default_la-hal-bluetooth.lo `test -f 'android/hal-bluetooth.c' || echo '$(srcdir)/'`android/hal-bluetooth.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-bluetooth.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-bluetooth.Plo
-#	$(AM_V_CC)source='android/hal-bluetooth.c' object='android/android_bluetooth_default_la-hal-bluetooth.lo' libtool=yes \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-bluetooth.lo `test -f 'android/hal-bluetooth.c' || echo '$(srcdir)/'`android/hal-bluetooth.c
+#	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-bluetooth.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-bluetooth.Tpo -c -o android/android_bluetooth_default_la-hal-bluetooth.lo `test -f 'android/hal-bluetooth.c' || echo '$(srcdir)/'`android/hal-bluetooth.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-bluetooth.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-bluetooth.Plo
+#	$(AM_V_CC)source='android/hal-bluetooth.c' object='android/android_bluetooth_default_la-hal-bluetooth.lo' libtool=yes 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-bluetooth.lo `test -f 'android/hal-bluetooth.c' || echo '$(srcdir)/'`android/hal-bluetooth.c
 
 android/android_bluetooth_default_la-hal-socket.lo: android/hal-socket.c
-	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-socket.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-socket.Tpo -c -o android/android_bluetooth_default_la-hal-socket.lo `test -f 'android/hal-socket.c' || echo '$(srcdir)/'`android/hal-socket.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-socket.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-socket.Plo
-#	$(AM_V_CC)source='android/hal-socket.c' object='android/android_bluetooth_default_la-hal-socket.lo' libtool=yes \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-socket.lo `test -f 'android/hal-socket.c' || echo '$(srcdir)/'`android/hal-socket.c
+#	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-socket.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-socket.Tpo -c -o android/android_bluetooth_default_la-hal-socket.lo `test -f 'android/hal-socket.c' || echo '$(srcdir)/'`android/hal-socket.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-socket.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-socket.Plo
+#	$(AM_V_CC)source='android/hal-socket.c' object='android/android_bluetooth_default_la-hal-socket.lo' libtool=yes 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-socket.lo `test -f 'android/hal-socket.c' || echo '$(srcdir)/'`android/hal-socket.c
 
 android/android_bluetooth_default_la-hal-hidhost.lo: android/hal-hidhost.c
-	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-hidhost.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-hidhost.Tpo -c -o android/android_bluetooth_default_la-hal-hidhost.lo `test -f 'android/hal-hidhost.c' || echo '$(srcdir)/'`android/hal-hidhost.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-hidhost.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-hidhost.Plo
-#	$(AM_V_CC)source='android/hal-hidhost.c' object='android/android_bluetooth_default_la-hal-hidhost.lo' libtool=yes \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-hidhost.lo `test -f 'android/hal-hidhost.c' || echo '$(srcdir)/'`android/hal-hidhost.c
+#	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-hidhost.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-hidhost.Tpo -c -o android/android_bluetooth_default_la-hal-hidhost.lo `test -f 'android/hal-hidhost.c' || echo '$(srcdir)/'`android/hal-hidhost.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-hidhost.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-hidhost.Plo
+#	$(AM_V_CC)source='android/hal-hidhost.c' object='android/android_bluetooth_default_la-hal-hidhost.lo' libtool=yes 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-hidhost.lo `test -f 'android/hal-hidhost.c' || echo '$(srcdir)/'`android/hal-hidhost.c
 
 android/android_bluetooth_default_la-hal-health.lo: android/hal-health.c
-	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-health.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-health.Tpo -c -o android/android_bluetooth_default_la-hal-health.lo `test -f 'android/hal-health.c' || echo '$(srcdir)/'`android/hal-health.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-health.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-health.Plo
-#	$(AM_V_CC)source='android/hal-health.c' object='android/android_bluetooth_default_la-hal-health.lo' libtool=yes \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-health.lo `test -f 'android/hal-health.c' || echo '$(srcdir)/'`android/hal-health.c
+#	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-health.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-health.Tpo -c -o android/android_bluetooth_default_la-hal-health.lo `test -f 'android/hal-health.c' || echo '$(srcdir)/'`android/hal-health.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-health.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-health.Plo
+#	$(AM_V_CC)source='android/hal-health.c' object='android/android_bluetooth_default_la-hal-health.lo' libtool=yes 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-health.lo `test -f 'android/hal-health.c' || echo '$(srcdir)/'`android/hal-health.c
 
 android/android_bluetooth_default_la-hal-pan.lo: android/hal-pan.c
-	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-pan.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-pan.Tpo -c -o android/android_bluetooth_default_la-hal-pan.lo `test -f 'android/hal-pan.c' || echo '$(srcdir)/'`android/hal-pan.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-pan.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-pan.Plo
-#	$(AM_V_CC)source='android/hal-pan.c' object='android/android_bluetooth_default_la-hal-pan.lo' libtool=yes \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-pan.lo `test -f 'android/hal-pan.c' || echo '$(srcdir)/'`android/hal-pan.c
+#	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-pan.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-pan.Tpo -c -o android/android_bluetooth_default_la-hal-pan.lo `test -f 'android/hal-pan.c' || echo '$(srcdir)/'`android/hal-pan.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-pan.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-pan.Plo
+#	$(AM_V_CC)source='android/hal-pan.c' object='android/android_bluetooth_default_la-hal-pan.lo' libtool=yes 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-pan.lo `test -f 'android/hal-pan.c' || echo '$(srcdir)/'`android/hal-pan.c
 
 android/android_bluetooth_default_la-hal-a2dp.lo: android/hal-a2dp.c
-	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-a2dp.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-a2dp.Tpo -c -o android/android_bluetooth_default_la-hal-a2dp.lo `test -f 'android/hal-a2dp.c' || echo '$(srcdir)/'`android/hal-a2dp.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-a2dp.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-a2dp.Plo
-#	$(AM_V_CC)source='android/hal-a2dp.c' object='android/android_bluetooth_default_la-hal-a2dp.lo' libtool=yes \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-a2dp.lo `test -f 'android/hal-a2dp.c' || echo '$(srcdir)/'`android/hal-a2dp.c
+#	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-a2dp.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-a2dp.Tpo -c -o android/android_bluetooth_default_la-hal-a2dp.lo `test -f 'android/hal-a2dp.c' || echo '$(srcdir)/'`android/hal-a2dp.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-a2dp.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-a2dp.Plo
+#	$(AM_V_CC)source='android/hal-a2dp.c' object='android/android_bluetooth_default_la-hal-a2dp.lo' libtool=yes 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-a2dp.lo `test -f 'android/hal-a2dp.c' || echo '$(srcdir)/'`android/hal-a2dp.c
 
 android/android_bluetooth_default_la-hal-a2dp-sink.lo: android/hal-a2dp-sink.c
-	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-a2dp-sink.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-a2dp-sink.Tpo -c -o android/android_bluetooth_default_la-hal-a2dp-sink.lo `test -f 'android/hal-a2dp-sink.c' || echo '$(srcdir)/'`android/hal-a2dp-sink.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-a2dp-sink.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-a2dp-sink.Plo
-#	$(AM_V_CC)source='android/hal-a2dp-sink.c' object='android/android_bluetooth_default_la-hal-a2dp-sink.lo' libtool=yes \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-a2dp-sink.lo `test -f 'android/hal-a2dp-sink.c' || echo '$(srcdir)/'`android/hal-a2dp-sink.c
+#	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-a2dp-sink.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-a2dp-sink.Tpo -c -o android/android_bluetooth_default_la-hal-a2dp-sink.lo `test -f 'android/hal-a2dp-sink.c' || echo '$(srcdir)/'`android/hal-a2dp-sink.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-a2dp-sink.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-a2dp-sink.Plo
+#	$(AM_V_CC)source='android/hal-a2dp-sink.c' object='android/android_bluetooth_default_la-hal-a2dp-sink.lo' libtool=yes 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-a2dp-sink.lo `test -f 'android/hal-a2dp-sink.c' || echo '$(srcdir)/'`android/hal-a2dp-sink.c
 
 android/android_bluetooth_default_la-hal-avrcp.lo: android/hal-avrcp.c
-	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-avrcp.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-avrcp.Tpo -c -o android/android_bluetooth_default_la-hal-avrcp.lo `test -f 'android/hal-avrcp.c' || echo '$(srcdir)/'`android/hal-avrcp.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-avrcp.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-avrcp.Plo
-#	$(AM_V_CC)source='android/hal-avrcp.c' object='android/android_bluetooth_default_la-hal-avrcp.lo' libtool=yes \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-avrcp.lo `test -f 'android/hal-avrcp.c' || echo '$(srcdir)/'`android/hal-avrcp.c
+#	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-avrcp.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-avrcp.Tpo -c -o android/android_bluetooth_default_la-hal-avrcp.lo `test -f 'android/hal-avrcp.c' || echo '$(srcdir)/'`android/hal-avrcp.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-avrcp.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-avrcp.Plo
+#	$(AM_V_CC)source='android/hal-avrcp.c' object='android/android_bluetooth_default_la-hal-avrcp.lo' libtool=yes 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-avrcp.lo `test -f 'android/hal-avrcp.c' || echo '$(srcdir)/'`android/hal-avrcp.c
 
 android/android_bluetooth_default_la-hal-avrcp-ctrl.lo: android/hal-avrcp-ctrl.c
-	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-avrcp-ctrl.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-avrcp-ctrl.Tpo -c -o android/android_bluetooth_default_la-hal-avrcp-ctrl.lo `test -f 'android/hal-avrcp-ctrl.c' || echo '$(srcdir)/'`android/hal-avrcp-ctrl.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-avrcp-ctrl.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-avrcp-ctrl.Plo
-#	$(AM_V_CC)source='android/hal-avrcp-ctrl.c' object='android/android_bluetooth_default_la-hal-avrcp-ctrl.lo' libtool=yes \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-avrcp-ctrl.lo `test -f 'android/hal-avrcp-ctrl.c' || echo '$(srcdir)/'`android/hal-avrcp-ctrl.c
+#	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-avrcp-ctrl.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-avrcp-ctrl.Tpo -c -o android/android_bluetooth_default_la-hal-avrcp-ctrl.lo `test -f 'android/hal-avrcp-ctrl.c' || echo '$(srcdir)/'`android/hal-avrcp-ctrl.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-avrcp-ctrl.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-avrcp-ctrl.Plo
+#	$(AM_V_CC)source='android/hal-avrcp-ctrl.c' object='android/android_bluetooth_default_la-hal-avrcp-ctrl.lo' libtool=yes 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-avrcp-ctrl.lo `test -f 'android/hal-avrcp-ctrl.c' || echo '$(srcdir)/'`android/hal-avrcp-ctrl.c
 
 android/android_bluetooth_default_la-hal-handsfree.lo: android/hal-handsfree.c
-	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-handsfree.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-handsfree.Tpo -c -o android/android_bluetooth_default_la-hal-handsfree.lo `test -f 'android/hal-handsfree.c' || echo '$(srcdir)/'`android/hal-handsfree.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-handsfree.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-handsfree.Plo
-#	$(AM_V_CC)source='android/hal-handsfree.c' object='android/android_bluetooth_default_la-hal-handsfree.lo' libtool=yes \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-handsfree.lo `test -f 'android/hal-handsfree.c' || echo '$(srcdir)/'`android/hal-handsfree.c
+#	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-handsfree.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-handsfree.Tpo -c -o android/android_bluetooth_default_la-hal-handsfree.lo `test -f 'android/hal-handsfree.c' || echo '$(srcdir)/'`android/hal-handsfree.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-handsfree.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-handsfree.Plo
+#	$(AM_V_CC)source='android/hal-handsfree.c' object='android/android_bluetooth_default_la-hal-handsfree.lo' libtool=yes 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-handsfree.lo `test -f 'android/hal-handsfree.c' || echo '$(srcdir)/'`android/hal-handsfree.c
 
 android/android_bluetooth_default_la-hal-handsfree-client.lo: android/hal-handsfree-client.c
-	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-handsfree-client.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-handsfree-client.Tpo -c -o android/android_bluetooth_default_la-hal-handsfree-client.lo `test -f 'android/hal-handsfree-client.c' || echo '$(srcdir)/'`android/hal-handsfree-client.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-handsfree-client.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-handsfree-client.Plo
-#	$(AM_V_CC)source='android/hal-handsfree-client.c' object='android/android_bluetooth_default_la-hal-handsfree-client.lo' libtool=yes \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-handsfree-client.lo `test -f 'android/hal-handsfree-client.c' || echo '$(srcdir)/'`android/hal-handsfree-client.c
+#	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-handsfree-client.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-handsfree-client.Tpo -c -o android/android_bluetooth_default_la-hal-handsfree-client.lo `test -f 'android/hal-handsfree-client.c' || echo '$(srcdir)/'`android/hal-handsfree-client.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-handsfree-client.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-handsfree-client.Plo
+#	$(AM_V_CC)source='android/hal-handsfree-client.c' object='android/android_bluetooth_default_la-hal-handsfree-client.lo' libtool=yes 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-handsfree-client.lo `test -f 'android/hal-handsfree-client.c' || echo '$(srcdir)/'`android/hal-handsfree-client.c
 
 android/android_bluetooth_default_la-hal-gatt.lo: android/hal-gatt.c
-	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-gatt.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-gatt.Tpo -c -o android/android_bluetooth_default_la-hal-gatt.lo `test -f 'android/hal-gatt.c' || echo '$(srcdir)/'`android/hal-gatt.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-gatt.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-gatt.Plo
-#	$(AM_V_CC)source='android/hal-gatt.c' object='android/android_bluetooth_default_la-hal-gatt.lo' libtool=yes \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-gatt.lo `test -f 'android/hal-gatt.c' || echo '$(srcdir)/'`android/hal-gatt.c
+#	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-gatt.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-gatt.Tpo -c -o android/android_bluetooth_default_la-hal-gatt.lo `test -f 'android/hal-gatt.c' || echo '$(srcdir)/'`android/hal-gatt.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-gatt.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-gatt.Plo
+#	$(AM_V_CC)source='android/hal-gatt.c' object='android/android_bluetooth_default_la-hal-gatt.lo' libtool=yes 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-gatt.lo `test -f 'android/hal-gatt.c' || echo '$(srcdir)/'`android/hal-gatt.c
 
 android/android_bluetooth_default_la-hal-map-client.lo: android/hal-map-client.c
-	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-map-client.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-map-client.Tpo -c -o android/android_bluetooth_default_la-hal-map-client.lo `test -f 'android/hal-map-client.c' || echo '$(srcdir)/'`android/hal-map-client.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-map-client.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-map-client.Plo
-#	$(AM_V_CC)source='android/hal-map-client.c' object='android/android_bluetooth_default_la-hal-map-client.lo' libtool=yes \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-map-client.lo `test -f 'android/hal-map-client.c' || echo '$(srcdir)/'`android/hal-map-client.c
+#	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-map-client.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-map-client.Tpo -c -o android/android_bluetooth_default_la-hal-map-client.lo `test -f 'android/hal-map-client.c' || echo '$(srcdir)/'`android/hal-map-client.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-map-client.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-map-client.Plo
+#	$(AM_V_CC)source='android/hal-map-client.c' object='android/android_bluetooth_default_la-hal-map-client.lo' libtool=yes 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-map-client.lo `test -f 'android/hal-map-client.c' || echo '$(srcdir)/'`android/hal-map-client.c
 
 android/android_bluetooth_default_la-hal-ipc.lo: android/hal-ipc.c
-	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-ipc.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-ipc.Tpo -c -o android/android_bluetooth_default_la-hal-ipc.lo `test -f 'android/hal-ipc.c' || echo '$(srcdir)/'`android/hal-ipc.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-ipc.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-ipc.Plo
-#	$(AM_V_CC)source='android/hal-ipc.c' object='android/android_bluetooth_default_la-hal-ipc.lo' libtool=yes \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-ipc.lo `test -f 'android/hal-ipc.c' || echo '$(srcdir)/'`android/hal-ipc.c
+#	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-ipc.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-ipc.Tpo -c -o android/android_bluetooth_default_la-hal-ipc.lo `test -f 'android/hal-ipc.c' || echo '$(srcdir)/'`android/hal-ipc.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-ipc.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-ipc.Plo
+#	$(AM_V_CC)source='android/hal-ipc.c' object='android/android_bluetooth_default_la-hal-ipc.lo' libtool=yes 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-ipc.lo `test -f 'android/hal-ipc.c' || echo '$(srcdir)/'`android/hal-ipc.c
 
 android/android_bluetooth_default_la-hal-utils.lo: android/hal-utils.c
-	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-utils.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-utils.Tpo -c -o android/android_bluetooth_default_la-hal-utils.lo `test -f 'android/hal-utils.c' || echo '$(srcdir)/'`android/hal-utils.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-utils.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-utils.Plo
-#	$(AM_V_CC)source='android/hal-utils.c' object='android/android_bluetooth_default_la-hal-utils.lo' libtool=yes \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-utils.lo `test -f 'android/hal-utils.c' || echo '$(srcdir)/'`android/hal-utils.c
+#	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -MT android/android_bluetooth_default_la-hal-utils.lo -MD -MP -MF android/$(DEPDIR)/android_bluetooth_default_la-hal-utils.Tpo -c -o android/android_bluetooth_default_la-hal-utils.lo `test -f 'android/hal-utils.c' || echo '$(srcdir)/'`android/hal-utils.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_bluetooth_default_la-hal-utils.Tpo android/$(DEPDIR)/android_bluetooth_default_la-hal-utils.Plo
+#	$(AM_V_CC)source='android/hal-utils.c' object='android/android_bluetooth_default_la-hal-utils.lo' libtool=yes 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_bluetooth_default_la_CFLAGS) $(CFLAGS) -c -o android/android_bluetooth_default_la-hal-utils.lo `test -f 'android/hal-utils.c' || echo '$(srcdir)/'`android/hal-utils.c
 
 plugins/plugins_external_dummy_la-external-dummy.lo: plugins/external-dummy.c
-	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(plugins_external_dummy_la_CFLAGS) $(CFLAGS) -MT plugins/plugins_external_dummy_la-external-dummy.lo -MD -MP -MF plugins/$(DEPDIR)/plugins_external_dummy_la-external-dummy.Tpo -c -o plugins/plugins_external_dummy_la-external-dummy.lo `test -f 'plugins/external-dummy.c' || echo '$(srcdir)/'`plugins/external-dummy.c
-	$(AM_V_at)$(am__mv) plugins/$(DEPDIR)/plugins_external_dummy_la-external-dummy.Tpo plugins/$(DEPDIR)/plugins_external_dummy_la-external-dummy.Plo
-#	$(AM_V_CC)source='plugins/external-dummy.c' object='plugins/plugins_external_dummy_la-external-dummy.lo' libtool=yes \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(plugins_external_dummy_la_CFLAGS) $(CFLAGS) -c -o plugins/plugins_external_dummy_la-external-dummy.lo `test -f 'plugins/external-dummy.c' || echo '$(srcdir)/'`plugins/external-dummy.c
+#	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(plugins_external_dummy_la_CFLAGS) $(CFLAGS) -MT plugins/plugins_external_dummy_la-external-dummy.lo -MD -MP -MF plugins/$(DEPDIR)/plugins_external_dummy_la-external-dummy.Tpo -c -o plugins/plugins_external_dummy_la-external-dummy.lo `test -f 'plugins/external-dummy.c' || echo '$(srcdir)/'`plugins/external-dummy.c
+#	$(AM_V_at)$(am__mv) plugins/$(DEPDIR)/plugins_external_dummy_la-external-dummy.Tpo plugins/$(DEPDIR)/plugins_external_dummy_la-external-dummy.Plo
+#	$(AM_V_CC)source='plugins/external-dummy.c' object='plugins/plugins_external_dummy_la-external-dummy.lo' libtool=yes 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(plugins_external_dummy_la_CFLAGS) $(CFLAGS) -c -o plugins/plugins_external_dummy_la-external-dummy.lo `test -f 'plugins/external-dummy.c' || echo '$(srcdir)/'`plugins/external-dummy.c
 
 plugins/plugins_sixaxis_la-sixaxis.lo: plugins/sixaxis.c
-	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(plugins_sixaxis_la_CFLAGS) $(CFLAGS) -MT plugins/plugins_sixaxis_la-sixaxis.lo -MD -MP -MF plugins/$(DEPDIR)/plugins_sixaxis_la-sixaxis.Tpo -c -o plugins/plugins_sixaxis_la-sixaxis.lo `test -f 'plugins/sixaxis.c' || echo '$(srcdir)/'`plugins/sixaxis.c
-	$(AM_V_at)$(am__mv) plugins/$(DEPDIR)/plugins_sixaxis_la-sixaxis.Tpo plugins/$(DEPDIR)/plugins_sixaxis_la-sixaxis.Plo
-#	$(AM_V_CC)source='plugins/sixaxis.c' object='plugins/plugins_sixaxis_la-sixaxis.lo' libtool=yes \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(plugins_sixaxis_la_CFLAGS) $(CFLAGS) -c -o plugins/plugins_sixaxis_la-sixaxis.lo `test -f 'plugins/sixaxis.c' || echo '$(srcdir)/'`plugins/sixaxis.c
+#	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(plugins_sixaxis_la_CFLAGS) $(CFLAGS) -MT plugins/plugins_sixaxis_la-sixaxis.lo -MD -MP -MF plugins/$(DEPDIR)/plugins_sixaxis_la-sixaxis.Tpo -c -o plugins/plugins_sixaxis_la-sixaxis.lo `test -f 'plugins/sixaxis.c' || echo '$(srcdir)/'`plugins/sixaxis.c
+#	$(AM_V_at)$(am__mv) plugins/$(DEPDIR)/plugins_sixaxis_la-sixaxis.Tpo plugins/$(DEPDIR)/plugins_sixaxis_la-sixaxis.Plo
+#	$(AM_V_CC)source='plugins/sixaxis.c' object='plugins/plugins_sixaxis_la-sixaxis.lo' libtool=yes 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(plugins_sixaxis_la_CFLAGS) $(CFLAGS) -c -o plugins/plugins_sixaxis_la-sixaxis.lo `test -f 'plugins/sixaxis.c' || echo '$(srcdir)/'`plugins/sixaxis.c
 
 emulator/android_android_tester-hciemu.o: emulator/hciemu.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT emulator/android_android_tester-hciemu.o -MD -MP -MF emulator/$(DEPDIR)/android_android_tester-hciemu.Tpo -c -o emulator/android_android_tester-hciemu.o `test -f 'emulator/hciemu.c' || echo '$(srcdir)/'`emulator/hciemu.c
-	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_android_tester-hciemu.Tpo emulator/$(DEPDIR)/android_android_tester-hciemu.Po
-#	$(AM_V_CC)source='emulator/hciemu.c' object='emulator/android_android_tester-hciemu.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_android_tester-hciemu.o `test -f 'emulator/hciemu.c' || echo '$(srcdir)/'`emulator/hciemu.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT emulator/android_android_tester-hciemu.o -MD -MP -MF emulator/$(DEPDIR)/android_android_tester-hciemu.Tpo -c -o emulator/android_android_tester-hciemu.o `test -f 'emulator/hciemu.c' || echo '$(srcdir)/'`emulator/hciemu.c
+#	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_android_tester-hciemu.Tpo emulator/$(DEPDIR)/android_android_tester-hciemu.Po
+#	$(AM_V_CC)source='emulator/hciemu.c' object='emulator/android_android_tester-hciemu.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_android_tester-hciemu.o `test -f 'emulator/hciemu.c' || echo '$(srcdir)/'`emulator/hciemu.c
 
 emulator/android_android_tester-hciemu.obj: emulator/hciemu.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT emulator/android_android_tester-hciemu.obj -MD -MP -MF emulator/$(DEPDIR)/android_android_tester-hciemu.Tpo -c -o emulator/android_android_tester-hciemu.obj `if test -f 'emulator/hciemu.c'; then $(CYGPATH_W) 'emulator/hciemu.c'; else $(CYGPATH_W) '$(srcdir)/emulator/hciemu.c'; fi`
-	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_android_tester-hciemu.Tpo emulator/$(DEPDIR)/android_android_tester-hciemu.Po
-#	$(AM_V_CC)source='emulator/hciemu.c' object='emulator/android_android_tester-hciemu.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_android_tester-hciemu.obj `if test -f 'emulator/hciemu.c'; then $(CYGPATH_W) 'emulator/hciemu.c'; else $(CYGPATH_W) '$(srcdir)/emulator/hciemu.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT emulator/android_android_tester-hciemu.obj -MD -MP -MF emulator/$(DEPDIR)/android_android_tester-hciemu.Tpo -c -o emulator/android_android_tester-hciemu.obj `if test -f 'emulator/hciemu.c'; then $(CYGPATH_W) 'emulator/hciemu.c'; else $(CYGPATH_W) '$(srcdir)/emulator/hciemu.c'; fi`
+#	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_android_tester-hciemu.Tpo emulator/$(DEPDIR)/android_android_tester-hciemu.Po
+#	$(AM_V_CC)source='emulator/hciemu.c' object='emulator/android_android_tester-hciemu.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_android_tester-hciemu.obj `if test -f 'emulator/hciemu.c'; then $(CYGPATH_W) 'emulator/hciemu.c'; else $(CYGPATH_W) '$(srcdir)/emulator/hciemu.c'; fi`
 
 emulator/android_android_tester-btdev.o: emulator/btdev.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT emulator/android_android_tester-btdev.o -MD -MP -MF emulator/$(DEPDIR)/android_android_tester-btdev.Tpo -c -o emulator/android_android_tester-btdev.o `test -f 'emulator/btdev.c' || echo '$(srcdir)/'`emulator/btdev.c
-	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_android_tester-btdev.Tpo emulator/$(DEPDIR)/android_android_tester-btdev.Po
-#	$(AM_V_CC)source='emulator/btdev.c' object='emulator/android_android_tester-btdev.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_android_tester-btdev.o `test -f 'emulator/btdev.c' || echo '$(srcdir)/'`emulator/btdev.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT emulator/android_android_tester-btdev.o -MD -MP -MF emulator/$(DEPDIR)/android_android_tester-btdev.Tpo -c -o emulator/android_android_tester-btdev.o `test -f 'emulator/btdev.c' || echo '$(srcdir)/'`emulator/btdev.c
+#	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_android_tester-btdev.Tpo emulator/$(DEPDIR)/android_android_tester-btdev.Po
+#	$(AM_V_CC)source='emulator/btdev.c' object='emulator/android_android_tester-btdev.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_android_tester-btdev.o `test -f 'emulator/btdev.c' || echo '$(srcdir)/'`emulator/btdev.c
 
 emulator/android_android_tester-btdev.obj: emulator/btdev.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT emulator/android_android_tester-btdev.obj -MD -MP -MF emulator/$(DEPDIR)/android_android_tester-btdev.Tpo -c -o emulator/android_android_tester-btdev.obj `if test -f 'emulator/btdev.c'; then $(CYGPATH_W) 'emulator/btdev.c'; else $(CYGPATH_W) '$(srcdir)/emulator/btdev.c'; fi`
-	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_android_tester-btdev.Tpo emulator/$(DEPDIR)/android_android_tester-btdev.Po
-#	$(AM_V_CC)source='emulator/btdev.c' object='emulator/android_android_tester-btdev.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_android_tester-btdev.obj `if test -f 'emulator/btdev.c'; then $(CYGPATH_W) 'emulator/btdev.c'; else $(CYGPATH_W) '$(srcdir)/emulator/btdev.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT emulator/android_android_tester-btdev.obj -MD -MP -MF emulator/$(DEPDIR)/android_android_tester-btdev.Tpo -c -o emulator/android_android_tester-btdev.obj `if test -f 'emulator/btdev.c'; then $(CYGPATH_W) 'emulator/btdev.c'; else $(CYGPATH_W) '$(srcdir)/emulator/btdev.c'; fi`
+#	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_android_tester-btdev.Tpo emulator/$(DEPDIR)/android_android_tester-btdev.Po
+#	$(AM_V_CC)source='emulator/btdev.c' object='emulator/android_android_tester-btdev.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_android_tester-btdev.obj `if test -f 'emulator/btdev.c'; then $(CYGPATH_W) 'emulator/btdev.c'; else $(CYGPATH_W) '$(srcdir)/emulator/btdev.c'; fi`
 
 emulator/android_android_tester-bthost.o: emulator/bthost.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT emulator/android_android_tester-bthost.o -MD -MP -MF emulator/$(DEPDIR)/android_android_tester-bthost.Tpo -c -o emulator/android_android_tester-bthost.o `test -f 'emulator/bthost.c' || echo '$(srcdir)/'`emulator/bthost.c
-	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_android_tester-bthost.Tpo emulator/$(DEPDIR)/android_android_tester-bthost.Po
-#	$(AM_V_CC)source='emulator/bthost.c' object='emulator/android_android_tester-bthost.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_android_tester-bthost.o `test -f 'emulator/bthost.c' || echo '$(srcdir)/'`emulator/bthost.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT emulator/android_android_tester-bthost.o -MD -MP -MF emulator/$(DEPDIR)/android_android_tester-bthost.Tpo -c -o emulator/android_android_tester-bthost.o `test -f 'emulator/bthost.c' || echo '$(srcdir)/'`emulator/bthost.c
+#	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_android_tester-bthost.Tpo emulator/$(DEPDIR)/android_android_tester-bthost.Po
+#	$(AM_V_CC)source='emulator/bthost.c' object='emulator/android_android_tester-bthost.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_android_tester-bthost.o `test -f 'emulator/bthost.c' || echo '$(srcdir)/'`emulator/bthost.c
 
 emulator/android_android_tester-bthost.obj: emulator/bthost.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT emulator/android_android_tester-bthost.obj -MD -MP -MF emulator/$(DEPDIR)/android_android_tester-bthost.Tpo -c -o emulator/android_android_tester-bthost.obj `if test -f 'emulator/bthost.c'; then $(CYGPATH_W) 'emulator/bthost.c'; else $(CYGPATH_W) '$(srcdir)/emulator/bthost.c'; fi`
-	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_android_tester-bthost.Tpo emulator/$(DEPDIR)/android_android_tester-bthost.Po
-#	$(AM_V_CC)source='emulator/bthost.c' object='emulator/android_android_tester-bthost.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_android_tester-bthost.obj `if test -f 'emulator/bthost.c'; then $(CYGPATH_W) 'emulator/bthost.c'; else $(CYGPATH_W) '$(srcdir)/emulator/bthost.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT emulator/android_android_tester-bthost.obj -MD -MP -MF emulator/$(DEPDIR)/android_android_tester-bthost.Tpo -c -o emulator/android_android_tester-bthost.obj `if test -f 'emulator/bthost.c'; then $(CYGPATH_W) 'emulator/bthost.c'; else $(CYGPATH_W) '$(srcdir)/emulator/bthost.c'; fi`
+#	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_android_tester-bthost.Tpo emulator/$(DEPDIR)/android_android_tester-bthost.Po
+#	$(AM_V_CC)source='emulator/bthost.c' object='emulator/android_android_tester-bthost.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_android_tester-bthost.obj `if test -f 'emulator/bthost.c'; then $(CYGPATH_W) 'emulator/bthost.c'; else $(CYGPATH_W) '$(srcdir)/emulator/bthost.c'; fi`
 
 emulator/android_android_tester-smp.o: emulator/smp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT emulator/android_android_tester-smp.o -MD -MP -MF emulator/$(DEPDIR)/android_android_tester-smp.Tpo -c -o emulator/android_android_tester-smp.o `test -f 'emulator/smp.c' || echo '$(srcdir)/'`emulator/smp.c
-	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_android_tester-smp.Tpo emulator/$(DEPDIR)/android_android_tester-smp.Po
-#	$(AM_V_CC)source='emulator/smp.c' object='emulator/android_android_tester-smp.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_android_tester-smp.o `test -f 'emulator/smp.c' || echo '$(srcdir)/'`emulator/smp.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT emulator/android_android_tester-smp.o -MD -MP -MF emulator/$(DEPDIR)/android_android_tester-smp.Tpo -c -o emulator/android_android_tester-smp.o `test -f 'emulator/smp.c' || echo '$(srcdir)/'`emulator/smp.c
+#	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_android_tester-smp.Tpo emulator/$(DEPDIR)/android_android_tester-smp.Po
+#	$(AM_V_CC)source='emulator/smp.c' object='emulator/android_android_tester-smp.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_android_tester-smp.o `test -f 'emulator/smp.c' || echo '$(srcdir)/'`emulator/smp.c
 
 emulator/android_android_tester-smp.obj: emulator/smp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT emulator/android_android_tester-smp.obj -MD -MP -MF emulator/$(DEPDIR)/android_android_tester-smp.Tpo -c -o emulator/android_android_tester-smp.obj `if test -f 'emulator/smp.c'; then $(CYGPATH_W) 'emulator/smp.c'; else $(CYGPATH_W) '$(srcdir)/emulator/smp.c'; fi`
-	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_android_tester-smp.Tpo emulator/$(DEPDIR)/android_android_tester-smp.Po
-#	$(AM_V_CC)source='emulator/smp.c' object='emulator/android_android_tester-smp.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_android_tester-smp.obj `if test -f 'emulator/smp.c'; then $(CYGPATH_W) 'emulator/smp.c'; else $(CYGPATH_W) '$(srcdir)/emulator/smp.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT emulator/android_android_tester-smp.obj -MD -MP -MF emulator/$(DEPDIR)/android_android_tester-smp.Tpo -c -o emulator/android_android_tester-smp.obj `if test -f 'emulator/smp.c'; then $(CYGPATH_W) 'emulator/smp.c'; else $(CYGPATH_W) '$(srcdir)/emulator/smp.c'; fi`
+#	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_android_tester-smp.Tpo emulator/$(DEPDIR)/android_android_tester-smp.Po
+#	$(AM_V_CC)source='emulator/smp.c' object='emulator/android_android_tester-smp.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_android_tester-smp.obj `if test -f 'emulator/smp.c'; then $(CYGPATH_W) 'emulator/smp.c'; else $(CYGPATH_W) '$(srcdir)/emulator/smp.c'; fi`
 
 android/hardware/android_android_tester-hardware.o: android/hardware/hardware.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/hardware/android_android_tester-hardware.o -MD -MP -MF android/hardware/$(DEPDIR)/android_android_tester-hardware.Tpo -c -o android/hardware/android_android_tester-hardware.o `test -f 'android/hardware/hardware.c' || echo '$(srcdir)/'`android/hardware/hardware.c
-	$(AM_V_at)$(am__mv) android/hardware/$(DEPDIR)/android_android_tester-hardware.Tpo android/hardware/$(DEPDIR)/android_android_tester-hardware.Po
-#	$(AM_V_CC)source='android/hardware/hardware.c' object='android/hardware/android_android_tester-hardware.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/hardware/android_android_tester-hardware.o `test -f 'android/hardware/hardware.c' || echo '$(srcdir)/'`android/hardware/hardware.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/hardware/android_android_tester-hardware.o -MD -MP -MF android/hardware/$(DEPDIR)/android_android_tester-hardware.Tpo -c -o android/hardware/android_android_tester-hardware.o `test -f 'android/hardware/hardware.c' || echo '$(srcdir)/'`android/hardware/hardware.c
+#	$(AM_V_at)$(am__mv) android/hardware/$(DEPDIR)/android_android_tester-hardware.Tpo android/hardware/$(DEPDIR)/android_android_tester-hardware.Po
+#	$(AM_V_CC)source='android/hardware/hardware.c' object='android/hardware/android_android_tester-hardware.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/hardware/android_android_tester-hardware.o `test -f 'android/hardware/hardware.c' || echo '$(srcdir)/'`android/hardware/hardware.c
 
 android/hardware/android_android_tester-hardware.obj: android/hardware/hardware.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/hardware/android_android_tester-hardware.obj -MD -MP -MF android/hardware/$(DEPDIR)/android_android_tester-hardware.Tpo -c -o android/hardware/android_android_tester-hardware.obj `if test -f 'android/hardware/hardware.c'; then $(CYGPATH_W) 'android/hardware/hardware.c'; else $(CYGPATH_W) '$(srcdir)/android/hardware/hardware.c'; fi`
-	$(AM_V_at)$(am__mv) android/hardware/$(DEPDIR)/android_android_tester-hardware.Tpo android/hardware/$(DEPDIR)/android_android_tester-hardware.Po
-#	$(AM_V_CC)source='android/hardware/hardware.c' object='android/hardware/android_android_tester-hardware.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/hardware/android_android_tester-hardware.obj `if test -f 'android/hardware/hardware.c'; then $(CYGPATH_W) 'android/hardware/hardware.c'; else $(CYGPATH_W) '$(srcdir)/android/hardware/hardware.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/hardware/android_android_tester-hardware.obj -MD -MP -MF android/hardware/$(DEPDIR)/android_android_tester-hardware.Tpo -c -o android/hardware/android_android_tester-hardware.obj `if test -f 'android/hardware/hardware.c'; then $(CYGPATH_W) 'android/hardware/hardware.c'; else $(CYGPATH_W) '$(srcdir)/android/hardware/hardware.c'; fi`
+#	$(AM_V_at)$(am__mv) android/hardware/$(DEPDIR)/android_android_tester-hardware.Tpo android/hardware/$(DEPDIR)/android_android_tester-hardware.Po
+#	$(AM_V_CC)source='android/hardware/hardware.c' object='android/hardware/android_android_tester-hardware.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/hardware/android_android_tester-hardware.obj `if test -f 'android/hardware/hardware.c'; then $(CYGPATH_W) 'android/hardware/hardware.c'; else $(CYGPATH_W) '$(srcdir)/android/hardware/hardware.c'; fi`
 
 android/android_android_tester-tester-bluetooth.o: android/tester-bluetooth.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-bluetooth.o -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-bluetooth.Tpo -c -o android/android_android_tester-tester-bluetooth.o `test -f 'android/tester-bluetooth.c' || echo '$(srcdir)/'`android/tester-bluetooth.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-bluetooth.Tpo android/$(DEPDIR)/android_android_tester-tester-bluetooth.Po
-#	$(AM_V_CC)source='android/tester-bluetooth.c' object='android/android_android_tester-tester-bluetooth.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-bluetooth.o `test -f 'android/tester-bluetooth.c' || echo '$(srcdir)/'`android/tester-bluetooth.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-bluetooth.o -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-bluetooth.Tpo -c -o android/android_android_tester-tester-bluetooth.o `test -f 'android/tester-bluetooth.c' || echo '$(srcdir)/'`android/tester-bluetooth.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-bluetooth.Tpo android/$(DEPDIR)/android_android_tester-tester-bluetooth.Po
+#	$(AM_V_CC)source='android/tester-bluetooth.c' object='android/android_android_tester-tester-bluetooth.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-bluetooth.o `test -f 'android/tester-bluetooth.c' || echo '$(srcdir)/'`android/tester-bluetooth.c
 
 android/android_android_tester-tester-bluetooth.obj: android/tester-bluetooth.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-bluetooth.obj -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-bluetooth.Tpo -c -o android/android_android_tester-tester-bluetooth.obj `if test -f 'android/tester-bluetooth.c'; then $(CYGPATH_W) 'android/tester-bluetooth.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-bluetooth.c'; fi`
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-bluetooth.Tpo android/$(DEPDIR)/android_android_tester-tester-bluetooth.Po
-#	$(AM_V_CC)source='android/tester-bluetooth.c' object='android/android_android_tester-tester-bluetooth.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-bluetooth.obj `if test -f 'android/tester-bluetooth.c'; then $(CYGPATH_W) 'android/tester-bluetooth.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-bluetooth.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-bluetooth.obj -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-bluetooth.Tpo -c -o android/android_android_tester-tester-bluetooth.obj `if test -f 'android/tester-bluetooth.c'; then $(CYGPATH_W) 'android/tester-bluetooth.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-bluetooth.c'; fi`
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-bluetooth.Tpo android/$(DEPDIR)/android_android_tester-tester-bluetooth.Po
+#	$(AM_V_CC)source='android/tester-bluetooth.c' object='android/android_android_tester-tester-bluetooth.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-bluetooth.obj `if test -f 'android/tester-bluetooth.c'; then $(CYGPATH_W) 'android/tester-bluetooth.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-bluetooth.c'; fi`
 
 android/android_android_tester-tester-socket.o: android/tester-socket.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-socket.o -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-socket.Tpo -c -o android/android_android_tester-tester-socket.o `test -f 'android/tester-socket.c' || echo '$(srcdir)/'`android/tester-socket.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-socket.Tpo android/$(DEPDIR)/android_android_tester-tester-socket.Po
-#	$(AM_V_CC)source='android/tester-socket.c' object='android/android_android_tester-tester-socket.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-socket.o `test -f 'android/tester-socket.c' || echo '$(srcdir)/'`android/tester-socket.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-socket.o -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-socket.Tpo -c -o android/android_android_tester-tester-socket.o `test -f 'android/tester-socket.c' || echo '$(srcdir)/'`android/tester-socket.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-socket.Tpo android/$(DEPDIR)/android_android_tester-tester-socket.Po
+#	$(AM_V_CC)source='android/tester-socket.c' object='android/android_android_tester-tester-socket.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-socket.o `test -f 'android/tester-socket.c' || echo '$(srcdir)/'`android/tester-socket.c
 
 android/android_android_tester-tester-socket.obj: android/tester-socket.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-socket.obj -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-socket.Tpo -c -o android/android_android_tester-tester-socket.obj `if test -f 'android/tester-socket.c'; then $(CYGPATH_W) 'android/tester-socket.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-socket.c'; fi`
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-socket.Tpo android/$(DEPDIR)/android_android_tester-tester-socket.Po
-#	$(AM_V_CC)source='android/tester-socket.c' object='android/android_android_tester-tester-socket.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-socket.obj `if test -f 'android/tester-socket.c'; then $(CYGPATH_W) 'android/tester-socket.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-socket.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-socket.obj -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-socket.Tpo -c -o android/android_android_tester-tester-socket.obj `if test -f 'android/tester-socket.c'; then $(CYGPATH_W) 'android/tester-socket.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-socket.c'; fi`
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-socket.Tpo android/$(DEPDIR)/android_android_tester-tester-socket.Po
+#	$(AM_V_CC)source='android/tester-socket.c' object='android/android_android_tester-tester-socket.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-socket.obj `if test -f 'android/tester-socket.c'; then $(CYGPATH_W) 'android/tester-socket.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-socket.c'; fi`
 
 android/android_android_tester-tester-hidhost.o: android/tester-hidhost.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-hidhost.o -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-hidhost.Tpo -c -o android/android_android_tester-tester-hidhost.o `test -f 'android/tester-hidhost.c' || echo '$(srcdir)/'`android/tester-hidhost.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-hidhost.Tpo android/$(DEPDIR)/android_android_tester-tester-hidhost.Po
-#	$(AM_V_CC)source='android/tester-hidhost.c' object='android/android_android_tester-tester-hidhost.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-hidhost.o `test -f 'android/tester-hidhost.c' || echo '$(srcdir)/'`android/tester-hidhost.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-hidhost.o -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-hidhost.Tpo -c -o android/android_android_tester-tester-hidhost.o `test -f 'android/tester-hidhost.c' || echo '$(srcdir)/'`android/tester-hidhost.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-hidhost.Tpo android/$(DEPDIR)/android_android_tester-tester-hidhost.Po
+#	$(AM_V_CC)source='android/tester-hidhost.c' object='android/android_android_tester-tester-hidhost.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-hidhost.o `test -f 'android/tester-hidhost.c' || echo '$(srcdir)/'`android/tester-hidhost.c
 
 android/android_android_tester-tester-hidhost.obj: android/tester-hidhost.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-hidhost.obj -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-hidhost.Tpo -c -o android/android_android_tester-tester-hidhost.obj `if test -f 'android/tester-hidhost.c'; then $(CYGPATH_W) 'android/tester-hidhost.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-hidhost.c'; fi`
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-hidhost.Tpo android/$(DEPDIR)/android_android_tester-tester-hidhost.Po
-#	$(AM_V_CC)source='android/tester-hidhost.c' object='android/android_android_tester-tester-hidhost.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-hidhost.obj `if test -f 'android/tester-hidhost.c'; then $(CYGPATH_W) 'android/tester-hidhost.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-hidhost.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-hidhost.obj -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-hidhost.Tpo -c -o android/android_android_tester-tester-hidhost.obj `if test -f 'android/tester-hidhost.c'; then $(CYGPATH_W) 'android/tester-hidhost.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-hidhost.c'; fi`
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-hidhost.Tpo android/$(DEPDIR)/android_android_tester-tester-hidhost.Po
+#	$(AM_V_CC)source='android/tester-hidhost.c' object='android/android_android_tester-tester-hidhost.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-hidhost.obj `if test -f 'android/tester-hidhost.c'; then $(CYGPATH_W) 'android/tester-hidhost.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-hidhost.c'; fi`
 
 android/android_android_tester-tester-pan.o: android/tester-pan.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-pan.o -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-pan.Tpo -c -o android/android_android_tester-tester-pan.o `test -f 'android/tester-pan.c' || echo '$(srcdir)/'`android/tester-pan.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-pan.Tpo android/$(DEPDIR)/android_android_tester-tester-pan.Po
-#	$(AM_V_CC)source='android/tester-pan.c' object='android/android_android_tester-tester-pan.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-pan.o `test -f 'android/tester-pan.c' || echo '$(srcdir)/'`android/tester-pan.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-pan.o -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-pan.Tpo -c -o android/android_android_tester-tester-pan.o `test -f 'android/tester-pan.c' || echo '$(srcdir)/'`android/tester-pan.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-pan.Tpo android/$(DEPDIR)/android_android_tester-tester-pan.Po
+#	$(AM_V_CC)source='android/tester-pan.c' object='android/android_android_tester-tester-pan.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-pan.o `test -f 'android/tester-pan.c' || echo '$(srcdir)/'`android/tester-pan.c
 
 android/android_android_tester-tester-pan.obj: android/tester-pan.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-pan.obj -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-pan.Tpo -c -o android/android_android_tester-tester-pan.obj `if test -f 'android/tester-pan.c'; then $(CYGPATH_W) 'android/tester-pan.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-pan.c'; fi`
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-pan.Tpo android/$(DEPDIR)/android_android_tester-tester-pan.Po
-#	$(AM_V_CC)source='android/tester-pan.c' object='android/android_android_tester-tester-pan.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-pan.obj `if test -f 'android/tester-pan.c'; then $(CYGPATH_W) 'android/tester-pan.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-pan.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-pan.obj -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-pan.Tpo -c -o android/android_android_tester-tester-pan.obj `if test -f 'android/tester-pan.c'; then $(CYGPATH_W) 'android/tester-pan.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-pan.c'; fi`
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-pan.Tpo android/$(DEPDIR)/android_android_tester-tester-pan.Po
+#	$(AM_V_CC)source='android/tester-pan.c' object='android/android_android_tester-tester-pan.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-pan.obj `if test -f 'android/tester-pan.c'; then $(CYGPATH_W) 'android/tester-pan.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-pan.c'; fi`
 
 android/android_android_tester-tester-hdp.o: android/tester-hdp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-hdp.o -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-hdp.Tpo -c -o android/android_android_tester-tester-hdp.o `test -f 'android/tester-hdp.c' || echo '$(srcdir)/'`android/tester-hdp.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-hdp.Tpo android/$(DEPDIR)/android_android_tester-tester-hdp.Po
-#	$(AM_V_CC)source='android/tester-hdp.c' object='android/android_android_tester-tester-hdp.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-hdp.o `test -f 'android/tester-hdp.c' || echo '$(srcdir)/'`android/tester-hdp.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-hdp.o -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-hdp.Tpo -c -o android/android_android_tester-tester-hdp.o `test -f 'android/tester-hdp.c' || echo '$(srcdir)/'`android/tester-hdp.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-hdp.Tpo android/$(DEPDIR)/android_android_tester-tester-hdp.Po
+#	$(AM_V_CC)source='android/tester-hdp.c' object='android/android_android_tester-tester-hdp.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-hdp.o `test -f 'android/tester-hdp.c' || echo '$(srcdir)/'`android/tester-hdp.c
 
 android/android_android_tester-tester-hdp.obj: android/tester-hdp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-hdp.obj -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-hdp.Tpo -c -o android/android_android_tester-tester-hdp.obj `if test -f 'android/tester-hdp.c'; then $(CYGPATH_W) 'android/tester-hdp.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-hdp.c'; fi`
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-hdp.Tpo android/$(DEPDIR)/android_android_tester-tester-hdp.Po
-#	$(AM_V_CC)source='android/tester-hdp.c' object='android/android_android_tester-tester-hdp.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-hdp.obj `if test -f 'android/tester-hdp.c'; then $(CYGPATH_W) 'android/tester-hdp.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-hdp.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-hdp.obj -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-hdp.Tpo -c -o android/android_android_tester-tester-hdp.obj `if test -f 'android/tester-hdp.c'; then $(CYGPATH_W) 'android/tester-hdp.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-hdp.c'; fi`
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-hdp.Tpo android/$(DEPDIR)/android_android_tester-tester-hdp.Po
+#	$(AM_V_CC)source='android/tester-hdp.c' object='android/android_android_tester-tester-hdp.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-hdp.obj `if test -f 'android/tester-hdp.c'; then $(CYGPATH_W) 'android/tester-hdp.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-hdp.c'; fi`
 
 android/android_android_tester-tester-a2dp.o: android/tester-a2dp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-a2dp.o -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-a2dp.Tpo -c -o android/android_android_tester-tester-a2dp.o `test -f 'android/tester-a2dp.c' || echo '$(srcdir)/'`android/tester-a2dp.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-a2dp.Tpo android/$(DEPDIR)/android_android_tester-tester-a2dp.Po
-#	$(AM_V_CC)source='android/tester-a2dp.c' object='android/android_android_tester-tester-a2dp.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-a2dp.o `test -f 'android/tester-a2dp.c' || echo '$(srcdir)/'`android/tester-a2dp.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-a2dp.o -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-a2dp.Tpo -c -o android/android_android_tester-tester-a2dp.o `test -f 'android/tester-a2dp.c' || echo '$(srcdir)/'`android/tester-a2dp.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-a2dp.Tpo android/$(DEPDIR)/android_android_tester-tester-a2dp.Po
+#	$(AM_V_CC)source='android/tester-a2dp.c' object='android/android_android_tester-tester-a2dp.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-a2dp.o `test -f 'android/tester-a2dp.c' || echo '$(srcdir)/'`android/tester-a2dp.c
 
 android/android_android_tester-tester-a2dp.obj: android/tester-a2dp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-a2dp.obj -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-a2dp.Tpo -c -o android/android_android_tester-tester-a2dp.obj `if test -f 'android/tester-a2dp.c'; then $(CYGPATH_W) 'android/tester-a2dp.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-a2dp.c'; fi`
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-a2dp.Tpo android/$(DEPDIR)/android_android_tester-tester-a2dp.Po
-#	$(AM_V_CC)source='android/tester-a2dp.c' object='android/android_android_tester-tester-a2dp.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-a2dp.obj `if test -f 'android/tester-a2dp.c'; then $(CYGPATH_W) 'android/tester-a2dp.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-a2dp.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-a2dp.obj -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-a2dp.Tpo -c -o android/android_android_tester-tester-a2dp.obj `if test -f 'android/tester-a2dp.c'; then $(CYGPATH_W) 'android/tester-a2dp.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-a2dp.c'; fi`
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-a2dp.Tpo android/$(DEPDIR)/android_android_tester-tester-a2dp.Po
+#	$(AM_V_CC)source='android/tester-a2dp.c' object='android/android_android_tester-tester-a2dp.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-a2dp.obj `if test -f 'android/tester-a2dp.c'; then $(CYGPATH_W) 'android/tester-a2dp.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-a2dp.c'; fi`
 
 android/android_android_tester-tester-avrcp.o: android/tester-avrcp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-avrcp.o -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-avrcp.Tpo -c -o android/android_android_tester-tester-avrcp.o `test -f 'android/tester-avrcp.c' || echo '$(srcdir)/'`android/tester-avrcp.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-avrcp.Tpo android/$(DEPDIR)/android_android_tester-tester-avrcp.Po
-#	$(AM_V_CC)source='android/tester-avrcp.c' object='android/android_android_tester-tester-avrcp.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-avrcp.o `test -f 'android/tester-avrcp.c' || echo '$(srcdir)/'`android/tester-avrcp.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-avrcp.o -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-avrcp.Tpo -c -o android/android_android_tester-tester-avrcp.o `test -f 'android/tester-avrcp.c' || echo '$(srcdir)/'`android/tester-avrcp.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-avrcp.Tpo android/$(DEPDIR)/android_android_tester-tester-avrcp.Po
+#	$(AM_V_CC)source='android/tester-avrcp.c' object='android/android_android_tester-tester-avrcp.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-avrcp.o `test -f 'android/tester-avrcp.c' || echo '$(srcdir)/'`android/tester-avrcp.c
 
 android/android_android_tester-tester-avrcp.obj: android/tester-avrcp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-avrcp.obj -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-avrcp.Tpo -c -o android/android_android_tester-tester-avrcp.obj `if test -f 'android/tester-avrcp.c'; then $(CYGPATH_W) 'android/tester-avrcp.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-avrcp.c'; fi`
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-avrcp.Tpo android/$(DEPDIR)/android_android_tester-tester-avrcp.Po
-#	$(AM_V_CC)source='android/tester-avrcp.c' object='android/android_android_tester-tester-avrcp.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-avrcp.obj `if test -f 'android/tester-avrcp.c'; then $(CYGPATH_W) 'android/tester-avrcp.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-avrcp.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-avrcp.obj -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-avrcp.Tpo -c -o android/android_android_tester-tester-avrcp.obj `if test -f 'android/tester-avrcp.c'; then $(CYGPATH_W) 'android/tester-avrcp.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-avrcp.c'; fi`
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-avrcp.Tpo android/$(DEPDIR)/android_android_tester-tester-avrcp.Po
+#	$(AM_V_CC)source='android/tester-avrcp.c' object='android/android_android_tester-tester-avrcp.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-avrcp.obj `if test -f 'android/tester-avrcp.c'; then $(CYGPATH_W) 'android/tester-avrcp.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-avrcp.c'; fi`
 
 android/android_android_tester-tester-gatt.o: android/tester-gatt.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-gatt.o -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-gatt.Tpo -c -o android/android_android_tester-tester-gatt.o `test -f 'android/tester-gatt.c' || echo '$(srcdir)/'`android/tester-gatt.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-gatt.Tpo android/$(DEPDIR)/android_android_tester-tester-gatt.Po
-#	$(AM_V_CC)source='android/tester-gatt.c' object='android/android_android_tester-tester-gatt.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-gatt.o `test -f 'android/tester-gatt.c' || echo '$(srcdir)/'`android/tester-gatt.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-gatt.o -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-gatt.Tpo -c -o android/android_android_tester-tester-gatt.o `test -f 'android/tester-gatt.c' || echo '$(srcdir)/'`android/tester-gatt.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-gatt.Tpo android/$(DEPDIR)/android_android_tester-tester-gatt.Po
+#	$(AM_V_CC)source='android/tester-gatt.c' object='android/android_android_tester-tester-gatt.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-gatt.o `test -f 'android/tester-gatt.c' || echo '$(srcdir)/'`android/tester-gatt.c
 
 android/android_android_tester-tester-gatt.obj: android/tester-gatt.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-gatt.obj -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-gatt.Tpo -c -o android/android_android_tester-tester-gatt.obj `if test -f 'android/tester-gatt.c'; then $(CYGPATH_W) 'android/tester-gatt.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-gatt.c'; fi`
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-gatt.Tpo android/$(DEPDIR)/android_android_tester-tester-gatt.Po
-#	$(AM_V_CC)source='android/tester-gatt.c' object='android/android_android_tester-tester-gatt.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-gatt.obj `if test -f 'android/tester-gatt.c'; then $(CYGPATH_W) 'android/tester-gatt.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-gatt.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-gatt.obj -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-gatt.Tpo -c -o android/android_android_tester-tester-gatt.obj `if test -f 'android/tester-gatt.c'; then $(CYGPATH_W) 'android/tester-gatt.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-gatt.c'; fi`
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-gatt.Tpo android/$(DEPDIR)/android_android_tester-tester-gatt.Po
+#	$(AM_V_CC)source='android/tester-gatt.c' object='android/android_android_tester-tester-gatt.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-gatt.obj `if test -f 'android/tester-gatt.c'; then $(CYGPATH_W) 'android/tester-gatt.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-gatt.c'; fi`
 
 android/android_android_tester-tester-map-client.o: android/tester-map-client.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-map-client.o -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-map-client.Tpo -c -o android/android_android_tester-tester-map-client.o `test -f 'android/tester-map-client.c' || echo '$(srcdir)/'`android/tester-map-client.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-map-client.Tpo android/$(DEPDIR)/android_android_tester-tester-map-client.Po
-#	$(AM_V_CC)source='android/tester-map-client.c' object='android/android_android_tester-tester-map-client.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-map-client.o `test -f 'android/tester-map-client.c' || echo '$(srcdir)/'`android/tester-map-client.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-map-client.o -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-map-client.Tpo -c -o android/android_android_tester-tester-map-client.o `test -f 'android/tester-map-client.c' || echo '$(srcdir)/'`android/tester-map-client.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-map-client.Tpo android/$(DEPDIR)/android_android_tester-tester-map-client.Po
+#	$(AM_V_CC)source='android/tester-map-client.c' object='android/android_android_tester-tester-map-client.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-map-client.o `test -f 'android/tester-map-client.c' || echo '$(srcdir)/'`android/tester-map-client.c
 
 android/android_android_tester-tester-map-client.obj: android/tester-map-client.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-map-client.obj -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-map-client.Tpo -c -o android/android_android_tester-tester-map-client.obj `if test -f 'android/tester-map-client.c'; then $(CYGPATH_W) 'android/tester-map-client.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-map-client.c'; fi`
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-map-client.Tpo android/$(DEPDIR)/android_android_tester-tester-map-client.Po
-#	$(AM_V_CC)source='android/tester-map-client.c' object='android/android_android_tester-tester-map-client.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-map-client.obj `if test -f 'android/tester-map-client.c'; then $(CYGPATH_W) 'android/tester-map-client.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-map-client.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-map-client.obj -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-map-client.Tpo -c -o android/android_android_tester-tester-map-client.obj `if test -f 'android/tester-map-client.c'; then $(CYGPATH_W) 'android/tester-map-client.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-map-client.c'; fi`
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-map-client.Tpo android/$(DEPDIR)/android_android_tester-tester-map-client.Po
+#	$(AM_V_CC)source='android/tester-map-client.c' object='android/android_android_tester-tester-map-client.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-map-client.obj `if test -f 'android/tester-map-client.c'; then $(CYGPATH_W) 'android/tester-map-client.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-map-client.c'; fi`
 
 android/android_android_tester-tester-main.o: android/tester-main.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-main.o -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-main.Tpo -c -o android/android_android_tester-tester-main.o `test -f 'android/tester-main.c' || echo '$(srcdir)/'`android/tester-main.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-main.Tpo android/$(DEPDIR)/android_android_tester-tester-main.Po
-#	$(AM_V_CC)source='android/tester-main.c' object='android/android_android_tester-tester-main.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-main.o `test -f 'android/tester-main.c' || echo '$(srcdir)/'`android/tester-main.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-main.o -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-main.Tpo -c -o android/android_android_tester-tester-main.o `test -f 'android/tester-main.c' || echo '$(srcdir)/'`android/tester-main.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-main.Tpo android/$(DEPDIR)/android_android_tester-tester-main.Po
+#	$(AM_V_CC)source='android/tester-main.c' object='android/android_android_tester-tester-main.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-main.o `test -f 'android/tester-main.c' || echo '$(srcdir)/'`android/tester-main.c
 
 android/android_android_tester-tester-main.obj: android/tester-main.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-main.obj -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-main.Tpo -c -o android/android_android_tester-tester-main.obj `if test -f 'android/tester-main.c'; then $(CYGPATH_W) 'android/tester-main.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-main.c'; fi`
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-main.Tpo android/$(DEPDIR)/android_android_tester-tester-main.Po
-#	$(AM_V_CC)source='android/tester-main.c' object='android/android_android_tester-tester-main.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-main.obj `if test -f 'android/tester-main.c'; then $(CYGPATH_W) 'android/tester-main.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-main.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -MT android/android_android_tester-tester-main.obj -MD -MP -MF android/$(DEPDIR)/android_android_tester-tester-main.Tpo -c -o android/android_android_tester-tester-main.obj `if test -f 'android/tester-main.c'; then $(CYGPATH_W) 'android/tester-main.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-main.c'; fi`
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_android_tester-tester-main.Tpo android/$(DEPDIR)/android_android_tester-tester-main.Po
+#	$(AM_V_CC)source='android/tester-main.c' object='android/android_android_tester-tester-main.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_android_tester_CFLAGS) $(CFLAGS) -c -o android/android_android_tester-tester-main.obj `if test -f 'android/tester-main.c'; then $(CYGPATH_W) 'android/tester-main.c'; else $(CYGPATH_W) '$(srcdir)/android/tester-main.c'; fi`
 
 android/android_avdtptest-avdtptest.o: android/avdtptest.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -MT android/android_avdtptest-avdtptest.o -MD -MP -MF android/$(DEPDIR)/android_avdtptest-avdtptest.Tpo -c -o android/android_avdtptest-avdtptest.o `test -f 'android/avdtptest.c' || echo '$(srcdir)/'`android/avdtptest.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_avdtptest-avdtptest.Tpo android/$(DEPDIR)/android_avdtptest-avdtptest.Po
-#	$(AM_V_CC)source='android/avdtptest.c' object='android/android_avdtptest-avdtptest.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -c -o android/android_avdtptest-avdtptest.o `test -f 'android/avdtptest.c' || echo '$(srcdir)/'`android/avdtptest.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -MT android/android_avdtptest-avdtptest.o -MD -MP -MF android/$(DEPDIR)/android_avdtptest-avdtptest.Tpo -c -o android/android_avdtptest-avdtptest.o `test -f 'android/avdtptest.c' || echo '$(srcdir)/'`android/avdtptest.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_avdtptest-avdtptest.Tpo android/$(DEPDIR)/android_avdtptest-avdtptest.Po
+#	$(AM_V_CC)source='android/avdtptest.c' object='android/android_avdtptest-avdtptest.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -c -o android/android_avdtptest-avdtptest.o `test -f 'android/avdtptest.c' || echo '$(srcdir)/'`android/avdtptest.c
 
 android/android_avdtptest-avdtptest.obj: android/avdtptest.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -MT android/android_avdtptest-avdtptest.obj -MD -MP -MF android/$(DEPDIR)/android_avdtptest-avdtptest.Tpo -c -o android/android_avdtptest-avdtptest.obj `if test -f 'android/avdtptest.c'; then $(CYGPATH_W) 'android/avdtptest.c'; else $(CYGPATH_W) '$(srcdir)/android/avdtptest.c'; fi`
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_avdtptest-avdtptest.Tpo android/$(DEPDIR)/android_avdtptest-avdtptest.Po
-#	$(AM_V_CC)source='android/avdtptest.c' object='android/android_avdtptest-avdtptest.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -c -o android/android_avdtptest-avdtptest.obj `if test -f 'android/avdtptest.c'; then $(CYGPATH_W) 'android/avdtptest.c'; else $(CYGPATH_W) '$(srcdir)/android/avdtptest.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -MT android/android_avdtptest-avdtptest.obj -MD -MP -MF android/$(DEPDIR)/android_avdtptest-avdtptest.Tpo -c -o android/android_avdtptest-avdtptest.obj `if test -f 'android/avdtptest.c'; then $(CYGPATH_W) 'android/avdtptest.c'; else $(CYGPATH_W) '$(srcdir)/android/avdtptest.c'; fi`
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_avdtptest-avdtptest.Tpo android/$(DEPDIR)/android_avdtptest-avdtptest.Po
+#	$(AM_V_CC)source='android/avdtptest.c' object='android/android_avdtptest-avdtptest.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -c -o android/android_avdtptest-avdtptest.obj `if test -f 'android/avdtptest.c'; then $(CYGPATH_W) 'android/avdtptest.c'; else $(CYGPATH_W) '$(srcdir)/android/avdtptest.c'; fi`
 
 src/android_avdtptest-log.o: src/log.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -MT src/android_avdtptest-log.o -MD -MP -MF src/$(DEPDIR)/android_avdtptest-log.Tpo -c -o src/android_avdtptest-log.o `test -f 'src/log.c' || echo '$(srcdir)/'`src/log.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/android_avdtptest-log.Tpo src/$(DEPDIR)/android_avdtptest-log.Po
-#	$(AM_V_CC)source='src/log.c' object='src/android_avdtptest-log.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -c -o src/android_avdtptest-log.o `test -f 'src/log.c' || echo '$(srcdir)/'`src/log.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -MT src/android_avdtptest-log.o -MD -MP -MF src/$(DEPDIR)/android_avdtptest-log.Tpo -c -o src/android_avdtptest-log.o `test -f 'src/log.c' || echo '$(srcdir)/'`src/log.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/android_avdtptest-log.Tpo src/$(DEPDIR)/android_avdtptest-log.Po
+#	$(AM_V_CC)source='src/log.c' object='src/android_avdtptest-log.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -c -o src/android_avdtptest-log.o `test -f 'src/log.c' || echo '$(srcdir)/'`src/log.c
 
 src/android_avdtptest-log.obj: src/log.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -MT src/android_avdtptest-log.obj -MD -MP -MF src/$(DEPDIR)/android_avdtptest-log.Tpo -c -o src/android_avdtptest-log.obj `if test -f 'src/log.c'; then $(CYGPATH_W) 'src/log.c'; else $(CYGPATH_W) '$(srcdir)/src/log.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/android_avdtptest-log.Tpo src/$(DEPDIR)/android_avdtptest-log.Po
-#	$(AM_V_CC)source='src/log.c' object='src/android_avdtptest-log.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -c -o src/android_avdtptest-log.obj `if test -f 'src/log.c'; then $(CYGPATH_W) 'src/log.c'; else $(CYGPATH_W) '$(srcdir)/src/log.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -MT src/android_avdtptest-log.obj -MD -MP -MF src/$(DEPDIR)/android_avdtptest-log.Tpo -c -o src/android_avdtptest-log.obj `if test -f 'src/log.c'; then $(CYGPATH_W) 'src/log.c'; else $(CYGPATH_W) '$(srcdir)/src/log.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/android_avdtptest-log.Tpo src/$(DEPDIR)/android_avdtptest-log.Po
+#	$(AM_V_CC)source='src/log.c' object='src/android_avdtptest-log.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -c -o src/android_avdtptest-log.obj `if test -f 'src/log.c'; then $(CYGPATH_W) 'src/log.c'; else $(CYGPATH_W) '$(srcdir)/src/log.c'; fi`
 
 btio/android_avdtptest-btio.o: btio/btio.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -MT btio/android_avdtptest-btio.o -MD -MP -MF btio/$(DEPDIR)/android_avdtptest-btio.Tpo -c -o btio/android_avdtptest-btio.o `test -f 'btio/btio.c' || echo '$(srcdir)/'`btio/btio.c
-	$(AM_V_at)$(am__mv) btio/$(DEPDIR)/android_avdtptest-btio.Tpo btio/$(DEPDIR)/android_avdtptest-btio.Po
-#	$(AM_V_CC)source='btio/btio.c' object='btio/android_avdtptest-btio.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -c -o btio/android_avdtptest-btio.o `test -f 'btio/btio.c' || echo '$(srcdir)/'`btio/btio.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -MT btio/android_avdtptest-btio.o -MD -MP -MF btio/$(DEPDIR)/android_avdtptest-btio.Tpo -c -o btio/android_avdtptest-btio.o `test -f 'btio/btio.c' || echo '$(srcdir)/'`btio/btio.c
+#	$(AM_V_at)$(am__mv) btio/$(DEPDIR)/android_avdtptest-btio.Tpo btio/$(DEPDIR)/android_avdtptest-btio.Po
+#	$(AM_V_CC)source='btio/btio.c' object='btio/android_avdtptest-btio.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -c -o btio/android_avdtptest-btio.o `test -f 'btio/btio.c' || echo '$(srcdir)/'`btio/btio.c
 
 btio/android_avdtptest-btio.obj: btio/btio.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -MT btio/android_avdtptest-btio.obj -MD -MP -MF btio/$(DEPDIR)/android_avdtptest-btio.Tpo -c -o btio/android_avdtptest-btio.obj `if test -f 'btio/btio.c'; then $(CYGPATH_W) 'btio/btio.c'; else $(CYGPATH_W) '$(srcdir)/btio/btio.c'; fi`
-	$(AM_V_at)$(am__mv) btio/$(DEPDIR)/android_avdtptest-btio.Tpo btio/$(DEPDIR)/android_avdtptest-btio.Po
-#	$(AM_V_CC)source='btio/btio.c' object='btio/android_avdtptest-btio.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -c -o btio/android_avdtptest-btio.obj `if test -f 'btio/btio.c'; then $(CYGPATH_W) 'btio/btio.c'; else $(CYGPATH_W) '$(srcdir)/btio/btio.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -MT btio/android_avdtptest-btio.obj -MD -MP -MF btio/$(DEPDIR)/android_avdtptest-btio.Tpo -c -o btio/android_avdtptest-btio.obj `if test -f 'btio/btio.c'; then $(CYGPATH_W) 'btio/btio.c'; else $(CYGPATH_W) '$(srcdir)/btio/btio.c'; fi`
+#	$(AM_V_at)$(am__mv) btio/$(DEPDIR)/android_avdtptest-btio.Tpo btio/$(DEPDIR)/android_avdtptest-btio.Po
+#	$(AM_V_CC)source='btio/btio.c' object='btio/android_avdtptest-btio.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -c -o btio/android_avdtptest-btio.obj `if test -f 'btio/btio.c'; then $(CYGPATH_W) 'btio/btio.c'; else $(CYGPATH_W) '$(srcdir)/btio/btio.c'; fi`
 
 src/shared/android_avdtptest-util.o: src/shared/util.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -MT src/shared/android_avdtptest-util.o -MD -MP -MF src/shared/$(DEPDIR)/android_avdtptest-util.Tpo -c -o src/shared/android_avdtptest-util.o `test -f 'src/shared/util.c' || echo '$(srcdir)/'`src/shared/util.c
-	$(AM_V_at)$(am__mv) src/shared/$(DEPDIR)/android_avdtptest-util.Tpo src/shared/$(DEPDIR)/android_avdtptest-util.Po
-#	$(AM_V_CC)source='src/shared/util.c' object='src/shared/android_avdtptest-util.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -c -o src/shared/android_avdtptest-util.o `test -f 'src/shared/util.c' || echo '$(srcdir)/'`src/shared/util.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -MT src/shared/android_avdtptest-util.o -MD -MP -MF src/shared/$(DEPDIR)/android_avdtptest-util.Tpo -c -o src/shared/android_avdtptest-util.o `test -f 'src/shared/util.c' || echo '$(srcdir)/'`src/shared/util.c
+#	$(AM_V_at)$(am__mv) src/shared/$(DEPDIR)/android_avdtptest-util.Tpo src/shared/$(DEPDIR)/android_avdtptest-util.Po
+#	$(AM_V_CC)source='src/shared/util.c' object='src/shared/android_avdtptest-util.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -c -o src/shared/android_avdtptest-util.o `test -f 'src/shared/util.c' || echo '$(srcdir)/'`src/shared/util.c
 
 src/shared/android_avdtptest-util.obj: src/shared/util.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -MT src/shared/android_avdtptest-util.obj -MD -MP -MF src/shared/$(DEPDIR)/android_avdtptest-util.Tpo -c -o src/shared/android_avdtptest-util.obj `if test -f 'src/shared/util.c'; then $(CYGPATH_W) 'src/shared/util.c'; else $(CYGPATH_W) '$(srcdir)/src/shared/util.c'; fi`
-	$(AM_V_at)$(am__mv) src/shared/$(DEPDIR)/android_avdtptest-util.Tpo src/shared/$(DEPDIR)/android_avdtptest-util.Po
-#	$(AM_V_CC)source='src/shared/util.c' object='src/shared/android_avdtptest-util.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -c -o src/shared/android_avdtptest-util.obj `if test -f 'src/shared/util.c'; then $(CYGPATH_W) 'src/shared/util.c'; else $(CYGPATH_W) '$(srcdir)/src/shared/util.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -MT src/shared/android_avdtptest-util.obj -MD -MP -MF src/shared/$(DEPDIR)/android_avdtptest-util.Tpo -c -o src/shared/android_avdtptest-util.obj `if test -f 'src/shared/util.c'; then $(CYGPATH_W) 'src/shared/util.c'; else $(CYGPATH_W) '$(srcdir)/src/shared/util.c'; fi`
+#	$(AM_V_at)$(am__mv) src/shared/$(DEPDIR)/android_avdtptest-util.Tpo src/shared/$(DEPDIR)/android_avdtptest-util.Po
+#	$(AM_V_CC)source='src/shared/util.c' object='src/shared/android_avdtptest-util.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -c -o src/shared/android_avdtptest-util.obj `if test -f 'src/shared/util.c'; then $(CYGPATH_W) 'src/shared/util.c'; else $(CYGPATH_W) '$(srcdir)/src/shared/util.c'; fi`
 
 src/shared/android_avdtptest-queue.o: src/shared/queue.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -MT src/shared/android_avdtptest-queue.o -MD -MP -MF src/shared/$(DEPDIR)/android_avdtptest-queue.Tpo -c -o src/shared/android_avdtptest-queue.o `test -f 'src/shared/queue.c' || echo '$(srcdir)/'`src/shared/queue.c
-	$(AM_V_at)$(am__mv) src/shared/$(DEPDIR)/android_avdtptest-queue.Tpo src/shared/$(DEPDIR)/android_avdtptest-queue.Po
-#	$(AM_V_CC)source='src/shared/queue.c' object='src/shared/android_avdtptest-queue.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -c -o src/shared/android_avdtptest-queue.o `test -f 'src/shared/queue.c' || echo '$(srcdir)/'`src/shared/queue.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -MT src/shared/android_avdtptest-queue.o -MD -MP -MF src/shared/$(DEPDIR)/android_avdtptest-queue.Tpo -c -o src/shared/android_avdtptest-queue.o `test -f 'src/shared/queue.c' || echo '$(srcdir)/'`src/shared/queue.c
+#	$(AM_V_at)$(am__mv) src/shared/$(DEPDIR)/android_avdtptest-queue.Tpo src/shared/$(DEPDIR)/android_avdtptest-queue.Po
+#	$(AM_V_CC)source='src/shared/queue.c' object='src/shared/android_avdtptest-queue.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -c -o src/shared/android_avdtptest-queue.o `test -f 'src/shared/queue.c' || echo '$(srcdir)/'`src/shared/queue.c
 
 src/shared/android_avdtptest-queue.obj: src/shared/queue.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -MT src/shared/android_avdtptest-queue.obj -MD -MP -MF src/shared/$(DEPDIR)/android_avdtptest-queue.Tpo -c -o src/shared/android_avdtptest-queue.obj `if test -f 'src/shared/queue.c'; then $(CYGPATH_W) 'src/shared/queue.c'; else $(CYGPATH_W) '$(srcdir)/src/shared/queue.c'; fi`
-	$(AM_V_at)$(am__mv) src/shared/$(DEPDIR)/android_avdtptest-queue.Tpo src/shared/$(DEPDIR)/android_avdtptest-queue.Po
-#	$(AM_V_CC)source='src/shared/queue.c' object='src/shared/android_avdtptest-queue.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -c -o src/shared/android_avdtptest-queue.obj `if test -f 'src/shared/queue.c'; then $(CYGPATH_W) 'src/shared/queue.c'; else $(CYGPATH_W) '$(srcdir)/src/shared/queue.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -MT src/shared/android_avdtptest-queue.obj -MD -MP -MF src/shared/$(DEPDIR)/android_avdtptest-queue.Tpo -c -o src/shared/android_avdtptest-queue.obj `if test -f 'src/shared/queue.c'; then $(CYGPATH_W) 'src/shared/queue.c'; else $(CYGPATH_W) '$(srcdir)/src/shared/queue.c'; fi`
+#	$(AM_V_at)$(am__mv) src/shared/$(DEPDIR)/android_avdtptest-queue.Tpo src/shared/$(DEPDIR)/android_avdtptest-queue.Po
+#	$(AM_V_CC)source='src/shared/queue.c' object='src/shared/android_avdtptest-queue.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -c -o src/shared/android_avdtptest-queue.obj `if test -f 'src/shared/queue.c'; then $(CYGPATH_W) 'src/shared/queue.c'; else $(CYGPATH_W) '$(srcdir)/src/shared/queue.c'; fi`
 
 android/android_avdtptest-avdtp.o: android/avdtp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -MT android/android_avdtptest-avdtp.o -MD -MP -MF android/$(DEPDIR)/android_avdtptest-avdtp.Tpo -c -o android/android_avdtptest-avdtp.o `test -f 'android/avdtp.c' || echo '$(srcdir)/'`android/avdtp.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_avdtptest-avdtp.Tpo android/$(DEPDIR)/android_avdtptest-avdtp.Po
-#	$(AM_V_CC)source='android/avdtp.c' object='android/android_avdtptest-avdtp.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -c -o android/android_avdtptest-avdtp.o `test -f 'android/avdtp.c' || echo '$(srcdir)/'`android/avdtp.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -MT android/android_avdtptest-avdtp.o -MD -MP -MF android/$(DEPDIR)/android_avdtptest-avdtp.Tpo -c -o android/android_avdtptest-avdtp.o `test -f 'android/avdtp.c' || echo '$(srcdir)/'`android/avdtp.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_avdtptest-avdtp.Tpo android/$(DEPDIR)/android_avdtptest-avdtp.Po
+#	$(AM_V_CC)source='android/avdtp.c' object='android/android_avdtptest-avdtp.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -c -o android/android_avdtptest-avdtp.o `test -f 'android/avdtp.c' || echo '$(srcdir)/'`android/avdtp.c
 
 android/android_avdtptest-avdtp.obj: android/avdtp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -MT android/android_avdtptest-avdtp.obj -MD -MP -MF android/$(DEPDIR)/android_avdtptest-avdtp.Tpo -c -o android/android_avdtptest-avdtp.obj `if test -f 'android/avdtp.c'; then $(CYGPATH_W) 'android/avdtp.c'; else $(CYGPATH_W) '$(srcdir)/android/avdtp.c'; fi`
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_avdtptest-avdtp.Tpo android/$(DEPDIR)/android_avdtptest-avdtp.Po
-#	$(AM_V_CC)source='android/avdtp.c' object='android/android_avdtptest-avdtp.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -c -o android/android_avdtptest-avdtp.obj `if test -f 'android/avdtp.c'; then $(CYGPATH_W) 'android/avdtp.c'; else $(CYGPATH_W) '$(srcdir)/android/avdtp.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -MT android/android_avdtptest-avdtp.obj -MD -MP -MF android/$(DEPDIR)/android_avdtptest-avdtp.Tpo -c -o android/android_avdtptest-avdtp.obj `if test -f 'android/avdtp.c'; then $(CYGPATH_W) 'android/avdtp.c'; else $(CYGPATH_W) '$(srcdir)/android/avdtp.c'; fi`
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_avdtptest-avdtp.Tpo android/$(DEPDIR)/android_avdtptest-avdtp.Po
+#	$(AM_V_CC)source='android/avdtp.c' object='android/android_avdtptest-avdtp.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_avdtptest_CFLAGS) $(CFLAGS) -c -o android/android_avdtptest-avdtp.obj `if test -f 'android/avdtp.c'; then $(CYGPATH_W) 'android/avdtp.c'; else $(CYGPATH_W) '$(srcdir)/android/avdtp.c'; fi`
 
 android/client/android_haltest-haltest.o: android/client/haltest.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-haltest.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-haltest.Tpo -c -o android/client/android_haltest-haltest.o `test -f 'android/client/haltest.c' || echo '$(srcdir)/'`android/client/haltest.c
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-haltest.Tpo android/client/$(DEPDIR)/android_haltest-haltest.Po
-#	$(AM_V_CC)source='android/client/haltest.c' object='android/client/android_haltest-haltest.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-haltest.o `test -f 'android/client/haltest.c' || echo '$(srcdir)/'`android/client/haltest.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-haltest.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-haltest.Tpo -c -o android/client/android_haltest-haltest.o `test -f 'android/client/haltest.c' || echo '$(srcdir)/'`android/client/haltest.c
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-haltest.Tpo android/client/$(DEPDIR)/android_haltest-haltest.Po
+#	$(AM_V_CC)source='android/client/haltest.c' object='android/client/android_haltest-haltest.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-haltest.o `test -f 'android/client/haltest.c' || echo '$(srcdir)/'`android/client/haltest.c
 
 android/client/android_haltest-haltest.obj: android/client/haltest.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-haltest.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-haltest.Tpo -c -o android/client/android_haltest-haltest.obj `if test -f 'android/client/haltest.c'; then $(CYGPATH_W) 'android/client/haltest.c'; else $(CYGPATH_W) '$(srcdir)/android/client/haltest.c'; fi`
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-haltest.Tpo android/client/$(DEPDIR)/android_haltest-haltest.Po
-#	$(AM_V_CC)source='android/client/haltest.c' object='android/client/android_haltest-haltest.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-haltest.obj `if test -f 'android/client/haltest.c'; then $(CYGPATH_W) 'android/client/haltest.c'; else $(CYGPATH_W) '$(srcdir)/android/client/haltest.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-haltest.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-haltest.Tpo -c -o android/client/android_haltest-haltest.obj `if test -f 'android/client/haltest.c'; then $(CYGPATH_W) 'android/client/haltest.c'; else $(CYGPATH_W) '$(srcdir)/android/client/haltest.c'; fi`
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-haltest.Tpo android/client/$(DEPDIR)/android_haltest-haltest.Po
+#	$(AM_V_CC)source='android/client/haltest.c' object='android/client/android_haltest-haltest.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-haltest.obj `if test -f 'android/client/haltest.c'; then $(CYGPATH_W) 'android/client/haltest.c'; else $(CYGPATH_W) '$(srcdir)/android/client/haltest.c'; fi`
 
 android/client/android_haltest-pollhandler.o: android/client/pollhandler.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-pollhandler.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-pollhandler.Tpo -c -o android/client/android_haltest-pollhandler.o `test -f 'android/client/pollhandler.c' || echo '$(srcdir)/'`android/client/pollhandler.c
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-pollhandler.Tpo android/client/$(DEPDIR)/android_haltest-pollhandler.Po
-#	$(AM_V_CC)source='android/client/pollhandler.c' object='android/client/android_haltest-pollhandler.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-pollhandler.o `test -f 'android/client/pollhandler.c' || echo '$(srcdir)/'`android/client/pollhandler.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-pollhandler.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-pollhandler.Tpo -c -o android/client/android_haltest-pollhandler.o `test -f 'android/client/pollhandler.c' || echo '$(srcdir)/'`android/client/pollhandler.c
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-pollhandler.Tpo android/client/$(DEPDIR)/android_haltest-pollhandler.Po
+#	$(AM_V_CC)source='android/client/pollhandler.c' object='android/client/android_haltest-pollhandler.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-pollhandler.o `test -f 'android/client/pollhandler.c' || echo '$(srcdir)/'`android/client/pollhandler.c
 
 android/client/android_haltest-pollhandler.obj: android/client/pollhandler.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-pollhandler.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-pollhandler.Tpo -c -o android/client/android_haltest-pollhandler.obj `if test -f 'android/client/pollhandler.c'; then $(CYGPATH_W) 'android/client/pollhandler.c'; else $(CYGPATH_W) '$(srcdir)/android/client/pollhandler.c'; fi`
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-pollhandler.Tpo android/client/$(DEPDIR)/android_haltest-pollhandler.Po
-#	$(AM_V_CC)source='android/client/pollhandler.c' object='android/client/android_haltest-pollhandler.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-pollhandler.obj `if test -f 'android/client/pollhandler.c'; then $(CYGPATH_W) 'android/client/pollhandler.c'; else $(CYGPATH_W) '$(srcdir)/android/client/pollhandler.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-pollhandler.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-pollhandler.Tpo -c -o android/client/android_haltest-pollhandler.obj `if test -f 'android/client/pollhandler.c'; then $(CYGPATH_W) 'android/client/pollhandler.c'; else $(CYGPATH_W) '$(srcdir)/android/client/pollhandler.c'; fi`
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-pollhandler.Tpo android/client/$(DEPDIR)/android_haltest-pollhandler.Po
+#	$(AM_V_CC)source='android/client/pollhandler.c' object='android/client/android_haltest-pollhandler.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-pollhandler.obj `if test -f 'android/client/pollhandler.c'; then $(CYGPATH_W) 'android/client/pollhandler.c'; else $(CYGPATH_W) '$(srcdir)/android/client/pollhandler.c'; fi`
 
 android/client/android_haltest-terminal.o: android/client/terminal.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-terminal.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-terminal.Tpo -c -o android/client/android_haltest-terminal.o `test -f 'android/client/terminal.c' || echo '$(srcdir)/'`android/client/terminal.c
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-terminal.Tpo android/client/$(DEPDIR)/android_haltest-terminal.Po
-#	$(AM_V_CC)source='android/client/terminal.c' object='android/client/android_haltest-terminal.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-terminal.o `test -f 'android/client/terminal.c' || echo '$(srcdir)/'`android/client/terminal.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-terminal.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-terminal.Tpo -c -o android/client/android_haltest-terminal.o `test -f 'android/client/terminal.c' || echo '$(srcdir)/'`android/client/terminal.c
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-terminal.Tpo android/client/$(DEPDIR)/android_haltest-terminal.Po
+#	$(AM_V_CC)source='android/client/terminal.c' object='android/client/android_haltest-terminal.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-terminal.o `test -f 'android/client/terminal.c' || echo '$(srcdir)/'`android/client/terminal.c
 
 android/client/android_haltest-terminal.obj: android/client/terminal.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-terminal.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-terminal.Tpo -c -o android/client/android_haltest-terminal.obj `if test -f 'android/client/terminal.c'; then $(CYGPATH_W) 'android/client/terminal.c'; else $(CYGPATH_W) '$(srcdir)/android/client/terminal.c'; fi`
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-terminal.Tpo android/client/$(DEPDIR)/android_haltest-terminal.Po
-#	$(AM_V_CC)source='android/client/terminal.c' object='android/client/android_haltest-terminal.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-terminal.obj `if test -f 'android/client/terminal.c'; then $(CYGPATH_W) 'android/client/terminal.c'; else $(CYGPATH_W) '$(srcdir)/android/client/terminal.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-terminal.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-terminal.Tpo -c -o android/client/android_haltest-terminal.obj `if test -f 'android/client/terminal.c'; then $(CYGPATH_W) 'android/client/terminal.c'; else $(CYGPATH_W) '$(srcdir)/android/client/terminal.c'; fi`
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-terminal.Tpo android/client/$(DEPDIR)/android_haltest-terminal.Po
+#	$(AM_V_CC)source='android/client/terminal.c' object='android/client/android_haltest-terminal.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-terminal.obj `if test -f 'android/client/terminal.c'; then $(CYGPATH_W) 'android/client/terminal.c'; else $(CYGPATH_W) '$(srcdir)/android/client/terminal.c'; fi`
 
 android/client/android_haltest-history.o: android/client/history.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-history.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-history.Tpo -c -o android/client/android_haltest-history.o `test -f 'android/client/history.c' || echo '$(srcdir)/'`android/client/history.c
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-history.Tpo android/client/$(DEPDIR)/android_haltest-history.Po
-#	$(AM_V_CC)source='android/client/history.c' object='android/client/android_haltest-history.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-history.o `test -f 'android/client/history.c' || echo '$(srcdir)/'`android/client/history.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-history.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-history.Tpo -c -o android/client/android_haltest-history.o `test -f 'android/client/history.c' || echo '$(srcdir)/'`android/client/history.c
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-history.Tpo android/client/$(DEPDIR)/android_haltest-history.Po
+#	$(AM_V_CC)source='android/client/history.c' object='android/client/android_haltest-history.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-history.o `test -f 'android/client/history.c' || echo '$(srcdir)/'`android/client/history.c
 
 android/client/android_haltest-history.obj: android/client/history.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-history.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-history.Tpo -c -o android/client/android_haltest-history.obj `if test -f 'android/client/history.c'; then $(CYGPATH_W) 'android/client/history.c'; else $(CYGPATH_W) '$(srcdir)/android/client/history.c'; fi`
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-history.Tpo android/client/$(DEPDIR)/android_haltest-history.Po
-#	$(AM_V_CC)source='android/client/history.c' object='android/client/android_haltest-history.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-history.obj `if test -f 'android/client/history.c'; then $(CYGPATH_W) 'android/client/history.c'; else $(CYGPATH_W) '$(srcdir)/android/client/history.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-history.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-history.Tpo -c -o android/client/android_haltest-history.obj `if test -f 'android/client/history.c'; then $(CYGPATH_W) 'android/client/history.c'; else $(CYGPATH_W) '$(srcdir)/android/client/history.c'; fi`
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-history.Tpo android/client/$(DEPDIR)/android_haltest-history.Po
+#	$(AM_V_CC)source='android/client/history.c' object='android/client/android_haltest-history.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-history.obj `if test -f 'android/client/history.c'; then $(CYGPATH_W) 'android/client/history.c'; else $(CYGPATH_W) '$(srcdir)/android/client/history.c'; fi`
 
 android/client/android_haltest-tabcompletion.o: android/client/tabcompletion.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-tabcompletion.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-tabcompletion.Tpo -c -o android/client/android_haltest-tabcompletion.o `test -f 'android/client/tabcompletion.c' || echo '$(srcdir)/'`android/client/tabcompletion.c
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-tabcompletion.Tpo android/client/$(DEPDIR)/android_haltest-tabcompletion.Po
-#	$(AM_V_CC)source='android/client/tabcompletion.c' object='android/client/android_haltest-tabcompletion.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-tabcompletion.o `test -f 'android/client/tabcompletion.c' || echo '$(srcdir)/'`android/client/tabcompletion.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-tabcompletion.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-tabcompletion.Tpo -c -o android/client/android_haltest-tabcompletion.o `test -f 'android/client/tabcompletion.c' || echo '$(srcdir)/'`android/client/tabcompletion.c
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-tabcompletion.Tpo android/client/$(DEPDIR)/android_haltest-tabcompletion.Po
+#	$(AM_V_CC)source='android/client/tabcompletion.c' object='android/client/android_haltest-tabcompletion.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-tabcompletion.o `test -f 'android/client/tabcompletion.c' || echo '$(srcdir)/'`android/client/tabcompletion.c
 
 android/client/android_haltest-tabcompletion.obj: android/client/tabcompletion.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-tabcompletion.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-tabcompletion.Tpo -c -o android/client/android_haltest-tabcompletion.obj `if test -f 'android/client/tabcompletion.c'; then $(CYGPATH_W) 'android/client/tabcompletion.c'; else $(CYGPATH_W) '$(srcdir)/android/client/tabcompletion.c'; fi`
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-tabcompletion.Tpo android/client/$(DEPDIR)/android_haltest-tabcompletion.Po
-#	$(AM_V_CC)source='android/client/tabcompletion.c' object='android/client/android_haltest-tabcompletion.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-tabcompletion.obj `if test -f 'android/client/tabcompletion.c'; then $(CYGPATH_W) 'android/client/tabcompletion.c'; else $(CYGPATH_W) '$(srcdir)/android/client/tabcompletion.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-tabcompletion.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-tabcompletion.Tpo -c -o android/client/android_haltest-tabcompletion.obj `if test -f 'android/client/tabcompletion.c'; then $(CYGPATH_W) 'android/client/tabcompletion.c'; else $(CYGPATH_W) '$(srcdir)/android/client/tabcompletion.c'; fi`
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-tabcompletion.Tpo android/client/$(DEPDIR)/android_haltest-tabcompletion.Po
+#	$(AM_V_CC)source='android/client/tabcompletion.c' object='android/client/android_haltest-tabcompletion.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-tabcompletion.obj `if test -f 'android/client/tabcompletion.c'; then $(CYGPATH_W) 'android/client/tabcompletion.c'; else $(CYGPATH_W) '$(srcdir)/android/client/tabcompletion.c'; fi`
 
 android/client/android_haltest-if-av.o: android/client/if-av.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-av.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-av.Tpo -c -o android/client/android_haltest-if-av.o `test -f 'android/client/if-av.c' || echo '$(srcdir)/'`android/client/if-av.c
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-av.Tpo android/client/$(DEPDIR)/android_haltest-if-av.Po
-#	$(AM_V_CC)source='android/client/if-av.c' object='android/client/android_haltest-if-av.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-av.o `test -f 'android/client/if-av.c' || echo '$(srcdir)/'`android/client/if-av.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-av.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-av.Tpo -c -o android/client/android_haltest-if-av.o `test -f 'android/client/if-av.c' || echo '$(srcdir)/'`android/client/if-av.c
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-av.Tpo android/client/$(DEPDIR)/android_haltest-if-av.Po
+#	$(AM_V_CC)source='android/client/if-av.c' object='android/client/android_haltest-if-av.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-av.o `test -f 'android/client/if-av.c' || echo '$(srcdir)/'`android/client/if-av.c
 
 android/client/android_haltest-if-av.obj: android/client/if-av.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-av.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-av.Tpo -c -o android/client/android_haltest-if-av.obj `if test -f 'android/client/if-av.c'; then $(CYGPATH_W) 'android/client/if-av.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-av.c'; fi`
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-av.Tpo android/client/$(DEPDIR)/android_haltest-if-av.Po
-#	$(AM_V_CC)source='android/client/if-av.c' object='android/client/android_haltest-if-av.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-av.obj `if test -f 'android/client/if-av.c'; then $(CYGPATH_W) 'android/client/if-av.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-av.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-av.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-av.Tpo -c -o android/client/android_haltest-if-av.obj `if test -f 'android/client/if-av.c'; then $(CYGPATH_W) 'android/client/if-av.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-av.c'; fi`
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-av.Tpo android/client/$(DEPDIR)/android_haltest-if-av.Po
+#	$(AM_V_CC)source='android/client/if-av.c' object='android/client/android_haltest-if-av.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-av.obj `if test -f 'android/client/if-av.c'; then $(CYGPATH_W) 'android/client/if-av.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-av.c'; fi`
 
 android/client/android_haltest-if-av-sink.o: android/client/if-av-sink.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-av-sink.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-av-sink.Tpo -c -o android/client/android_haltest-if-av-sink.o `test -f 'android/client/if-av-sink.c' || echo '$(srcdir)/'`android/client/if-av-sink.c
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-av-sink.Tpo android/client/$(DEPDIR)/android_haltest-if-av-sink.Po
-#	$(AM_V_CC)source='android/client/if-av-sink.c' object='android/client/android_haltest-if-av-sink.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-av-sink.o `test -f 'android/client/if-av-sink.c' || echo '$(srcdir)/'`android/client/if-av-sink.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-av-sink.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-av-sink.Tpo -c -o android/client/android_haltest-if-av-sink.o `test -f 'android/client/if-av-sink.c' || echo '$(srcdir)/'`android/client/if-av-sink.c
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-av-sink.Tpo android/client/$(DEPDIR)/android_haltest-if-av-sink.Po
+#	$(AM_V_CC)source='android/client/if-av-sink.c' object='android/client/android_haltest-if-av-sink.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-av-sink.o `test -f 'android/client/if-av-sink.c' || echo '$(srcdir)/'`android/client/if-av-sink.c
 
 android/client/android_haltest-if-av-sink.obj: android/client/if-av-sink.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-av-sink.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-av-sink.Tpo -c -o android/client/android_haltest-if-av-sink.obj `if test -f 'android/client/if-av-sink.c'; then $(CYGPATH_W) 'android/client/if-av-sink.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-av-sink.c'; fi`
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-av-sink.Tpo android/client/$(DEPDIR)/android_haltest-if-av-sink.Po
-#	$(AM_V_CC)source='android/client/if-av-sink.c' object='android/client/android_haltest-if-av-sink.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-av-sink.obj `if test -f 'android/client/if-av-sink.c'; then $(CYGPATH_W) 'android/client/if-av-sink.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-av-sink.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-av-sink.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-av-sink.Tpo -c -o android/client/android_haltest-if-av-sink.obj `if test -f 'android/client/if-av-sink.c'; then $(CYGPATH_W) 'android/client/if-av-sink.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-av-sink.c'; fi`
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-av-sink.Tpo android/client/$(DEPDIR)/android_haltest-if-av-sink.Po
+#	$(AM_V_CC)source='android/client/if-av-sink.c' object='android/client/android_haltest-if-av-sink.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-av-sink.obj `if test -f 'android/client/if-av-sink.c'; then $(CYGPATH_W) 'android/client/if-av-sink.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-av-sink.c'; fi`
 
 android/client/android_haltest-if-rc.o: android/client/if-rc.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-rc.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-rc.Tpo -c -o android/client/android_haltest-if-rc.o `test -f 'android/client/if-rc.c' || echo '$(srcdir)/'`android/client/if-rc.c
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-rc.Tpo android/client/$(DEPDIR)/android_haltest-if-rc.Po
-#	$(AM_V_CC)source='android/client/if-rc.c' object='android/client/android_haltest-if-rc.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-rc.o `test -f 'android/client/if-rc.c' || echo '$(srcdir)/'`android/client/if-rc.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-rc.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-rc.Tpo -c -o android/client/android_haltest-if-rc.o `test -f 'android/client/if-rc.c' || echo '$(srcdir)/'`android/client/if-rc.c
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-rc.Tpo android/client/$(DEPDIR)/android_haltest-if-rc.Po
+#	$(AM_V_CC)source='android/client/if-rc.c' object='android/client/android_haltest-if-rc.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-rc.o `test -f 'android/client/if-rc.c' || echo '$(srcdir)/'`android/client/if-rc.c
 
 android/client/android_haltest-if-rc.obj: android/client/if-rc.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-rc.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-rc.Tpo -c -o android/client/android_haltest-if-rc.obj `if test -f 'android/client/if-rc.c'; then $(CYGPATH_W) 'android/client/if-rc.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-rc.c'; fi`
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-rc.Tpo android/client/$(DEPDIR)/android_haltest-if-rc.Po
-#	$(AM_V_CC)source='android/client/if-rc.c' object='android/client/android_haltest-if-rc.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-rc.obj `if test -f 'android/client/if-rc.c'; then $(CYGPATH_W) 'android/client/if-rc.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-rc.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-rc.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-rc.Tpo -c -o android/client/android_haltest-if-rc.obj `if test -f 'android/client/if-rc.c'; then $(CYGPATH_W) 'android/client/if-rc.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-rc.c'; fi`
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-rc.Tpo android/client/$(DEPDIR)/android_haltest-if-rc.Po
+#	$(AM_V_CC)source='android/client/if-rc.c' object='android/client/android_haltest-if-rc.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-rc.obj `if test -f 'android/client/if-rc.c'; then $(CYGPATH_W) 'android/client/if-rc.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-rc.c'; fi`
 
 android/client/android_haltest-if-rc-ctrl.o: android/client/if-rc-ctrl.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-rc-ctrl.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-rc-ctrl.Tpo -c -o android/client/android_haltest-if-rc-ctrl.o `test -f 'android/client/if-rc-ctrl.c' || echo '$(srcdir)/'`android/client/if-rc-ctrl.c
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-rc-ctrl.Tpo android/client/$(DEPDIR)/android_haltest-if-rc-ctrl.Po
-#	$(AM_V_CC)source='android/client/if-rc-ctrl.c' object='android/client/android_haltest-if-rc-ctrl.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-rc-ctrl.o `test -f 'android/client/if-rc-ctrl.c' || echo '$(srcdir)/'`android/client/if-rc-ctrl.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-rc-ctrl.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-rc-ctrl.Tpo -c -o android/client/android_haltest-if-rc-ctrl.o `test -f 'android/client/if-rc-ctrl.c' || echo '$(srcdir)/'`android/client/if-rc-ctrl.c
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-rc-ctrl.Tpo android/client/$(DEPDIR)/android_haltest-if-rc-ctrl.Po
+#	$(AM_V_CC)source='android/client/if-rc-ctrl.c' object='android/client/android_haltest-if-rc-ctrl.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-rc-ctrl.o `test -f 'android/client/if-rc-ctrl.c' || echo '$(srcdir)/'`android/client/if-rc-ctrl.c
 
 android/client/android_haltest-if-rc-ctrl.obj: android/client/if-rc-ctrl.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-rc-ctrl.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-rc-ctrl.Tpo -c -o android/client/android_haltest-if-rc-ctrl.obj `if test -f 'android/client/if-rc-ctrl.c'; then $(CYGPATH_W) 'android/client/if-rc-ctrl.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-rc-ctrl.c'; fi`
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-rc-ctrl.Tpo android/client/$(DEPDIR)/android_haltest-if-rc-ctrl.Po
-#	$(AM_V_CC)source='android/client/if-rc-ctrl.c' object='android/client/android_haltest-if-rc-ctrl.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-rc-ctrl.obj `if test -f 'android/client/if-rc-ctrl.c'; then $(CYGPATH_W) 'android/client/if-rc-ctrl.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-rc-ctrl.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-rc-ctrl.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-rc-ctrl.Tpo -c -o android/client/android_haltest-if-rc-ctrl.obj `if test -f 'android/client/if-rc-ctrl.c'; then $(CYGPATH_W) 'android/client/if-rc-ctrl.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-rc-ctrl.c'; fi`
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-rc-ctrl.Tpo android/client/$(DEPDIR)/android_haltest-if-rc-ctrl.Po
+#	$(AM_V_CC)source='android/client/if-rc-ctrl.c' object='android/client/android_haltest-if-rc-ctrl.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-rc-ctrl.obj `if test -f 'android/client/if-rc-ctrl.c'; then $(CYGPATH_W) 'android/client/if-rc-ctrl.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-rc-ctrl.c'; fi`
 
 android/client/android_haltest-if-bt.o: android/client/if-bt.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-bt.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-bt.Tpo -c -o android/client/android_haltest-if-bt.o `test -f 'android/client/if-bt.c' || echo '$(srcdir)/'`android/client/if-bt.c
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-bt.Tpo android/client/$(DEPDIR)/android_haltest-if-bt.Po
-#	$(AM_V_CC)source='android/client/if-bt.c' object='android/client/android_haltest-if-bt.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-bt.o `test -f 'android/client/if-bt.c' || echo '$(srcdir)/'`android/client/if-bt.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-bt.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-bt.Tpo -c -o android/client/android_haltest-if-bt.o `test -f 'android/client/if-bt.c' || echo '$(srcdir)/'`android/client/if-bt.c
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-bt.Tpo android/client/$(DEPDIR)/android_haltest-if-bt.Po
+#	$(AM_V_CC)source='android/client/if-bt.c' object='android/client/android_haltest-if-bt.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-bt.o `test -f 'android/client/if-bt.c' || echo '$(srcdir)/'`android/client/if-bt.c
 
 android/client/android_haltest-if-bt.obj: android/client/if-bt.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-bt.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-bt.Tpo -c -o android/client/android_haltest-if-bt.obj `if test -f 'android/client/if-bt.c'; then $(CYGPATH_W) 'android/client/if-bt.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-bt.c'; fi`
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-bt.Tpo android/client/$(DEPDIR)/android_haltest-if-bt.Po
-#	$(AM_V_CC)source='android/client/if-bt.c' object='android/client/android_haltest-if-bt.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-bt.obj `if test -f 'android/client/if-bt.c'; then $(CYGPATH_W) 'android/client/if-bt.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-bt.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-bt.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-bt.Tpo -c -o android/client/android_haltest-if-bt.obj `if test -f 'android/client/if-bt.c'; then $(CYGPATH_W) 'android/client/if-bt.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-bt.c'; fi`
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-bt.Tpo android/client/$(DEPDIR)/android_haltest-if-bt.Po
+#	$(AM_V_CC)source='android/client/if-bt.c' object='android/client/android_haltest-if-bt.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-bt.obj `if test -f 'android/client/if-bt.c'; then $(CYGPATH_W) 'android/client/if-bt.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-bt.c'; fi`
 
 android/client/android_haltest-if-gatt.o: android/client/if-gatt.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-gatt.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-gatt.Tpo -c -o android/client/android_haltest-if-gatt.o `test -f 'android/client/if-gatt.c' || echo '$(srcdir)/'`android/client/if-gatt.c
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-gatt.Tpo android/client/$(DEPDIR)/android_haltest-if-gatt.Po
-#	$(AM_V_CC)source='android/client/if-gatt.c' object='android/client/android_haltest-if-gatt.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-gatt.o `test -f 'android/client/if-gatt.c' || echo '$(srcdir)/'`android/client/if-gatt.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-gatt.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-gatt.Tpo -c -o android/client/android_haltest-if-gatt.o `test -f 'android/client/if-gatt.c' || echo '$(srcdir)/'`android/client/if-gatt.c
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-gatt.Tpo android/client/$(DEPDIR)/android_haltest-if-gatt.Po
+#	$(AM_V_CC)source='android/client/if-gatt.c' object='android/client/android_haltest-if-gatt.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-gatt.o `test -f 'android/client/if-gatt.c' || echo '$(srcdir)/'`android/client/if-gatt.c
 
 android/client/android_haltest-if-gatt.obj: android/client/if-gatt.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-gatt.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-gatt.Tpo -c -o android/client/android_haltest-if-gatt.obj `if test -f 'android/client/if-gatt.c'; then $(CYGPATH_W) 'android/client/if-gatt.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-gatt.c'; fi`
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-gatt.Tpo android/client/$(DEPDIR)/android_haltest-if-gatt.Po
-#	$(AM_V_CC)source='android/client/if-gatt.c' object='android/client/android_haltest-if-gatt.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-gatt.obj `if test -f 'android/client/if-gatt.c'; then $(CYGPATH_W) 'android/client/if-gatt.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-gatt.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-gatt.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-gatt.Tpo -c -o android/client/android_haltest-if-gatt.obj `if test -f 'android/client/if-gatt.c'; then $(CYGPATH_W) 'android/client/if-gatt.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-gatt.c'; fi`
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-gatt.Tpo android/client/$(DEPDIR)/android_haltest-if-gatt.Po
+#	$(AM_V_CC)source='android/client/if-gatt.c' object='android/client/android_haltest-if-gatt.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-gatt.obj `if test -f 'android/client/if-gatt.c'; then $(CYGPATH_W) 'android/client/if-gatt.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-gatt.c'; fi`
 
 android/client/android_haltest-if-hf.o: android/client/if-hf.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-hf.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-hf.Tpo -c -o android/client/android_haltest-if-hf.o `test -f 'android/client/if-hf.c' || echo '$(srcdir)/'`android/client/if-hf.c
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-hf.Tpo android/client/$(DEPDIR)/android_haltest-if-hf.Po
-#	$(AM_V_CC)source='android/client/if-hf.c' object='android/client/android_haltest-if-hf.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-hf.o `test -f 'android/client/if-hf.c' || echo '$(srcdir)/'`android/client/if-hf.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-hf.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-hf.Tpo -c -o android/client/android_haltest-if-hf.o `test -f 'android/client/if-hf.c' || echo '$(srcdir)/'`android/client/if-hf.c
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-hf.Tpo android/client/$(DEPDIR)/android_haltest-if-hf.Po
+#	$(AM_V_CC)source='android/client/if-hf.c' object='android/client/android_haltest-if-hf.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-hf.o `test -f 'android/client/if-hf.c' || echo '$(srcdir)/'`android/client/if-hf.c
 
 android/client/android_haltest-if-hf.obj: android/client/if-hf.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-hf.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-hf.Tpo -c -o android/client/android_haltest-if-hf.obj `if test -f 'android/client/if-hf.c'; then $(CYGPATH_W) 'android/client/if-hf.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-hf.c'; fi`
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-hf.Tpo android/client/$(DEPDIR)/android_haltest-if-hf.Po
-#	$(AM_V_CC)source='android/client/if-hf.c' object='android/client/android_haltest-if-hf.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-hf.obj `if test -f 'android/client/if-hf.c'; then $(CYGPATH_W) 'android/client/if-hf.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-hf.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-hf.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-hf.Tpo -c -o android/client/android_haltest-if-hf.obj `if test -f 'android/client/if-hf.c'; then $(CYGPATH_W) 'android/client/if-hf.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-hf.c'; fi`
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-hf.Tpo android/client/$(DEPDIR)/android_haltest-if-hf.Po
+#	$(AM_V_CC)source='android/client/if-hf.c' object='android/client/android_haltest-if-hf.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-hf.obj `if test -f 'android/client/if-hf.c'; then $(CYGPATH_W) 'android/client/if-hf.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-hf.c'; fi`
 
 android/client/android_haltest-if-hf-client.o: android/client/if-hf-client.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-hf-client.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-hf-client.Tpo -c -o android/client/android_haltest-if-hf-client.o `test -f 'android/client/if-hf-client.c' || echo '$(srcdir)/'`android/client/if-hf-client.c
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-hf-client.Tpo android/client/$(DEPDIR)/android_haltest-if-hf-client.Po
-#	$(AM_V_CC)source='android/client/if-hf-client.c' object='android/client/android_haltest-if-hf-client.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-hf-client.o `test -f 'android/client/if-hf-client.c' || echo '$(srcdir)/'`android/client/if-hf-client.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-hf-client.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-hf-client.Tpo -c -o android/client/android_haltest-if-hf-client.o `test -f 'android/client/if-hf-client.c' || echo '$(srcdir)/'`android/client/if-hf-client.c
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-hf-client.Tpo android/client/$(DEPDIR)/android_haltest-if-hf-client.Po
+#	$(AM_V_CC)source='android/client/if-hf-client.c' object='android/client/android_haltest-if-hf-client.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-hf-client.o `test -f 'android/client/if-hf-client.c' || echo '$(srcdir)/'`android/client/if-hf-client.c
 
 android/client/android_haltest-if-hf-client.obj: android/client/if-hf-client.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-hf-client.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-hf-client.Tpo -c -o android/client/android_haltest-if-hf-client.obj `if test -f 'android/client/if-hf-client.c'; then $(CYGPATH_W) 'android/client/if-hf-client.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-hf-client.c'; fi`
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-hf-client.Tpo android/client/$(DEPDIR)/android_haltest-if-hf-client.Po
-#	$(AM_V_CC)source='android/client/if-hf-client.c' object='android/client/android_haltest-if-hf-client.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-hf-client.obj `if test -f 'android/client/if-hf-client.c'; then $(CYGPATH_W) 'android/client/if-hf-client.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-hf-client.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-hf-client.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-hf-client.Tpo -c -o android/client/android_haltest-if-hf-client.obj `if test -f 'android/client/if-hf-client.c'; then $(CYGPATH_W) 'android/client/if-hf-client.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-hf-client.c'; fi`
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-hf-client.Tpo android/client/$(DEPDIR)/android_haltest-if-hf-client.Po
+#	$(AM_V_CC)source='android/client/if-hf-client.c' object='android/client/android_haltest-if-hf-client.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-hf-client.obj `if test -f 'android/client/if-hf-client.c'; then $(CYGPATH_W) 'android/client/if-hf-client.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-hf-client.c'; fi`
 
 android/client/android_haltest-if-hh.o: android/client/if-hh.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-hh.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-hh.Tpo -c -o android/client/android_haltest-if-hh.o `test -f 'android/client/if-hh.c' || echo '$(srcdir)/'`android/client/if-hh.c
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-hh.Tpo android/client/$(DEPDIR)/android_haltest-if-hh.Po
-#	$(AM_V_CC)source='android/client/if-hh.c' object='android/client/android_haltest-if-hh.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-hh.o `test -f 'android/client/if-hh.c' || echo '$(srcdir)/'`android/client/if-hh.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-hh.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-hh.Tpo -c -o android/client/android_haltest-if-hh.o `test -f 'android/client/if-hh.c' || echo '$(srcdir)/'`android/client/if-hh.c
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-hh.Tpo android/client/$(DEPDIR)/android_haltest-if-hh.Po
+#	$(AM_V_CC)source='android/client/if-hh.c' object='android/client/android_haltest-if-hh.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-hh.o `test -f 'android/client/if-hh.c' || echo '$(srcdir)/'`android/client/if-hh.c
 
 android/client/android_haltest-if-hh.obj: android/client/if-hh.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-hh.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-hh.Tpo -c -o android/client/android_haltest-if-hh.obj `if test -f 'android/client/if-hh.c'; then $(CYGPATH_W) 'android/client/if-hh.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-hh.c'; fi`
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-hh.Tpo android/client/$(DEPDIR)/android_haltest-if-hh.Po
-#	$(AM_V_CC)source='android/client/if-hh.c' object='android/client/android_haltest-if-hh.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-hh.obj `if test -f 'android/client/if-hh.c'; then $(CYGPATH_W) 'android/client/if-hh.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-hh.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-hh.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-hh.Tpo -c -o android/client/android_haltest-if-hh.obj `if test -f 'android/client/if-hh.c'; then $(CYGPATH_W) 'android/client/if-hh.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-hh.c'; fi`
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-hh.Tpo android/client/$(DEPDIR)/android_haltest-if-hh.Po
+#	$(AM_V_CC)source='android/client/if-hh.c' object='android/client/android_haltest-if-hh.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-hh.obj `if test -f 'android/client/if-hh.c'; then $(CYGPATH_W) 'android/client/if-hh.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-hh.c'; fi`
 
 android/client/android_haltest-if-pan.o: android/client/if-pan.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-pan.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-pan.Tpo -c -o android/client/android_haltest-if-pan.o `test -f 'android/client/if-pan.c' || echo '$(srcdir)/'`android/client/if-pan.c
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-pan.Tpo android/client/$(DEPDIR)/android_haltest-if-pan.Po
-#	$(AM_V_CC)source='android/client/if-pan.c' object='android/client/android_haltest-if-pan.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-pan.o `test -f 'android/client/if-pan.c' || echo '$(srcdir)/'`android/client/if-pan.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-pan.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-pan.Tpo -c -o android/client/android_haltest-if-pan.o `test -f 'android/client/if-pan.c' || echo '$(srcdir)/'`android/client/if-pan.c
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-pan.Tpo android/client/$(DEPDIR)/android_haltest-if-pan.Po
+#	$(AM_V_CC)source='android/client/if-pan.c' object='android/client/android_haltest-if-pan.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-pan.o `test -f 'android/client/if-pan.c' || echo '$(srcdir)/'`android/client/if-pan.c
 
 android/client/android_haltest-if-pan.obj: android/client/if-pan.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-pan.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-pan.Tpo -c -o android/client/android_haltest-if-pan.obj `if test -f 'android/client/if-pan.c'; then $(CYGPATH_W) 'android/client/if-pan.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-pan.c'; fi`
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-pan.Tpo android/client/$(DEPDIR)/android_haltest-if-pan.Po
-#	$(AM_V_CC)source='android/client/if-pan.c' object='android/client/android_haltest-if-pan.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-pan.obj `if test -f 'android/client/if-pan.c'; then $(CYGPATH_W) 'android/client/if-pan.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-pan.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-pan.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-pan.Tpo -c -o android/client/android_haltest-if-pan.obj `if test -f 'android/client/if-pan.c'; then $(CYGPATH_W) 'android/client/if-pan.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-pan.c'; fi`
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-pan.Tpo android/client/$(DEPDIR)/android_haltest-if-pan.Po
+#	$(AM_V_CC)source='android/client/if-pan.c' object='android/client/android_haltest-if-pan.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-pan.obj `if test -f 'android/client/if-pan.c'; then $(CYGPATH_W) 'android/client/if-pan.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-pan.c'; fi`
 
 android/client/android_haltest-if-hl.o: android/client/if-hl.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-hl.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-hl.Tpo -c -o android/client/android_haltest-if-hl.o `test -f 'android/client/if-hl.c' || echo '$(srcdir)/'`android/client/if-hl.c
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-hl.Tpo android/client/$(DEPDIR)/android_haltest-if-hl.Po
-#	$(AM_V_CC)source='android/client/if-hl.c' object='android/client/android_haltest-if-hl.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-hl.o `test -f 'android/client/if-hl.c' || echo '$(srcdir)/'`android/client/if-hl.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-hl.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-hl.Tpo -c -o android/client/android_haltest-if-hl.o `test -f 'android/client/if-hl.c' || echo '$(srcdir)/'`android/client/if-hl.c
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-hl.Tpo android/client/$(DEPDIR)/android_haltest-if-hl.Po
+#	$(AM_V_CC)source='android/client/if-hl.c' object='android/client/android_haltest-if-hl.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-hl.o `test -f 'android/client/if-hl.c' || echo '$(srcdir)/'`android/client/if-hl.c
 
 android/client/android_haltest-if-hl.obj: android/client/if-hl.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-hl.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-hl.Tpo -c -o android/client/android_haltest-if-hl.obj `if test -f 'android/client/if-hl.c'; then $(CYGPATH_W) 'android/client/if-hl.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-hl.c'; fi`
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-hl.Tpo android/client/$(DEPDIR)/android_haltest-if-hl.Po
-#	$(AM_V_CC)source='android/client/if-hl.c' object='android/client/android_haltest-if-hl.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-hl.obj `if test -f 'android/client/if-hl.c'; then $(CYGPATH_W) 'android/client/if-hl.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-hl.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-hl.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-hl.Tpo -c -o android/client/android_haltest-if-hl.obj `if test -f 'android/client/if-hl.c'; then $(CYGPATH_W) 'android/client/if-hl.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-hl.c'; fi`
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-hl.Tpo android/client/$(DEPDIR)/android_haltest-if-hl.Po
+#	$(AM_V_CC)source='android/client/if-hl.c' object='android/client/android_haltest-if-hl.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-hl.obj `if test -f 'android/client/if-hl.c'; then $(CYGPATH_W) 'android/client/if-hl.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-hl.c'; fi`
 
 android/client/android_haltest-if-sock.o: android/client/if-sock.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-sock.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-sock.Tpo -c -o android/client/android_haltest-if-sock.o `test -f 'android/client/if-sock.c' || echo '$(srcdir)/'`android/client/if-sock.c
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-sock.Tpo android/client/$(DEPDIR)/android_haltest-if-sock.Po
-#	$(AM_V_CC)source='android/client/if-sock.c' object='android/client/android_haltest-if-sock.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-sock.o `test -f 'android/client/if-sock.c' || echo '$(srcdir)/'`android/client/if-sock.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-sock.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-sock.Tpo -c -o android/client/android_haltest-if-sock.o `test -f 'android/client/if-sock.c' || echo '$(srcdir)/'`android/client/if-sock.c
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-sock.Tpo android/client/$(DEPDIR)/android_haltest-if-sock.Po
+#	$(AM_V_CC)source='android/client/if-sock.c' object='android/client/android_haltest-if-sock.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-sock.o `test -f 'android/client/if-sock.c' || echo '$(srcdir)/'`android/client/if-sock.c
 
 android/client/android_haltest-if-sock.obj: android/client/if-sock.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-sock.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-sock.Tpo -c -o android/client/android_haltest-if-sock.obj `if test -f 'android/client/if-sock.c'; then $(CYGPATH_W) 'android/client/if-sock.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-sock.c'; fi`
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-sock.Tpo android/client/$(DEPDIR)/android_haltest-if-sock.Po
-#	$(AM_V_CC)source='android/client/if-sock.c' object='android/client/android_haltest-if-sock.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-sock.obj `if test -f 'android/client/if-sock.c'; then $(CYGPATH_W) 'android/client/if-sock.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-sock.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-sock.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-sock.Tpo -c -o android/client/android_haltest-if-sock.obj `if test -f 'android/client/if-sock.c'; then $(CYGPATH_W) 'android/client/if-sock.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-sock.c'; fi`
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-sock.Tpo android/client/$(DEPDIR)/android_haltest-if-sock.Po
+#	$(AM_V_CC)source='android/client/if-sock.c' object='android/client/android_haltest-if-sock.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-sock.obj `if test -f 'android/client/if-sock.c'; then $(CYGPATH_W) 'android/client/if-sock.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-sock.c'; fi`
 
 android/client/android_haltest-if-audio.o: android/client/if-audio.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-audio.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-audio.Tpo -c -o android/client/android_haltest-if-audio.o `test -f 'android/client/if-audio.c' || echo '$(srcdir)/'`android/client/if-audio.c
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-audio.Tpo android/client/$(DEPDIR)/android_haltest-if-audio.Po
-#	$(AM_V_CC)source='android/client/if-audio.c' object='android/client/android_haltest-if-audio.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-audio.o `test -f 'android/client/if-audio.c' || echo '$(srcdir)/'`android/client/if-audio.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-audio.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-audio.Tpo -c -o android/client/android_haltest-if-audio.o `test -f 'android/client/if-audio.c' || echo '$(srcdir)/'`android/client/if-audio.c
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-audio.Tpo android/client/$(DEPDIR)/android_haltest-if-audio.Po
+#	$(AM_V_CC)source='android/client/if-audio.c' object='android/client/android_haltest-if-audio.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-audio.o `test -f 'android/client/if-audio.c' || echo '$(srcdir)/'`android/client/if-audio.c
 
 android/client/android_haltest-if-audio.obj: android/client/if-audio.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-audio.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-audio.Tpo -c -o android/client/android_haltest-if-audio.obj `if test -f 'android/client/if-audio.c'; then $(CYGPATH_W) 'android/client/if-audio.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-audio.c'; fi`
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-audio.Tpo android/client/$(DEPDIR)/android_haltest-if-audio.Po
-#	$(AM_V_CC)source='android/client/if-audio.c' object='android/client/android_haltest-if-audio.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-audio.obj `if test -f 'android/client/if-audio.c'; then $(CYGPATH_W) 'android/client/if-audio.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-audio.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-audio.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-audio.Tpo -c -o android/client/android_haltest-if-audio.obj `if test -f 'android/client/if-audio.c'; then $(CYGPATH_W) 'android/client/if-audio.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-audio.c'; fi`
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-audio.Tpo android/client/$(DEPDIR)/android_haltest-if-audio.Po
+#	$(AM_V_CC)source='android/client/if-audio.c' object='android/client/android_haltest-if-audio.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-audio.obj `if test -f 'android/client/if-audio.c'; then $(CYGPATH_W) 'android/client/if-audio.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-audio.c'; fi`
 
 android/client/android_haltest-if-sco.o: android/client/if-sco.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-sco.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-sco.Tpo -c -o android/client/android_haltest-if-sco.o `test -f 'android/client/if-sco.c' || echo '$(srcdir)/'`android/client/if-sco.c
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-sco.Tpo android/client/$(DEPDIR)/android_haltest-if-sco.Po
-#	$(AM_V_CC)source='android/client/if-sco.c' object='android/client/android_haltest-if-sco.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-sco.o `test -f 'android/client/if-sco.c' || echo '$(srcdir)/'`android/client/if-sco.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-sco.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-sco.Tpo -c -o android/client/android_haltest-if-sco.o `test -f 'android/client/if-sco.c' || echo '$(srcdir)/'`android/client/if-sco.c
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-sco.Tpo android/client/$(DEPDIR)/android_haltest-if-sco.Po
+#	$(AM_V_CC)source='android/client/if-sco.c' object='android/client/android_haltest-if-sco.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-sco.o `test -f 'android/client/if-sco.c' || echo '$(srcdir)/'`android/client/if-sco.c
 
 android/client/android_haltest-if-sco.obj: android/client/if-sco.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-sco.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-sco.Tpo -c -o android/client/android_haltest-if-sco.obj `if test -f 'android/client/if-sco.c'; then $(CYGPATH_W) 'android/client/if-sco.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-sco.c'; fi`
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-sco.Tpo android/client/$(DEPDIR)/android_haltest-if-sco.Po
-#	$(AM_V_CC)source='android/client/if-sco.c' object='android/client/android_haltest-if-sco.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-sco.obj `if test -f 'android/client/if-sco.c'; then $(CYGPATH_W) 'android/client/if-sco.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-sco.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-sco.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-sco.Tpo -c -o android/client/android_haltest-if-sco.obj `if test -f 'android/client/if-sco.c'; then $(CYGPATH_W) 'android/client/if-sco.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-sco.c'; fi`
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-sco.Tpo android/client/$(DEPDIR)/android_haltest-if-sco.Po
+#	$(AM_V_CC)source='android/client/if-sco.c' object='android/client/android_haltest-if-sco.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-sco.obj `if test -f 'android/client/if-sco.c'; then $(CYGPATH_W) 'android/client/if-sco.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-sco.c'; fi`
 
 android/client/android_haltest-if-mce.o: android/client/if-mce.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-mce.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-mce.Tpo -c -o android/client/android_haltest-if-mce.o `test -f 'android/client/if-mce.c' || echo '$(srcdir)/'`android/client/if-mce.c
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-mce.Tpo android/client/$(DEPDIR)/android_haltest-if-mce.Po
-#	$(AM_V_CC)source='android/client/if-mce.c' object='android/client/android_haltest-if-mce.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-mce.o `test -f 'android/client/if-mce.c' || echo '$(srcdir)/'`android/client/if-mce.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-mce.o -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-mce.Tpo -c -o android/client/android_haltest-if-mce.o `test -f 'android/client/if-mce.c' || echo '$(srcdir)/'`android/client/if-mce.c
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-mce.Tpo android/client/$(DEPDIR)/android_haltest-if-mce.Po
+#	$(AM_V_CC)source='android/client/if-mce.c' object='android/client/android_haltest-if-mce.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-mce.o `test -f 'android/client/if-mce.c' || echo '$(srcdir)/'`android/client/if-mce.c
 
 android/client/android_haltest-if-mce.obj: android/client/if-mce.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-mce.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-mce.Tpo -c -o android/client/android_haltest-if-mce.obj `if test -f 'android/client/if-mce.c'; then $(CYGPATH_W) 'android/client/if-mce.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-mce.c'; fi`
-	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-mce.Tpo android/client/$(DEPDIR)/android_haltest-if-mce.Po
-#	$(AM_V_CC)source='android/client/if-mce.c' object='android/client/android_haltest-if-mce.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-mce.obj `if test -f 'android/client/if-mce.c'; then $(CYGPATH_W) 'android/client/if-mce.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-mce.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/client/android_haltest-if-mce.obj -MD -MP -MF android/client/$(DEPDIR)/android_haltest-if-mce.Tpo -c -o android/client/android_haltest-if-mce.obj `if test -f 'android/client/if-mce.c'; then $(CYGPATH_W) 'android/client/if-mce.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-mce.c'; fi`
+#	$(AM_V_at)$(am__mv) android/client/$(DEPDIR)/android_haltest-if-mce.Tpo android/client/$(DEPDIR)/android_haltest-if-mce.Po
+#	$(AM_V_CC)source='android/client/if-mce.c' object='android/client/android_haltest-if-mce.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/client/android_haltest-if-mce.obj `if test -f 'android/client/if-mce.c'; then $(CYGPATH_W) 'android/client/if-mce.c'; else $(CYGPATH_W) '$(srcdir)/android/client/if-mce.c'; fi`
 
 android/hardware/android_haltest-hardware.o: android/hardware/hardware.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/hardware/android_haltest-hardware.o -MD -MP -MF android/hardware/$(DEPDIR)/android_haltest-hardware.Tpo -c -o android/hardware/android_haltest-hardware.o `test -f 'android/hardware/hardware.c' || echo '$(srcdir)/'`android/hardware/hardware.c
-	$(AM_V_at)$(am__mv) android/hardware/$(DEPDIR)/android_haltest-hardware.Tpo android/hardware/$(DEPDIR)/android_haltest-hardware.Po
-#	$(AM_V_CC)source='android/hardware/hardware.c' object='android/hardware/android_haltest-hardware.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/hardware/android_haltest-hardware.o `test -f 'android/hardware/hardware.c' || echo '$(srcdir)/'`android/hardware/hardware.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/hardware/android_haltest-hardware.o -MD -MP -MF android/hardware/$(DEPDIR)/android_haltest-hardware.Tpo -c -o android/hardware/android_haltest-hardware.o `test -f 'android/hardware/hardware.c' || echo '$(srcdir)/'`android/hardware/hardware.c
+#	$(AM_V_at)$(am__mv) android/hardware/$(DEPDIR)/android_haltest-hardware.Tpo android/hardware/$(DEPDIR)/android_haltest-hardware.Po
+#	$(AM_V_CC)source='android/hardware/hardware.c' object='android/hardware/android_haltest-hardware.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/hardware/android_haltest-hardware.o `test -f 'android/hardware/hardware.c' || echo '$(srcdir)/'`android/hardware/hardware.c
 
 android/hardware/android_haltest-hardware.obj: android/hardware/hardware.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/hardware/android_haltest-hardware.obj -MD -MP -MF android/hardware/$(DEPDIR)/android_haltest-hardware.Tpo -c -o android/hardware/android_haltest-hardware.obj `if test -f 'android/hardware/hardware.c'; then $(CYGPATH_W) 'android/hardware/hardware.c'; else $(CYGPATH_W) '$(srcdir)/android/hardware/hardware.c'; fi`
-	$(AM_V_at)$(am__mv) android/hardware/$(DEPDIR)/android_haltest-hardware.Tpo android/hardware/$(DEPDIR)/android_haltest-hardware.Po
-#	$(AM_V_CC)source='android/hardware/hardware.c' object='android/hardware/android_haltest-hardware.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/hardware/android_haltest-hardware.obj `if test -f 'android/hardware/hardware.c'; then $(CYGPATH_W) 'android/hardware/hardware.c'; else $(CYGPATH_W) '$(srcdir)/android/hardware/hardware.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/hardware/android_haltest-hardware.obj -MD -MP -MF android/hardware/$(DEPDIR)/android_haltest-hardware.Tpo -c -o android/hardware/android_haltest-hardware.obj `if test -f 'android/hardware/hardware.c'; then $(CYGPATH_W) 'android/hardware/hardware.c'; else $(CYGPATH_W) '$(srcdir)/android/hardware/hardware.c'; fi`
+#	$(AM_V_at)$(am__mv) android/hardware/$(DEPDIR)/android_haltest-hardware.Tpo android/hardware/$(DEPDIR)/android_haltest-hardware.Po
+#	$(AM_V_CC)source='android/hardware/hardware.c' object='android/hardware/android_haltest-hardware.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/hardware/android_haltest-hardware.obj `if test -f 'android/hardware/hardware.c'; then $(CYGPATH_W) 'android/hardware/hardware.c'; else $(CYGPATH_W) '$(srcdir)/android/hardware/hardware.c'; fi`
 
 android/android_haltest-hal-utils.o: android/hal-utils.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/android_haltest-hal-utils.o -MD -MP -MF android/$(DEPDIR)/android_haltest-hal-utils.Tpo -c -o android/android_haltest-hal-utils.o `test -f 'android/hal-utils.c' || echo '$(srcdir)/'`android/hal-utils.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_haltest-hal-utils.Tpo android/$(DEPDIR)/android_haltest-hal-utils.Po
-#	$(AM_V_CC)source='android/hal-utils.c' object='android/android_haltest-hal-utils.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/android_haltest-hal-utils.o `test -f 'android/hal-utils.c' || echo '$(srcdir)/'`android/hal-utils.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/android_haltest-hal-utils.o -MD -MP -MF android/$(DEPDIR)/android_haltest-hal-utils.Tpo -c -o android/android_haltest-hal-utils.o `test -f 'android/hal-utils.c' || echo '$(srcdir)/'`android/hal-utils.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_haltest-hal-utils.Tpo android/$(DEPDIR)/android_haltest-hal-utils.Po
+#	$(AM_V_CC)source='android/hal-utils.c' object='android/android_haltest-hal-utils.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/android_haltest-hal-utils.o `test -f 'android/hal-utils.c' || echo '$(srcdir)/'`android/hal-utils.c
 
 android/android_haltest-hal-utils.obj: android/hal-utils.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/android_haltest-hal-utils.obj -MD -MP -MF android/$(DEPDIR)/android_haltest-hal-utils.Tpo -c -o android/android_haltest-hal-utils.obj `if test -f 'android/hal-utils.c'; then $(CYGPATH_W) 'android/hal-utils.c'; else $(CYGPATH_W) '$(srcdir)/android/hal-utils.c'; fi`
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_haltest-hal-utils.Tpo android/$(DEPDIR)/android_haltest-hal-utils.Po
-#	$(AM_V_CC)source='android/hal-utils.c' object='android/android_haltest-hal-utils.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/android_haltest-hal-utils.obj `if test -f 'android/hal-utils.c'; then $(CYGPATH_W) 'android/hal-utils.c'; else $(CYGPATH_W) '$(srcdir)/android/hal-utils.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -MT android/android_haltest-hal-utils.obj -MD -MP -MF android/$(DEPDIR)/android_haltest-hal-utils.Tpo -c -o android/android_haltest-hal-utils.obj `if test -f 'android/hal-utils.c'; then $(CYGPATH_W) 'android/hal-utils.c'; else $(CYGPATH_W) '$(srcdir)/android/hal-utils.c'; fi`
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_haltest-hal-utils.Tpo android/$(DEPDIR)/android_haltest-hal-utils.Po
+#	$(AM_V_CC)source='android/hal-utils.c' object='android/android_haltest-hal-utils.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_haltest_CFLAGS) $(CFLAGS) -c -o android/android_haltest-hal-utils.obj `if test -f 'android/hal-utils.c'; then $(CYGPATH_W) 'android/hal-utils.c'; else $(CYGPATH_W) '$(srcdir)/android/hal-utils.c'; fi`
 
 emulator/android_ipc_tester-hciemu.o: emulator/hciemu.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -MT emulator/android_ipc_tester-hciemu.o -MD -MP -MF emulator/$(DEPDIR)/android_ipc_tester-hciemu.Tpo -c -o emulator/android_ipc_tester-hciemu.o `test -f 'emulator/hciemu.c' || echo '$(srcdir)/'`emulator/hciemu.c
-	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_ipc_tester-hciemu.Tpo emulator/$(DEPDIR)/android_ipc_tester-hciemu.Po
-#	$(AM_V_CC)source='emulator/hciemu.c' object='emulator/android_ipc_tester-hciemu.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_ipc_tester-hciemu.o `test -f 'emulator/hciemu.c' || echo '$(srcdir)/'`emulator/hciemu.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -MT emulator/android_ipc_tester-hciemu.o -MD -MP -MF emulator/$(DEPDIR)/android_ipc_tester-hciemu.Tpo -c -o emulator/android_ipc_tester-hciemu.o `test -f 'emulator/hciemu.c' || echo '$(srcdir)/'`emulator/hciemu.c
+#	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_ipc_tester-hciemu.Tpo emulator/$(DEPDIR)/android_ipc_tester-hciemu.Po
+#	$(AM_V_CC)source='emulator/hciemu.c' object='emulator/android_ipc_tester-hciemu.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_ipc_tester-hciemu.o `test -f 'emulator/hciemu.c' || echo '$(srcdir)/'`emulator/hciemu.c
 
 emulator/android_ipc_tester-hciemu.obj: emulator/hciemu.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -MT emulator/android_ipc_tester-hciemu.obj -MD -MP -MF emulator/$(DEPDIR)/android_ipc_tester-hciemu.Tpo -c -o emulator/android_ipc_tester-hciemu.obj `if test -f 'emulator/hciemu.c'; then $(CYGPATH_W) 'emulator/hciemu.c'; else $(CYGPATH_W) '$(srcdir)/emulator/hciemu.c'; fi`
-	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_ipc_tester-hciemu.Tpo emulator/$(DEPDIR)/android_ipc_tester-hciemu.Po
-#	$(AM_V_CC)source='emulator/hciemu.c' object='emulator/android_ipc_tester-hciemu.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_ipc_tester-hciemu.obj `if test -f 'emulator/hciemu.c'; then $(CYGPATH_W) 'emulator/hciemu.c'; else $(CYGPATH_W) '$(srcdir)/emulator/hciemu.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -MT emulator/android_ipc_tester-hciemu.obj -MD -MP -MF emulator/$(DEPDIR)/android_ipc_tester-hciemu.Tpo -c -o emulator/android_ipc_tester-hciemu.obj `if test -f 'emulator/hciemu.c'; then $(CYGPATH_W) 'emulator/hciemu.c'; else $(CYGPATH_W) '$(srcdir)/emulator/hciemu.c'; fi`
+#	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_ipc_tester-hciemu.Tpo emulator/$(DEPDIR)/android_ipc_tester-hciemu.Po
+#	$(AM_V_CC)source='emulator/hciemu.c' object='emulator/android_ipc_tester-hciemu.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_ipc_tester-hciemu.obj `if test -f 'emulator/hciemu.c'; then $(CYGPATH_W) 'emulator/hciemu.c'; else $(CYGPATH_W) '$(srcdir)/emulator/hciemu.c'; fi`
 
 emulator/android_ipc_tester-btdev.o: emulator/btdev.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -MT emulator/android_ipc_tester-btdev.o -MD -MP -MF emulator/$(DEPDIR)/android_ipc_tester-btdev.Tpo -c -o emulator/android_ipc_tester-btdev.o `test -f 'emulator/btdev.c' || echo '$(srcdir)/'`emulator/btdev.c
-	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_ipc_tester-btdev.Tpo emulator/$(DEPDIR)/android_ipc_tester-btdev.Po
-#	$(AM_V_CC)source='emulator/btdev.c' object='emulator/android_ipc_tester-btdev.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_ipc_tester-btdev.o `test -f 'emulator/btdev.c' || echo '$(srcdir)/'`emulator/btdev.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -MT emulator/android_ipc_tester-btdev.o -MD -MP -MF emulator/$(DEPDIR)/android_ipc_tester-btdev.Tpo -c -o emulator/android_ipc_tester-btdev.o `test -f 'emulator/btdev.c' || echo '$(srcdir)/'`emulator/btdev.c
+#	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_ipc_tester-btdev.Tpo emulator/$(DEPDIR)/android_ipc_tester-btdev.Po
+#	$(AM_V_CC)source='emulator/btdev.c' object='emulator/android_ipc_tester-btdev.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_ipc_tester-btdev.o `test -f 'emulator/btdev.c' || echo '$(srcdir)/'`emulator/btdev.c
 
 emulator/android_ipc_tester-btdev.obj: emulator/btdev.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -MT emulator/android_ipc_tester-btdev.obj -MD -MP -MF emulator/$(DEPDIR)/android_ipc_tester-btdev.Tpo -c -o emulator/android_ipc_tester-btdev.obj `if test -f 'emulator/btdev.c'; then $(CYGPATH_W) 'emulator/btdev.c'; else $(CYGPATH_W) '$(srcdir)/emulator/btdev.c'; fi`
-	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_ipc_tester-btdev.Tpo emulator/$(DEPDIR)/android_ipc_tester-btdev.Po
-#	$(AM_V_CC)source='emulator/btdev.c' object='emulator/android_ipc_tester-btdev.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_ipc_tester-btdev.obj `if test -f 'emulator/btdev.c'; then $(CYGPATH_W) 'emulator/btdev.c'; else $(CYGPATH_W) '$(srcdir)/emulator/btdev.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -MT emulator/android_ipc_tester-btdev.obj -MD -MP -MF emulator/$(DEPDIR)/android_ipc_tester-btdev.Tpo -c -o emulator/android_ipc_tester-btdev.obj `if test -f 'emulator/btdev.c'; then $(CYGPATH_W) 'emulator/btdev.c'; else $(CYGPATH_W) '$(srcdir)/emulator/btdev.c'; fi`
+#	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_ipc_tester-btdev.Tpo emulator/$(DEPDIR)/android_ipc_tester-btdev.Po
+#	$(AM_V_CC)source='emulator/btdev.c' object='emulator/android_ipc_tester-btdev.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_ipc_tester-btdev.obj `if test -f 'emulator/btdev.c'; then $(CYGPATH_W) 'emulator/btdev.c'; else $(CYGPATH_W) '$(srcdir)/emulator/btdev.c'; fi`
 
 emulator/android_ipc_tester-bthost.o: emulator/bthost.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -MT emulator/android_ipc_tester-bthost.o -MD -MP -MF emulator/$(DEPDIR)/android_ipc_tester-bthost.Tpo -c -o emulator/android_ipc_tester-bthost.o `test -f 'emulator/bthost.c' || echo '$(srcdir)/'`emulator/bthost.c
-	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_ipc_tester-bthost.Tpo emulator/$(DEPDIR)/android_ipc_tester-bthost.Po
-#	$(AM_V_CC)source='emulator/bthost.c' object='emulator/android_ipc_tester-bthost.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_ipc_tester-bthost.o `test -f 'emulator/bthost.c' || echo '$(srcdir)/'`emulator/bthost.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -MT emulator/android_ipc_tester-bthost.o -MD -MP -MF emulator/$(DEPDIR)/android_ipc_tester-bthost.Tpo -c -o emulator/android_ipc_tester-bthost.o `test -f 'emulator/bthost.c' || echo '$(srcdir)/'`emulator/bthost.c
+#	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_ipc_tester-bthost.Tpo emulator/$(DEPDIR)/android_ipc_tester-bthost.Po
+#	$(AM_V_CC)source='emulator/bthost.c' object='emulator/android_ipc_tester-bthost.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_ipc_tester-bthost.o `test -f 'emulator/bthost.c' || echo '$(srcdir)/'`emulator/bthost.c
 
 emulator/android_ipc_tester-bthost.obj: emulator/bthost.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -MT emulator/android_ipc_tester-bthost.obj -MD -MP -MF emulator/$(DEPDIR)/android_ipc_tester-bthost.Tpo -c -o emulator/android_ipc_tester-bthost.obj `if test -f 'emulator/bthost.c'; then $(CYGPATH_W) 'emulator/bthost.c'; else $(CYGPATH_W) '$(srcdir)/emulator/bthost.c'; fi`
-	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_ipc_tester-bthost.Tpo emulator/$(DEPDIR)/android_ipc_tester-bthost.Po
-#	$(AM_V_CC)source='emulator/bthost.c' object='emulator/android_ipc_tester-bthost.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_ipc_tester-bthost.obj `if test -f 'emulator/bthost.c'; then $(CYGPATH_W) 'emulator/bthost.c'; else $(CYGPATH_W) '$(srcdir)/emulator/bthost.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -MT emulator/android_ipc_tester-bthost.obj -MD -MP -MF emulator/$(DEPDIR)/android_ipc_tester-bthost.Tpo -c -o emulator/android_ipc_tester-bthost.obj `if test -f 'emulator/bthost.c'; then $(CYGPATH_W) 'emulator/bthost.c'; else $(CYGPATH_W) '$(srcdir)/emulator/bthost.c'; fi`
+#	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_ipc_tester-bthost.Tpo emulator/$(DEPDIR)/android_ipc_tester-bthost.Po
+#	$(AM_V_CC)source='emulator/bthost.c' object='emulator/android_ipc_tester-bthost.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_ipc_tester-bthost.obj `if test -f 'emulator/bthost.c'; then $(CYGPATH_W) 'emulator/bthost.c'; else $(CYGPATH_W) '$(srcdir)/emulator/bthost.c'; fi`
 
 emulator/android_ipc_tester-smp.o: emulator/smp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -MT emulator/android_ipc_tester-smp.o -MD -MP -MF emulator/$(DEPDIR)/android_ipc_tester-smp.Tpo -c -o emulator/android_ipc_tester-smp.o `test -f 'emulator/smp.c' || echo '$(srcdir)/'`emulator/smp.c
-	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_ipc_tester-smp.Tpo emulator/$(DEPDIR)/android_ipc_tester-smp.Po
-#	$(AM_V_CC)source='emulator/smp.c' object='emulator/android_ipc_tester-smp.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_ipc_tester-smp.o `test -f 'emulator/smp.c' || echo '$(srcdir)/'`emulator/smp.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -MT emulator/android_ipc_tester-smp.o -MD -MP -MF emulator/$(DEPDIR)/android_ipc_tester-smp.Tpo -c -o emulator/android_ipc_tester-smp.o `test -f 'emulator/smp.c' || echo '$(srcdir)/'`emulator/smp.c
+#	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_ipc_tester-smp.Tpo emulator/$(DEPDIR)/android_ipc_tester-smp.Po
+#	$(AM_V_CC)source='emulator/smp.c' object='emulator/android_ipc_tester-smp.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_ipc_tester-smp.o `test -f 'emulator/smp.c' || echo '$(srcdir)/'`emulator/smp.c
 
 emulator/android_ipc_tester-smp.obj: emulator/smp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -MT emulator/android_ipc_tester-smp.obj -MD -MP -MF emulator/$(DEPDIR)/android_ipc_tester-smp.Tpo -c -o emulator/android_ipc_tester-smp.obj `if test -f 'emulator/smp.c'; then $(CYGPATH_W) 'emulator/smp.c'; else $(CYGPATH_W) '$(srcdir)/emulator/smp.c'; fi`
-	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_ipc_tester-smp.Tpo emulator/$(DEPDIR)/android_ipc_tester-smp.Po
-#	$(AM_V_CC)source='emulator/smp.c' object='emulator/android_ipc_tester-smp.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_ipc_tester-smp.obj `if test -f 'emulator/smp.c'; then $(CYGPATH_W) 'emulator/smp.c'; else $(CYGPATH_W) '$(srcdir)/emulator/smp.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -MT emulator/android_ipc_tester-smp.obj -MD -MP -MF emulator/$(DEPDIR)/android_ipc_tester-smp.Tpo -c -o emulator/android_ipc_tester-smp.obj `if test -f 'emulator/smp.c'; then $(CYGPATH_W) 'emulator/smp.c'; else $(CYGPATH_W) '$(srcdir)/emulator/smp.c'; fi`
+#	$(AM_V_at)$(am__mv) emulator/$(DEPDIR)/android_ipc_tester-smp.Tpo emulator/$(DEPDIR)/android_ipc_tester-smp.Po
+#	$(AM_V_CC)source='emulator/smp.c' object='emulator/android_ipc_tester-smp.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -c -o emulator/android_ipc_tester-smp.obj `if test -f 'emulator/smp.c'; then $(CYGPATH_W) 'emulator/smp.c'; else $(CYGPATH_W) '$(srcdir)/emulator/smp.c'; fi`
 
 android/android_ipc_tester-hal-utils.o: android/hal-utils.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -MT android/android_ipc_tester-hal-utils.o -MD -MP -MF android/$(DEPDIR)/android_ipc_tester-hal-utils.Tpo -c -o android/android_ipc_tester-hal-utils.o `test -f 'android/hal-utils.c' || echo '$(srcdir)/'`android/hal-utils.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_ipc_tester-hal-utils.Tpo android/$(DEPDIR)/android_ipc_tester-hal-utils.Po
-#	$(AM_V_CC)source='android/hal-utils.c' object='android/android_ipc_tester-hal-utils.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -c -o android/android_ipc_tester-hal-utils.o `test -f 'android/hal-utils.c' || echo '$(srcdir)/'`android/hal-utils.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -MT android/android_ipc_tester-hal-utils.o -MD -MP -MF android/$(DEPDIR)/android_ipc_tester-hal-utils.Tpo -c -o android/android_ipc_tester-hal-utils.o `test -f 'android/hal-utils.c' || echo '$(srcdir)/'`android/hal-utils.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_ipc_tester-hal-utils.Tpo android/$(DEPDIR)/android_ipc_tester-hal-utils.Po
+#	$(AM_V_CC)source='android/hal-utils.c' object='android/android_ipc_tester-hal-utils.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -c -o android/android_ipc_tester-hal-utils.o `test -f 'android/hal-utils.c' || echo '$(srcdir)/'`android/hal-utils.c
 
 android/android_ipc_tester-hal-utils.obj: android/hal-utils.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -MT android/android_ipc_tester-hal-utils.obj -MD -MP -MF android/$(DEPDIR)/android_ipc_tester-hal-utils.Tpo -c -o android/android_ipc_tester-hal-utils.obj `if test -f 'android/hal-utils.c'; then $(CYGPATH_W) 'android/hal-utils.c'; else $(CYGPATH_W) '$(srcdir)/android/hal-utils.c'; fi`
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_ipc_tester-hal-utils.Tpo android/$(DEPDIR)/android_ipc_tester-hal-utils.Po
-#	$(AM_V_CC)source='android/hal-utils.c' object='android/android_ipc_tester-hal-utils.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -c -o android/android_ipc_tester-hal-utils.obj `if test -f 'android/hal-utils.c'; then $(CYGPATH_W) 'android/hal-utils.c'; else $(CYGPATH_W) '$(srcdir)/android/hal-utils.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -MT android/android_ipc_tester-hal-utils.obj -MD -MP -MF android/$(DEPDIR)/android_ipc_tester-hal-utils.Tpo -c -o android/android_ipc_tester-hal-utils.obj `if test -f 'android/hal-utils.c'; then $(CYGPATH_W) 'android/hal-utils.c'; else $(CYGPATH_W) '$(srcdir)/android/hal-utils.c'; fi`
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_ipc_tester-hal-utils.Tpo android/$(DEPDIR)/android_ipc_tester-hal-utils.Po
+#	$(AM_V_CC)source='android/hal-utils.c' object='android/android_ipc_tester-hal-utils.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -c -o android/android_ipc_tester-hal-utils.obj `if test -f 'android/hal-utils.c'; then $(CYGPATH_W) 'android/hal-utils.c'; else $(CYGPATH_W) '$(srcdir)/android/hal-utils.c'; fi`
 
 android/android_ipc_tester-ipc-tester.o: android/ipc-tester.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -MT android/android_ipc_tester-ipc-tester.o -MD -MP -MF android/$(DEPDIR)/android_ipc_tester-ipc-tester.Tpo -c -o android/android_ipc_tester-ipc-tester.o `test -f 'android/ipc-tester.c' || echo '$(srcdir)/'`android/ipc-tester.c
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_ipc_tester-ipc-tester.Tpo android/$(DEPDIR)/android_ipc_tester-ipc-tester.Po
-#	$(AM_V_CC)source='android/ipc-tester.c' object='android/android_ipc_tester-ipc-tester.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -c -o android/android_ipc_tester-ipc-tester.o `test -f 'android/ipc-tester.c' || echo '$(srcdir)/'`android/ipc-tester.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -MT android/android_ipc_tester-ipc-tester.o -MD -MP -MF android/$(DEPDIR)/android_ipc_tester-ipc-tester.Tpo -c -o android/android_ipc_tester-ipc-tester.o `test -f 'android/ipc-tester.c' || echo '$(srcdir)/'`android/ipc-tester.c
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_ipc_tester-ipc-tester.Tpo android/$(DEPDIR)/android_ipc_tester-ipc-tester.Po
+#	$(AM_V_CC)source='android/ipc-tester.c' object='android/android_ipc_tester-ipc-tester.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -c -o android/android_ipc_tester-ipc-tester.o `test -f 'android/ipc-tester.c' || echo '$(srcdir)/'`android/ipc-tester.c
 
 android/android_ipc_tester-ipc-tester.obj: android/ipc-tester.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -MT android/android_ipc_tester-ipc-tester.obj -MD -MP -MF android/$(DEPDIR)/android_ipc_tester-ipc-tester.Tpo -c -o android/android_ipc_tester-ipc-tester.obj `if test -f 'android/ipc-tester.c'; then $(CYGPATH_W) 'android/ipc-tester.c'; else $(CYGPATH_W) '$(srcdir)/android/ipc-tester.c'; fi`
-	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_ipc_tester-ipc-tester.Tpo android/$(DEPDIR)/android_ipc_tester-ipc-tester.Po
-#	$(AM_V_CC)source='android/ipc-tester.c' object='android/android_ipc_tester-ipc-tester.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -c -o android/android_ipc_tester-ipc-tester.obj `if test -f 'android/ipc-tester.c'; then $(CYGPATH_W) 'android/ipc-tester.c'; else $(CYGPATH_W) '$(srcdir)/android/ipc-tester.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -MT android/android_ipc_tester-ipc-tester.obj -MD -MP -MF android/$(DEPDIR)/android_ipc_tester-ipc-tester.Tpo -c -o android/android_ipc_tester-ipc-tester.obj `if test -f 'android/ipc-tester.c'; then $(CYGPATH_W) 'android/ipc-tester.c'; else $(CYGPATH_W) '$(srcdir)/android/ipc-tester.c'; fi`
+#	$(AM_V_at)$(am__mv) android/$(DEPDIR)/android_ipc_tester-ipc-tester.Tpo android/$(DEPDIR)/android_ipc_tester-ipc-tester.Po
+#	$(AM_V_CC)source='android/ipc-tester.c' object='android/android_ipc_tester-ipc-tester.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(android_ipc_tester_CFLAGS) $(CFLAGS) -c -o android/android_ipc_tester-ipc-tester.obj `if test -f 'android/ipc-tester.c'; then $(CYGPATH_W) 'android/ipc-tester.c'; else $(CYGPATH_W) '$(srcdir)/android/ipc-tester.c'; fi`
 
 btio/obexd-btio.o: btio/btio.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT btio/obexd-btio.o -MD -MP -MF btio/$(DEPDIR)/obexd-btio.Tpo -c -o btio/obexd-btio.o `test -f 'btio/btio.c' || echo '$(srcdir)/'`btio/btio.c
-	$(AM_V_at)$(am__mv) btio/$(DEPDIR)/obexd-btio.Tpo btio/$(DEPDIR)/obexd-btio.Po
-#	$(AM_V_CC)source='btio/btio.c' object='btio/obexd-btio.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o btio/obexd-btio.o `test -f 'btio/btio.c' || echo '$(srcdir)/'`btio/btio.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT btio/obexd-btio.o -MD -MP -MF btio/$(DEPDIR)/obexd-btio.Tpo -c -o btio/obexd-btio.o `test -f 'btio/btio.c' || echo '$(srcdir)/'`btio/btio.c
+#	$(AM_V_at)$(am__mv) btio/$(DEPDIR)/obexd-btio.Tpo btio/$(DEPDIR)/obexd-btio.Po
+#	$(AM_V_CC)source='btio/btio.c' object='btio/obexd-btio.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o btio/obexd-btio.o `test -f 'btio/btio.c' || echo '$(srcdir)/'`btio/btio.c
 
 btio/obexd-btio.obj: btio/btio.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT btio/obexd-btio.obj -MD -MP -MF btio/$(DEPDIR)/obexd-btio.Tpo -c -o btio/obexd-btio.obj `if test -f 'btio/btio.c'; then $(CYGPATH_W) 'btio/btio.c'; else $(CYGPATH_W) '$(srcdir)/btio/btio.c'; fi`
-	$(AM_V_at)$(am__mv) btio/$(DEPDIR)/obexd-btio.Tpo btio/$(DEPDIR)/obexd-btio.Po
-#	$(AM_V_CC)source='btio/btio.c' object='btio/obexd-btio.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o btio/obexd-btio.obj `if test -f 'btio/btio.c'; then $(CYGPATH_W) 'btio/btio.c'; else $(CYGPATH_W) '$(srcdir)/btio/btio.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT btio/obexd-btio.obj -MD -MP -MF btio/$(DEPDIR)/obexd-btio.Tpo -c -o btio/obexd-btio.obj `if test -f 'btio/btio.c'; then $(CYGPATH_W) 'btio/btio.c'; else $(CYGPATH_W) '$(srcdir)/btio/btio.c'; fi`
+#	$(AM_V_at)$(am__mv) btio/$(DEPDIR)/obexd-btio.Tpo btio/$(DEPDIR)/obexd-btio.Po
+#	$(AM_V_CC)source='btio/btio.c' object='btio/obexd-btio.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o btio/obexd-btio.obj `if test -f 'btio/btio.c'; then $(CYGPATH_W) 'btio/btio.c'; else $(CYGPATH_W) '$(srcdir)/btio/btio.c'; fi`
 
 gobex/obexd-gobex.o: gobex/gobex.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT gobex/obexd-gobex.o -MD -MP -MF gobex/$(DEPDIR)/obexd-gobex.Tpo -c -o gobex/obexd-gobex.o `test -f 'gobex/gobex.c' || echo '$(srcdir)/'`gobex/gobex.c
-	$(AM_V_at)$(am__mv) gobex/$(DEPDIR)/obexd-gobex.Tpo gobex/$(DEPDIR)/obexd-gobex.Po
-#	$(AM_V_CC)source='gobex/gobex.c' object='gobex/obexd-gobex.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o gobex/obexd-gobex.o `test -f 'gobex/gobex.c' || echo '$(srcdir)/'`gobex/gobex.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT gobex/obexd-gobex.o -MD -MP -MF gobex/$(DEPDIR)/obexd-gobex.Tpo -c -o gobex/obexd-gobex.o `test -f 'gobex/gobex.c' || echo '$(srcdir)/'`gobex/gobex.c
+#	$(AM_V_at)$(am__mv) gobex/$(DEPDIR)/obexd-gobex.Tpo gobex/$(DEPDIR)/obexd-gobex.Po
+#	$(AM_V_CC)source='gobex/gobex.c' object='gobex/obexd-gobex.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o gobex/obexd-gobex.o `test -f 'gobex/gobex.c' || echo '$(srcdir)/'`gobex/gobex.c
 
 gobex/obexd-gobex.obj: gobex/gobex.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT gobex/obexd-gobex.obj -MD -MP -MF gobex/$(DEPDIR)/obexd-gobex.Tpo -c -o gobex/obexd-gobex.obj `if test -f 'gobex/gobex.c'; then $(CYGPATH_W) 'gobex/gobex.c'; else $(CYGPATH_W) '$(srcdir)/gobex/gobex.c'; fi`
-	$(AM_V_at)$(am__mv) gobex/$(DEPDIR)/obexd-gobex.Tpo gobex/$(DEPDIR)/obexd-gobex.Po
-#	$(AM_V_CC)source='gobex/gobex.c' object='gobex/obexd-gobex.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o gobex/obexd-gobex.obj `if test -f 'gobex/gobex.c'; then $(CYGPATH_W) 'gobex/gobex.c'; else $(CYGPATH_W) '$(srcdir)/gobex/gobex.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT gobex/obexd-gobex.obj -MD -MP -MF gobex/$(DEPDIR)/obexd-gobex.Tpo -c -o gobex/obexd-gobex.obj `if test -f 'gobex/gobex.c'; then $(CYGPATH_W) 'gobex/gobex.c'; else $(CYGPATH_W) '$(srcdir)/gobex/gobex.c'; fi`
+#	$(AM_V_at)$(am__mv) gobex/$(DEPDIR)/obexd-gobex.Tpo gobex/$(DEPDIR)/obexd-gobex.Po
+#	$(AM_V_CC)source='gobex/gobex.c' object='gobex/obexd-gobex.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o gobex/obexd-gobex.obj `if test -f 'gobex/gobex.c'; then $(CYGPATH_W) 'gobex/gobex.c'; else $(CYGPATH_W) '$(srcdir)/gobex/gobex.c'; fi`
 
 gobex/obexd-gobex-defs.o: gobex/gobex-defs.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT gobex/obexd-gobex-defs.o -MD -MP -MF gobex/$(DEPDIR)/obexd-gobex-defs.Tpo -c -o gobex/obexd-gobex-defs.o `test -f 'gobex/gobex-defs.c' || echo '$(srcdir)/'`gobex/gobex-defs.c
-	$(AM_V_at)$(am__mv) gobex/$(DEPDIR)/obexd-gobex-defs.Tpo gobex/$(DEPDIR)/obexd-gobex-defs.Po
-#	$(AM_V_CC)source='gobex/gobex-defs.c' object='gobex/obexd-gobex-defs.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o gobex/obexd-gobex-defs.o `test -f 'gobex/gobex-defs.c' || echo '$(srcdir)/'`gobex/gobex-defs.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT gobex/obexd-gobex-defs.o -MD -MP -MF gobex/$(DEPDIR)/obexd-gobex-defs.Tpo -c -o gobex/obexd-gobex-defs.o `test -f 'gobex/gobex-defs.c' || echo '$(srcdir)/'`gobex/gobex-defs.c
+#	$(AM_V_at)$(am__mv) gobex/$(DEPDIR)/obexd-gobex-defs.Tpo gobex/$(DEPDIR)/obexd-gobex-defs.Po
+#	$(AM_V_CC)source='gobex/gobex-defs.c' object='gobex/obexd-gobex-defs.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o gobex/obexd-gobex-defs.o `test -f 'gobex/gobex-defs.c' || echo '$(srcdir)/'`gobex/gobex-defs.c
 
 gobex/obexd-gobex-defs.obj: gobex/gobex-defs.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT gobex/obexd-gobex-defs.obj -MD -MP -MF gobex/$(DEPDIR)/obexd-gobex-defs.Tpo -c -o gobex/obexd-gobex-defs.obj `if test -f 'gobex/gobex-defs.c'; then $(CYGPATH_W) 'gobex/gobex-defs.c'; else $(CYGPATH_W) '$(srcdir)/gobex/gobex-defs.c'; fi`
-	$(AM_V_at)$(am__mv) gobex/$(DEPDIR)/obexd-gobex-defs.Tpo gobex/$(DEPDIR)/obexd-gobex-defs.Po
-#	$(AM_V_CC)source='gobex/gobex-defs.c' object='gobex/obexd-gobex-defs.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o gobex/obexd-gobex-defs.obj `if test -f 'gobex/gobex-defs.c'; then $(CYGPATH_W) 'gobex/gobex-defs.c'; else $(CYGPATH_W) '$(srcdir)/gobex/gobex-defs.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT gobex/obexd-gobex-defs.obj -MD -MP -MF gobex/$(DEPDIR)/obexd-gobex-defs.Tpo -c -o gobex/obexd-gobex-defs.obj `if test -f 'gobex/gobex-defs.c'; then $(CYGPATH_W) 'gobex/gobex-defs.c'; else $(CYGPATH_W) '$(srcdir)/gobex/gobex-defs.c'; fi`
+#	$(AM_V_at)$(am__mv) gobex/$(DEPDIR)/obexd-gobex-defs.Tpo gobex/$(DEPDIR)/obexd-gobex-defs.Po
+#	$(AM_V_CC)source='gobex/gobex-defs.c' object='gobex/obexd-gobex-defs.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o gobex/obexd-gobex-defs.obj `if test -f 'gobex/gobex-defs.c'; then $(CYGPATH_W) 'gobex/gobex-defs.c'; else $(CYGPATH_W) '$(srcdir)/gobex/gobex-defs.c'; fi`
 
 gobex/obexd-gobex-packet.o: gobex/gobex-packet.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT gobex/obexd-gobex-packet.o -MD -MP -MF gobex/$(DEPDIR)/obexd-gobex-packet.Tpo -c -o gobex/obexd-gobex-packet.o `test -f 'gobex/gobex-packet.c' || echo '$(srcdir)/'`gobex/gobex-packet.c
-	$(AM_V_at)$(am__mv) gobex/$(DEPDIR)/obexd-gobex-packet.Tpo gobex/$(DEPDIR)/obexd-gobex-packet.Po
-#	$(AM_V_CC)source='gobex/gobex-packet.c' object='gobex/obexd-gobex-packet.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o gobex/obexd-gobex-packet.o `test -f 'gobex/gobex-packet.c' || echo '$(srcdir)/'`gobex/gobex-packet.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT gobex/obexd-gobex-packet.o -MD -MP -MF gobex/$(DEPDIR)/obexd-gobex-packet.Tpo -c -o gobex/obexd-gobex-packet.o `test -f 'gobex/gobex-packet.c' || echo '$(srcdir)/'`gobex/gobex-packet.c
+#	$(AM_V_at)$(am__mv) gobex/$(DEPDIR)/obexd-gobex-packet.Tpo gobex/$(DEPDIR)/obexd-gobex-packet.Po
+#	$(AM_V_CC)source='gobex/gobex-packet.c' object='gobex/obexd-gobex-packet.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o gobex/obexd-gobex-packet.o `test -f 'gobex/gobex-packet.c' || echo '$(srcdir)/'`gobex/gobex-packet.c
 
 gobex/obexd-gobex-packet.obj: gobex/gobex-packet.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT gobex/obexd-gobex-packet.obj -MD -MP -MF gobex/$(DEPDIR)/obexd-gobex-packet.Tpo -c -o gobex/obexd-gobex-packet.obj `if test -f 'gobex/gobex-packet.c'; then $(CYGPATH_W) 'gobex/gobex-packet.c'; else $(CYGPATH_W) '$(srcdir)/gobex/gobex-packet.c'; fi`
-	$(AM_V_at)$(am__mv) gobex/$(DEPDIR)/obexd-gobex-packet.Tpo gobex/$(DEPDIR)/obexd-gobex-packet.Po
-#	$(AM_V_CC)source='gobex/gobex-packet.c' object='gobex/obexd-gobex-packet.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o gobex/obexd-gobex-packet.obj `if test -f 'gobex/gobex-packet.c'; then $(CYGPATH_W) 'gobex/gobex-packet.c'; else $(CYGPATH_W) '$(srcdir)/gobex/gobex-packet.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT gobex/obexd-gobex-packet.obj -MD -MP -MF gobex/$(DEPDIR)/obexd-gobex-packet.Tpo -c -o gobex/obexd-gobex-packet.obj `if test -f 'gobex/gobex-packet.c'; then $(CYGPATH_W) 'gobex/gobex-packet.c'; else $(CYGPATH_W) '$(srcdir)/gobex/gobex-packet.c'; fi`
+#	$(AM_V_at)$(am__mv) gobex/$(DEPDIR)/obexd-gobex-packet.Tpo gobex/$(DEPDIR)/obexd-gobex-packet.Po
+#	$(AM_V_CC)source='gobex/gobex-packet.c' object='gobex/obexd-gobex-packet.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o gobex/obexd-gobex-packet.obj `if test -f 'gobex/gobex-packet.c'; then $(CYGPATH_W) 'gobex/gobex-packet.c'; else $(CYGPATH_W) '$(srcdir)/gobex/gobex-packet.c'; fi`
 
 gobex/obexd-gobex-header.o: gobex/gobex-header.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT gobex/obexd-gobex-header.o -MD -MP -MF gobex/$(DEPDIR)/obexd-gobex-header.Tpo -c -o gobex/obexd-gobex-header.o `test -f 'gobex/gobex-header.c' || echo '$(srcdir)/'`gobex/gobex-header.c
-	$(AM_V_at)$(am__mv) gobex/$(DEPDIR)/obexd-gobex-header.Tpo gobex/$(DEPDIR)/obexd-gobex-header.Po
-#	$(AM_V_CC)source='gobex/gobex-header.c' object='gobex/obexd-gobex-header.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o gobex/obexd-gobex-header.o `test -f 'gobex/gobex-header.c' || echo '$(srcdir)/'`gobex/gobex-header.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT gobex/obexd-gobex-header.o -MD -MP -MF gobex/$(DEPDIR)/obexd-gobex-header.Tpo -c -o gobex/obexd-gobex-header.o `test -f 'gobex/gobex-header.c' || echo '$(srcdir)/'`gobex/gobex-header.c
+#	$(AM_V_at)$(am__mv) gobex/$(DEPDIR)/obexd-gobex-header.Tpo gobex/$(DEPDIR)/obexd-gobex-header.Po
+#	$(AM_V_CC)source='gobex/gobex-header.c' object='gobex/obexd-gobex-header.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o gobex/obexd-gobex-header.o `test -f 'gobex/gobex-header.c' || echo '$(srcdir)/'`gobex/gobex-header.c
 
 gobex/obexd-gobex-header.obj: gobex/gobex-header.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT gobex/obexd-gobex-header.obj -MD -MP -MF gobex/$(DEPDIR)/obexd-gobex-header.Tpo -c -o gobex/obexd-gobex-header.obj `if test -f 'gobex/gobex-header.c'; then $(CYGPATH_W) 'gobex/gobex-header.c'; else $(CYGPATH_W) '$(srcdir)/gobex/gobex-header.c'; fi`
-	$(AM_V_at)$(am__mv) gobex/$(DEPDIR)/obexd-gobex-header.Tpo gobex/$(DEPDIR)/obexd-gobex-header.Po
-#	$(AM_V_CC)source='gobex/gobex-header.c' object='gobex/obexd-gobex-header.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o gobex/obexd-gobex-header.obj `if test -f 'gobex/gobex-header.c'; then $(CYGPATH_W) 'gobex/gobex-header.c'; else $(CYGPATH_W) '$(srcdir)/gobex/gobex-header.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT gobex/obexd-gobex-header.obj -MD -MP -MF gobex/$(DEPDIR)/obexd-gobex-header.Tpo -c -o gobex/obexd-gobex-header.obj `if test -f 'gobex/gobex-header.c'; then $(CYGPATH_W) 'gobex/gobex-header.c'; else $(CYGPATH_W) '$(srcdir)/gobex/gobex-header.c'; fi`
+#	$(AM_V_at)$(am__mv) gobex/$(DEPDIR)/obexd-gobex-header.Tpo gobex/$(DEPDIR)/obexd-gobex-header.Po
+#	$(AM_V_CC)source='gobex/gobex-header.c' object='gobex/obexd-gobex-header.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o gobex/obexd-gobex-header.obj `if test -f 'gobex/gobex-header.c'; then $(CYGPATH_W) 'gobex/gobex-header.c'; else $(CYGPATH_W) '$(srcdir)/gobex/gobex-header.c'; fi`
 
 gobex/obexd-gobex-transfer.o: gobex/gobex-transfer.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT gobex/obexd-gobex-transfer.o -MD -MP -MF gobex/$(DEPDIR)/obexd-gobex-transfer.Tpo -c -o gobex/obexd-gobex-transfer.o `test -f 'gobex/gobex-transfer.c' || echo '$(srcdir)/'`gobex/gobex-transfer.c
-	$(AM_V_at)$(am__mv) gobex/$(DEPDIR)/obexd-gobex-transfer.Tpo gobex/$(DEPDIR)/obexd-gobex-transfer.Po
-#	$(AM_V_CC)source='gobex/gobex-transfer.c' object='gobex/obexd-gobex-transfer.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o gobex/obexd-gobex-transfer.o `test -f 'gobex/gobex-transfer.c' || echo '$(srcdir)/'`gobex/gobex-transfer.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT gobex/obexd-gobex-transfer.o -MD -MP -MF gobex/$(DEPDIR)/obexd-gobex-transfer.Tpo -c -o gobex/obexd-gobex-transfer.o `test -f 'gobex/gobex-transfer.c' || echo '$(srcdir)/'`gobex/gobex-transfer.c
+#	$(AM_V_at)$(am__mv) gobex/$(DEPDIR)/obexd-gobex-transfer.Tpo gobex/$(DEPDIR)/obexd-gobex-transfer.Po
+#	$(AM_V_CC)source='gobex/gobex-transfer.c' object='gobex/obexd-gobex-transfer.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o gobex/obexd-gobex-transfer.o `test -f 'gobex/gobex-transfer.c' || echo '$(srcdir)/'`gobex/gobex-transfer.c
 
 gobex/obexd-gobex-transfer.obj: gobex/gobex-transfer.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT gobex/obexd-gobex-transfer.obj -MD -MP -MF gobex/$(DEPDIR)/obexd-gobex-transfer.Tpo -c -o gobex/obexd-gobex-transfer.obj `if test -f 'gobex/gobex-transfer.c'; then $(CYGPATH_W) 'gobex/gobex-transfer.c'; else $(CYGPATH_W) '$(srcdir)/gobex/gobex-transfer.c'; fi`
-	$(AM_V_at)$(am__mv) gobex/$(DEPDIR)/obexd-gobex-transfer.Tpo gobex/$(DEPDIR)/obexd-gobex-transfer.Po
-#	$(AM_V_CC)source='gobex/gobex-transfer.c' object='gobex/obexd-gobex-transfer.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o gobex/obexd-gobex-transfer.obj `if test -f 'gobex/gobex-transfer.c'; then $(CYGPATH_W) 'gobex/gobex-transfer.c'; else $(CYGPATH_W) '$(srcdir)/gobex/gobex-transfer.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT gobex/obexd-gobex-transfer.obj -MD -MP -MF gobex/$(DEPDIR)/obexd-gobex-transfer.Tpo -c -o gobex/obexd-gobex-transfer.obj `if test -f 'gobex/gobex-transfer.c'; then $(CYGPATH_W) 'gobex/gobex-transfer.c'; else $(CYGPATH_W) '$(srcdir)/gobex/gobex-transfer.c'; fi`
+#	$(AM_V_at)$(am__mv) gobex/$(DEPDIR)/obexd-gobex-transfer.Tpo gobex/$(DEPDIR)/obexd-gobex-transfer.Po
+#	$(AM_V_CC)source='gobex/gobex-transfer.c' object='gobex/obexd-gobex-transfer.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o gobex/obexd-gobex-transfer.obj `if test -f 'gobex/gobex-transfer.c'; then $(CYGPATH_W) 'gobex/gobex-transfer.c'; else $(CYGPATH_W) '$(srcdir)/gobex/gobex-transfer.c'; fi`
 
 gobex/obexd-gobex-apparam.o: gobex/gobex-apparam.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT gobex/obexd-gobex-apparam.o -MD -MP -MF gobex/$(DEPDIR)/obexd-gobex-apparam.Tpo -c -o gobex/obexd-gobex-apparam.o `test -f 'gobex/gobex-apparam.c' || echo '$(srcdir)/'`gobex/gobex-apparam.c
-	$(AM_V_at)$(am__mv) gobex/$(DEPDIR)/obexd-gobex-apparam.Tpo gobex/$(DEPDIR)/obexd-gobex-apparam.Po
-#	$(AM_V_CC)source='gobex/gobex-apparam.c' object='gobex/obexd-gobex-apparam.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o gobex/obexd-gobex-apparam.o `test -f 'gobex/gobex-apparam.c' || echo '$(srcdir)/'`gobex/gobex-apparam.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT gobex/obexd-gobex-apparam.o -MD -MP -MF gobex/$(DEPDIR)/obexd-gobex-apparam.Tpo -c -o gobex/obexd-gobex-apparam.o `test -f 'gobex/gobex-apparam.c' || echo '$(srcdir)/'`gobex/gobex-apparam.c
+#	$(AM_V_at)$(am__mv) gobex/$(DEPDIR)/obexd-gobex-apparam.Tpo gobex/$(DEPDIR)/obexd-gobex-apparam.Po
+#	$(AM_V_CC)source='gobex/gobex-apparam.c' object='gobex/obexd-gobex-apparam.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o gobex/obexd-gobex-apparam.o `test -f 'gobex/gobex-apparam.c' || echo '$(srcdir)/'`gobex/gobex-apparam.c
 
 gobex/obexd-gobex-apparam.obj: gobex/gobex-apparam.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT gobex/obexd-gobex-apparam.obj -MD -MP -MF gobex/$(DEPDIR)/obexd-gobex-apparam.Tpo -c -o gobex/obexd-gobex-apparam.obj `if test -f 'gobex/gobex-apparam.c'; then $(CYGPATH_W) 'gobex/gobex-apparam.c'; else $(CYGPATH_W) '$(srcdir)/gobex/gobex-apparam.c'; fi`
-	$(AM_V_at)$(am__mv) gobex/$(DEPDIR)/obexd-gobex-apparam.Tpo gobex/$(DEPDIR)/obexd-gobex-apparam.Po
-#	$(AM_V_CC)source='gobex/gobex-apparam.c' object='gobex/obexd-gobex-apparam.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o gobex/obexd-gobex-apparam.obj `if test -f 'gobex/gobex-apparam.c'; then $(CYGPATH_W) 'gobex/gobex-apparam.c'; else $(CYGPATH_W) '$(srcdir)/gobex/gobex-apparam.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT gobex/obexd-gobex-apparam.obj -MD -MP -MF gobex/$(DEPDIR)/obexd-gobex-apparam.Tpo -c -o gobex/obexd-gobex-apparam.obj `if test -f 'gobex/gobex-apparam.c'; then $(CYGPATH_W) 'gobex/gobex-apparam.c'; else $(CYGPATH_W) '$(srcdir)/gobex/gobex-apparam.c'; fi`
+#	$(AM_V_at)$(am__mv) gobex/$(DEPDIR)/obexd-gobex-apparam.Tpo gobex/$(DEPDIR)/obexd-gobex-apparam.Po
+#	$(AM_V_CC)source='gobex/gobex-apparam.c' object='gobex/obexd-gobex-apparam.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o gobex/obexd-gobex-apparam.obj `if test -f 'gobex/gobex-apparam.c'; then $(CYGPATH_W) 'gobex/gobex-apparam.c'; else $(CYGPATH_W) '$(srcdir)/gobex/gobex-apparam.c'; fi`
 
 obexd/plugins/obexd-filesystem.o: obexd/plugins/filesystem.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-filesystem.o -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-filesystem.Tpo -c -o obexd/plugins/obexd-filesystem.o `test -f 'obexd/plugins/filesystem.c' || echo '$(srcdir)/'`obexd/plugins/filesystem.c
-	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-filesystem.Tpo obexd/plugins/$(DEPDIR)/obexd-filesystem.Po
-#	$(AM_V_CC)source='obexd/plugins/filesystem.c' object='obexd/plugins/obexd-filesystem.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-filesystem.o `test -f 'obexd/plugins/filesystem.c' || echo '$(srcdir)/'`obexd/plugins/filesystem.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-filesystem.o -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-filesystem.Tpo -c -o obexd/plugins/obexd-filesystem.o `test -f 'obexd/plugins/filesystem.c' || echo '$(srcdir)/'`obexd/plugins/filesystem.c
+#	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-filesystem.Tpo obexd/plugins/$(DEPDIR)/obexd-filesystem.Po
+#	$(AM_V_CC)source='obexd/plugins/filesystem.c' object='obexd/plugins/obexd-filesystem.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-filesystem.o `test -f 'obexd/plugins/filesystem.c' || echo '$(srcdir)/'`obexd/plugins/filesystem.c
 
 obexd/plugins/obexd-filesystem.obj: obexd/plugins/filesystem.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-filesystem.obj -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-filesystem.Tpo -c -o obexd/plugins/obexd-filesystem.obj `if test -f 'obexd/plugins/filesystem.c'; then $(CYGPATH_W) 'obexd/plugins/filesystem.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/filesystem.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-filesystem.Tpo obexd/plugins/$(DEPDIR)/obexd-filesystem.Po
-#	$(AM_V_CC)source='obexd/plugins/filesystem.c' object='obexd/plugins/obexd-filesystem.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-filesystem.obj `if test -f 'obexd/plugins/filesystem.c'; then $(CYGPATH_W) 'obexd/plugins/filesystem.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/filesystem.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-filesystem.obj -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-filesystem.Tpo -c -o obexd/plugins/obexd-filesystem.obj `if test -f 'obexd/plugins/filesystem.c'; then $(CYGPATH_W) 'obexd/plugins/filesystem.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/filesystem.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-filesystem.Tpo obexd/plugins/$(DEPDIR)/obexd-filesystem.Po
+#	$(AM_V_CC)source='obexd/plugins/filesystem.c' object='obexd/plugins/obexd-filesystem.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-filesystem.obj `if test -f 'obexd/plugins/filesystem.c'; then $(CYGPATH_W) 'obexd/plugins/filesystem.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/filesystem.c'; fi`
 
 obexd/plugins/obexd-bluetooth.o: obexd/plugins/bluetooth.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-bluetooth.o -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-bluetooth.Tpo -c -o obexd/plugins/obexd-bluetooth.o `test -f 'obexd/plugins/bluetooth.c' || echo '$(srcdir)/'`obexd/plugins/bluetooth.c
-	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-bluetooth.Tpo obexd/plugins/$(DEPDIR)/obexd-bluetooth.Po
-#	$(AM_V_CC)source='obexd/plugins/bluetooth.c' object='obexd/plugins/obexd-bluetooth.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-bluetooth.o `test -f 'obexd/plugins/bluetooth.c' || echo '$(srcdir)/'`obexd/plugins/bluetooth.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-bluetooth.o -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-bluetooth.Tpo -c -o obexd/plugins/obexd-bluetooth.o `test -f 'obexd/plugins/bluetooth.c' || echo '$(srcdir)/'`obexd/plugins/bluetooth.c
+#	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-bluetooth.Tpo obexd/plugins/$(DEPDIR)/obexd-bluetooth.Po
+#	$(AM_V_CC)source='obexd/plugins/bluetooth.c' object='obexd/plugins/obexd-bluetooth.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-bluetooth.o `test -f 'obexd/plugins/bluetooth.c' || echo '$(srcdir)/'`obexd/plugins/bluetooth.c
 
 obexd/plugins/obexd-bluetooth.obj: obexd/plugins/bluetooth.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-bluetooth.obj -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-bluetooth.Tpo -c -o obexd/plugins/obexd-bluetooth.obj `if test -f 'obexd/plugins/bluetooth.c'; then $(CYGPATH_W) 'obexd/plugins/bluetooth.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/bluetooth.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-bluetooth.Tpo obexd/plugins/$(DEPDIR)/obexd-bluetooth.Po
-#	$(AM_V_CC)source='obexd/plugins/bluetooth.c' object='obexd/plugins/obexd-bluetooth.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-bluetooth.obj `if test -f 'obexd/plugins/bluetooth.c'; then $(CYGPATH_W) 'obexd/plugins/bluetooth.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/bluetooth.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-bluetooth.obj -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-bluetooth.Tpo -c -o obexd/plugins/obexd-bluetooth.obj `if test -f 'obexd/plugins/bluetooth.c'; then $(CYGPATH_W) 'obexd/plugins/bluetooth.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/bluetooth.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-bluetooth.Tpo obexd/plugins/$(DEPDIR)/obexd-bluetooth.Po
+#	$(AM_V_CC)source='obexd/plugins/bluetooth.c' object='obexd/plugins/obexd-bluetooth.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-bluetooth.obj `if test -f 'obexd/plugins/bluetooth.c'; then $(CYGPATH_W) 'obexd/plugins/bluetooth.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/bluetooth.c'; fi`
 
 obexd/plugins/obexd-pcsuite.o: obexd/plugins/pcsuite.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-pcsuite.o -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-pcsuite.Tpo -c -o obexd/plugins/obexd-pcsuite.o `test -f 'obexd/plugins/pcsuite.c' || echo '$(srcdir)/'`obexd/plugins/pcsuite.c
-	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-pcsuite.Tpo obexd/plugins/$(DEPDIR)/obexd-pcsuite.Po
-#	$(AM_V_CC)source='obexd/plugins/pcsuite.c' object='obexd/plugins/obexd-pcsuite.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-pcsuite.o `test -f 'obexd/plugins/pcsuite.c' || echo '$(srcdir)/'`obexd/plugins/pcsuite.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-pcsuite.o -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-pcsuite.Tpo -c -o obexd/plugins/obexd-pcsuite.o `test -f 'obexd/plugins/pcsuite.c' || echo '$(srcdir)/'`obexd/plugins/pcsuite.c
+#	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-pcsuite.Tpo obexd/plugins/$(DEPDIR)/obexd-pcsuite.Po
+#	$(AM_V_CC)source='obexd/plugins/pcsuite.c' object='obexd/plugins/obexd-pcsuite.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-pcsuite.o `test -f 'obexd/plugins/pcsuite.c' || echo '$(srcdir)/'`obexd/plugins/pcsuite.c
 
 obexd/plugins/obexd-pcsuite.obj: obexd/plugins/pcsuite.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-pcsuite.obj -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-pcsuite.Tpo -c -o obexd/plugins/obexd-pcsuite.obj `if test -f 'obexd/plugins/pcsuite.c'; then $(CYGPATH_W) 'obexd/plugins/pcsuite.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/pcsuite.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-pcsuite.Tpo obexd/plugins/$(DEPDIR)/obexd-pcsuite.Po
-#	$(AM_V_CC)source='obexd/plugins/pcsuite.c' object='obexd/plugins/obexd-pcsuite.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-pcsuite.obj `if test -f 'obexd/plugins/pcsuite.c'; then $(CYGPATH_W) 'obexd/plugins/pcsuite.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/pcsuite.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-pcsuite.obj -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-pcsuite.Tpo -c -o obexd/plugins/obexd-pcsuite.obj `if test -f 'obexd/plugins/pcsuite.c'; then $(CYGPATH_W) 'obexd/plugins/pcsuite.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/pcsuite.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-pcsuite.Tpo obexd/plugins/$(DEPDIR)/obexd-pcsuite.Po
+#	$(AM_V_CC)source='obexd/plugins/pcsuite.c' object='obexd/plugins/obexd-pcsuite.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-pcsuite.obj `if test -f 'obexd/plugins/pcsuite.c'; then $(CYGPATH_W) 'obexd/plugins/pcsuite.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/pcsuite.c'; fi`
 
 obexd/plugins/obexd-opp.o: obexd/plugins/opp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-opp.o -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-opp.Tpo -c -o obexd/plugins/obexd-opp.o `test -f 'obexd/plugins/opp.c' || echo '$(srcdir)/'`obexd/plugins/opp.c
-	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-opp.Tpo obexd/plugins/$(DEPDIR)/obexd-opp.Po
-#	$(AM_V_CC)source='obexd/plugins/opp.c' object='obexd/plugins/obexd-opp.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-opp.o `test -f 'obexd/plugins/opp.c' || echo '$(srcdir)/'`obexd/plugins/opp.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-opp.o -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-opp.Tpo -c -o obexd/plugins/obexd-opp.o `test -f 'obexd/plugins/opp.c' || echo '$(srcdir)/'`obexd/plugins/opp.c
+#	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-opp.Tpo obexd/plugins/$(DEPDIR)/obexd-opp.Po
+#	$(AM_V_CC)source='obexd/plugins/opp.c' object='obexd/plugins/obexd-opp.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-opp.o `test -f 'obexd/plugins/opp.c' || echo '$(srcdir)/'`obexd/plugins/opp.c
 
 obexd/plugins/obexd-opp.obj: obexd/plugins/opp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-opp.obj -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-opp.Tpo -c -o obexd/plugins/obexd-opp.obj `if test -f 'obexd/plugins/opp.c'; then $(CYGPATH_W) 'obexd/plugins/opp.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/opp.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-opp.Tpo obexd/plugins/$(DEPDIR)/obexd-opp.Po
-#	$(AM_V_CC)source='obexd/plugins/opp.c' object='obexd/plugins/obexd-opp.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-opp.obj `if test -f 'obexd/plugins/opp.c'; then $(CYGPATH_W) 'obexd/plugins/opp.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/opp.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-opp.obj -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-opp.Tpo -c -o obexd/plugins/obexd-opp.obj `if test -f 'obexd/plugins/opp.c'; then $(CYGPATH_W) 'obexd/plugins/opp.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/opp.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-opp.Tpo obexd/plugins/$(DEPDIR)/obexd-opp.Po
+#	$(AM_V_CC)source='obexd/plugins/opp.c' object='obexd/plugins/obexd-opp.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-opp.obj `if test -f 'obexd/plugins/opp.c'; then $(CYGPATH_W) 'obexd/plugins/opp.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/opp.c'; fi`
 
 obexd/plugins/obexd-ftp.o: obexd/plugins/ftp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-ftp.o -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-ftp.Tpo -c -o obexd/plugins/obexd-ftp.o `test -f 'obexd/plugins/ftp.c' || echo '$(srcdir)/'`obexd/plugins/ftp.c
-	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-ftp.Tpo obexd/plugins/$(DEPDIR)/obexd-ftp.Po
-#	$(AM_V_CC)source='obexd/plugins/ftp.c' object='obexd/plugins/obexd-ftp.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-ftp.o `test -f 'obexd/plugins/ftp.c' || echo '$(srcdir)/'`obexd/plugins/ftp.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-ftp.o -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-ftp.Tpo -c -o obexd/plugins/obexd-ftp.o `test -f 'obexd/plugins/ftp.c' || echo '$(srcdir)/'`obexd/plugins/ftp.c
+#	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-ftp.Tpo obexd/plugins/$(DEPDIR)/obexd-ftp.Po
+#	$(AM_V_CC)source='obexd/plugins/ftp.c' object='obexd/plugins/obexd-ftp.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-ftp.o `test -f 'obexd/plugins/ftp.c' || echo '$(srcdir)/'`obexd/plugins/ftp.c
 
 obexd/plugins/obexd-ftp.obj: obexd/plugins/ftp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-ftp.obj -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-ftp.Tpo -c -o obexd/plugins/obexd-ftp.obj `if test -f 'obexd/plugins/ftp.c'; then $(CYGPATH_W) 'obexd/plugins/ftp.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/ftp.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-ftp.Tpo obexd/plugins/$(DEPDIR)/obexd-ftp.Po
-#	$(AM_V_CC)source='obexd/plugins/ftp.c' object='obexd/plugins/obexd-ftp.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-ftp.obj `if test -f 'obexd/plugins/ftp.c'; then $(CYGPATH_W) 'obexd/plugins/ftp.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/ftp.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-ftp.obj -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-ftp.Tpo -c -o obexd/plugins/obexd-ftp.obj `if test -f 'obexd/plugins/ftp.c'; then $(CYGPATH_W) 'obexd/plugins/ftp.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/ftp.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-ftp.Tpo obexd/plugins/$(DEPDIR)/obexd-ftp.Po
+#	$(AM_V_CC)source='obexd/plugins/ftp.c' object='obexd/plugins/obexd-ftp.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-ftp.obj `if test -f 'obexd/plugins/ftp.c'; then $(CYGPATH_W) 'obexd/plugins/ftp.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/ftp.c'; fi`
 
 obexd/plugins/obexd-irmc.o: obexd/plugins/irmc.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-irmc.o -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-irmc.Tpo -c -o obexd/plugins/obexd-irmc.o `test -f 'obexd/plugins/irmc.c' || echo '$(srcdir)/'`obexd/plugins/irmc.c
-	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-irmc.Tpo obexd/plugins/$(DEPDIR)/obexd-irmc.Po
-#	$(AM_V_CC)source='obexd/plugins/irmc.c' object='obexd/plugins/obexd-irmc.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-irmc.o `test -f 'obexd/plugins/irmc.c' || echo '$(srcdir)/'`obexd/plugins/irmc.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-irmc.o -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-irmc.Tpo -c -o obexd/plugins/obexd-irmc.o `test -f 'obexd/plugins/irmc.c' || echo '$(srcdir)/'`obexd/plugins/irmc.c
+#	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-irmc.Tpo obexd/plugins/$(DEPDIR)/obexd-irmc.Po
+#	$(AM_V_CC)source='obexd/plugins/irmc.c' object='obexd/plugins/obexd-irmc.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-irmc.o `test -f 'obexd/plugins/irmc.c' || echo '$(srcdir)/'`obexd/plugins/irmc.c
 
 obexd/plugins/obexd-irmc.obj: obexd/plugins/irmc.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-irmc.obj -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-irmc.Tpo -c -o obexd/plugins/obexd-irmc.obj `if test -f 'obexd/plugins/irmc.c'; then $(CYGPATH_W) 'obexd/plugins/irmc.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/irmc.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-irmc.Tpo obexd/plugins/$(DEPDIR)/obexd-irmc.Po
-#	$(AM_V_CC)source='obexd/plugins/irmc.c' object='obexd/plugins/obexd-irmc.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-irmc.obj `if test -f 'obexd/plugins/irmc.c'; then $(CYGPATH_W) 'obexd/plugins/irmc.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/irmc.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-irmc.obj -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-irmc.Tpo -c -o obexd/plugins/obexd-irmc.obj `if test -f 'obexd/plugins/irmc.c'; then $(CYGPATH_W) 'obexd/plugins/irmc.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/irmc.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-irmc.Tpo obexd/plugins/$(DEPDIR)/obexd-irmc.Po
+#	$(AM_V_CC)source='obexd/plugins/irmc.c' object='obexd/plugins/obexd-irmc.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-irmc.obj `if test -f 'obexd/plugins/irmc.c'; then $(CYGPATH_W) 'obexd/plugins/irmc.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/irmc.c'; fi`
 
 obexd/plugins/obexd-pbap.o: obexd/plugins/pbap.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-pbap.o -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-pbap.Tpo -c -o obexd/plugins/obexd-pbap.o `test -f 'obexd/plugins/pbap.c' || echo '$(srcdir)/'`obexd/plugins/pbap.c
-	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-pbap.Tpo obexd/plugins/$(DEPDIR)/obexd-pbap.Po
-#	$(AM_V_CC)source='obexd/plugins/pbap.c' object='obexd/plugins/obexd-pbap.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-pbap.o `test -f 'obexd/plugins/pbap.c' || echo '$(srcdir)/'`obexd/plugins/pbap.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-pbap.o -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-pbap.Tpo -c -o obexd/plugins/obexd-pbap.o `test -f 'obexd/plugins/pbap.c' || echo '$(srcdir)/'`obexd/plugins/pbap.c
+#	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-pbap.Tpo obexd/plugins/$(DEPDIR)/obexd-pbap.Po
+#	$(AM_V_CC)source='obexd/plugins/pbap.c' object='obexd/plugins/obexd-pbap.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-pbap.o `test -f 'obexd/plugins/pbap.c' || echo '$(srcdir)/'`obexd/plugins/pbap.c
 
 obexd/plugins/obexd-pbap.obj: obexd/plugins/pbap.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-pbap.obj -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-pbap.Tpo -c -o obexd/plugins/obexd-pbap.obj `if test -f 'obexd/plugins/pbap.c'; then $(CYGPATH_W) 'obexd/plugins/pbap.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/pbap.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-pbap.Tpo obexd/plugins/$(DEPDIR)/obexd-pbap.Po
-#	$(AM_V_CC)source='obexd/plugins/pbap.c' object='obexd/plugins/obexd-pbap.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-pbap.obj `if test -f 'obexd/plugins/pbap.c'; then $(CYGPATH_W) 'obexd/plugins/pbap.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/pbap.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-pbap.obj -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-pbap.Tpo -c -o obexd/plugins/obexd-pbap.obj `if test -f 'obexd/plugins/pbap.c'; then $(CYGPATH_W) 'obexd/plugins/pbap.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/pbap.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-pbap.Tpo obexd/plugins/$(DEPDIR)/obexd-pbap.Po
+#	$(AM_V_CC)source='obexd/plugins/pbap.c' object='obexd/plugins/obexd-pbap.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-pbap.obj `if test -f 'obexd/plugins/pbap.c'; then $(CYGPATH_W) 'obexd/plugins/pbap.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/pbap.c'; fi`
 
 obexd/plugins/obexd-vcard.o: obexd/plugins/vcard.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-vcard.o -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-vcard.Tpo -c -o obexd/plugins/obexd-vcard.o `test -f 'obexd/plugins/vcard.c' || echo '$(srcdir)/'`obexd/plugins/vcard.c
-	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-vcard.Tpo obexd/plugins/$(DEPDIR)/obexd-vcard.Po
-#	$(AM_V_CC)source='obexd/plugins/vcard.c' object='obexd/plugins/obexd-vcard.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-vcard.o `test -f 'obexd/plugins/vcard.c' || echo '$(srcdir)/'`obexd/plugins/vcard.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-vcard.o -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-vcard.Tpo -c -o obexd/plugins/obexd-vcard.o `test -f 'obexd/plugins/vcard.c' || echo '$(srcdir)/'`obexd/plugins/vcard.c
+#	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-vcard.Tpo obexd/plugins/$(DEPDIR)/obexd-vcard.Po
+#	$(AM_V_CC)source='obexd/plugins/vcard.c' object='obexd/plugins/obexd-vcard.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-vcard.o `test -f 'obexd/plugins/vcard.c' || echo '$(srcdir)/'`obexd/plugins/vcard.c
 
 obexd/plugins/obexd-vcard.obj: obexd/plugins/vcard.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-vcard.obj -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-vcard.Tpo -c -o obexd/plugins/obexd-vcard.obj `if test -f 'obexd/plugins/vcard.c'; then $(CYGPATH_W) 'obexd/plugins/vcard.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/vcard.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-vcard.Tpo obexd/plugins/$(DEPDIR)/obexd-vcard.Po
-#	$(AM_V_CC)source='obexd/plugins/vcard.c' object='obexd/plugins/obexd-vcard.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-vcard.obj `if test -f 'obexd/plugins/vcard.c'; then $(CYGPATH_W) 'obexd/plugins/vcard.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/vcard.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-vcard.obj -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-vcard.Tpo -c -o obexd/plugins/obexd-vcard.obj `if test -f 'obexd/plugins/vcard.c'; then $(CYGPATH_W) 'obexd/plugins/vcard.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/vcard.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-vcard.Tpo obexd/plugins/$(DEPDIR)/obexd-vcard.Po
+#	$(AM_V_CC)source='obexd/plugins/vcard.c' object='obexd/plugins/obexd-vcard.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-vcard.obj `if test -f 'obexd/plugins/vcard.c'; then $(CYGPATH_W) 'obexd/plugins/vcard.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/vcard.c'; fi`
 
 obexd/plugins/obexd-phonebook-dummy.o: obexd/plugins/phonebook-dummy.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-phonebook-dummy.o -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-phonebook-dummy.Tpo -c -o obexd/plugins/obexd-phonebook-dummy.o `test -f 'obexd/plugins/phonebook-dummy.c' || echo '$(srcdir)/'`obexd/plugins/phonebook-dummy.c
-	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-phonebook-dummy.Tpo obexd/plugins/$(DEPDIR)/obexd-phonebook-dummy.Po
-#	$(AM_V_CC)source='obexd/plugins/phonebook-dummy.c' object='obexd/plugins/obexd-phonebook-dummy.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-phonebook-dummy.o `test -f 'obexd/plugins/phonebook-dummy.c' || echo '$(srcdir)/'`obexd/plugins/phonebook-dummy.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-phonebook-dummy.o -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-phonebook-dummy.Tpo -c -o obexd/plugins/obexd-phonebook-dummy.o `test -f 'obexd/plugins/phonebook-dummy.c' || echo '$(srcdir)/'`obexd/plugins/phonebook-dummy.c
+#	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-phonebook-dummy.Tpo obexd/plugins/$(DEPDIR)/obexd-phonebook-dummy.Po
+#	$(AM_V_CC)source='obexd/plugins/phonebook-dummy.c' object='obexd/plugins/obexd-phonebook-dummy.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-phonebook-dummy.o `test -f 'obexd/plugins/phonebook-dummy.c' || echo '$(srcdir)/'`obexd/plugins/phonebook-dummy.c
 
 obexd/plugins/obexd-phonebook-dummy.obj: obexd/plugins/phonebook-dummy.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-phonebook-dummy.obj -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-phonebook-dummy.Tpo -c -o obexd/plugins/obexd-phonebook-dummy.obj `if test -f 'obexd/plugins/phonebook-dummy.c'; then $(CYGPATH_W) 'obexd/plugins/phonebook-dummy.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/phonebook-dummy.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-phonebook-dummy.Tpo obexd/plugins/$(DEPDIR)/obexd-phonebook-dummy.Po
-#	$(AM_V_CC)source='obexd/plugins/phonebook-dummy.c' object='obexd/plugins/obexd-phonebook-dummy.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-phonebook-dummy.obj `if test -f 'obexd/plugins/phonebook-dummy.c'; then $(CYGPATH_W) 'obexd/plugins/phonebook-dummy.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/phonebook-dummy.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-phonebook-dummy.obj -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-phonebook-dummy.Tpo -c -o obexd/plugins/obexd-phonebook-dummy.obj `if test -f 'obexd/plugins/phonebook-dummy.c'; then $(CYGPATH_W) 'obexd/plugins/phonebook-dummy.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/phonebook-dummy.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-phonebook-dummy.Tpo obexd/plugins/$(DEPDIR)/obexd-phonebook-dummy.Po
+#	$(AM_V_CC)source='obexd/plugins/phonebook-dummy.c' object='obexd/plugins/obexd-phonebook-dummy.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-phonebook-dummy.obj `if test -f 'obexd/plugins/phonebook-dummy.c'; then $(CYGPATH_W) 'obexd/plugins/phonebook-dummy.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/phonebook-dummy.c'; fi`
 
 obexd/plugins/obexd-mas.o: obexd/plugins/mas.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-mas.o -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-mas.Tpo -c -o obexd/plugins/obexd-mas.o `test -f 'obexd/plugins/mas.c' || echo '$(srcdir)/'`obexd/plugins/mas.c
-	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-mas.Tpo obexd/plugins/$(DEPDIR)/obexd-mas.Po
-#	$(AM_V_CC)source='obexd/plugins/mas.c' object='obexd/plugins/obexd-mas.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-mas.o `test -f 'obexd/plugins/mas.c' || echo '$(srcdir)/'`obexd/plugins/mas.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-mas.o -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-mas.Tpo -c -o obexd/plugins/obexd-mas.o `test -f 'obexd/plugins/mas.c' || echo '$(srcdir)/'`obexd/plugins/mas.c
+#	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-mas.Tpo obexd/plugins/$(DEPDIR)/obexd-mas.Po
+#	$(AM_V_CC)source='obexd/plugins/mas.c' object='obexd/plugins/obexd-mas.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-mas.o `test -f 'obexd/plugins/mas.c' || echo '$(srcdir)/'`obexd/plugins/mas.c
 
 obexd/plugins/obexd-mas.obj: obexd/plugins/mas.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-mas.obj -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-mas.Tpo -c -o obexd/plugins/obexd-mas.obj `if test -f 'obexd/plugins/mas.c'; then $(CYGPATH_W) 'obexd/plugins/mas.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/mas.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-mas.Tpo obexd/plugins/$(DEPDIR)/obexd-mas.Po
-#	$(AM_V_CC)source='obexd/plugins/mas.c' object='obexd/plugins/obexd-mas.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-mas.obj `if test -f 'obexd/plugins/mas.c'; then $(CYGPATH_W) 'obexd/plugins/mas.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/mas.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-mas.obj -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-mas.Tpo -c -o obexd/plugins/obexd-mas.obj `if test -f 'obexd/plugins/mas.c'; then $(CYGPATH_W) 'obexd/plugins/mas.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/mas.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-mas.Tpo obexd/plugins/$(DEPDIR)/obexd-mas.Po
+#	$(AM_V_CC)source='obexd/plugins/mas.c' object='obexd/plugins/obexd-mas.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-mas.obj `if test -f 'obexd/plugins/mas.c'; then $(CYGPATH_W) 'obexd/plugins/mas.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/mas.c'; fi`
 
 obexd/plugins/obexd-messages-dummy.o: obexd/plugins/messages-dummy.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-messages-dummy.o -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-messages-dummy.Tpo -c -o obexd/plugins/obexd-messages-dummy.o `test -f 'obexd/plugins/messages-dummy.c' || echo '$(srcdir)/'`obexd/plugins/messages-dummy.c
-	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-messages-dummy.Tpo obexd/plugins/$(DEPDIR)/obexd-messages-dummy.Po
-#	$(AM_V_CC)source='obexd/plugins/messages-dummy.c' object='obexd/plugins/obexd-messages-dummy.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-messages-dummy.o `test -f 'obexd/plugins/messages-dummy.c' || echo '$(srcdir)/'`obexd/plugins/messages-dummy.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-messages-dummy.o -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-messages-dummy.Tpo -c -o obexd/plugins/obexd-messages-dummy.o `test -f 'obexd/plugins/messages-dummy.c' || echo '$(srcdir)/'`obexd/plugins/messages-dummy.c
+#	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-messages-dummy.Tpo obexd/plugins/$(DEPDIR)/obexd-messages-dummy.Po
+#	$(AM_V_CC)source='obexd/plugins/messages-dummy.c' object='obexd/plugins/obexd-messages-dummy.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-messages-dummy.o `test -f 'obexd/plugins/messages-dummy.c' || echo '$(srcdir)/'`obexd/plugins/messages-dummy.c
 
 obexd/plugins/obexd-messages-dummy.obj: obexd/plugins/messages-dummy.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-messages-dummy.obj -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-messages-dummy.Tpo -c -o obexd/plugins/obexd-messages-dummy.obj `if test -f 'obexd/plugins/messages-dummy.c'; then $(CYGPATH_W) 'obexd/plugins/messages-dummy.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/messages-dummy.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-messages-dummy.Tpo obexd/plugins/$(DEPDIR)/obexd-messages-dummy.Po
-#	$(AM_V_CC)source='obexd/plugins/messages-dummy.c' object='obexd/plugins/obexd-messages-dummy.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-messages-dummy.obj `if test -f 'obexd/plugins/messages-dummy.c'; then $(CYGPATH_W) 'obexd/plugins/messages-dummy.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/messages-dummy.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/plugins/obexd-messages-dummy.obj -MD -MP -MF obexd/plugins/$(DEPDIR)/obexd-messages-dummy.Tpo -c -o obexd/plugins/obexd-messages-dummy.obj `if test -f 'obexd/plugins/messages-dummy.c'; then $(CYGPATH_W) 'obexd/plugins/messages-dummy.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/messages-dummy.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/plugins/$(DEPDIR)/obexd-messages-dummy.Tpo obexd/plugins/$(DEPDIR)/obexd-messages-dummy.Po
+#	$(AM_V_CC)source='obexd/plugins/messages-dummy.c' object='obexd/plugins/obexd-messages-dummy.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/plugins/obexd-messages-dummy.obj `if test -f 'obexd/plugins/messages-dummy.c'; then $(CYGPATH_W) 'obexd/plugins/messages-dummy.c'; else $(CYGPATH_W) '$(srcdir)/obexd/plugins/messages-dummy.c'; fi`
 
 obexd/client/obexd-mns.o: obexd/client/mns.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-mns.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-mns.Tpo -c -o obexd/client/obexd-mns.o `test -f 'obexd/client/mns.c' || echo '$(srcdir)/'`obexd/client/mns.c
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-mns.Tpo obexd/client/$(DEPDIR)/obexd-mns.Po
-#	$(AM_V_CC)source='obexd/client/mns.c' object='obexd/client/obexd-mns.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-mns.o `test -f 'obexd/client/mns.c' || echo '$(srcdir)/'`obexd/client/mns.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-mns.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-mns.Tpo -c -o obexd/client/obexd-mns.o `test -f 'obexd/client/mns.c' || echo '$(srcdir)/'`obexd/client/mns.c
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-mns.Tpo obexd/client/$(DEPDIR)/obexd-mns.Po
+#	$(AM_V_CC)source='obexd/client/mns.c' object='obexd/client/obexd-mns.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-mns.o `test -f 'obexd/client/mns.c' || echo '$(srcdir)/'`obexd/client/mns.c
 
 obexd/client/obexd-mns.obj: obexd/client/mns.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-mns.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-mns.Tpo -c -o obexd/client/obexd-mns.obj `if test -f 'obexd/client/mns.c'; then $(CYGPATH_W) 'obexd/client/mns.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/mns.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-mns.Tpo obexd/client/$(DEPDIR)/obexd-mns.Po
-#	$(AM_V_CC)source='obexd/client/mns.c' object='obexd/client/obexd-mns.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-mns.obj `if test -f 'obexd/client/mns.c'; then $(CYGPATH_W) 'obexd/client/mns.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/mns.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-mns.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-mns.Tpo -c -o obexd/client/obexd-mns.obj `if test -f 'obexd/client/mns.c'; then $(CYGPATH_W) 'obexd/client/mns.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/mns.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-mns.Tpo obexd/client/$(DEPDIR)/obexd-mns.Po
+#	$(AM_V_CC)source='obexd/client/mns.c' object='obexd/client/obexd-mns.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-mns.obj `if test -f 'obexd/client/mns.c'; then $(CYGPATH_W) 'obexd/client/mns.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/mns.c'; fi`
 
 obexd/src/obexd-main.o: obexd/src/main.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-main.o -MD -MP -MF obexd/src/$(DEPDIR)/obexd-main.Tpo -c -o obexd/src/obexd-main.o `test -f 'obexd/src/main.c' || echo '$(srcdir)/'`obexd/src/main.c
-	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-main.Tpo obexd/src/$(DEPDIR)/obexd-main.Po
-#	$(AM_V_CC)source='obexd/src/main.c' object='obexd/src/obexd-main.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-main.o `test -f 'obexd/src/main.c' || echo '$(srcdir)/'`obexd/src/main.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-main.o -MD -MP -MF obexd/src/$(DEPDIR)/obexd-main.Tpo -c -o obexd/src/obexd-main.o `test -f 'obexd/src/main.c' || echo '$(srcdir)/'`obexd/src/main.c
+#	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-main.Tpo obexd/src/$(DEPDIR)/obexd-main.Po
+#	$(AM_V_CC)source='obexd/src/main.c' object='obexd/src/obexd-main.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-main.o `test -f 'obexd/src/main.c' || echo '$(srcdir)/'`obexd/src/main.c
 
 obexd/src/obexd-main.obj: obexd/src/main.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-main.obj -MD -MP -MF obexd/src/$(DEPDIR)/obexd-main.Tpo -c -o obexd/src/obexd-main.obj `if test -f 'obexd/src/main.c'; then $(CYGPATH_W) 'obexd/src/main.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/main.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-main.Tpo obexd/src/$(DEPDIR)/obexd-main.Po
-#	$(AM_V_CC)source='obexd/src/main.c' object='obexd/src/obexd-main.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-main.obj `if test -f 'obexd/src/main.c'; then $(CYGPATH_W) 'obexd/src/main.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/main.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-main.obj -MD -MP -MF obexd/src/$(DEPDIR)/obexd-main.Tpo -c -o obexd/src/obexd-main.obj `if test -f 'obexd/src/main.c'; then $(CYGPATH_W) 'obexd/src/main.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/main.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-main.Tpo obexd/src/$(DEPDIR)/obexd-main.Po
+#	$(AM_V_CC)source='obexd/src/main.c' object='obexd/src/obexd-main.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-main.obj `if test -f 'obexd/src/main.c'; then $(CYGPATH_W) 'obexd/src/main.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/main.c'; fi`
 
 obexd/src/obexd-plugin.o: obexd/src/plugin.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-plugin.o -MD -MP -MF obexd/src/$(DEPDIR)/obexd-plugin.Tpo -c -o obexd/src/obexd-plugin.o `test -f 'obexd/src/plugin.c' || echo '$(srcdir)/'`obexd/src/plugin.c
-	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-plugin.Tpo obexd/src/$(DEPDIR)/obexd-plugin.Po
-#	$(AM_V_CC)source='obexd/src/plugin.c' object='obexd/src/obexd-plugin.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-plugin.o `test -f 'obexd/src/plugin.c' || echo '$(srcdir)/'`obexd/src/plugin.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-plugin.o -MD -MP -MF obexd/src/$(DEPDIR)/obexd-plugin.Tpo -c -o obexd/src/obexd-plugin.o `test -f 'obexd/src/plugin.c' || echo '$(srcdir)/'`obexd/src/plugin.c
+#	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-plugin.Tpo obexd/src/$(DEPDIR)/obexd-plugin.Po
+#	$(AM_V_CC)source='obexd/src/plugin.c' object='obexd/src/obexd-plugin.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-plugin.o `test -f 'obexd/src/plugin.c' || echo '$(srcdir)/'`obexd/src/plugin.c
 
 obexd/src/obexd-plugin.obj: obexd/src/plugin.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-plugin.obj -MD -MP -MF obexd/src/$(DEPDIR)/obexd-plugin.Tpo -c -o obexd/src/obexd-plugin.obj `if test -f 'obexd/src/plugin.c'; then $(CYGPATH_W) 'obexd/src/plugin.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/plugin.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-plugin.Tpo obexd/src/$(DEPDIR)/obexd-plugin.Po
-#	$(AM_V_CC)source='obexd/src/plugin.c' object='obexd/src/obexd-plugin.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-plugin.obj `if test -f 'obexd/src/plugin.c'; then $(CYGPATH_W) 'obexd/src/plugin.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/plugin.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-plugin.obj -MD -MP -MF obexd/src/$(DEPDIR)/obexd-plugin.Tpo -c -o obexd/src/obexd-plugin.obj `if test -f 'obexd/src/plugin.c'; then $(CYGPATH_W) 'obexd/src/plugin.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/plugin.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-plugin.Tpo obexd/src/$(DEPDIR)/obexd-plugin.Po
+#	$(AM_V_CC)source='obexd/src/plugin.c' object='obexd/src/obexd-plugin.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-plugin.obj `if test -f 'obexd/src/plugin.c'; then $(CYGPATH_W) 'obexd/src/plugin.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/plugin.c'; fi`
 
 obexd/src/obexd-log.o: obexd/src/log.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-log.o -MD -MP -MF obexd/src/$(DEPDIR)/obexd-log.Tpo -c -o obexd/src/obexd-log.o `test -f 'obexd/src/log.c' || echo '$(srcdir)/'`obexd/src/log.c
-	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-log.Tpo obexd/src/$(DEPDIR)/obexd-log.Po
-#	$(AM_V_CC)source='obexd/src/log.c' object='obexd/src/obexd-log.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-log.o `test -f 'obexd/src/log.c' || echo '$(srcdir)/'`obexd/src/log.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-log.o -MD -MP -MF obexd/src/$(DEPDIR)/obexd-log.Tpo -c -o obexd/src/obexd-log.o `test -f 'obexd/src/log.c' || echo '$(srcdir)/'`obexd/src/log.c
+#	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-log.Tpo obexd/src/$(DEPDIR)/obexd-log.Po
+#	$(AM_V_CC)source='obexd/src/log.c' object='obexd/src/obexd-log.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-log.o `test -f 'obexd/src/log.c' || echo '$(srcdir)/'`obexd/src/log.c
 
 obexd/src/obexd-log.obj: obexd/src/log.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-log.obj -MD -MP -MF obexd/src/$(DEPDIR)/obexd-log.Tpo -c -o obexd/src/obexd-log.obj `if test -f 'obexd/src/log.c'; then $(CYGPATH_W) 'obexd/src/log.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/log.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-log.Tpo obexd/src/$(DEPDIR)/obexd-log.Po
-#	$(AM_V_CC)source='obexd/src/log.c' object='obexd/src/obexd-log.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-log.obj `if test -f 'obexd/src/log.c'; then $(CYGPATH_W) 'obexd/src/log.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/log.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-log.obj -MD -MP -MF obexd/src/$(DEPDIR)/obexd-log.Tpo -c -o obexd/src/obexd-log.obj `if test -f 'obexd/src/log.c'; then $(CYGPATH_W) 'obexd/src/log.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/log.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-log.Tpo obexd/src/$(DEPDIR)/obexd-log.Po
+#	$(AM_V_CC)source='obexd/src/log.c' object='obexd/src/obexd-log.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-log.obj `if test -f 'obexd/src/log.c'; then $(CYGPATH_W) 'obexd/src/log.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/log.c'; fi`
 
 obexd/src/obexd-manager.o: obexd/src/manager.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-manager.o -MD -MP -MF obexd/src/$(DEPDIR)/obexd-manager.Tpo -c -o obexd/src/obexd-manager.o `test -f 'obexd/src/manager.c' || echo '$(srcdir)/'`obexd/src/manager.c
-	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-manager.Tpo obexd/src/$(DEPDIR)/obexd-manager.Po
-#	$(AM_V_CC)source='obexd/src/manager.c' object='obexd/src/obexd-manager.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-manager.o `test -f 'obexd/src/manager.c' || echo '$(srcdir)/'`obexd/src/manager.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-manager.o -MD -MP -MF obexd/src/$(DEPDIR)/obexd-manager.Tpo -c -o obexd/src/obexd-manager.o `test -f 'obexd/src/manager.c' || echo '$(srcdir)/'`obexd/src/manager.c
+#	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-manager.Tpo obexd/src/$(DEPDIR)/obexd-manager.Po
+#	$(AM_V_CC)source='obexd/src/manager.c' object='obexd/src/obexd-manager.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-manager.o `test -f 'obexd/src/manager.c' || echo '$(srcdir)/'`obexd/src/manager.c
 
 obexd/src/obexd-manager.obj: obexd/src/manager.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-manager.obj -MD -MP -MF obexd/src/$(DEPDIR)/obexd-manager.Tpo -c -o obexd/src/obexd-manager.obj `if test -f 'obexd/src/manager.c'; then $(CYGPATH_W) 'obexd/src/manager.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/manager.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-manager.Tpo obexd/src/$(DEPDIR)/obexd-manager.Po
-#	$(AM_V_CC)source='obexd/src/manager.c' object='obexd/src/obexd-manager.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-manager.obj `if test -f 'obexd/src/manager.c'; then $(CYGPATH_W) 'obexd/src/manager.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/manager.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-manager.obj -MD -MP -MF obexd/src/$(DEPDIR)/obexd-manager.Tpo -c -o obexd/src/obexd-manager.obj `if test -f 'obexd/src/manager.c'; then $(CYGPATH_W) 'obexd/src/manager.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/manager.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-manager.Tpo obexd/src/$(DEPDIR)/obexd-manager.Po
+#	$(AM_V_CC)source='obexd/src/manager.c' object='obexd/src/obexd-manager.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-manager.obj `if test -f 'obexd/src/manager.c'; then $(CYGPATH_W) 'obexd/src/manager.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/manager.c'; fi`
 
 obexd/src/obexd-obex.o: obexd/src/obex.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-obex.o -MD -MP -MF obexd/src/$(DEPDIR)/obexd-obex.Tpo -c -o obexd/src/obexd-obex.o `test -f 'obexd/src/obex.c' || echo '$(srcdir)/'`obexd/src/obex.c
-	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-obex.Tpo obexd/src/$(DEPDIR)/obexd-obex.Po
-#	$(AM_V_CC)source='obexd/src/obex.c' object='obexd/src/obexd-obex.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-obex.o `test -f 'obexd/src/obex.c' || echo '$(srcdir)/'`obexd/src/obex.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-obex.o -MD -MP -MF obexd/src/$(DEPDIR)/obexd-obex.Tpo -c -o obexd/src/obexd-obex.o `test -f 'obexd/src/obex.c' || echo '$(srcdir)/'`obexd/src/obex.c
+#	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-obex.Tpo obexd/src/$(DEPDIR)/obexd-obex.Po
+#	$(AM_V_CC)source='obexd/src/obex.c' object='obexd/src/obexd-obex.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-obex.o `test -f 'obexd/src/obex.c' || echo '$(srcdir)/'`obexd/src/obex.c
 
 obexd/src/obexd-obex.obj: obexd/src/obex.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-obex.obj -MD -MP -MF obexd/src/$(DEPDIR)/obexd-obex.Tpo -c -o obexd/src/obexd-obex.obj `if test -f 'obexd/src/obex.c'; then $(CYGPATH_W) 'obexd/src/obex.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/obex.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-obex.Tpo obexd/src/$(DEPDIR)/obexd-obex.Po
-#	$(AM_V_CC)source='obexd/src/obex.c' object='obexd/src/obexd-obex.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-obex.obj `if test -f 'obexd/src/obex.c'; then $(CYGPATH_W) 'obexd/src/obex.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/obex.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-obex.obj -MD -MP -MF obexd/src/$(DEPDIR)/obexd-obex.Tpo -c -o obexd/src/obexd-obex.obj `if test -f 'obexd/src/obex.c'; then $(CYGPATH_W) 'obexd/src/obex.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/obex.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-obex.Tpo obexd/src/$(DEPDIR)/obexd-obex.Po
+#	$(AM_V_CC)source='obexd/src/obex.c' object='obexd/src/obexd-obex.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-obex.obj `if test -f 'obexd/src/obex.c'; then $(CYGPATH_W) 'obexd/src/obex.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/obex.c'; fi`
 
 obexd/src/obexd-mimetype.o: obexd/src/mimetype.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-mimetype.o -MD -MP -MF obexd/src/$(DEPDIR)/obexd-mimetype.Tpo -c -o obexd/src/obexd-mimetype.o `test -f 'obexd/src/mimetype.c' || echo '$(srcdir)/'`obexd/src/mimetype.c
-	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-mimetype.Tpo obexd/src/$(DEPDIR)/obexd-mimetype.Po
-#	$(AM_V_CC)source='obexd/src/mimetype.c' object='obexd/src/obexd-mimetype.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-mimetype.o `test -f 'obexd/src/mimetype.c' || echo '$(srcdir)/'`obexd/src/mimetype.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-mimetype.o -MD -MP -MF obexd/src/$(DEPDIR)/obexd-mimetype.Tpo -c -o obexd/src/obexd-mimetype.o `test -f 'obexd/src/mimetype.c' || echo '$(srcdir)/'`obexd/src/mimetype.c
+#	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-mimetype.Tpo obexd/src/$(DEPDIR)/obexd-mimetype.Po
+#	$(AM_V_CC)source='obexd/src/mimetype.c' object='obexd/src/obexd-mimetype.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-mimetype.o `test -f 'obexd/src/mimetype.c' || echo '$(srcdir)/'`obexd/src/mimetype.c
 
 obexd/src/obexd-mimetype.obj: obexd/src/mimetype.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-mimetype.obj -MD -MP -MF obexd/src/$(DEPDIR)/obexd-mimetype.Tpo -c -o obexd/src/obexd-mimetype.obj `if test -f 'obexd/src/mimetype.c'; then $(CYGPATH_W) 'obexd/src/mimetype.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/mimetype.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-mimetype.Tpo obexd/src/$(DEPDIR)/obexd-mimetype.Po
-#	$(AM_V_CC)source='obexd/src/mimetype.c' object='obexd/src/obexd-mimetype.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-mimetype.obj `if test -f 'obexd/src/mimetype.c'; then $(CYGPATH_W) 'obexd/src/mimetype.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/mimetype.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-mimetype.obj -MD -MP -MF obexd/src/$(DEPDIR)/obexd-mimetype.Tpo -c -o obexd/src/obexd-mimetype.obj `if test -f 'obexd/src/mimetype.c'; then $(CYGPATH_W) 'obexd/src/mimetype.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/mimetype.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-mimetype.Tpo obexd/src/$(DEPDIR)/obexd-mimetype.Po
+#	$(AM_V_CC)source='obexd/src/mimetype.c' object='obexd/src/obexd-mimetype.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-mimetype.obj `if test -f 'obexd/src/mimetype.c'; then $(CYGPATH_W) 'obexd/src/mimetype.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/mimetype.c'; fi`
 
 obexd/src/obexd-service.o: obexd/src/service.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-service.o -MD -MP -MF obexd/src/$(DEPDIR)/obexd-service.Tpo -c -o obexd/src/obexd-service.o `test -f 'obexd/src/service.c' || echo '$(srcdir)/'`obexd/src/service.c
-	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-service.Tpo obexd/src/$(DEPDIR)/obexd-service.Po
-#	$(AM_V_CC)source='obexd/src/service.c' object='obexd/src/obexd-service.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-service.o `test -f 'obexd/src/service.c' || echo '$(srcdir)/'`obexd/src/service.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-service.o -MD -MP -MF obexd/src/$(DEPDIR)/obexd-service.Tpo -c -o obexd/src/obexd-service.o `test -f 'obexd/src/service.c' || echo '$(srcdir)/'`obexd/src/service.c
+#	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-service.Tpo obexd/src/$(DEPDIR)/obexd-service.Po
+#	$(AM_V_CC)source='obexd/src/service.c' object='obexd/src/obexd-service.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-service.o `test -f 'obexd/src/service.c' || echo '$(srcdir)/'`obexd/src/service.c
 
 obexd/src/obexd-service.obj: obexd/src/service.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-service.obj -MD -MP -MF obexd/src/$(DEPDIR)/obexd-service.Tpo -c -o obexd/src/obexd-service.obj `if test -f 'obexd/src/service.c'; then $(CYGPATH_W) 'obexd/src/service.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/service.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-service.Tpo obexd/src/$(DEPDIR)/obexd-service.Po
-#	$(AM_V_CC)source='obexd/src/service.c' object='obexd/src/obexd-service.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-service.obj `if test -f 'obexd/src/service.c'; then $(CYGPATH_W) 'obexd/src/service.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/service.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-service.obj -MD -MP -MF obexd/src/$(DEPDIR)/obexd-service.Tpo -c -o obexd/src/obexd-service.obj `if test -f 'obexd/src/service.c'; then $(CYGPATH_W) 'obexd/src/service.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/service.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-service.Tpo obexd/src/$(DEPDIR)/obexd-service.Po
+#	$(AM_V_CC)source='obexd/src/service.c' object='obexd/src/obexd-service.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-service.obj `if test -f 'obexd/src/service.c'; then $(CYGPATH_W) 'obexd/src/service.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/service.c'; fi`
 
 obexd/src/obexd-transport.o: obexd/src/transport.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-transport.o -MD -MP -MF obexd/src/$(DEPDIR)/obexd-transport.Tpo -c -o obexd/src/obexd-transport.o `test -f 'obexd/src/transport.c' || echo '$(srcdir)/'`obexd/src/transport.c
-	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-transport.Tpo obexd/src/$(DEPDIR)/obexd-transport.Po
-#	$(AM_V_CC)source='obexd/src/transport.c' object='obexd/src/obexd-transport.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-transport.o `test -f 'obexd/src/transport.c' || echo '$(srcdir)/'`obexd/src/transport.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-transport.o -MD -MP -MF obexd/src/$(DEPDIR)/obexd-transport.Tpo -c -o obexd/src/obexd-transport.o `test -f 'obexd/src/transport.c' || echo '$(srcdir)/'`obexd/src/transport.c
+#	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-transport.Tpo obexd/src/$(DEPDIR)/obexd-transport.Po
+#	$(AM_V_CC)source='obexd/src/transport.c' object='obexd/src/obexd-transport.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-transport.o `test -f 'obexd/src/transport.c' || echo '$(srcdir)/'`obexd/src/transport.c
 
 obexd/src/obexd-transport.obj: obexd/src/transport.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-transport.obj -MD -MP -MF obexd/src/$(DEPDIR)/obexd-transport.Tpo -c -o obexd/src/obexd-transport.obj `if test -f 'obexd/src/transport.c'; then $(CYGPATH_W) 'obexd/src/transport.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/transport.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-transport.Tpo obexd/src/$(DEPDIR)/obexd-transport.Po
-#	$(AM_V_CC)source='obexd/src/transport.c' object='obexd/src/obexd-transport.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-transport.obj `if test -f 'obexd/src/transport.c'; then $(CYGPATH_W) 'obexd/src/transport.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/transport.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-transport.obj -MD -MP -MF obexd/src/$(DEPDIR)/obexd-transport.Tpo -c -o obexd/src/obexd-transport.obj `if test -f 'obexd/src/transport.c'; then $(CYGPATH_W) 'obexd/src/transport.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/transport.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-transport.Tpo obexd/src/$(DEPDIR)/obexd-transport.Po
+#	$(AM_V_CC)source='obexd/src/transport.c' object='obexd/src/obexd-transport.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-transport.obj `if test -f 'obexd/src/transport.c'; then $(CYGPATH_W) 'obexd/src/transport.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/transport.c'; fi`
 
 obexd/src/obexd-server.o: obexd/src/server.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-server.o -MD -MP -MF obexd/src/$(DEPDIR)/obexd-server.Tpo -c -o obexd/src/obexd-server.o `test -f 'obexd/src/server.c' || echo '$(srcdir)/'`obexd/src/server.c
-	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-server.Tpo obexd/src/$(DEPDIR)/obexd-server.Po
-#	$(AM_V_CC)source='obexd/src/server.c' object='obexd/src/obexd-server.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-server.o `test -f 'obexd/src/server.c' || echo '$(srcdir)/'`obexd/src/server.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-server.o -MD -MP -MF obexd/src/$(DEPDIR)/obexd-server.Tpo -c -o obexd/src/obexd-server.o `test -f 'obexd/src/server.c' || echo '$(srcdir)/'`obexd/src/server.c
+#	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-server.Tpo obexd/src/$(DEPDIR)/obexd-server.Po
+#	$(AM_V_CC)source='obexd/src/server.c' object='obexd/src/obexd-server.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-server.o `test -f 'obexd/src/server.c' || echo '$(srcdir)/'`obexd/src/server.c
 
 obexd/src/obexd-server.obj: obexd/src/server.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-server.obj -MD -MP -MF obexd/src/$(DEPDIR)/obexd-server.Tpo -c -o obexd/src/obexd-server.obj `if test -f 'obexd/src/server.c'; then $(CYGPATH_W) 'obexd/src/server.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/server.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-server.Tpo obexd/src/$(DEPDIR)/obexd-server.Po
-#	$(AM_V_CC)source='obexd/src/server.c' object='obexd/src/obexd-server.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-server.obj `if test -f 'obexd/src/server.c'; then $(CYGPATH_W) 'obexd/src/server.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/server.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/src/obexd-server.obj -MD -MP -MF obexd/src/$(DEPDIR)/obexd-server.Tpo -c -o obexd/src/obexd-server.obj `if test -f 'obexd/src/server.c'; then $(CYGPATH_W) 'obexd/src/server.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/server.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/src/$(DEPDIR)/obexd-server.Tpo obexd/src/$(DEPDIR)/obexd-server.Po
+#	$(AM_V_CC)source='obexd/src/server.c' object='obexd/src/obexd-server.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/src/obexd-server.obj `if test -f 'obexd/src/server.c'; then $(CYGPATH_W) 'obexd/src/server.c'; else $(CYGPATH_W) '$(srcdir)/obexd/src/server.c'; fi`
 
 obexd/client/obexd-manager.o: obexd/client/manager.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-manager.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-manager.Tpo -c -o obexd/client/obexd-manager.o `test -f 'obexd/client/manager.c' || echo '$(srcdir)/'`obexd/client/manager.c
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-manager.Tpo obexd/client/$(DEPDIR)/obexd-manager.Po
-#	$(AM_V_CC)source='obexd/client/manager.c' object='obexd/client/obexd-manager.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-manager.o `test -f 'obexd/client/manager.c' || echo '$(srcdir)/'`obexd/client/manager.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-manager.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-manager.Tpo -c -o obexd/client/obexd-manager.o `test -f 'obexd/client/manager.c' || echo '$(srcdir)/'`obexd/client/manager.c
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-manager.Tpo obexd/client/$(DEPDIR)/obexd-manager.Po
+#	$(AM_V_CC)source='obexd/client/manager.c' object='obexd/client/obexd-manager.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-manager.o `test -f 'obexd/client/manager.c' || echo '$(srcdir)/'`obexd/client/manager.c
 
 obexd/client/obexd-manager.obj: obexd/client/manager.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-manager.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-manager.Tpo -c -o obexd/client/obexd-manager.obj `if test -f 'obexd/client/manager.c'; then $(CYGPATH_W) 'obexd/client/manager.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/manager.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-manager.Tpo obexd/client/$(DEPDIR)/obexd-manager.Po
-#	$(AM_V_CC)source='obexd/client/manager.c' object='obexd/client/obexd-manager.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-manager.obj `if test -f 'obexd/client/manager.c'; then $(CYGPATH_W) 'obexd/client/manager.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/manager.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-manager.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-manager.Tpo -c -o obexd/client/obexd-manager.obj `if test -f 'obexd/client/manager.c'; then $(CYGPATH_W) 'obexd/client/manager.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/manager.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-manager.Tpo obexd/client/$(DEPDIR)/obexd-manager.Po
+#	$(AM_V_CC)source='obexd/client/manager.c' object='obexd/client/obexd-manager.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-manager.obj `if test -f 'obexd/client/manager.c'; then $(CYGPATH_W) 'obexd/client/manager.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/manager.c'; fi`
 
 obexd/client/obexd-session.o: obexd/client/session.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-session.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-session.Tpo -c -o obexd/client/obexd-session.o `test -f 'obexd/client/session.c' || echo '$(srcdir)/'`obexd/client/session.c
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-session.Tpo obexd/client/$(DEPDIR)/obexd-session.Po
-#	$(AM_V_CC)source='obexd/client/session.c' object='obexd/client/obexd-session.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-session.o `test -f 'obexd/client/session.c' || echo '$(srcdir)/'`obexd/client/session.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-session.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-session.Tpo -c -o obexd/client/obexd-session.o `test -f 'obexd/client/session.c' || echo '$(srcdir)/'`obexd/client/session.c
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-session.Tpo obexd/client/$(DEPDIR)/obexd-session.Po
+#	$(AM_V_CC)source='obexd/client/session.c' object='obexd/client/obexd-session.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-session.o `test -f 'obexd/client/session.c' || echo '$(srcdir)/'`obexd/client/session.c
 
 obexd/client/obexd-session.obj: obexd/client/session.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-session.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-session.Tpo -c -o obexd/client/obexd-session.obj `if test -f 'obexd/client/session.c'; then $(CYGPATH_W) 'obexd/client/session.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/session.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-session.Tpo obexd/client/$(DEPDIR)/obexd-session.Po
-#	$(AM_V_CC)source='obexd/client/session.c' object='obexd/client/obexd-session.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-session.obj `if test -f 'obexd/client/session.c'; then $(CYGPATH_W) 'obexd/client/session.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/session.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-session.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-session.Tpo -c -o obexd/client/obexd-session.obj `if test -f 'obexd/client/session.c'; then $(CYGPATH_W) 'obexd/client/session.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/session.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-session.Tpo obexd/client/$(DEPDIR)/obexd-session.Po
+#	$(AM_V_CC)source='obexd/client/session.c' object='obexd/client/obexd-session.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-session.obj `if test -f 'obexd/client/session.c'; then $(CYGPATH_W) 'obexd/client/session.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/session.c'; fi`
 
 obexd/client/obexd-bluetooth.o: obexd/client/bluetooth.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-bluetooth.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-bluetooth.Tpo -c -o obexd/client/obexd-bluetooth.o `test -f 'obexd/client/bluetooth.c' || echo '$(srcdir)/'`obexd/client/bluetooth.c
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-bluetooth.Tpo obexd/client/$(DEPDIR)/obexd-bluetooth.Po
-#	$(AM_V_CC)source='obexd/client/bluetooth.c' object='obexd/client/obexd-bluetooth.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-bluetooth.o `test -f 'obexd/client/bluetooth.c' || echo '$(srcdir)/'`obexd/client/bluetooth.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-bluetooth.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-bluetooth.Tpo -c -o obexd/client/obexd-bluetooth.o `test -f 'obexd/client/bluetooth.c' || echo '$(srcdir)/'`obexd/client/bluetooth.c
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-bluetooth.Tpo obexd/client/$(DEPDIR)/obexd-bluetooth.Po
+#	$(AM_V_CC)source='obexd/client/bluetooth.c' object='obexd/client/obexd-bluetooth.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-bluetooth.o `test -f 'obexd/client/bluetooth.c' || echo '$(srcdir)/'`obexd/client/bluetooth.c
 
 obexd/client/obexd-bluetooth.obj: obexd/client/bluetooth.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-bluetooth.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-bluetooth.Tpo -c -o obexd/client/obexd-bluetooth.obj `if test -f 'obexd/client/bluetooth.c'; then $(CYGPATH_W) 'obexd/client/bluetooth.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/bluetooth.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-bluetooth.Tpo obexd/client/$(DEPDIR)/obexd-bluetooth.Po
-#	$(AM_V_CC)source='obexd/client/bluetooth.c' object='obexd/client/obexd-bluetooth.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-bluetooth.obj `if test -f 'obexd/client/bluetooth.c'; then $(CYGPATH_W) 'obexd/client/bluetooth.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/bluetooth.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-bluetooth.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-bluetooth.Tpo -c -o obexd/client/obexd-bluetooth.obj `if test -f 'obexd/client/bluetooth.c'; then $(CYGPATH_W) 'obexd/client/bluetooth.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/bluetooth.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-bluetooth.Tpo obexd/client/$(DEPDIR)/obexd-bluetooth.Po
+#	$(AM_V_CC)source='obexd/client/bluetooth.c' object='obexd/client/obexd-bluetooth.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-bluetooth.obj `if test -f 'obexd/client/bluetooth.c'; then $(CYGPATH_W) 'obexd/client/bluetooth.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/bluetooth.c'; fi`
 
 obexd/client/obexd-sync.o: obexd/client/sync.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-sync.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-sync.Tpo -c -o obexd/client/obexd-sync.o `test -f 'obexd/client/sync.c' || echo '$(srcdir)/'`obexd/client/sync.c
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-sync.Tpo obexd/client/$(DEPDIR)/obexd-sync.Po
-#	$(AM_V_CC)source='obexd/client/sync.c' object='obexd/client/obexd-sync.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-sync.o `test -f 'obexd/client/sync.c' || echo '$(srcdir)/'`obexd/client/sync.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-sync.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-sync.Tpo -c -o obexd/client/obexd-sync.o `test -f 'obexd/client/sync.c' || echo '$(srcdir)/'`obexd/client/sync.c
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-sync.Tpo obexd/client/$(DEPDIR)/obexd-sync.Po
+#	$(AM_V_CC)source='obexd/client/sync.c' object='obexd/client/obexd-sync.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-sync.o `test -f 'obexd/client/sync.c' || echo '$(srcdir)/'`obexd/client/sync.c
 
 obexd/client/obexd-sync.obj: obexd/client/sync.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-sync.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-sync.Tpo -c -o obexd/client/obexd-sync.obj `if test -f 'obexd/client/sync.c'; then $(CYGPATH_W) 'obexd/client/sync.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/sync.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-sync.Tpo obexd/client/$(DEPDIR)/obexd-sync.Po
-#	$(AM_V_CC)source='obexd/client/sync.c' object='obexd/client/obexd-sync.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-sync.obj `if test -f 'obexd/client/sync.c'; then $(CYGPATH_W) 'obexd/client/sync.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/sync.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-sync.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-sync.Tpo -c -o obexd/client/obexd-sync.obj `if test -f 'obexd/client/sync.c'; then $(CYGPATH_W) 'obexd/client/sync.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/sync.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-sync.Tpo obexd/client/$(DEPDIR)/obexd-sync.Po
+#	$(AM_V_CC)source='obexd/client/sync.c' object='obexd/client/obexd-sync.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-sync.obj `if test -f 'obexd/client/sync.c'; then $(CYGPATH_W) 'obexd/client/sync.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/sync.c'; fi`
 
 obexd/client/obexd-pbap.o: obexd/client/pbap.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-pbap.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-pbap.Tpo -c -o obexd/client/obexd-pbap.o `test -f 'obexd/client/pbap.c' || echo '$(srcdir)/'`obexd/client/pbap.c
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-pbap.Tpo obexd/client/$(DEPDIR)/obexd-pbap.Po
-#	$(AM_V_CC)source='obexd/client/pbap.c' object='obexd/client/obexd-pbap.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-pbap.o `test -f 'obexd/client/pbap.c' || echo '$(srcdir)/'`obexd/client/pbap.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-pbap.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-pbap.Tpo -c -o obexd/client/obexd-pbap.o `test -f 'obexd/client/pbap.c' || echo '$(srcdir)/'`obexd/client/pbap.c
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-pbap.Tpo obexd/client/$(DEPDIR)/obexd-pbap.Po
+#	$(AM_V_CC)source='obexd/client/pbap.c' object='obexd/client/obexd-pbap.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-pbap.o `test -f 'obexd/client/pbap.c' || echo '$(srcdir)/'`obexd/client/pbap.c
 
 obexd/client/obexd-pbap.obj: obexd/client/pbap.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-pbap.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-pbap.Tpo -c -o obexd/client/obexd-pbap.obj `if test -f 'obexd/client/pbap.c'; then $(CYGPATH_W) 'obexd/client/pbap.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/pbap.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-pbap.Tpo obexd/client/$(DEPDIR)/obexd-pbap.Po
-#	$(AM_V_CC)source='obexd/client/pbap.c' object='obexd/client/obexd-pbap.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-pbap.obj `if test -f 'obexd/client/pbap.c'; then $(CYGPATH_W) 'obexd/client/pbap.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/pbap.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-pbap.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-pbap.Tpo -c -o obexd/client/obexd-pbap.obj `if test -f 'obexd/client/pbap.c'; then $(CYGPATH_W) 'obexd/client/pbap.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/pbap.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-pbap.Tpo obexd/client/$(DEPDIR)/obexd-pbap.Po
+#	$(AM_V_CC)source='obexd/client/pbap.c' object='obexd/client/obexd-pbap.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-pbap.obj `if test -f 'obexd/client/pbap.c'; then $(CYGPATH_W) 'obexd/client/pbap.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/pbap.c'; fi`
 
 obexd/client/obexd-ftp.o: obexd/client/ftp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-ftp.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-ftp.Tpo -c -o obexd/client/obexd-ftp.o `test -f 'obexd/client/ftp.c' || echo '$(srcdir)/'`obexd/client/ftp.c
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-ftp.Tpo obexd/client/$(DEPDIR)/obexd-ftp.Po
-#	$(AM_V_CC)source='obexd/client/ftp.c' object='obexd/client/obexd-ftp.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-ftp.o `test -f 'obexd/client/ftp.c' || echo '$(srcdir)/'`obexd/client/ftp.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-ftp.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-ftp.Tpo -c -o obexd/client/obexd-ftp.o `test -f 'obexd/client/ftp.c' || echo '$(srcdir)/'`obexd/client/ftp.c
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-ftp.Tpo obexd/client/$(DEPDIR)/obexd-ftp.Po
+#	$(AM_V_CC)source='obexd/client/ftp.c' object='obexd/client/obexd-ftp.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-ftp.o `test -f 'obexd/client/ftp.c' || echo '$(srcdir)/'`obexd/client/ftp.c
 
 obexd/client/obexd-ftp.obj: obexd/client/ftp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-ftp.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-ftp.Tpo -c -o obexd/client/obexd-ftp.obj `if test -f 'obexd/client/ftp.c'; then $(CYGPATH_W) 'obexd/client/ftp.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/ftp.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-ftp.Tpo obexd/client/$(DEPDIR)/obexd-ftp.Po
-#	$(AM_V_CC)source='obexd/client/ftp.c' object='obexd/client/obexd-ftp.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-ftp.obj `if test -f 'obexd/client/ftp.c'; then $(CYGPATH_W) 'obexd/client/ftp.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/ftp.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-ftp.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-ftp.Tpo -c -o obexd/client/obexd-ftp.obj `if test -f 'obexd/client/ftp.c'; then $(CYGPATH_W) 'obexd/client/ftp.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/ftp.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-ftp.Tpo obexd/client/$(DEPDIR)/obexd-ftp.Po
+#	$(AM_V_CC)source='obexd/client/ftp.c' object='obexd/client/obexd-ftp.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-ftp.obj `if test -f 'obexd/client/ftp.c'; then $(CYGPATH_W) 'obexd/client/ftp.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/ftp.c'; fi`
 
 obexd/client/obexd-opp.o: obexd/client/opp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-opp.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-opp.Tpo -c -o obexd/client/obexd-opp.o `test -f 'obexd/client/opp.c' || echo '$(srcdir)/'`obexd/client/opp.c
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-opp.Tpo obexd/client/$(DEPDIR)/obexd-opp.Po
-#	$(AM_V_CC)source='obexd/client/opp.c' object='obexd/client/obexd-opp.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-opp.o `test -f 'obexd/client/opp.c' || echo '$(srcdir)/'`obexd/client/opp.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-opp.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-opp.Tpo -c -o obexd/client/obexd-opp.o `test -f 'obexd/client/opp.c' || echo '$(srcdir)/'`obexd/client/opp.c
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-opp.Tpo obexd/client/$(DEPDIR)/obexd-opp.Po
+#	$(AM_V_CC)source='obexd/client/opp.c' object='obexd/client/obexd-opp.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-opp.o `test -f 'obexd/client/opp.c' || echo '$(srcdir)/'`obexd/client/opp.c
 
 obexd/client/obexd-opp.obj: obexd/client/opp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-opp.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-opp.Tpo -c -o obexd/client/obexd-opp.obj `if test -f 'obexd/client/opp.c'; then $(CYGPATH_W) 'obexd/client/opp.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/opp.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-opp.Tpo obexd/client/$(DEPDIR)/obexd-opp.Po
-#	$(AM_V_CC)source='obexd/client/opp.c' object='obexd/client/obexd-opp.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-opp.obj `if test -f 'obexd/client/opp.c'; then $(CYGPATH_W) 'obexd/client/opp.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/opp.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-opp.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-opp.Tpo -c -o obexd/client/obexd-opp.obj `if test -f 'obexd/client/opp.c'; then $(CYGPATH_W) 'obexd/client/opp.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/opp.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-opp.Tpo obexd/client/$(DEPDIR)/obexd-opp.Po
+#	$(AM_V_CC)source='obexd/client/opp.c' object='obexd/client/obexd-opp.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-opp.obj `if test -f 'obexd/client/opp.c'; then $(CYGPATH_W) 'obexd/client/opp.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/opp.c'; fi`
 
 obexd/client/obexd-map.o: obexd/client/map.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-map.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-map.Tpo -c -o obexd/client/obexd-map.o `test -f 'obexd/client/map.c' || echo '$(srcdir)/'`obexd/client/map.c
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-map.Tpo obexd/client/$(DEPDIR)/obexd-map.Po
-#	$(AM_V_CC)source='obexd/client/map.c' object='obexd/client/obexd-map.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-map.o `test -f 'obexd/client/map.c' || echo '$(srcdir)/'`obexd/client/map.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-map.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-map.Tpo -c -o obexd/client/obexd-map.o `test -f 'obexd/client/map.c' || echo '$(srcdir)/'`obexd/client/map.c
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-map.Tpo obexd/client/$(DEPDIR)/obexd-map.Po
+#	$(AM_V_CC)source='obexd/client/map.c' object='obexd/client/obexd-map.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-map.o `test -f 'obexd/client/map.c' || echo '$(srcdir)/'`obexd/client/map.c
 
 obexd/client/obexd-map.obj: obexd/client/map.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-map.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-map.Tpo -c -o obexd/client/obexd-map.obj `if test -f 'obexd/client/map.c'; then $(CYGPATH_W) 'obexd/client/map.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/map.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-map.Tpo obexd/client/$(DEPDIR)/obexd-map.Po
-#	$(AM_V_CC)source='obexd/client/map.c' object='obexd/client/obexd-map.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-map.obj `if test -f 'obexd/client/map.c'; then $(CYGPATH_W) 'obexd/client/map.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/map.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-map.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-map.Tpo -c -o obexd/client/obexd-map.obj `if test -f 'obexd/client/map.c'; then $(CYGPATH_W) 'obexd/client/map.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/map.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-map.Tpo obexd/client/$(DEPDIR)/obexd-map.Po
+#	$(AM_V_CC)source='obexd/client/map.c' object='obexd/client/obexd-map.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-map.obj `if test -f 'obexd/client/map.c'; then $(CYGPATH_W) 'obexd/client/map.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/map.c'; fi`
 
 obexd/client/obexd-map-event.o: obexd/client/map-event.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-map-event.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-map-event.Tpo -c -o obexd/client/obexd-map-event.o `test -f 'obexd/client/map-event.c' || echo '$(srcdir)/'`obexd/client/map-event.c
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-map-event.Tpo obexd/client/$(DEPDIR)/obexd-map-event.Po
-#	$(AM_V_CC)source='obexd/client/map-event.c' object='obexd/client/obexd-map-event.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-map-event.o `test -f 'obexd/client/map-event.c' || echo '$(srcdir)/'`obexd/client/map-event.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-map-event.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-map-event.Tpo -c -o obexd/client/obexd-map-event.o `test -f 'obexd/client/map-event.c' || echo '$(srcdir)/'`obexd/client/map-event.c
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-map-event.Tpo obexd/client/$(DEPDIR)/obexd-map-event.Po
+#	$(AM_V_CC)source='obexd/client/map-event.c' object='obexd/client/obexd-map-event.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-map-event.o `test -f 'obexd/client/map-event.c' || echo '$(srcdir)/'`obexd/client/map-event.c
 
 obexd/client/obexd-map-event.obj: obexd/client/map-event.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-map-event.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-map-event.Tpo -c -o obexd/client/obexd-map-event.obj `if test -f 'obexd/client/map-event.c'; then $(CYGPATH_W) 'obexd/client/map-event.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/map-event.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-map-event.Tpo obexd/client/$(DEPDIR)/obexd-map-event.Po
-#	$(AM_V_CC)source='obexd/client/map-event.c' object='obexd/client/obexd-map-event.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-map-event.obj `if test -f 'obexd/client/map-event.c'; then $(CYGPATH_W) 'obexd/client/map-event.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/map-event.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-map-event.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-map-event.Tpo -c -o obexd/client/obexd-map-event.obj `if test -f 'obexd/client/map-event.c'; then $(CYGPATH_W) 'obexd/client/map-event.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/map-event.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-map-event.Tpo obexd/client/$(DEPDIR)/obexd-map-event.Po
+#	$(AM_V_CC)source='obexd/client/map-event.c' object='obexd/client/obexd-map-event.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-map-event.obj `if test -f 'obexd/client/map-event.c'; then $(CYGPATH_W) 'obexd/client/map-event.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/map-event.c'; fi`
 
 obexd/client/obexd-transfer.o: obexd/client/transfer.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-transfer.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-transfer.Tpo -c -o obexd/client/obexd-transfer.o `test -f 'obexd/client/transfer.c' || echo '$(srcdir)/'`obexd/client/transfer.c
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-transfer.Tpo obexd/client/$(DEPDIR)/obexd-transfer.Po
-#	$(AM_V_CC)source='obexd/client/transfer.c' object='obexd/client/obexd-transfer.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-transfer.o `test -f 'obexd/client/transfer.c' || echo '$(srcdir)/'`obexd/client/transfer.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-transfer.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-transfer.Tpo -c -o obexd/client/obexd-transfer.o `test -f 'obexd/client/transfer.c' || echo '$(srcdir)/'`obexd/client/transfer.c
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-transfer.Tpo obexd/client/$(DEPDIR)/obexd-transfer.Po
+#	$(AM_V_CC)source='obexd/client/transfer.c' object='obexd/client/obexd-transfer.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-transfer.o `test -f 'obexd/client/transfer.c' || echo '$(srcdir)/'`obexd/client/transfer.c
 
 obexd/client/obexd-transfer.obj: obexd/client/transfer.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-transfer.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-transfer.Tpo -c -o obexd/client/obexd-transfer.obj `if test -f 'obexd/client/transfer.c'; then $(CYGPATH_W) 'obexd/client/transfer.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/transfer.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-transfer.Tpo obexd/client/$(DEPDIR)/obexd-transfer.Po
-#	$(AM_V_CC)source='obexd/client/transfer.c' object='obexd/client/obexd-transfer.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-transfer.obj `if test -f 'obexd/client/transfer.c'; then $(CYGPATH_W) 'obexd/client/transfer.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/transfer.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-transfer.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-transfer.Tpo -c -o obexd/client/obexd-transfer.obj `if test -f 'obexd/client/transfer.c'; then $(CYGPATH_W) 'obexd/client/transfer.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/transfer.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-transfer.Tpo obexd/client/$(DEPDIR)/obexd-transfer.Po
+#	$(AM_V_CC)source='obexd/client/transfer.c' object='obexd/client/obexd-transfer.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-transfer.obj `if test -f 'obexd/client/transfer.c'; then $(CYGPATH_W) 'obexd/client/transfer.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/transfer.c'; fi`
 
 obexd/client/obexd-transport.o: obexd/client/transport.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-transport.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-transport.Tpo -c -o obexd/client/obexd-transport.o `test -f 'obexd/client/transport.c' || echo '$(srcdir)/'`obexd/client/transport.c
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-transport.Tpo obexd/client/$(DEPDIR)/obexd-transport.Po
-#	$(AM_V_CC)source='obexd/client/transport.c' object='obexd/client/obexd-transport.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-transport.o `test -f 'obexd/client/transport.c' || echo '$(srcdir)/'`obexd/client/transport.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-transport.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-transport.Tpo -c -o obexd/client/obexd-transport.o `test -f 'obexd/client/transport.c' || echo '$(srcdir)/'`obexd/client/transport.c
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-transport.Tpo obexd/client/$(DEPDIR)/obexd-transport.Po
+#	$(AM_V_CC)source='obexd/client/transport.c' object='obexd/client/obexd-transport.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-transport.o `test -f 'obexd/client/transport.c' || echo '$(srcdir)/'`obexd/client/transport.c
 
 obexd/client/obexd-transport.obj: obexd/client/transport.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-transport.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-transport.Tpo -c -o obexd/client/obexd-transport.obj `if test -f 'obexd/client/transport.c'; then $(CYGPATH_W) 'obexd/client/transport.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/transport.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-transport.Tpo obexd/client/$(DEPDIR)/obexd-transport.Po
-#	$(AM_V_CC)source='obexd/client/transport.c' object='obexd/client/obexd-transport.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-transport.obj `if test -f 'obexd/client/transport.c'; then $(CYGPATH_W) 'obexd/client/transport.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/transport.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-transport.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-transport.Tpo -c -o obexd/client/obexd-transport.obj `if test -f 'obexd/client/transport.c'; then $(CYGPATH_W) 'obexd/client/transport.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/transport.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-transport.Tpo obexd/client/$(DEPDIR)/obexd-transport.Po
+#	$(AM_V_CC)source='obexd/client/transport.c' object='obexd/client/obexd-transport.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-transport.obj `if test -f 'obexd/client/transport.c'; then $(CYGPATH_W) 'obexd/client/transport.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/transport.c'; fi`
 
 obexd/client/obexd-dbus.o: obexd/client/dbus.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-dbus.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-dbus.Tpo -c -o obexd/client/obexd-dbus.o `test -f 'obexd/client/dbus.c' || echo '$(srcdir)/'`obexd/client/dbus.c
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-dbus.Tpo obexd/client/$(DEPDIR)/obexd-dbus.Po
-#	$(AM_V_CC)source='obexd/client/dbus.c' object='obexd/client/obexd-dbus.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-dbus.o `test -f 'obexd/client/dbus.c' || echo '$(srcdir)/'`obexd/client/dbus.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-dbus.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-dbus.Tpo -c -o obexd/client/obexd-dbus.o `test -f 'obexd/client/dbus.c' || echo '$(srcdir)/'`obexd/client/dbus.c
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-dbus.Tpo obexd/client/$(DEPDIR)/obexd-dbus.Po
+#	$(AM_V_CC)source='obexd/client/dbus.c' object='obexd/client/obexd-dbus.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-dbus.o `test -f 'obexd/client/dbus.c' || echo '$(srcdir)/'`obexd/client/dbus.c
 
 obexd/client/obexd-dbus.obj: obexd/client/dbus.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-dbus.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-dbus.Tpo -c -o obexd/client/obexd-dbus.obj `if test -f 'obexd/client/dbus.c'; then $(CYGPATH_W) 'obexd/client/dbus.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/dbus.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-dbus.Tpo obexd/client/$(DEPDIR)/obexd-dbus.Po
-#	$(AM_V_CC)source='obexd/client/dbus.c' object='obexd/client/obexd-dbus.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-dbus.obj `if test -f 'obexd/client/dbus.c'; then $(CYGPATH_W) 'obexd/client/dbus.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/dbus.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-dbus.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-dbus.Tpo -c -o obexd/client/obexd-dbus.obj `if test -f 'obexd/client/dbus.c'; then $(CYGPATH_W) 'obexd/client/dbus.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/dbus.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-dbus.Tpo obexd/client/$(DEPDIR)/obexd-dbus.Po
+#	$(AM_V_CC)source='obexd/client/dbus.c' object='obexd/client/obexd-dbus.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-dbus.obj `if test -f 'obexd/client/dbus.c'; then $(CYGPATH_W) 'obexd/client/dbus.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/dbus.c'; fi`
 
 obexd/client/obexd-driver.o: obexd/client/driver.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-driver.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-driver.Tpo -c -o obexd/client/obexd-driver.o `test -f 'obexd/client/driver.c' || echo '$(srcdir)/'`obexd/client/driver.c
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-driver.Tpo obexd/client/$(DEPDIR)/obexd-driver.Po
-#	$(AM_V_CC)source='obexd/client/driver.c' object='obexd/client/obexd-driver.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-driver.o `test -f 'obexd/client/driver.c' || echo '$(srcdir)/'`obexd/client/driver.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-driver.o -MD -MP -MF obexd/client/$(DEPDIR)/obexd-driver.Tpo -c -o obexd/client/obexd-driver.o `test -f 'obexd/client/driver.c' || echo '$(srcdir)/'`obexd/client/driver.c
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-driver.Tpo obexd/client/$(DEPDIR)/obexd-driver.Po
+#	$(AM_V_CC)source='obexd/client/driver.c' object='obexd/client/obexd-driver.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-driver.o `test -f 'obexd/client/driver.c' || echo '$(srcdir)/'`obexd/client/driver.c
 
 obexd/client/obexd-driver.obj: obexd/client/driver.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-driver.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-driver.Tpo -c -o obexd/client/obexd-driver.obj `if test -f 'obexd/client/driver.c'; then $(CYGPATH_W) 'obexd/client/driver.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/driver.c'; fi`
-	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-driver.Tpo obexd/client/$(DEPDIR)/obexd-driver.Po
-#	$(AM_V_CC)source='obexd/client/driver.c' object='obexd/client/obexd-driver.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-driver.obj `if test -f 'obexd/client/driver.c'; then $(CYGPATH_W) 'obexd/client/driver.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/driver.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -MT obexd/client/obexd-driver.obj -MD -MP -MF obexd/client/$(DEPDIR)/obexd-driver.Tpo -c -o obexd/client/obexd-driver.obj `if test -f 'obexd/client/driver.c'; then $(CYGPATH_W) 'obexd/client/driver.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/driver.c'; fi`
+#	$(AM_V_at)$(am__mv) obexd/client/$(DEPDIR)/obexd-driver.Tpo obexd/client/$(DEPDIR)/obexd-driver.Po
+#	$(AM_V_CC)source='obexd/client/driver.c' object='obexd/client/obexd-driver.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(obexd_src_obexd_CPPFLAGS) $(CPPFLAGS) $(obexd_src_obexd_CFLAGS) $(CFLAGS) -c -o obexd/client/obexd-driver.obj `if test -f 'obexd/client/driver.c'; then $(CYGPATH_W) 'obexd/client/driver.c'; else $(CYGPATH_W) '$(srcdir)/obexd/client/driver.c'; fi`
 
 plugins/bluetoothd-hostname.o: plugins/hostname.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT plugins/bluetoothd-hostname.o -MD -MP -MF plugins/$(DEPDIR)/bluetoothd-hostname.Tpo -c -o plugins/bluetoothd-hostname.o `test -f 'plugins/hostname.c' || echo '$(srcdir)/'`plugins/hostname.c
-	$(AM_V_at)$(am__mv) plugins/$(DEPDIR)/bluetoothd-hostname.Tpo plugins/$(DEPDIR)/bluetoothd-hostname.Po
-#	$(AM_V_CC)source='plugins/hostname.c' object='plugins/bluetoothd-hostname.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o plugins/bluetoothd-hostname.o `test -f 'plugins/hostname.c' || echo '$(srcdir)/'`plugins/hostname.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT plugins/bluetoothd-hostname.o -MD -MP -MF plugins/$(DEPDIR)/bluetoothd-hostname.Tpo -c -o plugins/bluetoothd-hostname.o `test -f 'plugins/hostname.c' || echo '$(srcdir)/'`plugins/hostname.c
+#	$(AM_V_at)$(am__mv) plugins/$(DEPDIR)/bluetoothd-hostname.Tpo plugins/$(DEPDIR)/bluetoothd-hostname.Po
+#	$(AM_V_CC)source='plugins/hostname.c' object='plugins/bluetoothd-hostname.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o plugins/bluetoothd-hostname.o `test -f 'plugins/hostname.c' || echo '$(srcdir)/'`plugins/hostname.c
 
 plugins/bluetoothd-hostname.obj: plugins/hostname.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT plugins/bluetoothd-hostname.obj -MD -MP -MF plugins/$(DEPDIR)/bluetoothd-hostname.Tpo -c -o plugins/bluetoothd-hostname.obj `if test -f 'plugins/hostname.c'; then $(CYGPATH_W) 'plugins/hostname.c'; else $(CYGPATH_W) '$(srcdir)/plugins/hostname.c'; fi`
-	$(AM_V_at)$(am__mv) plugins/$(DEPDIR)/bluetoothd-hostname.Tpo plugins/$(DEPDIR)/bluetoothd-hostname.Po
-#	$(AM_V_CC)source='plugins/hostname.c' object='plugins/bluetoothd-hostname.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o plugins/bluetoothd-hostname.obj `if test -f 'plugins/hostname.c'; then $(CYGPATH_W) 'plugins/hostname.c'; else $(CYGPATH_W) '$(srcdir)/plugins/hostname.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT plugins/bluetoothd-hostname.obj -MD -MP -MF plugins/$(DEPDIR)/bluetoothd-hostname.Tpo -c -o plugins/bluetoothd-hostname.obj `if test -f 'plugins/hostname.c'; then $(CYGPATH_W) 'plugins/hostname.c'; else $(CYGPATH_W) '$(srcdir)/plugins/hostname.c'; fi`
+#	$(AM_V_at)$(am__mv) plugins/$(DEPDIR)/bluetoothd-hostname.Tpo plugins/$(DEPDIR)/bluetoothd-hostname.Po
+#	$(AM_V_CC)source='plugins/hostname.c' object='plugins/bluetoothd-hostname.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o plugins/bluetoothd-hostname.obj `if test -f 'plugins/hostname.c'; then $(CYGPATH_W) 'plugins/hostname.c'; else $(CYGPATH_W) '$(srcdir)/plugins/hostname.c'; fi`
 
 plugins/bluetoothd-wiimote.o: plugins/wiimote.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT plugins/bluetoothd-wiimote.o -MD -MP -MF plugins/$(DEPDIR)/bluetoothd-wiimote.Tpo -c -o plugins/bluetoothd-wiimote.o `test -f 'plugins/wiimote.c' || echo '$(srcdir)/'`plugins/wiimote.c
-	$(AM_V_at)$(am__mv) plugins/$(DEPDIR)/bluetoothd-wiimote.Tpo plugins/$(DEPDIR)/bluetoothd-wiimote.Po
-#	$(AM_V_CC)source='plugins/wiimote.c' object='plugins/bluetoothd-wiimote.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o plugins/bluetoothd-wiimote.o `test -f 'plugins/wiimote.c' || echo '$(srcdir)/'`plugins/wiimote.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT plugins/bluetoothd-wiimote.o -MD -MP -MF plugins/$(DEPDIR)/bluetoothd-wiimote.Tpo -c -o plugins/bluetoothd-wiimote.o `test -f 'plugins/wiimote.c' || echo '$(srcdir)/'`plugins/wiimote.c
+#	$(AM_V_at)$(am__mv) plugins/$(DEPDIR)/bluetoothd-wiimote.Tpo plugins/$(DEPDIR)/bluetoothd-wiimote.Po
+#	$(AM_V_CC)source='plugins/wiimote.c' object='plugins/bluetoothd-wiimote.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o plugins/bluetoothd-wiimote.o `test -f 'plugins/wiimote.c' || echo '$(srcdir)/'`plugins/wiimote.c
 
 plugins/bluetoothd-wiimote.obj: plugins/wiimote.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT plugins/bluetoothd-wiimote.obj -MD -MP -MF plugins/$(DEPDIR)/bluetoothd-wiimote.Tpo -c -o plugins/bluetoothd-wiimote.obj `if test -f 'plugins/wiimote.c'; then $(CYGPATH_W) 'plugins/wiimote.c'; else $(CYGPATH_W) '$(srcdir)/plugins/wiimote.c'; fi`
-	$(AM_V_at)$(am__mv) plugins/$(DEPDIR)/bluetoothd-wiimote.Tpo plugins/$(DEPDIR)/bluetoothd-wiimote.Po
-#	$(AM_V_CC)source='plugins/wiimote.c' object='plugins/bluetoothd-wiimote.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o plugins/bluetoothd-wiimote.obj `if test -f 'plugins/wiimote.c'; then $(CYGPATH_W) 'plugins/wiimote.c'; else $(CYGPATH_W) '$(srcdir)/plugins/wiimote.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT plugins/bluetoothd-wiimote.obj -MD -MP -MF plugins/$(DEPDIR)/bluetoothd-wiimote.Tpo -c -o plugins/bluetoothd-wiimote.obj `if test -f 'plugins/wiimote.c'; then $(CYGPATH_W) 'plugins/wiimote.c'; else $(CYGPATH_W) '$(srcdir)/plugins/wiimote.c'; fi`
+#	$(AM_V_at)$(am__mv) plugins/$(DEPDIR)/bluetoothd-wiimote.Tpo plugins/$(DEPDIR)/bluetoothd-wiimote.Po
+#	$(AM_V_CC)source='plugins/wiimote.c' object='plugins/bluetoothd-wiimote.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o plugins/bluetoothd-wiimote.obj `if test -f 'plugins/wiimote.c'; then $(CYGPATH_W) 'plugins/wiimote.c'; else $(CYGPATH_W) '$(srcdir)/plugins/wiimote.c'; fi`
 
 plugins/bluetoothd-autopair.o: plugins/autopair.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT plugins/bluetoothd-autopair.o -MD -MP -MF plugins/$(DEPDIR)/bluetoothd-autopair.Tpo -c -o plugins/bluetoothd-autopair.o `test -f 'plugins/autopair.c' || echo '$(srcdir)/'`plugins/autopair.c
-	$(AM_V_at)$(am__mv) plugins/$(DEPDIR)/bluetoothd-autopair.Tpo plugins/$(DEPDIR)/bluetoothd-autopair.Po
-#	$(AM_V_CC)source='plugins/autopair.c' object='plugins/bluetoothd-autopair.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o plugins/bluetoothd-autopair.o `test -f 'plugins/autopair.c' || echo '$(srcdir)/'`plugins/autopair.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT plugins/bluetoothd-autopair.o -MD -MP -MF plugins/$(DEPDIR)/bluetoothd-autopair.Tpo -c -o plugins/bluetoothd-autopair.o `test -f 'plugins/autopair.c' || echo '$(srcdir)/'`plugins/autopair.c
+#	$(AM_V_at)$(am__mv) plugins/$(DEPDIR)/bluetoothd-autopair.Tpo plugins/$(DEPDIR)/bluetoothd-autopair.Po
+#	$(AM_V_CC)source='plugins/autopair.c' object='plugins/bluetoothd-autopair.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o plugins/bluetoothd-autopair.o `test -f 'plugins/autopair.c' || echo '$(srcdir)/'`plugins/autopair.c
 
 plugins/bluetoothd-autopair.obj: plugins/autopair.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT plugins/bluetoothd-autopair.obj -MD -MP -MF plugins/$(DEPDIR)/bluetoothd-autopair.Tpo -c -o plugins/bluetoothd-autopair.obj `if test -f 'plugins/autopair.c'; then $(CYGPATH_W) 'plugins/autopair.c'; else $(CYGPATH_W) '$(srcdir)/plugins/autopair.c'; fi`
-	$(AM_V_at)$(am__mv) plugins/$(DEPDIR)/bluetoothd-autopair.Tpo plugins/$(DEPDIR)/bluetoothd-autopair.Po
-#	$(AM_V_CC)source='plugins/autopair.c' object='plugins/bluetoothd-autopair.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o plugins/bluetoothd-autopair.obj `if test -f 'plugins/autopair.c'; then $(CYGPATH_W) 'plugins/autopair.c'; else $(CYGPATH_W) '$(srcdir)/plugins/autopair.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT plugins/bluetoothd-autopair.obj -MD -MP -MF plugins/$(DEPDIR)/bluetoothd-autopair.Tpo -c -o plugins/bluetoothd-autopair.obj `if test -f 'plugins/autopair.c'; then $(CYGPATH_W) 'plugins/autopair.c'; else $(CYGPATH_W) '$(srcdir)/plugins/autopair.c'; fi`
+#	$(AM_V_at)$(am__mv) plugins/$(DEPDIR)/bluetoothd-autopair.Tpo plugins/$(DEPDIR)/bluetoothd-autopair.Po
+#	$(AM_V_CC)source='plugins/autopair.c' object='plugins/bluetoothd-autopair.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o plugins/bluetoothd-autopair.obj `if test -f 'plugins/autopair.c'; then $(CYGPATH_W) 'plugins/autopair.c'; else $(CYGPATH_W) '$(srcdir)/plugins/autopair.c'; fi`
 
 plugins/bluetoothd-policy.o: plugins/policy.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT plugins/bluetoothd-policy.o -MD -MP -MF plugins/$(DEPDIR)/bluetoothd-policy.Tpo -c -o plugins/bluetoothd-policy.o `test -f 'plugins/policy.c' || echo '$(srcdir)/'`plugins/policy.c
-	$(AM_V_at)$(am__mv) plugins/$(DEPDIR)/bluetoothd-policy.Tpo plugins/$(DEPDIR)/bluetoothd-policy.Po
-#	$(AM_V_CC)source='plugins/policy.c' object='plugins/bluetoothd-policy.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o plugins/bluetoothd-policy.o `test -f 'plugins/policy.c' || echo '$(srcdir)/'`plugins/policy.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT plugins/bluetoothd-policy.o -MD -MP -MF plugins/$(DEPDIR)/bluetoothd-policy.Tpo -c -o plugins/bluetoothd-policy.o `test -f 'plugins/policy.c' || echo '$(srcdir)/'`plugins/policy.c
+#	$(AM_V_at)$(am__mv) plugins/$(DEPDIR)/bluetoothd-policy.Tpo plugins/$(DEPDIR)/bluetoothd-policy.Po
+#	$(AM_V_CC)source='plugins/policy.c' object='plugins/bluetoothd-policy.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o plugins/bluetoothd-policy.o `test -f 'plugins/policy.c' || echo '$(srcdir)/'`plugins/policy.c
 
 plugins/bluetoothd-policy.obj: plugins/policy.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT plugins/bluetoothd-policy.obj -MD -MP -MF plugins/$(DEPDIR)/bluetoothd-policy.Tpo -c -o plugins/bluetoothd-policy.obj `if test -f 'plugins/policy.c'; then $(CYGPATH_W) 'plugins/policy.c'; else $(CYGPATH_W) '$(srcdir)/plugins/policy.c'; fi`
-	$(AM_V_at)$(am__mv) plugins/$(DEPDIR)/bluetoothd-policy.Tpo plugins/$(DEPDIR)/bluetoothd-policy.Po
-#	$(AM_V_CC)source='plugins/policy.c' object='plugins/bluetoothd-policy.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o plugins/bluetoothd-policy.obj `if test -f 'plugins/policy.c'; then $(CYGPATH_W) 'plugins/policy.c'; else $(CYGPATH_W) '$(srcdir)/plugins/policy.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT plugins/bluetoothd-policy.obj -MD -MP -MF plugins/$(DEPDIR)/bluetoothd-policy.Tpo -c -o plugins/bluetoothd-policy.obj `if test -f 'plugins/policy.c'; then $(CYGPATH_W) 'plugins/policy.c'; else $(CYGPATH_W) '$(srcdir)/plugins/policy.c'; fi`
+#	$(AM_V_at)$(am__mv) plugins/$(DEPDIR)/bluetoothd-policy.Tpo plugins/$(DEPDIR)/bluetoothd-policy.Po
+#	$(AM_V_CC)source='plugins/policy.c' object='plugins/bluetoothd-policy.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o plugins/bluetoothd-policy.obj `if test -f 'plugins/policy.c'; then $(CYGPATH_W) 'plugins/policy.c'; else $(CYGPATH_W) '$(srcdir)/plugins/policy.c'; fi`
 
 plugins/bluetoothd-neard.o: plugins/neard.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT plugins/bluetoothd-neard.o -MD -MP -MF plugins/$(DEPDIR)/bluetoothd-neard.Tpo -c -o plugins/bluetoothd-neard.o `test -f 'plugins/neard.c' || echo '$(srcdir)/'`plugins/neard.c
-	$(AM_V_at)$(am__mv) plugins/$(DEPDIR)/bluetoothd-neard.Tpo plugins/$(DEPDIR)/bluetoothd-neard.Po
-#	$(AM_V_CC)source='plugins/neard.c' object='plugins/bluetoothd-neard.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o plugins/bluetoothd-neard.o `test -f 'plugins/neard.c' || echo '$(srcdir)/'`plugins/neard.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT plugins/bluetoothd-neard.o -MD -MP -MF plugins/$(DEPDIR)/bluetoothd-neard.Tpo -c -o plugins/bluetoothd-neard.o `test -f 'plugins/neard.c' || echo '$(srcdir)/'`plugins/neard.c
+#	$(AM_V_at)$(am__mv) plugins/$(DEPDIR)/bluetoothd-neard.Tpo plugins/$(DEPDIR)/bluetoothd-neard.Po
+#	$(AM_V_CC)source='plugins/neard.c' object='plugins/bluetoothd-neard.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o plugins/bluetoothd-neard.o `test -f 'plugins/neard.c' || echo '$(srcdir)/'`plugins/neard.c
 
 plugins/bluetoothd-neard.obj: plugins/neard.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT plugins/bluetoothd-neard.obj -MD -MP -MF plugins/$(DEPDIR)/bluetoothd-neard.Tpo -c -o plugins/bluetoothd-neard.obj `if test -f 'plugins/neard.c'; then $(CYGPATH_W) 'plugins/neard.c'; else $(CYGPATH_W) '$(srcdir)/plugins/neard.c'; fi`
-	$(AM_V_at)$(am__mv) plugins/$(DEPDIR)/bluetoothd-neard.Tpo plugins/$(DEPDIR)/bluetoothd-neard.Po
-#	$(AM_V_CC)source='plugins/neard.c' object='plugins/bluetoothd-neard.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o plugins/bluetoothd-neard.obj `if test -f 'plugins/neard.c'; then $(CYGPATH_W) 'plugins/neard.c'; else $(CYGPATH_W) '$(srcdir)/plugins/neard.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT plugins/bluetoothd-neard.obj -MD -MP -MF plugins/$(DEPDIR)/bluetoothd-neard.Tpo -c -o plugins/bluetoothd-neard.obj `if test -f 'plugins/neard.c'; then $(CYGPATH_W) 'plugins/neard.c'; else $(CYGPATH_W) '$(srcdir)/plugins/neard.c'; fi`
+#	$(AM_V_at)$(am__mv) plugins/$(DEPDIR)/bluetoothd-neard.Tpo plugins/$(DEPDIR)/bluetoothd-neard.Po
+#	$(AM_V_CC)source='plugins/neard.c' object='plugins/bluetoothd-neard.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o plugins/bluetoothd-neard.obj `if test -f 'plugins/neard.c'; then $(CYGPATH_W) 'plugins/neard.c'; else $(CYGPATH_W) '$(srcdir)/plugins/neard.c'; fi`
 
 profiles/sap/bluetoothd-main.o: profiles/sap/main.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/sap/bluetoothd-main.o -MD -MP -MF profiles/sap/$(DEPDIR)/bluetoothd-main.Tpo -c -o profiles/sap/bluetoothd-main.o `test -f 'profiles/sap/main.c' || echo '$(srcdir)/'`profiles/sap/main.c
-	$(AM_V_at)$(am__mv) profiles/sap/$(DEPDIR)/bluetoothd-main.Tpo profiles/sap/$(DEPDIR)/bluetoothd-main.Po
-#	$(AM_V_CC)source='profiles/sap/main.c' object='profiles/sap/bluetoothd-main.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/sap/bluetoothd-main.o `test -f 'profiles/sap/main.c' || echo '$(srcdir)/'`profiles/sap/main.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/sap/bluetoothd-main.o -MD -MP -MF profiles/sap/$(DEPDIR)/bluetoothd-main.Tpo -c -o profiles/sap/bluetoothd-main.o `test -f 'profiles/sap/main.c' || echo '$(srcdir)/'`profiles/sap/main.c
+#	$(AM_V_at)$(am__mv) profiles/sap/$(DEPDIR)/bluetoothd-main.Tpo profiles/sap/$(DEPDIR)/bluetoothd-main.Po
+#	$(AM_V_CC)source='profiles/sap/main.c' object='profiles/sap/bluetoothd-main.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/sap/bluetoothd-main.o `test -f 'profiles/sap/main.c' || echo '$(srcdir)/'`profiles/sap/main.c
 
 profiles/sap/bluetoothd-main.obj: profiles/sap/main.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/sap/bluetoothd-main.obj -MD -MP -MF profiles/sap/$(DEPDIR)/bluetoothd-main.Tpo -c -o profiles/sap/bluetoothd-main.obj `if test -f 'profiles/sap/main.c'; then $(CYGPATH_W) 'profiles/sap/main.c'; else $(CYGPATH_W) '$(srcdir)/profiles/sap/main.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/sap/$(DEPDIR)/bluetoothd-main.Tpo profiles/sap/$(DEPDIR)/bluetoothd-main.Po
-#	$(AM_V_CC)source='profiles/sap/main.c' object='profiles/sap/bluetoothd-main.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/sap/bluetoothd-main.obj `if test -f 'profiles/sap/main.c'; then $(CYGPATH_W) 'profiles/sap/main.c'; else $(CYGPATH_W) '$(srcdir)/profiles/sap/main.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/sap/bluetoothd-main.obj -MD -MP -MF profiles/sap/$(DEPDIR)/bluetoothd-main.Tpo -c -o profiles/sap/bluetoothd-main.obj `if test -f 'profiles/sap/main.c'; then $(CYGPATH_W) 'profiles/sap/main.c'; else $(CYGPATH_W) '$(srcdir)/profiles/sap/main.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/sap/$(DEPDIR)/bluetoothd-main.Tpo profiles/sap/$(DEPDIR)/bluetoothd-main.Po
+#	$(AM_V_CC)source='profiles/sap/main.c' object='profiles/sap/bluetoothd-main.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/sap/bluetoothd-main.obj `if test -f 'profiles/sap/main.c'; then $(CYGPATH_W) 'profiles/sap/main.c'; else $(CYGPATH_W) '$(srcdir)/profiles/sap/main.c'; fi`
 
 profiles/sap/bluetoothd-manager.o: profiles/sap/manager.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/sap/bluetoothd-manager.o -MD -MP -MF profiles/sap/$(DEPDIR)/bluetoothd-manager.Tpo -c -o profiles/sap/bluetoothd-manager.o `test -f 'profiles/sap/manager.c' || echo '$(srcdir)/'`profiles/sap/manager.c
-	$(AM_V_at)$(am__mv) profiles/sap/$(DEPDIR)/bluetoothd-manager.Tpo profiles/sap/$(DEPDIR)/bluetoothd-manager.Po
-#	$(AM_V_CC)source='profiles/sap/manager.c' object='profiles/sap/bluetoothd-manager.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/sap/bluetoothd-manager.o `test -f 'profiles/sap/manager.c' || echo '$(srcdir)/'`profiles/sap/manager.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/sap/bluetoothd-manager.o -MD -MP -MF profiles/sap/$(DEPDIR)/bluetoothd-manager.Tpo -c -o profiles/sap/bluetoothd-manager.o `test -f 'profiles/sap/manager.c' || echo '$(srcdir)/'`profiles/sap/manager.c
+#	$(AM_V_at)$(am__mv) profiles/sap/$(DEPDIR)/bluetoothd-manager.Tpo profiles/sap/$(DEPDIR)/bluetoothd-manager.Po
+#	$(AM_V_CC)source='profiles/sap/manager.c' object='profiles/sap/bluetoothd-manager.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/sap/bluetoothd-manager.o `test -f 'profiles/sap/manager.c' || echo '$(srcdir)/'`profiles/sap/manager.c
 
 profiles/sap/bluetoothd-manager.obj: profiles/sap/manager.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/sap/bluetoothd-manager.obj -MD -MP -MF profiles/sap/$(DEPDIR)/bluetoothd-manager.Tpo -c -o profiles/sap/bluetoothd-manager.obj `if test -f 'profiles/sap/manager.c'; then $(CYGPATH_W) 'profiles/sap/manager.c'; else $(CYGPATH_W) '$(srcdir)/profiles/sap/manager.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/sap/$(DEPDIR)/bluetoothd-manager.Tpo profiles/sap/$(DEPDIR)/bluetoothd-manager.Po
-#	$(AM_V_CC)source='profiles/sap/manager.c' object='profiles/sap/bluetoothd-manager.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/sap/bluetoothd-manager.obj `if test -f 'profiles/sap/manager.c'; then $(CYGPATH_W) 'profiles/sap/manager.c'; else $(CYGPATH_W) '$(srcdir)/profiles/sap/manager.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/sap/bluetoothd-manager.obj -MD -MP -MF profiles/sap/$(DEPDIR)/bluetoothd-manager.Tpo -c -o profiles/sap/bluetoothd-manager.obj `if test -f 'profiles/sap/manager.c'; then $(CYGPATH_W) 'profiles/sap/manager.c'; else $(CYGPATH_W) '$(srcdir)/profiles/sap/manager.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/sap/$(DEPDIR)/bluetoothd-manager.Tpo profiles/sap/$(DEPDIR)/bluetoothd-manager.Po
+#	$(AM_V_CC)source='profiles/sap/manager.c' object='profiles/sap/bluetoothd-manager.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/sap/bluetoothd-manager.obj `if test -f 'profiles/sap/manager.c'; then $(CYGPATH_W) 'profiles/sap/manager.c'; else $(CYGPATH_W) '$(srcdir)/profiles/sap/manager.c'; fi`
 
 profiles/sap/bluetoothd-server.o: profiles/sap/server.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/sap/bluetoothd-server.o -MD -MP -MF profiles/sap/$(DEPDIR)/bluetoothd-server.Tpo -c -o profiles/sap/bluetoothd-server.o `test -f 'profiles/sap/server.c' || echo '$(srcdir)/'`profiles/sap/server.c
-	$(AM_V_at)$(am__mv) profiles/sap/$(DEPDIR)/bluetoothd-server.Tpo profiles/sap/$(DEPDIR)/bluetoothd-server.Po
-#	$(AM_V_CC)source='profiles/sap/server.c' object='profiles/sap/bluetoothd-server.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/sap/bluetoothd-server.o `test -f 'profiles/sap/server.c' || echo '$(srcdir)/'`profiles/sap/server.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/sap/bluetoothd-server.o -MD -MP -MF profiles/sap/$(DEPDIR)/bluetoothd-server.Tpo -c -o profiles/sap/bluetoothd-server.o `test -f 'profiles/sap/server.c' || echo '$(srcdir)/'`profiles/sap/server.c
+#	$(AM_V_at)$(am__mv) profiles/sap/$(DEPDIR)/bluetoothd-server.Tpo profiles/sap/$(DEPDIR)/bluetoothd-server.Po
+#	$(AM_V_CC)source='profiles/sap/server.c' object='profiles/sap/bluetoothd-server.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/sap/bluetoothd-server.o `test -f 'profiles/sap/server.c' || echo '$(srcdir)/'`profiles/sap/server.c
 
 profiles/sap/bluetoothd-server.obj: profiles/sap/server.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/sap/bluetoothd-server.obj -MD -MP -MF profiles/sap/$(DEPDIR)/bluetoothd-server.Tpo -c -o profiles/sap/bluetoothd-server.obj `if test -f 'profiles/sap/server.c'; then $(CYGPATH_W) 'profiles/sap/server.c'; else $(CYGPATH_W) '$(srcdir)/profiles/sap/server.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/sap/$(DEPDIR)/bluetoothd-server.Tpo profiles/sap/$(DEPDIR)/bluetoothd-server.Po
-#	$(AM_V_CC)source='profiles/sap/server.c' object='profiles/sap/bluetoothd-server.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/sap/bluetoothd-server.obj `if test -f 'profiles/sap/server.c'; then $(CYGPATH_W) 'profiles/sap/server.c'; else $(CYGPATH_W) '$(srcdir)/profiles/sap/server.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/sap/bluetoothd-server.obj -MD -MP -MF profiles/sap/$(DEPDIR)/bluetoothd-server.Tpo -c -o profiles/sap/bluetoothd-server.obj `if test -f 'profiles/sap/server.c'; then $(CYGPATH_W) 'profiles/sap/server.c'; else $(CYGPATH_W) '$(srcdir)/profiles/sap/server.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/sap/$(DEPDIR)/bluetoothd-server.Tpo profiles/sap/$(DEPDIR)/bluetoothd-server.Po
+#	$(AM_V_CC)source='profiles/sap/server.c' object='profiles/sap/bluetoothd-server.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/sap/bluetoothd-server.obj `if test -f 'profiles/sap/server.c'; then $(CYGPATH_W) 'profiles/sap/server.c'; else $(CYGPATH_W) '$(srcdir)/profiles/sap/server.c'; fi`
 
 profiles/sap/bluetoothd-sap-dummy.o: profiles/sap/sap-dummy.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/sap/bluetoothd-sap-dummy.o -MD -MP -MF profiles/sap/$(DEPDIR)/bluetoothd-sap-dummy.Tpo -c -o profiles/sap/bluetoothd-sap-dummy.o `test -f 'profiles/sap/sap-dummy.c' || echo '$(srcdir)/'`profiles/sap/sap-dummy.c
-	$(AM_V_at)$(am__mv) profiles/sap/$(DEPDIR)/bluetoothd-sap-dummy.Tpo profiles/sap/$(DEPDIR)/bluetoothd-sap-dummy.Po
-#	$(AM_V_CC)source='profiles/sap/sap-dummy.c' object='profiles/sap/bluetoothd-sap-dummy.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/sap/bluetoothd-sap-dummy.o `test -f 'profiles/sap/sap-dummy.c' || echo '$(srcdir)/'`profiles/sap/sap-dummy.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/sap/bluetoothd-sap-dummy.o -MD -MP -MF profiles/sap/$(DEPDIR)/bluetoothd-sap-dummy.Tpo -c -o profiles/sap/bluetoothd-sap-dummy.o `test -f 'profiles/sap/sap-dummy.c' || echo '$(srcdir)/'`profiles/sap/sap-dummy.c
+#	$(AM_V_at)$(am__mv) profiles/sap/$(DEPDIR)/bluetoothd-sap-dummy.Tpo profiles/sap/$(DEPDIR)/bluetoothd-sap-dummy.Po
+#	$(AM_V_CC)source='profiles/sap/sap-dummy.c' object='profiles/sap/bluetoothd-sap-dummy.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/sap/bluetoothd-sap-dummy.o `test -f 'profiles/sap/sap-dummy.c' || echo '$(srcdir)/'`profiles/sap/sap-dummy.c
 
 profiles/sap/bluetoothd-sap-dummy.obj: profiles/sap/sap-dummy.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/sap/bluetoothd-sap-dummy.obj -MD -MP -MF profiles/sap/$(DEPDIR)/bluetoothd-sap-dummy.Tpo -c -o profiles/sap/bluetoothd-sap-dummy.obj `if test -f 'profiles/sap/sap-dummy.c'; then $(CYGPATH_W) 'profiles/sap/sap-dummy.c'; else $(CYGPATH_W) '$(srcdir)/profiles/sap/sap-dummy.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/sap/$(DEPDIR)/bluetoothd-sap-dummy.Tpo profiles/sap/$(DEPDIR)/bluetoothd-sap-dummy.Po
-#	$(AM_V_CC)source='profiles/sap/sap-dummy.c' object='profiles/sap/bluetoothd-sap-dummy.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/sap/bluetoothd-sap-dummy.obj `if test -f 'profiles/sap/sap-dummy.c'; then $(CYGPATH_W) 'profiles/sap/sap-dummy.c'; else $(CYGPATH_W) '$(srcdir)/profiles/sap/sap-dummy.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/sap/bluetoothd-sap-dummy.obj -MD -MP -MF profiles/sap/$(DEPDIR)/bluetoothd-sap-dummy.Tpo -c -o profiles/sap/bluetoothd-sap-dummy.obj `if test -f 'profiles/sap/sap-dummy.c'; then $(CYGPATH_W) 'profiles/sap/sap-dummy.c'; else $(CYGPATH_W) '$(srcdir)/profiles/sap/sap-dummy.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/sap/$(DEPDIR)/bluetoothd-sap-dummy.Tpo profiles/sap/$(DEPDIR)/bluetoothd-sap-dummy.Po
+#	$(AM_V_CC)source='profiles/sap/sap-dummy.c' object='profiles/sap/bluetoothd-sap-dummy.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/sap/bluetoothd-sap-dummy.obj `if test -f 'profiles/sap/sap-dummy.c'; then $(CYGPATH_W) 'profiles/sap/sap-dummy.c'; else $(CYGPATH_W) '$(srcdir)/profiles/sap/sap-dummy.c'; fi`
 
 profiles/audio/bluetoothd-source.o: profiles/audio/source.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-source.o -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-source.Tpo -c -o profiles/audio/bluetoothd-source.o `test -f 'profiles/audio/source.c' || echo '$(srcdir)/'`profiles/audio/source.c
-	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-source.Tpo profiles/audio/$(DEPDIR)/bluetoothd-source.Po
-#	$(AM_V_CC)source='profiles/audio/source.c' object='profiles/audio/bluetoothd-source.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-source.o `test -f 'profiles/audio/source.c' || echo '$(srcdir)/'`profiles/audio/source.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-source.o -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-source.Tpo -c -o profiles/audio/bluetoothd-source.o `test -f 'profiles/audio/source.c' || echo '$(srcdir)/'`profiles/audio/source.c
+#	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-source.Tpo profiles/audio/$(DEPDIR)/bluetoothd-source.Po
+#	$(AM_V_CC)source='profiles/audio/source.c' object='profiles/audio/bluetoothd-source.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-source.o `test -f 'profiles/audio/source.c' || echo '$(srcdir)/'`profiles/audio/source.c
 
 profiles/audio/bluetoothd-source.obj: profiles/audio/source.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-source.obj -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-source.Tpo -c -o profiles/audio/bluetoothd-source.obj `if test -f 'profiles/audio/source.c'; then $(CYGPATH_W) 'profiles/audio/source.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/source.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-source.Tpo profiles/audio/$(DEPDIR)/bluetoothd-source.Po
-#	$(AM_V_CC)source='profiles/audio/source.c' object='profiles/audio/bluetoothd-source.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-source.obj `if test -f 'profiles/audio/source.c'; then $(CYGPATH_W) 'profiles/audio/source.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/source.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-source.obj -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-source.Tpo -c -o profiles/audio/bluetoothd-source.obj `if test -f 'profiles/audio/source.c'; then $(CYGPATH_W) 'profiles/audio/source.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/source.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-source.Tpo profiles/audio/$(DEPDIR)/bluetoothd-source.Po
+#	$(AM_V_CC)source='profiles/audio/source.c' object='profiles/audio/bluetoothd-source.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-source.obj `if test -f 'profiles/audio/source.c'; then $(CYGPATH_W) 'profiles/audio/source.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/source.c'; fi`
 
 profiles/audio/bluetoothd-sink.o: profiles/audio/sink.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-sink.o -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-sink.Tpo -c -o profiles/audio/bluetoothd-sink.o `test -f 'profiles/audio/sink.c' || echo '$(srcdir)/'`profiles/audio/sink.c
-	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-sink.Tpo profiles/audio/$(DEPDIR)/bluetoothd-sink.Po
-#	$(AM_V_CC)source='profiles/audio/sink.c' object='profiles/audio/bluetoothd-sink.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-sink.o `test -f 'profiles/audio/sink.c' || echo '$(srcdir)/'`profiles/audio/sink.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-sink.o -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-sink.Tpo -c -o profiles/audio/bluetoothd-sink.o `test -f 'profiles/audio/sink.c' || echo '$(srcdir)/'`profiles/audio/sink.c
+#	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-sink.Tpo profiles/audio/$(DEPDIR)/bluetoothd-sink.Po
+#	$(AM_V_CC)source='profiles/audio/sink.c' object='profiles/audio/bluetoothd-sink.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-sink.o `test -f 'profiles/audio/sink.c' || echo '$(srcdir)/'`profiles/audio/sink.c
 
 profiles/audio/bluetoothd-sink.obj: profiles/audio/sink.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-sink.obj -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-sink.Tpo -c -o profiles/audio/bluetoothd-sink.obj `if test -f 'profiles/audio/sink.c'; then $(CYGPATH_W) 'profiles/audio/sink.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/sink.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-sink.Tpo profiles/audio/$(DEPDIR)/bluetoothd-sink.Po
-#	$(AM_V_CC)source='profiles/audio/sink.c' object='profiles/audio/bluetoothd-sink.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-sink.obj `if test -f 'profiles/audio/sink.c'; then $(CYGPATH_W) 'profiles/audio/sink.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/sink.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-sink.obj -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-sink.Tpo -c -o profiles/audio/bluetoothd-sink.obj `if test -f 'profiles/audio/sink.c'; then $(CYGPATH_W) 'profiles/audio/sink.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/sink.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-sink.Tpo profiles/audio/$(DEPDIR)/bluetoothd-sink.Po
+#	$(AM_V_CC)source='profiles/audio/sink.c' object='profiles/audio/bluetoothd-sink.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-sink.obj `if test -f 'profiles/audio/sink.c'; then $(CYGPATH_W) 'profiles/audio/sink.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/sink.c'; fi`
 
 profiles/audio/bluetoothd-a2dp.o: profiles/audio/a2dp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-a2dp.o -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-a2dp.Tpo -c -o profiles/audio/bluetoothd-a2dp.o `test -f 'profiles/audio/a2dp.c' || echo '$(srcdir)/'`profiles/audio/a2dp.c
-	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-a2dp.Tpo profiles/audio/$(DEPDIR)/bluetoothd-a2dp.Po
-#	$(AM_V_CC)source='profiles/audio/a2dp.c' object='profiles/audio/bluetoothd-a2dp.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-a2dp.o `test -f 'profiles/audio/a2dp.c' || echo '$(srcdir)/'`profiles/audio/a2dp.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-a2dp.o -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-a2dp.Tpo -c -o profiles/audio/bluetoothd-a2dp.o `test -f 'profiles/audio/a2dp.c' || echo '$(srcdir)/'`profiles/audio/a2dp.c
+#	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-a2dp.Tpo profiles/audio/$(DEPDIR)/bluetoothd-a2dp.Po
+#	$(AM_V_CC)source='profiles/audio/a2dp.c' object='profiles/audio/bluetoothd-a2dp.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-a2dp.o `test -f 'profiles/audio/a2dp.c' || echo '$(srcdir)/'`profiles/audio/a2dp.c
 
 profiles/audio/bluetoothd-a2dp.obj: profiles/audio/a2dp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-a2dp.obj -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-a2dp.Tpo -c -o profiles/audio/bluetoothd-a2dp.obj `if test -f 'profiles/audio/a2dp.c'; then $(CYGPATH_W) 'profiles/audio/a2dp.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/a2dp.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-a2dp.Tpo profiles/audio/$(DEPDIR)/bluetoothd-a2dp.Po
-#	$(AM_V_CC)source='profiles/audio/a2dp.c' object='profiles/audio/bluetoothd-a2dp.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-a2dp.obj `if test -f 'profiles/audio/a2dp.c'; then $(CYGPATH_W) 'profiles/audio/a2dp.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/a2dp.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-a2dp.obj -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-a2dp.Tpo -c -o profiles/audio/bluetoothd-a2dp.obj `if test -f 'profiles/audio/a2dp.c'; then $(CYGPATH_W) 'profiles/audio/a2dp.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/a2dp.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-a2dp.Tpo profiles/audio/$(DEPDIR)/bluetoothd-a2dp.Po
+#	$(AM_V_CC)source='profiles/audio/a2dp.c' object='profiles/audio/bluetoothd-a2dp.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-a2dp.obj `if test -f 'profiles/audio/a2dp.c'; then $(CYGPATH_W) 'profiles/audio/a2dp.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/a2dp.c'; fi`
 
 profiles/audio/bluetoothd-avdtp.o: profiles/audio/avdtp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-avdtp.o -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-avdtp.Tpo -c -o profiles/audio/bluetoothd-avdtp.o `test -f 'profiles/audio/avdtp.c' || echo '$(srcdir)/'`profiles/audio/avdtp.c
-	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-avdtp.Tpo profiles/audio/$(DEPDIR)/bluetoothd-avdtp.Po
-#	$(AM_V_CC)source='profiles/audio/avdtp.c' object='profiles/audio/bluetoothd-avdtp.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-avdtp.o `test -f 'profiles/audio/avdtp.c' || echo '$(srcdir)/'`profiles/audio/avdtp.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-avdtp.o -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-avdtp.Tpo -c -o profiles/audio/bluetoothd-avdtp.o `test -f 'profiles/audio/avdtp.c' || echo '$(srcdir)/'`profiles/audio/avdtp.c
+#	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-avdtp.Tpo profiles/audio/$(DEPDIR)/bluetoothd-avdtp.Po
+#	$(AM_V_CC)source='profiles/audio/avdtp.c' object='profiles/audio/bluetoothd-avdtp.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-avdtp.o `test -f 'profiles/audio/avdtp.c' || echo '$(srcdir)/'`profiles/audio/avdtp.c
 
 profiles/audio/bluetoothd-avdtp.obj: profiles/audio/avdtp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-avdtp.obj -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-avdtp.Tpo -c -o profiles/audio/bluetoothd-avdtp.obj `if test -f 'profiles/audio/avdtp.c'; then $(CYGPATH_W) 'profiles/audio/avdtp.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/avdtp.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-avdtp.Tpo profiles/audio/$(DEPDIR)/bluetoothd-avdtp.Po
-#	$(AM_V_CC)source='profiles/audio/avdtp.c' object='profiles/audio/bluetoothd-avdtp.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-avdtp.obj `if test -f 'profiles/audio/avdtp.c'; then $(CYGPATH_W) 'profiles/audio/avdtp.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/avdtp.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-avdtp.obj -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-avdtp.Tpo -c -o profiles/audio/bluetoothd-avdtp.obj `if test -f 'profiles/audio/avdtp.c'; then $(CYGPATH_W) 'profiles/audio/avdtp.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/avdtp.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-avdtp.Tpo profiles/audio/$(DEPDIR)/bluetoothd-avdtp.Po
+#	$(AM_V_CC)source='profiles/audio/avdtp.c' object='profiles/audio/bluetoothd-avdtp.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-avdtp.obj `if test -f 'profiles/audio/avdtp.c'; then $(CYGPATH_W) 'profiles/audio/avdtp.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/avdtp.c'; fi`
 
 profiles/audio/bluetoothd-media.o: profiles/audio/media.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-media.o -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-media.Tpo -c -o profiles/audio/bluetoothd-media.o `test -f 'profiles/audio/media.c' || echo '$(srcdir)/'`profiles/audio/media.c
-	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-media.Tpo profiles/audio/$(DEPDIR)/bluetoothd-media.Po
-#	$(AM_V_CC)source='profiles/audio/media.c' object='profiles/audio/bluetoothd-media.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-media.o `test -f 'profiles/audio/media.c' || echo '$(srcdir)/'`profiles/audio/media.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-media.o -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-media.Tpo -c -o profiles/audio/bluetoothd-media.o `test -f 'profiles/audio/media.c' || echo '$(srcdir)/'`profiles/audio/media.c
+#	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-media.Tpo profiles/audio/$(DEPDIR)/bluetoothd-media.Po
+#	$(AM_V_CC)source='profiles/audio/media.c' object='profiles/audio/bluetoothd-media.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-media.o `test -f 'profiles/audio/media.c' || echo '$(srcdir)/'`profiles/audio/media.c
 
 profiles/audio/bluetoothd-media.obj: profiles/audio/media.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-media.obj -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-media.Tpo -c -o profiles/audio/bluetoothd-media.obj `if test -f 'profiles/audio/media.c'; then $(CYGPATH_W) 'profiles/audio/media.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/media.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-media.Tpo profiles/audio/$(DEPDIR)/bluetoothd-media.Po
-#	$(AM_V_CC)source='profiles/audio/media.c' object='profiles/audio/bluetoothd-media.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-media.obj `if test -f 'profiles/audio/media.c'; then $(CYGPATH_W) 'profiles/audio/media.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/media.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-media.obj -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-media.Tpo -c -o profiles/audio/bluetoothd-media.obj `if test -f 'profiles/audio/media.c'; then $(CYGPATH_W) 'profiles/audio/media.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/media.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-media.Tpo profiles/audio/$(DEPDIR)/bluetoothd-media.Po
+#	$(AM_V_CC)source='profiles/audio/media.c' object='profiles/audio/bluetoothd-media.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-media.obj `if test -f 'profiles/audio/media.c'; then $(CYGPATH_W) 'profiles/audio/media.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/media.c'; fi`
 
 profiles/audio/bluetoothd-transport.o: profiles/audio/transport.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-transport.o -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-transport.Tpo -c -o profiles/audio/bluetoothd-transport.o `test -f 'profiles/audio/transport.c' || echo '$(srcdir)/'`profiles/audio/transport.c
-	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-transport.Tpo profiles/audio/$(DEPDIR)/bluetoothd-transport.Po
-#	$(AM_V_CC)source='profiles/audio/transport.c' object='profiles/audio/bluetoothd-transport.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-transport.o `test -f 'profiles/audio/transport.c' || echo '$(srcdir)/'`profiles/audio/transport.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-transport.o -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-transport.Tpo -c -o profiles/audio/bluetoothd-transport.o `test -f 'profiles/audio/transport.c' || echo '$(srcdir)/'`profiles/audio/transport.c
+#	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-transport.Tpo profiles/audio/$(DEPDIR)/bluetoothd-transport.Po
+#	$(AM_V_CC)source='profiles/audio/transport.c' object='profiles/audio/bluetoothd-transport.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-transport.o `test -f 'profiles/audio/transport.c' || echo '$(srcdir)/'`profiles/audio/transport.c
 
 profiles/audio/bluetoothd-transport.obj: profiles/audio/transport.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-transport.obj -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-transport.Tpo -c -o profiles/audio/bluetoothd-transport.obj `if test -f 'profiles/audio/transport.c'; then $(CYGPATH_W) 'profiles/audio/transport.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/transport.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-transport.Tpo profiles/audio/$(DEPDIR)/bluetoothd-transport.Po
-#	$(AM_V_CC)source='profiles/audio/transport.c' object='profiles/audio/bluetoothd-transport.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-transport.obj `if test -f 'profiles/audio/transport.c'; then $(CYGPATH_W) 'profiles/audio/transport.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/transport.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-transport.obj -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-transport.Tpo -c -o profiles/audio/bluetoothd-transport.obj `if test -f 'profiles/audio/transport.c'; then $(CYGPATH_W) 'profiles/audio/transport.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/transport.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-transport.Tpo profiles/audio/$(DEPDIR)/bluetoothd-transport.Po
+#	$(AM_V_CC)source='profiles/audio/transport.c' object='profiles/audio/bluetoothd-transport.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-transport.obj `if test -f 'profiles/audio/transport.c'; then $(CYGPATH_W) 'profiles/audio/transport.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/transport.c'; fi`
 
 profiles/audio/bluetoothd-control.o: profiles/audio/control.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-control.o -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-control.Tpo -c -o profiles/audio/bluetoothd-control.o `test -f 'profiles/audio/control.c' || echo '$(srcdir)/'`profiles/audio/control.c
-	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-control.Tpo profiles/audio/$(DEPDIR)/bluetoothd-control.Po
-#	$(AM_V_CC)source='profiles/audio/control.c' object='profiles/audio/bluetoothd-control.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-control.o `test -f 'profiles/audio/control.c' || echo '$(srcdir)/'`profiles/audio/control.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-control.o -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-control.Tpo -c -o profiles/audio/bluetoothd-control.o `test -f 'profiles/audio/control.c' || echo '$(srcdir)/'`profiles/audio/control.c
+#	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-control.Tpo profiles/audio/$(DEPDIR)/bluetoothd-control.Po
+#	$(AM_V_CC)source='profiles/audio/control.c' object='profiles/audio/bluetoothd-control.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-control.o `test -f 'profiles/audio/control.c' || echo '$(srcdir)/'`profiles/audio/control.c
 
 profiles/audio/bluetoothd-control.obj: profiles/audio/control.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-control.obj -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-control.Tpo -c -o profiles/audio/bluetoothd-control.obj `if test -f 'profiles/audio/control.c'; then $(CYGPATH_W) 'profiles/audio/control.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/control.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-control.Tpo profiles/audio/$(DEPDIR)/bluetoothd-control.Po
-#	$(AM_V_CC)source='profiles/audio/control.c' object='profiles/audio/bluetoothd-control.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-control.obj `if test -f 'profiles/audio/control.c'; then $(CYGPATH_W) 'profiles/audio/control.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/control.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-control.obj -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-control.Tpo -c -o profiles/audio/bluetoothd-control.obj `if test -f 'profiles/audio/control.c'; then $(CYGPATH_W) 'profiles/audio/control.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/control.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-control.Tpo profiles/audio/$(DEPDIR)/bluetoothd-control.Po
+#	$(AM_V_CC)source='profiles/audio/control.c' object='profiles/audio/bluetoothd-control.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-control.obj `if test -f 'profiles/audio/control.c'; then $(CYGPATH_W) 'profiles/audio/control.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/control.c'; fi`
 
 profiles/audio/bluetoothd-avctp.o: profiles/audio/avctp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-avctp.o -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-avctp.Tpo -c -o profiles/audio/bluetoothd-avctp.o `test -f 'profiles/audio/avctp.c' || echo '$(srcdir)/'`profiles/audio/avctp.c
-	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-avctp.Tpo profiles/audio/$(DEPDIR)/bluetoothd-avctp.Po
-#	$(AM_V_CC)source='profiles/audio/avctp.c' object='profiles/audio/bluetoothd-avctp.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-avctp.o `test -f 'profiles/audio/avctp.c' || echo '$(srcdir)/'`profiles/audio/avctp.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-avctp.o -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-avctp.Tpo -c -o profiles/audio/bluetoothd-avctp.o `test -f 'profiles/audio/avctp.c' || echo '$(srcdir)/'`profiles/audio/avctp.c
+#	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-avctp.Tpo profiles/audio/$(DEPDIR)/bluetoothd-avctp.Po
+#	$(AM_V_CC)source='profiles/audio/avctp.c' object='profiles/audio/bluetoothd-avctp.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-avctp.o `test -f 'profiles/audio/avctp.c' || echo '$(srcdir)/'`profiles/audio/avctp.c
 
 profiles/audio/bluetoothd-avctp.obj: profiles/audio/avctp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-avctp.obj -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-avctp.Tpo -c -o profiles/audio/bluetoothd-avctp.obj `if test -f 'profiles/audio/avctp.c'; then $(CYGPATH_W) 'profiles/audio/avctp.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/avctp.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-avctp.Tpo profiles/audio/$(DEPDIR)/bluetoothd-avctp.Po
-#	$(AM_V_CC)source='profiles/audio/avctp.c' object='profiles/audio/bluetoothd-avctp.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-avctp.obj `if test -f 'profiles/audio/avctp.c'; then $(CYGPATH_W) 'profiles/audio/avctp.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/avctp.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-avctp.obj -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-avctp.Tpo -c -o profiles/audio/bluetoothd-avctp.obj `if test -f 'profiles/audio/avctp.c'; then $(CYGPATH_W) 'profiles/audio/avctp.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/avctp.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-avctp.Tpo profiles/audio/$(DEPDIR)/bluetoothd-avctp.Po
+#	$(AM_V_CC)source='profiles/audio/avctp.c' object='profiles/audio/bluetoothd-avctp.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-avctp.obj `if test -f 'profiles/audio/avctp.c'; then $(CYGPATH_W) 'profiles/audio/avctp.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/avctp.c'; fi`
 
 profiles/audio/bluetoothd-avrcp.o: profiles/audio/avrcp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-avrcp.o -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-avrcp.Tpo -c -o profiles/audio/bluetoothd-avrcp.o `test -f 'profiles/audio/avrcp.c' || echo '$(srcdir)/'`profiles/audio/avrcp.c
-	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-avrcp.Tpo profiles/audio/$(DEPDIR)/bluetoothd-avrcp.Po
-#	$(AM_V_CC)source='profiles/audio/avrcp.c' object='profiles/audio/bluetoothd-avrcp.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-avrcp.o `test -f 'profiles/audio/avrcp.c' || echo '$(srcdir)/'`profiles/audio/avrcp.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-avrcp.o -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-avrcp.Tpo -c -o profiles/audio/bluetoothd-avrcp.o `test -f 'profiles/audio/avrcp.c' || echo '$(srcdir)/'`profiles/audio/avrcp.c
+#	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-avrcp.Tpo profiles/audio/$(DEPDIR)/bluetoothd-avrcp.Po
+#	$(AM_V_CC)source='profiles/audio/avrcp.c' object='profiles/audio/bluetoothd-avrcp.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-avrcp.o `test -f 'profiles/audio/avrcp.c' || echo '$(srcdir)/'`profiles/audio/avrcp.c
 
 profiles/audio/bluetoothd-avrcp.obj: profiles/audio/avrcp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-avrcp.obj -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-avrcp.Tpo -c -o profiles/audio/bluetoothd-avrcp.obj `if test -f 'profiles/audio/avrcp.c'; then $(CYGPATH_W) 'profiles/audio/avrcp.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/avrcp.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-avrcp.Tpo profiles/audio/$(DEPDIR)/bluetoothd-avrcp.Po
-#	$(AM_V_CC)source='profiles/audio/avrcp.c' object='profiles/audio/bluetoothd-avrcp.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-avrcp.obj `if test -f 'profiles/audio/avrcp.c'; then $(CYGPATH_W) 'profiles/audio/avrcp.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/avrcp.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-avrcp.obj -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-avrcp.Tpo -c -o profiles/audio/bluetoothd-avrcp.obj `if test -f 'profiles/audio/avrcp.c'; then $(CYGPATH_W) 'profiles/audio/avrcp.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/avrcp.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-avrcp.Tpo profiles/audio/$(DEPDIR)/bluetoothd-avrcp.Po
+#	$(AM_V_CC)source='profiles/audio/avrcp.c' object='profiles/audio/bluetoothd-avrcp.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-avrcp.obj `if test -f 'profiles/audio/avrcp.c'; then $(CYGPATH_W) 'profiles/audio/avrcp.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/avrcp.c'; fi`
 
 profiles/audio/bluetoothd-player.o: profiles/audio/player.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-player.o -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-player.Tpo -c -o profiles/audio/bluetoothd-player.o `test -f 'profiles/audio/player.c' || echo '$(srcdir)/'`profiles/audio/player.c
-	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-player.Tpo profiles/audio/$(DEPDIR)/bluetoothd-player.Po
-#	$(AM_V_CC)source='profiles/audio/player.c' object='profiles/audio/bluetoothd-player.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-player.o `test -f 'profiles/audio/player.c' || echo '$(srcdir)/'`profiles/audio/player.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-player.o -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-player.Tpo -c -o profiles/audio/bluetoothd-player.o `test -f 'profiles/audio/player.c' || echo '$(srcdir)/'`profiles/audio/player.c
+#	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-player.Tpo profiles/audio/$(DEPDIR)/bluetoothd-player.Po
+#	$(AM_V_CC)source='profiles/audio/player.c' object='profiles/audio/bluetoothd-player.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-player.o `test -f 'profiles/audio/player.c' || echo '$(srcdir)/'`profiles/audio/player.c
 
 profiles/audio/bluetoothd-player.obj: profiles/audio/player.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-player.obj -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-player.Tpo -c -o profiles/audio/bluetoothd-player.obj `if test -f 'profiles/audio/player.c'; then $(CYGPATH_W) 'profiles/audio/player.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/player.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-player.Tpo profiles/audio/$(DEPDIR)/bluetoothd-player.Po
-#	$(AM_V_CC)source='profiles/audio/player.c' object='profiles/audio/bluetoothd-player.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-player.obj `if test -f 'profiles/audio/player.c'; then $(CYGPATH_W) 'profiles/audio/player.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/player.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/audio/bluetoothd-player.obj -MD -MP -MF profiles/audio/$(DEPDIR)/bluetoothd-player.Tpo -c -o profiles/audio/bluetoothd-player.obj `if test -f 'profiles/audio/player.c'; then $(CYGPATH_W) 'profiles/audio/player.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/player.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/audio/$(DEPDIR)/bluetoothd-player.Tpo profiles/audio/$(DEPDIR)/bluetoothd-player.Po
+#	$(AM_V_CC)source='profiles/audio/player.c' object='profiles/audio/bluetoothd-player.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/audio/bluetoothd-player.obj `if test -f 'profiles/audio/player.c'; then $(CYGPATH_W) 'profiles/audio/player.c'; else $(CYGPATH_W) '$(srcdir)/profiles/audio/player.c'; fi`
 
 profiles/network/bluetoothd-manager.o: profiles/network/manager.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/network/bluetoothd-manager.o -MD -MP -MF profiles/network/$(DEPDIR)/bluetoothd-manager.Tpo -c -o profiles/network/bluetoothd-manager.o `test -f 'profiles/network/manager.c' || echo '$(srcdir)/'`profiles/network/manager.c
-	$(AM_V_at)$(am__mv) profiles/network/$(DEPDIR)/bluetoothd-manager.Tpo profiles/network/$(DEPDIR)/bluetoothd-manager.Po
-#	$(AM_V_CC)source='profiles/network/manager.c' object='profiles/network/bluetoothd-manager.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/network/bluetoothd-manager.o `test -f 'profiles/network/manager.c' || echo '$(srcdir)/'`profiles/network/manager.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/network/bluetoothd-manager.o -MD -MP -MF profiles/network/$(DEPDIR)/bluetoothd-manager.Tpo -c -o profiles/network/bluetoothd-manager.o `test -f 'profiles/network/manager.c' || echo '$(srcdir)/'`profiles/network/manager.c
+#	$(AM_V_at)$(am__mv) profiles/network/$(DEPDIR)/bluetoothd-manager.Tpo profiles/network/$(DEPDIR)/bluetoothd-manager.Po
+#	$(AM_V_CC)source='profiles/network/manager.c' object='profiles/network/bluetoothd-manager.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/network/bluetoothd-manager.o `test -f 'profiles/network/manager.c' || echo '$(srcdir)/'`profiles/network/manager.c
 
 profiles/network/bluetoothd-manager.obj: profiles/network/manager.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/network/bluetoothd-manager.obj -MD -MP -MF profiles/network/$(DEPDIR)/bluetoothd-manager.Tpo -c -o profiles/network/bluetoothd-manager.obj `if test -f 'profiles/network/manager.c'; then $(CYGPATH_W) 'profiles/network/manager.c'; else $(CYGPATH_W) '$(srcdir)/profiles/network/manager.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/network/$(DEPDIR)/bluetoothd-manager.Tpo profiles/network/$(DEPDIR)/bluetoothd-manager.Po
-#	$(AM_V_CC)source='profiles/network/manager.c' object='profiles/network/bluetoothd-manager.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/network/bluetoothd-manager.obj `if test -f 'profiles/network/manager.c'; then $(CYGPATH_W) 'profiles/network/manager.c'; else $(CYGPATH_W) '$(srcdir)/profiles/network/manager.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/network/bluetoothd-manager.obj -MD -MP -MF profiles/network/$(DEPDIR)/bluetoothd-manager.Tpo -c -o profiles/network/bluetoothd-manager.obj `if test -f 'profiles/network/manager.c'; then $(CYGPATH_W) 'profiles/network/manager.c'; else $(CYGPATH_W) '$(srcdir)/profiles/network/manager.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/network/$(DEPDIR)/bluetoothd-manager.Tpo profiles/network/$(DEPDIR)/bluetoothd-manager.Po
+#	$(AM_V_CC)source='profiles/network/manager.c' object='profiles/network/bluetoothd-manager.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/network/bluetoothd-manager.obj `if test -f 'profiles/network/manager.c'; then $(CYGPATH_W) 'profiles/network/manager.c'; else $(CYGPATH_W) '$(srcdir)/profiles/network/manager.c'; fi`
 
 profiles/network/bluetoothd-bnep.o: profiles/network/bnep.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/network/bluetoothd-bnep.o -MD -MP -MF profiles/network/$(DEPDIR)/bluetoothd-bnep.Tpo -c -o profiles/network/bluetoothd-bnep.o `test -f 'profiles/network/bnep.c' || echo '$(srcdir)/'`profiles/network/bnep.c
-	$(AM_V_at)$(am__mv) profiles/network/$(DEPDIR)/bluetoothd-bnep.Tpo profiles/network/$(DEPDIR)/bluetoothd-bnep.Po
-#	$(AM_V_CC)source='profiles/network/bnep.c' object='profiles/network/bluetoothd-bnep.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/network/bluetoothd-bnep.o `test -f 'profiles/network/bnep.c' || echo '$(srcdir)/'`profiles/network/bnep.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/network/bluetoothd-bnep.o -MD -MP -MF profiles/network/$(DEPDIR)/bluetoothd-bnep.Tpo -c -o profiles/network/bluetoothd-bnep.o `test -f 'profiles/network/bnep.c' || echo '$(srcdir)/'`profiles/network/bnep.c
+#	$(AM_V_at)$(am__mv) profiles/network/$(DEPDIR)/bluetoothd-bnep.Tpo profiles/network/$(DEPDIR)/bluetoothd-bnep.Po
+#	$(AM_V_CC)source='profiles/network/bnep.c' object='profiles/network/bluetoothd-bnep.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/network/bluetoothd-bnep.o `test -f 'profiles/network/bnep.c' || echo '$(srcdir)/'`profiles/network/bnep.c
 
 profiles/network/bluetoothd-bnep.obj: profiles/network/bnep.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/network/bluetoothd-bnep.obj -MD -MP -MF profiles/network/$(DEPDIR)/bluetoothd-bnep.Tpo -c -o profiles/network/bluetoothd-bnep.obj `if test -f 'profiles/network/bnep.c'; then $(CYGPATH_W) 'profiles/network/bnep.c'; else $(CYGPATH_W) '$(srcdir)/profiles/network/bnep.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/network/$(DEPDIR)/bluetoothd-bnep.Tpo profiles/network/$(DEPDIR)/bluetoothd-bnep.Po
-#	$(AM_V_CC)source='profiles/network/bnep.c' object='profiles/network/bluetoothd-bnep.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/network/bluetoothd-bnep.obj `if test -f 'profiles/network/bnep.c'; then $(CYGPATH_W) 'profiles/network/bnep.c'; else $(CYGPATH_W) '$(srcdir)/profiles/network/bnep.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/network/bluetoothd-bnep.obj -MD -MP -MF profiles/network/$(DEPDIR)/bluetoothd-bnep.Tpo -c -o profiles/network/bluetoothd-bnep.obj `if test -f 'profiles/network/bnep.c'; then $(CYGPATH_W) 'profiles/network/bnep.c'; else $(CYGPATH_W) '$(srcdir)/profiles/network/bnep.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/network/$(DEPDIR)/bluetoothd-bnep.Tpo profiles/network/$(DEPDIR)/bluetoothd-bnep.Po
+#	$(AM_V_CC)source='profiles/network/bnep.c' object='profiles/network/bluetoothd-bnep.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/network/bluetoothd-bnep.obj `if test -f 'profiles/network/bnep.c'; then $(CYGPATH_W) 'profiles/network/bnep.c'; else $(CYGPATH_W) '$(srcdir)/profiles/network/bnep.c'; fi`
 
 profiles/network/bluetoothd-server.o: profiles/network/server.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/network/bluetoothd-server.o -MD -MP -MF profiles/network/$(DEPDIR)/bluetoothd-server.Tpo -c -o profiles/network/bluetoothd-server.o `test -f 'profiles/network/server.c' || echo '$(srcdir)/'`profiles/network/server.c
-	$(AM_V_at)$(am__mv) profiles/network/$(DEPDIR)/bluetoothd-server.Tpo profiles/network/$(DEPDIR)/bluetoothd-server.Po
-#	$(AM_V_CC)source='profiles/network/server.c' object='profiles/network/bluetoothd-server.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/network/bluetoothd-server.o `test -f 'profiles/network/server.c' || echo '$(srcdir)/'`profiles/network/server.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/network/bluetoothd-server.o -MD -MP -MF profiles/network/$(DEPDIR)/bluetoothd-server.Tpo -c -o profiles/network/bluetoothd-server.o `test -f 'profiles/network/server.c' || echo '$(srcdir)/'`profiles/network/server.c
+#	$(AM_V_at)$(am__mv) profiles/network/$(DEPDIR)/bluetoothd-server.Tpo profiles/network/$(DEPDIR)/bluetoothd-server.Po
+#	$(AM_V_CC)source='profiles/network/server.c' object='profiles/network/bluetoothd-server.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/network/bluetoothd-server.o `test -f 'profiles/network/server.c' || echo '$(srcdir)/'`profiles/network/server.c
 
 profiles/network/bluetoothd-server.obj: profiles/network/server.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/network/bluetoothd-server.obj -MD -MP -MF profiles/network/$(DEPDIR)/bluetoothd-server.Tpo -c -o profiles/network/bluetoothd-server.obj `if test -f 'profiles/network/server.c'; then $(CYGPATH_W) 'profiles/network/server.c'; else $(CYGPATH_W) '$(srcdir)/profiles/network/server.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/network/$(DEPDIR)/bluetoothd-server.Tpo profiles/network/$(DEPDIR)/bluetoothd-server.Po
-#	$(AM_V_CC)source='profiles/network/server.c' object='profiles/network/bluetoothd-server.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/network/bluetoothd-server.obj `if test -f 'profiles/network/server.c'; then $(CYGPATH_W) 'profiles/network/server.c'; else $(CYGPATH_W) '$(srcdir)/profiles/network/server.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/network/bluetoothd-server.obj -MD -MP -MF profiles/network/$(DEPDIR)/bluetoothd-server.Tpo -c -o profiles/network/bluetoothd-server.obj `if test -f 'profiles/network/server.c'; then $(CYGPATH_W) 'profiles/network/server.c'; else $(CYGPATH_W) '$(srcdir)/profiles/network/server.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/network/$(DEPDIR)/bluetoothd-server.Tpo profiles/network/$(DEPDIR)/bluetoothd-server.Po
+#	$(AM_V_CC)source='profiles/network/server.c' object='profiles/network/bluetoothd-server.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/network/bluetoothd-server.obj `if test -f 'profiles/network/server.c'; then $(CYGPATH_W) 'profiles/network/server.c'; else $(CYGPATH_W) '$(srcdir)/profiles/network/server.c'; fi`
 
 profiles/network/bluetoothd-connection.o: profiles/network/connection.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/network/bluetoothd-connection.o -MD -MP -MF profiles/network/$(DEPDIR)/bluetoothd-connection.Tpo -c -o profiles/network/bluetoothd-connection.o `test -f 'profiles/network/connection.c' || echo '$(srcdir)/'`profiles/network/connection.c
-	$(AM_V_at)$(am__mv) profiles/network/$(DEPDIR)/bluetoothd-connection.Tpo profiles/network/$(DEPDIR)/bluetoothd-connection.Po
-#	$(AM_V_CC)source='profiles/network/connection.c' object='profiles/network/bluetoothd-connection.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/network/bluetoothd-connection.o `test -f 'profiles/network/connection.c' || echo '$(srcdir)/'`profiles/network/connection.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/network/bluetoothd-connection.o -MD -MP -MF profiles/network/$(DEPDIR)/bluetoothd-connection.Tpo -c -o profiles/network/bluetoothd-connection.o `test -f 'profiles/network/connection.c' || echo '$(srcdir)/'`profiles/network/connection.c
+#	$(AM_V_at)$(am__mv) profiles/network/$(DEPDIR)/bluetoothd-connection.Tpo profiles/network/$(DEPDIR)/bluetoothd-connection.Po
+#	$(AM_V_CC)source='profiles/network/connection.c' object='profiles/network/bluetoothd-connection.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/network/bluetoothd-connection.o `test -f 'profiles/network/connection.c' || echo '$(srcdir)/'`profiles/network/connection.c
 
 profiles/network/bluetoothd-connection.obj: profiles/network/connection.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/network/bluetoothd-connection.obj -MD -MP -MF profiles/network/$(DEPDIR)/bluetoothd-connection.Tpo -c -o profiles/network/bluetoothd-connection.obj `if test -f 'profiles/network/connection.c'; then $(CYGPATH_W) 'profiles/network/connection.c'; else $(CYGPATH_W) '$(srcdir)/profiles/network/connection.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/network/$(DEPDIR)/bluetoothd-connection.Tpo profiles/network/$(DEPDIR)/bluetoothd-connection.Po
-#	$(AM_V_CC)source='profiles/network/connection.c' object='profiles/network/bluetoothd-connection.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/network/bluetoothd-connection.obj `if test -f 'profiles/network/connection.c'; then $(CYGPATH_W) 'profiles/network/connection.c'; else $(CYGPATH_W) '$(srcdir)/profiles/network/connection.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/network/bluetoothd-connection.obj -MD -MP -MF profiles/network/$(DEPDIR)/bluetoothd-connection.Tpo -c -o profiles/network/bluetoothd-connection.obj `if test -f 'profiles/network/connection.c'; then $(CYGPATH_W) 'profiles/network/connection.c'; else $(CYGPATH_W) '$(srcdir)/profiles/network/connection.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/network/$(DEPDIR)/bluetoothd-connection.Tpo profiles/network/$(DEPDIR)/bluetoothd-connection.Po
+#	$(AM_V_CC)source='profiles/network/connection.c' object='profiles/network/bluetoothd-connection.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/network/bluetoothd-connection.obj `if test -f 'profiles/network/connection.c'; then $(CYGPATH_W) 'profiles/network/connection.c'; else $(CYGPATH_W) '$(srcdir)/profiles/network/connection.c'; fi`
 
 profiles/input/bluetoothd-manager.o: profiles/input/manager.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/input/bluetoothd-manager.o -MD -MP -MF profiles/input/$(DEPDIR)/bluetoothd-manager.Tpo -c -o profiles/input/bluetoothd-manager.o `test -f 'profiles/input/manager.c' || echo '$(srcdir)/'`profiles/input/manager.c
-	$(AM_V_at)$(am__mv) profiles/input/$(DEPDIR)/bluetoothd-manager.Tpo profiles/input/$(DEPDIR)/bluetoothd-manager.Po
-#	$(AM_V_CC)source='profiles/input/manager.c' object='profiles/input/bluetoothd-manager.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/input/bluetoothd-manager.o `test -f 'profiles/input/manager.c' || echo '$(srcdir)/'`profiles/input/manager.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/input/bluetoothd-manager.o -MD -MP -MF profiles/input/$(DEPDIR)/bluetoothd-manager.Tpo -c -o profiles/input/bluetoothd-manager.o `test -f 'profiles/input/manager.c' || echo '$(srcdir)/'`profiles/input/manager.c
+#	$(AM_V_at)$(am__mv) profiles/input/$(DEPDIR)/bluetoothd-manager.Tpo profiles/input/$(DEPDIR)/bluetoothd-manager.Po
+#	$(AM_V_CC)source='profiles/input/manager.c' object='profiles/input/bluetoothd-manager.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/input/bluetoothd-manager.o `test -f 'profiles/input/manager.c' || echo '$(srcdir)/'`profiles/input/manager.c
 
 profiles/input/bluetoothd-manager.obj: profiles/input/manager.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/input/bluetoothd-manager.obj -MD -MP -MF profiles/input/$(DEPDIR)/bluetoothd-manager.Tpo -c -o profiles/input/bluetoothd-manager.obj `if test -f 'profiles/input/manager.c'; then $(CYGPATH_W) 'profiles/input/manager.c'; else $(CYGPATH_W) '$(srcdir)/profiles/input/manager.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/input/$(DEPDIR)/bluetoothd-manager.Tpo profiles/input/$(DEPDIR)/bluetoothd-manager.Po
-#	$(AM_V_CC)source='profiles/input/manager.c' object='profiles/input/bluetoothd-manager.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/input/bluetoothd-manager.obj `if test -f 'profiles/input/manager.c'; then $(CYGPATH_W) 'profiles/input/manager.c'; else $(CYGPATH_W) '$(srcdir)/profiles/input/manager.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/input/bluetoothd-manager.obj -MD -MP -MF profiles/input/$(DEPDIR)/bluetoothd-manager.Tpo -c -o profiles/input/bluetoothd-manager.obj `if test -f 'profiles/input/manager.c'; then $(CYGPATH_W) 'profiles/input/manager.c'; else $(CYGPATH_W) '$(srcdir)/profiles/input/manager.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/input/$(DEPDIR)/bluetoothd-manager.Tpo profiles/input/$(DEPDIR)/bluetoothd-manager.Po
+#	$(AM_V_CC)source='profiles/input/manager.c' object='profiles/input/bluetoothd-manager.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/input/bluetoothd-manager.obj `if test -f 'profiles/input/manager.c'; then $(CYGPATH_W) 'profiles/input/manager.c'; else $(CYGPATH_W) '$(srcdir)/profiles/input/manager.c'; fi`
 
 profiles/input/bluetoothd-server.o: profiles/input/server.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/input/bluetoothd-server.o -MD -MP -MF profiles/input/$(DEPDIR)/bluetoothd-server.Tpo -c -o profiles/input/bluetoothd-server.o `test -f 'profiles/input/server.c' || echo '$(srcdir)/'`profiles/input/server.c
-	$(AM_V_at)$(am__mv) profiles/input/$(DEPDIR)/bluetoothd-server.Tpo profiles/input/$(DEPDIR)/bluetoothd-server.Po
-#	$(AM_V_CC)source='profiles/input/server.c' object='profiles/input/bluetoothd-server.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/input/bluetoothd-server.o `test -f 'profiles/input/server.c' || echo '$(srcdir)/'`profiles/input/server.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/input/bluetoothd-server.o -MD -MP -MF profiles/input/$(DEPDIR)/bluetoothd-server.Tpo -c -o profiles/input/bluetoothd-server.o `test -f 'profiles/input/server.c' || echo '$(srcdir)/'`profiles/input/server.c
+#	$(AM_V_at)$(am__mv) profiles/input/$(DEPDIR)/bluetoothd-server.Tpo profiles/input/$(DEPDIR)/bluetoothd-server.Po
+#	$(AM_V_CC)source='profiles/input/server.c' object='profiles/input/bluetoothd-server.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/input/bluetoothd-server.o `test -f 'profiles/input/server.c' || echo '$(srcdir)/'`profiles/input/server.c
 
 profiles/input/bluetoothd-server.obj: profiles/input/server.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/input/bluetoothd-server.obj -MD -MP -MF profiles/input/$(DEPDIR)/bluetoothd-server.Tpo -c -o profiles/input/bluetoothd-server.obj `if test -f 'profiles/input/server.c'; then $(CYGPATH_W) 'profiles/input/server.c'; else $(CYGPATH_W) '$(srcdir)/profiles/input/server.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/input/$(DEPDIR)/bluetoothd-server.Tpo profiles/input/$(DEPDIR)/bluetoothd-server.Po
-#	$(AM_V_CC)source='profiles/input/server.c' object='profiles/input/bluetoothd-server.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/input/bluetoothd-server.obj `if test -f 'profiles/input/server.c'; then $(CYGPATH_W) 'profiles/input/server.c'; else $(CYGPATH_W) '$(srcdir)/profiles/input/server.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/input/bluetoothd-server.obj -MD -MP -MF profiles/input/$(DEPDIR)/bluetoothd-server.Tpo -c -o profiles/input/bluetoothd-server.obj `if test -f 'profiles/input/server.c'; then $(CYGPATH_W) 'profiles/input/server.c'; else $(CYGPATH_W) '$(srcdir)/profiles/input/server.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/input/$(DEPDIR)/bluetoothd-server.Tpo profiles/input/$(DEPDIR)/bluetoothd-server.Po
+#	$(AM_V_CC)source='profiles/input/server.c' object='profiles/input/bluetoothd-server.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/input/bluetoothd-server.obj `if test -f 'profiles/input/server.c'; then $(CYGPATH_W) 'profiles/input/server.c'; else $(CYGPATH_W) '$(srcdir)/profiles/input/server.c'; fi`
 
 profiles/input/bluetoothd-device.o: profiles/input/device.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/input/bluetoothd-device.o -MD -MP -MF profiles/input/$(DEPDIR)/bluetoothd-device.Tpo -c -o profiles/input/bluetoothd-device.o `test -f 'profiles/input/device.c' || echo '$(srcdir)/'`profiles/input/device.c
-	$(AM_V_at)$(am__mv) profiles/input/$(DEPDIR)/bluetoothd-device.Tpo profiles/input/$(DEPDIR)/bluetoothd-device.Po
-#	$(AM_V_CC)source='profiles/input/device.c' object='profiles/input/bluetoothd-device.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/input/bluetoothd-device.o `test -f 'profiles/input/device.c' || echo '$(srcdir)/'`profiles/input/device.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/input/bluetoothd-device.o -MD -MP -MF profiles/input/$(DEPDIR)/bluetoothd-device.Tpo -c -o profiles/input/bluetoothd-device.o `test -f 'profiles/input/device.c' || echo '$(srcdir)/'`profiles/input/device.c
+#	$(AM_V_at)$(am__mv) profiles/input/$(DEPDIR)/bluetoothd-device.Tpo profiles/input/$(DEPDIR)/bluetoothd-device.Po
+#	$(AM_V_CC)source='profiles/input/device.c' object='profiles/input/bluetoothd-device.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/input/bluetoothd-device.o `test -f 'profiles/input/device.c' || echo '$(srcdir)/'`profiles/input/device.c
 
 profiles/input/bluetoothd-device.obj: profiles/input/device.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/input/bluetoothd-device.obj -MD -MP -MF profiles/input/$(DEPDIR)/bluetoothd-device.Tpo -c -o profiles/input/bluetoothd-device.obj `if test -f 'profiles/input/device.c'; then $(CYGPATH_W) 'profiles/input/device.c'; else $(CYGPATH_W) '$(srcdir)/profiles/input/device.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/input/$(DEPDIR)/bluetoothd-device.Tpo profiles/input/$(DEPDIR)/bluetoothd-device.Po
-#	$(AM_V_CC)source='profiles/input/device.c' object='profiles/input/bluetoothd-device.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/input/bluetoothd-device.obj `if test -f 'profiles/input/device.c'; then $(CYGPATH_W) 'profiles/input/device.c'; else $(CYGPATH_W) '$(srcdir)/profiles/input/device.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/input/bluetoothd-device.obj -MD -MP -MF profiles/input/$(DEPDIR)/bluetoothd-device.Tpo -c -o profiles/input/bluetoothd-device.obj `if test -f 'profiles/input/device.c'; then $(CYGPATH_W) 'profiles/input/device.c'; else $(CYGPATH_W) '$(srcdir)/profiles/input/device.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/input/$(DEPDIR)/bluetoothd-device.Tpo profiles/input/$(DEPDIR)/bluetoothd-device.Po
+#	$(AM_V_CC)source='profiles/input/device.c' object='profiles/input/bluetoothd-device.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/input/bluetoothd-device.obj `if test -f 'profiles/input/device.c'; then $(CYGPATH_W) 'profiles/input/device.c'; else $(CYGPATH_W) '$(srcdir)/profiles/input/device.c'; fi`
 
 profiles/input/bluetoothd-hog.o: profiles/input/hog.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/input/bluetoothd-hog.o -MD -MP -MF profiles/input/$(DEPDIR)/bluetoothd-hog.Tpo -c -o profiles/input/bluetoothd-hog.o `test -f 'profiles/input/hog.c' || echo '$(srcdir)/'`profiles/input/hog.c
-	$(AM_V_at)$(am__mv) profiles/input/$(DEPDIR)/bluetoothd-hog.Tpo profiles/input/$(DEPDIR)/bluetoothd-hog.Po
-#	$(AM_V_CC)source='profiles/input/hog.c' object='profiles/input/bluetoothd-hog.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/input/bluetoothd-hog.o `test -f 'profiles/input/hog.c' || echo '$(srcdir)/'`profiles/input/hog.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/input/bluetoothd-hog.o -MD -MP -MF profiles/input/$(DEPDIR)/bluetoothd-hog.Tpo -c -o profiles/input/bluetoothd-hog.o `test -f 'profiles/input/hog.c' || echo '$(srcdir)/'`profiles/input/hog.c
+#	$(AM_V_at)$(am__mv) profiles/input/$(DEPDIR)/bluetoothd-hog.Tpo profiles/input/$(DEPDIR)/bluetoothd-hog.Po
+#	$(AM_V_CC)source='profiles/input/hog.c' object='profiles/input/bluetoothd-hog.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/input/bluetoothd-hog.o `test -f 'profiles/input/hog.c' || echo '$(srcdir)/'`profiles/input/hog.c
 
 profiles/input/bluetoothd-hog.obj: profiles/input/hog.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/input/bluetoothd-hog.obj -MD -MP -MF profiles/input/$(DEPDIR)/bluetoothd-hog.Tpo -c -o profiles/input/bluetoothd-hog.obj `if test -f 'profiles/input/hog.c'; then $(CYGPATH_W) 'profiles/input/hog.c'; else $(CYGPATH_W) '$(srcdir)/profiles/input/hog.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/input/$(DEPDIR)/bluetoothd-hog.Tpo profiles/input/$(DEPDIR)/bluetoothd-hog.Po
-#	$(AM_V_CC)source='profiles/input/hog.c' object='profiles/input/bluetoothd-hog.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/input/bluetoothd-hog.obj `if test -f 'profiles/input/hog.c'; then $(CYGPATH_W) 'profiles/input/hog.c'; else $(CYGPATH_W) '$(srcdir)/profiles/input/hog.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/input/bluetoothd-hog.obj -MD -MP -MF profiles/input/$(DEPDIR)/bluetoothd-hog.Tpo -c -o profiles/input/bluetoothd-hog.obj `if test -f 'profiles/input/hog.c'; then $(CYGPATH_W) 'profiles/input/hog.c'; else $(CYGPATH_W) '$(srcdir)/profiles/input/hog.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/input/$(DEPDIR)/bluetoothd-hog.Tpo profiles/input/$(DEPDIR)/bluetoothd-hog.Po
+#	$(AM_V_CC)source='profiles/input/hog.c' object='profiles/input/bluetoothd-hog.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/input/bluetoothd-hog.obj `if test -f 'profiles/input/hog.c'; then $(CYGPATH_W) 'profiles/input/hog.c'; else $(CYGPATH_W) '$(srcdir)/profiles/input/hog.c'; fi`
 
 profiles/input/bluetoothd-hog-lib.o: profiles/input/hog-lib.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/input/bluetoothd-hog-lib.o -MD -MP -MF profiles/input/$(DEPDIR)/bluetoothd-hog-lib.Tpo -c -o profiles/input/bluetoothd-hog-lib.o `test -f 'profiles/input/hog-lib.c' || echo '$(srcdir)/'`profiles/input/hog-lib.c
-	$(AM_V_at)$(am__mv) profiles/input/$(DEPDIR)/bluetoothd-hog-lib.Tpo profiles/input/$(DEPDIR)/bluetoothd-hog-lib.Po
-#	$(AM_V_CC)source='profiles/input/hog-lib.c' object='profiles/input/bluetoothd-hog-lib.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/input/bluetoothd-hog-lib.o `test -f 'profiles/input/hog-lib.c' || echo '$(srcdir)/'`profiles/input/hog-lib.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/input/bluetoothd-hog-lib.o -MD -MP -MF profiles/input/$(DEPDIR)/bluetoothd-hog-lib.Tpo -c -o profiles/input/bluetoothd-hog-lib.o `test -f 'profiles/input/hog-lib.c' || echo '$(srcdir)/'`profiles/input/hog-lib.c
+#	$(AM_V_at)$(am__mv) profiles/input/$(DEPDIR)/bluetoothd-hog-lib.Tpo profiles/input/$(DEPDIR)/bluetoothd-hog-lib.Po
+#	$(AM_V_CC)source='profiles/input/hog-lib.c' object='profiles/input/bluetoothd-hog-lib.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/input/bluetoothd-hog-lib.o `test -f 'profiles/input/hog-lib.c' || echo '$(srcdir)/'`profiles/input/hog-lib.c
 
 profiles/input/bluetoothd-hog-lib.obj: profiles/input/hog-lib.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/input/bluetoothd-hog-lib.obj -MD -MP -MF profiles/input/$(DEPDIR)/bluetoothd-hog-lib.Tpo -c -o profiles/input/bluetoothd-hog-lib.obj `if test -f 'profiles/input/hog-lib.c'; then $(CYGPATH_W) 'profiles/input/hog-lib.c'; else $(CYGPATH_W) '$(srcdir)/profiles/input/hog-lib.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/input/$(DEPDIR)/bluetoothd-hog-lib.Tpo profiles/input/$(DEPDIR)/bluetoothd-hog-lib.Po
-#	$(AM_V_CC)source='profiles/input/hog-lib.c' object='profiles/input/bluetoothd-hog-lib.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/input/bluetoothd-hog-lib.obj `if test -f 'profiles/input/hog-lib.c'; then $(CYGPATH_W) 'profiles/input/hog-lib.c'; else $(CYGPATH_W) '$(srcdir)/profiles/input/hog-lib.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/input/bluetoothd-hog-lib.obj -MD -MP -MF profiles/input/$(DEPDIR)/bluetoothd-hog-lib.Tpo -c -o profiles/input/bluetoothd-hog-lib.obj `if test -f 'profiles/input/hog-lib.c'; then $(CYGPATH_W) 'profiles/input/hog-lib.c'; else $(CYGPATH_W) '$(srcdir)/profiles/input/hog-lib.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/input/$(DEPDIR)/bluetoothd-hog-lib.Tpo profiles/input/$(DEPDIR)/bluetoothd-hog-lib.Po
+#	$(AM_V_CC)source='profiles/input/hog-lib.c' object='profiles/input/bluetoothd-hog-lib.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/input/bluetoothd-hog-lib.obj `if test -f 'profiles/input/hog-lib.c'; then $(CYGPATH_W) 'profiles/input/hog-lib.c'; else $(CYGPATH_W) '$(srcdir)/profiles/input/hog-lib.c'; fi`
 
 profiles/deviceinfo/bluetoothd-dis.o: profiles/deviceinfo/dis.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/deviceinfo/bluetoothd-dis.o -MD -MP -MF profiles/deviceinfo/$(DEPDIR)/bluetoothd-dis.Tpo -c -o profiles/deviceinfo/bluetoothd-dis.o `test -f 'profiles/deviceinfo/dis.c' || echo '$(srcdir)/'`profiles/deviceinfo/dis.c
-	$(AM_V_at)$(am__mv) profiles/deviceinfo/$(DEPDIR)/bluetoothd-dis.Tpo profiles/deviceinfo/$(DEPDIR)/bluetoothd-dis.Po
-#	$(AM_V_CC)source='profiles/deviceinfo/dis.c' object='profiles/deviceinfo/bluetoothd-dis.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/deviceinfo/bluetoothd-dis.o `test -f 'profiles/deviceinfo/dis.c' || echo '$(srcdir)/'`profiles/deviceinfo/dis.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/deviceinfo/bluetoothd-dis.o -MD -MP -MF profiles/deviceinfo/$(DEPDIR)/bluetoothd-dis.Tpo -c -o profiles/deviceinfo/bluetoothd-dis.o `test -f 'profiles/deviceinfo/dis.c' || echo '$(srcdir)/'`profiles/deviceinfo/dis.c
+#	$(AM_V_at)$(am__mv) profiles/deviceinfo/$(DEPDIR)/bluetoothd-dis.Tpo profiles/deviceinfo/$(DEPDIR)/bluetoothd-dis.Po
+#	$(AM_V_CC)source='profiles/deviceinfo/dis.c' object='profiles/deviceinfo/bluetoothd-dis.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/deviceinfo/bluetoothd-dis.o `test -f 'profiles/deviceinfo/dis.c' || echo '$(srcdir)/'`profiles/deviceinfo/dis.c
 
 profiles/deviceinfo/bluetoothd-dis.obj: profiles/deviceinfo/dis.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/deviceinfo/bluetoothd-dis.obj -MD -MP -MF profiles/deviceinfo/$(DEPDIR)/bluetoothd-dis.Tpo -c -o profiles/deviceinfo/bluetoothd-dis.obj `if test -f 'profiles/deviceinfo/dis.c'; then $(CYGPATH_W) 'profiles/deviceinfo/dis.c'; else $(CYGPATH_W) '$(srcdir)/profiles/deviceinfo/dis.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/deviceinfo/$(DEPDIR)/bluetoothd-dis.Tpo profiles/deviceinfo/$(DEPDIR)/bluetoothd-dis.Po
-#	$(AM_V_CC)source='profiles/deviceinfo/dis.c' object='profiles/deviceinfo/bluetoothd-dis.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/deviceinfo/bluetoothd-dis.obj `if test -f 'profiles/deviceinfo/dis.c'; then $(CYGPATH_W) 'profiles/deviceinfo/dis.c'; else $(CYGPATH_W) '$(srcdir)/profiles/deviceinfo/dis.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/deviceinfo/bluetoothd-dis.obj -MD -MP -MF profiles/deviceinfo/$(DEPDIR)/bluetoothd-dis.Tpo -c -o profiles/deviceinfo/bluetoothd-dis.obj `if test -f 'profiles/deviceinfo/dis.c'; then $(CYGPATH_W) 'profiles/deviceinfo/dis.c'; else $(CYGPATH_W) '$(srcdir)/profiles/deviceinfo/dis.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/deviceinfo/$(DEPDIR)/bluetoothd-dis.Tpo profiles/deviceinfo/$(DEPDIR)/bluetoothd-dis.Po
+#	$(AM_V_CC)source='profiles/deviceinfo/dis.c' object='profiles/deviceinfo/bluetoothd-dis.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/deviceinfo/bluetoothd-dis.obj `if test -f 'profiles/deviceinfo/dis.c'; then $(CYGPATH_W) 'profiles/deviceinfo/dis.c'; else $(CYGPATH_W) '$(srcdir)/profiles/deviceinfo/dis.c'; fi`
 
 profiles/battery/bluetoothd-bas.o: profiles/battery/bas.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/battery/bluetoothd-bas.o -MD -MP -MF profiles/battery/$(DEPDIR)/bluetoothd-bas.Tpo -c -o profiles/battery/bluetoothd-bas.o `test -f 'profiles/battery/bas.c' || echo '$(srcdir)/'`profiles/battery/bas.c
-	$(AM_V_at)$(am__mv) profiles/battery/$(DEPDIR)/bluetoothd-bas.Tpo profiles/battery/$(DEPDIR)/bluetoothd-bas.Po
-#	$(AM_V_CC)source='profiles/battery/bas.c' object='profiles/battery/bluetoothd-bas.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/battery/bluetoothd-bas.o `test -f 'profiles/battery/bas.c' || echo '$(srcdir)/'`profiles/battery/bas.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/battery/bluetoothd-bas.o -MD -MP -MF profiles/battery/$(DEPDIR)/bluetoothd-bas.Tpo -c -o profiles/battery/bluetoothd-bas.o `test -f 'profiles/battery/bas.c' || echo '$(srcdir)/'`profiles/battery/bas.c
+#	$(AM_V_at)$(am__mv) profiles/battery/$(DEPDIR)/bluetoothd-bas.Tpo profiles/battery/$(DEPDIR)/bluetoothd-bas.Po
+#	$(AM_V_CC)source='profiles/battery/bas.c' object='profiles/battery/bluetoothd-bas.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/battery/bluetoothd-bas.o `test -f 'profiles/battery/bas.c' || echo '$(srcdir)/'`profiles/battery/bas.c
 
 profiles/battery/bluetoothd-bas.obj: profiles/battery/bas.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/battery/bluetoothd-bas.obj -MD -MP -MF profiles/battery/$(DEPDIR)/bluetoothd-bas.Tpo -c -o profiles/battery/bluetoothd-bas.obj `if test -f 'profiles/battery/bas.c'; then $(CYGPATH_W) 'profiles/battery/bas.c'; else $(CYGPATH_W) '$(srcdir)/profiles/battery/bas.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/battery/$(DEPDIR)/bluetoothd-bas.Tpo profiles/battery/$(DEPDIR)/bluetoothd-bas.Po
-#	$(AM_V_CC)source='profiles/battery/bas.c' object='profiles/battery/bluetoothd-bas.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/battery/bluetoothd-bas.obj `if test -f 'profiles/battery/bas.c'; then $(CYGPATH_W) 'profiles/battery/bas.c'; else $(CYGPATH_W) '$(srcdir)/profiles/battery/bas.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/battery/bluetoothd-bas.obj -MD -MP -MF profiles/battery/$(DEPDIR)/bluetoothd-bas.Tpo -c -o profiles/battery/bluetoothd-bas.obj `if test -f 'profiles/battery/bas.c'; then $(CYGPATH_W) 'profiles/battery/bas.c'; else $(CYGPATH_W) '$(srcdir)/profiles/battery/bas.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/battery/$(DEPDIR)/bluetoothd-bas.Tpo profiles/battery/$(DEPDIR)/bluetoothd-bas.Po
+#	$(AM_V_CC)source='profiles/battery/bas.c' object='profiles/battery/bluetoothd-bas.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/battery/bluetoothd-bas.obj `if test -f 'profiles/battery/bas.c'; then $(CYGPATH_W) 'profiles/battery/bas.c'; else $(CYGPATH_W) '$(srcdir)/profiles/battery/bas.c'; fi`
 
 profiles/scanparam/bluetoothd-scpp.o: profiles/scanparam/scpp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/scanparam/bluetoothd-scpp.o -MD -MP -MF profiles/scanparam/$(DEPDIR)/bluetoothd-scpp.Tpo -c -o profiles/scanparam/bluetoothd-scpp.o `test -f 'profiles/scanparam/scpp.c' || echo '$(srcdir)/'`profiles/scanparam/scpp.c
-	$(AM_V_at)$(am__mv) profiles/scanparam/$(DEPDIR)/bluetoothd-scpp.Tpo profiles/scanparam/$(DEPDIR)/bluetoothd-scpp.Po
-#	$(AM_V_CC)source='profiles/scanparam/scpp.c' object='profiles/scanparam/bluetoothd-scpp.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/scanparam/bluetoothd-scpp.o `test -f 'profiles/scanparam/scpp.c' || echo '$(srcdir)/'`profiles/scanparam/scpp.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/scanparam/bluetoothd-scpp.o -MD -MP -MF profiles/scanparam/$(DEPDIR)/bluetoothd-scpp.Tpo -c -o profiles/scanparam/bluetoothd-scpp.o `test -f 'profiles/scanparam/scpp.c' || echo '$(srcdir)/'`profiles/scanparam/scpp.c
+#	$(AM_V_at)$(am__mv) profiles/scanparam/$(DEPDIR)/bluetoothd-scpp.Tpo profiles/scanparam/$(DEPDIR)/bluetoothd-scpp.Po
+#	$(AM_V_CC)source='profiles/scanparam/scpp.c' object='profiles/scanparam/bluetoothd-scpp.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/scanparam/bluetoothd-scpp.o `test -f 'profiles/scanparam/scpp.c' || echo '$(srcdir)/'`profiles/scanparam/scpp.c
 
 profiles/scanparam/bluetoothd-scpp.obj: profiles/scanparam/scpp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/scanparam/bluetoothd-scpp.obj -MD -MP -MF profiles/scanparam/$(DEPDIR)/bluetoothd-scpp.Tpo -c -o profiles/scanparam/bluetoothd-scpp.obj `if test -f 'profiles/scanparam/scpp.c'; then $(CYGPATH_W) 'profiles/scanparam/scpp.c'; else $(CYGPATH_W) '$(srcdir)/profiles/scanparam/scpp.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/scanparam/$(DEPDIR)/bluetoothd-scpp.Tpo profiles/scanparam/$(DEPDIR)/bluetoothd-scpp.Po
-#	$(AM_V_CC)source='profiles/scanparam/scpp.c' object='profiles/scanparam/bluetoothd-scpp.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/scanparam/bluetoothd-scpp.obj `if test -f 'profiles/scanparam/scpp.c'; then $(CYGPATH_W) 'profiles/scanparam/scpp.c'; else $(CYGPATH_W) '$(srcdir)/profiles/scanparam/scpp.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/scanparam/bluetoothd-scpp.obj -MD -MP -MF profiles/scanparam/$(DEPDIR)/bluetoothd-scpp.Tpo -c -o profiles/scanparam/bluetoothd-scpp.obj `if test -f 'profiles/scanparam/scpp.c'; then $(CYGPATH_W) 'profiles/scanparam/scpp.c'; else $(CYGPATH_W) '$(srcdir)/profiles/scanparam/scpp.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/scanparam/$(DEPDIR)/bluetoothd-scpp.Tpo profiles/scanparam/$(DEPDIR)/bluetoothd-scpp.Po
+#	$(AM_V_CC)source='profiles/scanparam/scpp.c' object='profiles/scanparam/bluetoothd-scpp.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/scanparam/bluetoothd-scpp.obj `if test -f 'profiles/scanparam/scpp.c'; then $(CYGPATH_W) 'profiles/scanparam/scpp.c'; else $(CYGPATH_W) '$(srcdir)/profiles/scanparam/scpp.c'; fi`
 
 profiles/input/bluetoothd-suspend-none.o: profiles/input/suspend-none.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/input/bluetoothd-suspend-none.o -MD -MP -MF profiles/input/$(DEPDIR)/bluetoothd-suspend-none.Tpo -c -o profiles/input/bluetoothd-suspend-none.o `test -f 'profiles/input/suspend-none.c' || echo '$(srcdir)/'`profiles/input/suspend-none.c
-	$(AM_V_at)$(am__mv) profiles/input/$(DEPDIR)/bluetoothd-suspend-none.Tpo profiles/input/$(DEPDIR)/bluetoothd-suspend-none.Po
-#	$(AM_V_CC)source='profiles/input/suspend-none.c' object='profiles/input/bluetoothd-suspend-none.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/input/bluetoothd-suspend-none.o `test -f 'profiles/input/suspend-none.c' || echo '$(srcdir)/'`profiles/input/suspend-none.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/input/bluetoothd-suspend-none.o -MD -MP -MF profiles/input/$(DEPDIR)/bluetoothd-suspend-none.Tpo -c -o profiles/input/bluetoothd-suspend-none.o `test -f 'profiles/input/suspend-none.c' || echo '$(srcdir)/'`profiles/input/suspend-none.c
+#	$(AM_V_at)$(am__mv) profiles/input/$(DEPDIR)/bluetoothd-suspend-none.Tpo profiles/input/$(DEPDIR)/bluetoothd-suspend-none.Po
+#	$(AM_V_CC)source='profiles/input/suspend-none.c' object='profiles/input/bluetoothd-suspend-none.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/input/bluetoothd-suspend-none.o `test -f 'profiles/input/suspend-none.c' || echo '$(srcdir)/'`profiles/input/suspend-none.c
 
 profiles/input/bluetoothd-suspend-none.obj: profiles/input/suspend-none.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/input/bluetoothd-suspend-none.obj -MD -MP -MF profiles/input/$(DEPDIR)/bluetoothd-suspend-none.Tpo -c -o profiles/input/bluetoothd-suspend-none.obj `if test -f 'profiles/input/suspend-none.c'; then $(CYGPATH_W) 'profiles/input/suspend-none.c'; else $(CYGPATH_W) '$(srcdir)/profiles/input/suspend-none.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/input/$(DEPDIR)/bluetoothd-suspend-none.Tpo profiles/input/$(DEPDIR)/bluetoothd-suspend-none.Po
-#	$(AM_V_CC)source='profiles/input/suspend-none.c' object='profiles/input/bluetoothd-suspend-none.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/input/bluetoothd-suspend-none.obj `if test -f 'profiles/input/suspend-none.c'; then $(CYGPATH_W) 'profiles/input/suspend-none.c'; else $(CYGPATH_W) '$(srcdir)/profiles/input/suspend-none.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/input/bluetoothd-suspend-none.obj -MD -MP -MF profiles/input/$(DEPDIR)/bluetoothd-suspend-none.Tpo -c -o profiles/input/bluetoothd-suspend-none.obj `if test -f 'profiles/input/suspend-none.c'; then $(CYGPATH_W) 'profiles/input/suspend-none.c'; else $(CYGPATH_W) '$(srcdir)/profiles/input/suspend-none.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/input/$(DEPDIR)/bluetoothd-suspend-none.Tpo profiles/input/$(DEPDIR)/bluetoothd-suspend-none.Po
+#	$(AM_V_CC)source='profiles/input/suspend-none.c' object='profiles/input/bluetoothd-suspend-none.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/input/bluetoothd-suspend-none.obj `if test -f 'profiles/input/suspend-none.c'; then $(CYGPATH_W) 'profiles/input/suspend-none.c'; else $(CYGPATH_W) '$(srcdir)/profiles/input/suspend-none.c'; fi`
 
 profiles/health/bluetoothd-mcap.o: profiles/health/mcap.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/health/bluetoothd-mcap.o -MD -MP -MF profiles/health/$(DEPDIR)/bluetoothd-mcap.Tpo -c -o profiles/health/bluetoothd-mcap.o `test -f 'profiles/health/mcap.c' || echo '$(srcdir)/'`profiles/health/mcap.c
-	$(AM_V_at)$(am__mv) profiles/health/$(DEPDIR)/bluetoothd-mcap.Tpo profiles/health/$(DEPDIR)/bluetoothd-mcap.Po
-#	$(AM_V_CC)source='profiles/health/mcap.c' object='profiles/health/bluetoothd-mcap.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/health/bluetoothd-mcap.o `test -f 'profiles/health/mcap.c' || echo '$(srcdir)/'`profiles/health/mcap.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/health/bluetoothd-mcap.o -MD -MP -MF profiles/health/$(DEPDIR)/bluetoothd-mcap.Tpo -c -o profiles/health/bluetoothd-mcap.o `test -f 'profiles/health/mcap.c' || echo '$(srcdir)/'`profiles/health/mcap.c
+#	$(AM_V_at)$(am__mv) profiles/health/$(DEPDIR)/bluetoothd-mcap.Tpo profiles/health/$(DEPDIR)/bluetoothd-mcap.Po
+#	$(AM_V_CC)source='profiles/health/mcap.c' object='profiles/health/bluetoothd-mcap.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/health/bluetoothd-mcap.o `test -f 'profiles/health/mcap.c' || echo '$(srcdir)/'`profiles/health/mcap.c
 
 profiles/health/bluetoothd-mcap.obj: profiles/health/mcap.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/health/bluetoothd-mcap.obj -MD -MP -MF profiles/health/$(DEPDIR)/bluetoothd-mcap.Tpo -c -o profiles/health/bluetoothd-mcap.obj `if test -f 'profiles/health/mcap.c'; then $(CYGPATH_W) 'profiles/health/mcap.c'; else $(CYGPATH_W) '$(srcdir)/profiles/health/mcap.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/health/$(DEPDIR)/bluetoothd-mcap.Tpo profiles/health/$(DEPDIR)/bluetoothd-mcap.Po
-#	$(AM_V_CC)source='profiles/health/mcap.c' object='profiles/health/bluetoothd-mcap.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/health/bluetoothd-mcap.obj `if test -f 'profiles/health/mcap.c'; then $(CYGPATH_W) 'profiles/health/mcap.c'; else $(CYGPATH_W) '$(srcdir)/profiles/health/mcap.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/health/bluetoothd-mcap.obj -MD -MP -MF profiles/health/$(DEPDIR)/bluetoothd-mcap.Tpo -c -o profiles/health/bluetoothd-mcap.obj `if test -f 'profiles/health/mcap.c'; then $(CYGPATH_W) 'profiles/health/mcap.c'; else $(CYGPATH_W) '$(srcdir)/profiles/health/mcap.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/health/$(DEPDIR)/bluetoothd-mcap.Tpo profiles/health/$(DEPDIR)/bluetoothd-mcap.Po
+#	$(AM_V_CC)source='profiles/health/mcap.c' object='profiles/health/bluetoothd-mcap.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/health/bluetoothd-mcap.obj `if test -f 'profiles/health/mcap.c'; then $(CYGPATH_W) 'profiles/health/mcap.c'; else $(CYGPATH_W) '$(srcdir)/profiles/health/mcap.c'; fi`
 
 profiles/health/bluetoothd-hdp_main.o: profiles/health/hdp_main.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/health/bluetoothd-hdp_main.o -MD -MP -MF profiles/health/$(DEPDIR)/bluetoothd-hdp_main.Tpo -c -o profiles/health/bluetoothd-hdp_main.o `test -f 'profiles/health/hdp_main.c' || echo '$(srcdir)/'`profiles/health/hdp_main.c
-	$(AM_V_at)$(am__mv) profiles/health/$(DEPDIR)/bluetoothd-hdp_main.Tpo profiles/health/$(DEPDIR)/bluetoothd-hdp_main.Po
-#	$(AM_V_CC)source='profiles/health/hdp_main.c' object='profiles/health/bluetoothd-hdp_main.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/health/bluetoothd-hdp_main.o `test -f 'profiles/health/hdp_main.c' || echo '$(srcdir)/'`profiles/health/hdp_main.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/health/bluetoothd-hdp_main.o -MD -MP -MF profiles/health/$(DEPDIR)/bluetoothd-hdp_main.Tpo -c -o profiles/health/bluetoothd-hdp_main.o `test -f 'profiles/health/hdp_main.c' || echo '$(srcdir)/'`profiles/health/hdp_main.c
+#	$(AM_V_at)$(am__mv) profiles/health/$(DEPDIR)/bluetoothd-hdp_main.Tpo profiles/health/$(DEPDIR)/bluetoothd-hdp_main.Po
+#	$(AM_V_CC)source='profiles/health/hdp_main.c' object='profiles/health/bluetoothd-hdp_main.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/health/bluetoothd-hdp_main.o `test -f 'profiles/health/hdp_main.c' || echo '$(srcdir)/'`profiles/health/hdp_main.c
 
 profiles/health/bluetoothd-hdp_main.obj: profiles/health/hdp_main.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/health/bluetoothd-hdp_main.obj -MD -MP -MF profiles/health/$(DEPDIR)/bluetoothd-hdp_main.Tpo -c -o profiles/health/bluetoothd-hdp_main.obj `if test -f 'profiles/health/hdp_main.c'; then $(CYGPATH_W) 'profiles/health/hdp_main.c'; else $(CYGPATH_W) '$(srcdir)/profiles/health/hdp_main.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/health/$(DEPDIR)/bluetoothd-hdp_main.Tpo profiles/health/$(DEPDIR)/bluetoothd-hdp_main.Po
-#	$(AM_V_CC)source='profiles/health/hdp_main.c' object='profiles/health/bluetoothd-hdp_main.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/health/bluetoothd-hdp_main.obj `if test -f 'profiles/health/hdp_main.c'; then $(CYGPATH_W) 'profiles/health/hdp_main.c'; else $(CYGPATH_W) '$(srcdir)/profiles/health/hdp_main.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/health/bluetoothd-hdp_main.obj -MD -MP -MF profiles/health/$(DEPDIR)/bluetoothd-hdp_main.Tpo -c -o profiles/health/bluetoothd-hdp_main.obj `if test -f 'profiles/health/hdp_main.c'; then $(CYGPATH_W) 'profiles/health/hdp_main.c'; else $(CYGPATH_W) '$(srcdir)/profiles/health/hdp_main.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/health/$(DEPDIR)/bluetoothd-hdp_main.Tpo profiles/health/$(DEPDIR)/bluetoothd-hdp_main.Po
+#	$(AM_V_CC)source='profiles/health/hdp_main.c' object='profiles/health/bluetoothd-hdp_main.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/health/bluetoothd-hdp_main.obj `if test -f 'profiles/health/hdp_main.c'; then $(CYGPATH_W) 'profiles/health/hdp_main.c'; else $(CYGPATH_W) '$(srcdir)/profiles/health/hdp_main.c'; fi`
 
 profiles/health/bluetoothd-hdp_manager.o: profiles/health/hdp_manager.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/health/bluetoothd-hdp_manager.o -MD -MP -MF profiles/health/$(DEPDIR)/bluetoothd-hdp_manager.Tpo -c -o profiles/health/bluetoothd-hdp_manager.o `test -f 'profiles/health/hdp_manager.c' || echo '$(srcdir)/'`profiles/health/hdp_manager.c
-	$(AM_V_at)$(am__mv) profiles/health/$(DEPDIR)/bluetoothd-hdp_manager.Tpo profiles/health/$(DEPDIR)/bluetoothd-hdp_manager.Po
-#	$(AM_V_CC)source='profiles/health/hdp_manager.c' object='profiles/health/bluetoothd-hdp_manager.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/health/bluetoothd-hdp_manager.o `test -f 'profiles/health/hdp_manager.c' || echo '$(srcdir)/'`profiles/health/hdp_manager.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/health/bluetoothd-hdp_manager.o -MD -MP -MF profiles/health/$(DEPDIR)/bluetoothd-hdp_manager.Tpo -c -o profiles/health/bluetoothd-hdp_manager.o `test -f 'profiles/health/hdp_manager.c' || echo '$(srcdir)/'`profiles/health/hdp_manager.c
+#	$(AM_V_at)$(am__mv) profiles/health/$(DEPDIR)/bluetoothd-hdp_manager.Tpo profiles/health/$(DEPDIR)/bluetoothd-hdp_manager.Po
+#	$(AM_V_CC)source='profiles/health/hdp_manager.c' object='profiles/health/bluetoothd-hdp_manager.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/health/bluetoothd-hdp_manager.o `test -f 'profiles/health/hdp_manager.c' || echo '$(srcdir)/'`profiles/health/hdp_manager.c
 
 profiles/health/bluetoothd-hdp_manager.obj: profiles/health/hdp_manager.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/health/bluetoothd-hdp_manager.obj -MD -MP -MF profiles/health/$(DEPDIR)/bluetoothd-hdp_manager.Tpo -c -o profiles/health/bluetoothd-hdp_manager.obj `if test -f 'profiles/health/hdp_manager.c'; then $(CYGPATH_W) 'profiles/health/hdp_manager.c'; else $(CYGPATH_W) '$(srcdir)/profiles/health/hdp_manager.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/health/$(DEPDIR)/bluetoothd-hdp_manager.Tpo profiles/health/$(DEPDIR)/bluetoothd-hdp_manager.Po
-#	$(AM_V_CC)source='profiles/health/hdp_manager.c' object='profiles/health/bluetoothd-hdp_manager.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/health/bluetoothd-hdp_manager.obj `if test -f 'profiles/health/hdp_manager.c'; then $(CYGPATH_W) 'profiles/health/hdp_manager.c'; else $(CYGPATH_W) '$(srcdir)/profiles/health/hdp_manager.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/health/bluetoothd-hdp_manager.obj -MD -MP -MF profiles/health/$(DEPDIR)/bluetoothd-hdp_manager.Tpo -c -o profiles/health/bluetoothd-hdp_manager.obj `if test -f 'profiles/health/hdp_manager.c'; then $(CYGPATH_W) 'profiles/health/hdp_manager.c'; else $(CYGPATH_W) '$(srcdir)/profiles/health/hdp_manager.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/health/$(DEPDIR)/bluetoothd-hdp_manager.Tpo profiles/health/$(DEPDIR)/bluetoothd-hdp_manager.Po
+#	$(AM_V_CC)source='profiles/health/hdp_manager.c' object='profiles/health/bluetoothd-hdp_manager.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/health/bluetoothd-hdp_manager.obj `if test -f 'profiles/health/hdp_manager.c'; then $(CYGPATH_W) 'profiles/health/hdp_manager.c'; else $(CYGPATH_W) '$(srcdir)/profiles/health/hdp_manager.c'; fi`
 
 profiles/health/bluetoothd-hdp.o: profiles/health/hdp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/health/bluetoothd-hdp.o -MD -MP -MF profiles/health/$(DEPDIR)/bluetoothd-hdp.Tpo -c -o profiles/health/bluetoothd-hdp.o `test -f 'profiles/health/hdp.c' || echo '$(srcdir)/'`profiles/health/hdp.c
-	$(AM_V_at)$(am__mv) profiles/health/$(DEPDIR)/bluetoothd-hdp.Tpo profiles/health/$(DEPDIR)/bluetoothd-hdp.Po
-#	$(AM_V_CC)source='profiles/health/hdp.c' object='profiles/health/bluetoothd-hdp.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/health/bluetoothd-hdp.o `test -f 'profiles/health/hdp.c' || echo '$(srcdir)/'`profiles/health/hdp.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/health/bluetoothd-hdp.o -MD -MP -MF profiles/health/$(DEPDIR)/bluetoothd-hdp.Tpo -c -o profiles/health/bluetoothd-hdp.o `test -f 'profiles/health/hdp.c' || echo '$(srcdir)/'`profiles/health/hdp.c
+#	$(AM_V_at)$(am__mv) profiles/health/$(DEPDIR)/bluetoothd-hdp.Tpo profiles/health/$(DEPDIR)/bluetoothd-hdp.Po
+#	$(AM_V_CC)source='profiles/health/hdp.c' object='profiles/health/bluetoothd-hdp.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/health/bluetoothd-hdp.o `test -f 'profiles/health/hdp.c' || echo '$(srcdir)/'`profiles/health/hdp.c
 
 profiles/health/bluetoothd-hdp.obj: profiles/health/hdp.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/health/bluetoothd-hdp.obj -MD -MP -MF profiles/health/$(DEPDIR)/bluetoothd-hdp.Tpo -c -o profiles/health/bluetoothd-hdp.obj `if test -f 'profiles/health/hdp.c'; then $(CYGPATH_W) 'profiles/health/hdp.c'; else $(CYGPATH_W) '$(srcdir)/profiles/health/hdp.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/health/$(DEPDIR)/bluetoothd-hdp.Tpo profiles/health/$(DEPDIR)/bluetoothd-hdp.Po
-#	$(AM_V_CC)source='profiles/health/hdp.c' object='profiles/health/bluetoothd-hdp.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/health/bluetoothd-hdp.obj `if test -f 'profiles/health/hdp.c'; then $(CYGPATH_W) 'profiles/health/hdp.c'; else $(CYGPATH_W) '$(srcdir)/profiles/health/hdp.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/health/bluetoothd-hdp.obj -MD -MP -MF profiles/health/$(DEPDIR)/bluetoothd-hdp.Tpo -c -o profiles/health/bluetoothd-hdp.obj `if test -f 'profiles/health/hdp.c'; then $(CYGPATH_W) 'profiles/health/hdp.c'; else $(CYGPATH_W) '$(srcdir)/profiles/health/hdp.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/health/$(DEPDIR)/bluetoothd-hdp.Tpo profiles/health/$(DEPDIR)/bluetoothd-hdp.Po
+#	$(AM_V_CC)source='profiles/health/hdp.c' object='profiles/health/bluetoothd-hdp.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/health/bluetoothd-hdp.obj `if test -f 'profiles/health/hdp.c'; then $(CYGPATH_W) 'profiles/health/hdp.c'; else $(CYGPATH_W) '$(srcdir)/profiles/health/hdp.c'; fi`
 
 profiles/health/bluetoothd-hdp_util.o: profiles/health/hdp_util.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/health/bluetoothd-hdp_util.o -MD -MP -MF profiles/health/$(DEPDIR)/bluetoothd-hdp_util.Tpo -c -o profiles/health/bluetoothd-hdp_util.o `test -f 'profiles/health/hdp_util.c' || echo '$(srcdir)/'`profiles/health/hdp_util.c
-	$(AM_V_at)$(am__mv) profiles/health/$(DEPDIR)/bluetoothd-hdp_util.Tpo profiles/health/$(DEPDIR)/bluetoothd-hdp_util.Po
-#	$(AM_V_CC)source='profiles/health/hdp_util.c' object='profiles/health/bluetoothd-hdp_util.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/health/bluetoothd-hdp_util.o `test -f 'profiles/health/hdp_util.c' || echo '$(srcdir)/'`profiles/health/hdp_util.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/health/bluetoothd-hdp_util.o -MD -MP -MF profiles/health/$(DEPDIR)/bluetoothd-hdp_util.Tpo -c -o profiles/health/bluetoothd-hdp_util.o `test -f 'profiles/health/hdp_util.c' || echo '$(srcdir)/'`profiles/health/hdp_util.c
+#	$(AM_V_at)$(am__mv) profiles/health/$(DEPDIR)/bluetoothd-hdp_util.Tpo profiles/health/$(DEPDIR)/bluetoothd-hdp_util.Po
+#	$(AM_V_CC)source='profiles/health/hdp_util.c' object='profiles/health/bluetoothd-hdp_util.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/health/bluetoothd-hdp_util.o `test -f 'profiles/health/hdp_util.c' || echo '$(srcdir)/'`profiles/health/hdp_util.c
 
 profiles/health/bluetoothd-hdp_util.obj: profiles/health/hdp_util.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/health/bluetoothd-hdp_util.obj -MD -MP -MF profiles/health/$(DEPDIR)/bluetoothd-hdp_util.Tpo -c -o profiles/health/bluetoothd-hdp_util.obj `if test -f 'profiles/health/hdp_util.c'; then $(CYGPATH_W) 'profiles/health/hdp_util.c'; else $(CYGPATH_W) '$(srcdir)/profiles/health/hdp_util.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/health/$(DEPDIR)/bluetoothd-hdp_util.Tpo profiles/health/$(DEPDIR)/bluetoothd-hdp_util.Po
-#	$(AM_V_CC)source='profiles/health/hdp_util.c' object='profiles/health/bluetoothd-hdp_util.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/health/bluetoothd-hdp_util.obj `if test -f 'profiles/health/hdp_util.c'; then $(CYGPATH_W) 'profiles/health/hdp_util.c'; else $(CYGPATH_W) '$(srcdir)/profiles/health/hdp_util.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/health/bluetoothd-hdp_util.obj -MD -MP -MF profiles/health/$(DEPDIR)/bluetoothd-hdp_util.Tpo -c -o profiles/health/bluetoothd-hdp_util.obj `if test -f 'profiles/health/hdp_util.c'; then $(CYGPATH_W) 'profiles/health/hdp_util.c'; else $(CYGPATH_W) '$(srcdir)/profiles/health/hdp_util.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/health/$(DEPDIR)/bluetoothd-hdp_util.Tpo profiles/health/$(DEPDIR)/bluetoothd-hdp_util.Po
+#	$(AM_V_CC)source='profiles/health/hdp_util.c' object='profiles/health/bluetoothd-hdp_util.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/health/bluetoothd-hdp_util.obj `if test -f 'profiles/health/hdp_util.c'; then $(CYGPATH_W) 'profiles/health/hdp_util.c'; else $(CYGPATH_W) '$(srcdir)/profiles/health/hdp_util.c'; fi`
 
 profiles/gap/bluetoothd-gas.o: profiles/gap/gas.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/gap/bluetoothd-gas.o -MD -MP -MF profiles/gap/$(DEPDIR)/bluetoothd-gas.Tpo -c -o profiles/gap/bluetoothd-gas.o `test -f 'profiles/gap/gas.c' || echo '$(srcdir)/'`profiles/gap/gas.c
-	$(AM_V_at)$(am__mv) profiles/gap/$(DEPDIR)/bluetoothd-gas.Tpo profiles/gap/$(DEPDIR)/bluetoothd-gas.Po
-#	$(AM_V_CC)source='profiles/gap/gas.c' object='profiles/gap/bluetoothd-gas.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/gap/bluetoothd-gas.o `test -f 'profiles/gap/gas.c' || echo '$(srcdir)/'`profiles/gap/gas.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/gap/bluetoothd-gas.o -MD -MP -MF profiles/gap/$(DEPDIR)/bluetoothd-gas.Tpo -c -o profiles/gap/bluetoothd-gas.o `test -f 'profiles/gap/gas.c' || echo '$(srcdir)/'`profiles/gap/gas.c
+#	$(AM_V_at)$(am__mv) profiles/gap/$(DEPDIR)/bluetoothd-gas.Tpo profiles/gap/$(DEPDIR)/bluetoothd-gas.Po
+#	$(AM_V_CC)source='profiles/gap/gas.c' object='profiles/gap/bluetoothd-gas.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/gap/bluetoothd-gas.o `test -f 'profiles/gap/gas.c' || echo '$(srcdir)/'`profiles/gap/gas.c
 
 profiles/gap/bluetoothd-gas.obj: profiles/gap/gas.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/gap/bluetoothd-gas.obj -MD -MP -MF profiles/gap/$(DEPDIR)/bluetoothd-gas.Tpo -c -o profiles/gap/bluetoothd-gas.obj `if test -f 'profiles/gap/gas.c'; then $(CYGPATH_W) 'profiles/gap/gas.c'; else $(CYGPATH_W) '$(srcdir)/profiles/gap/gas.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/gap/$(DEPDIR)/bluetoothd-gas.Tpo profiles/gap/$(DEPDIR)/bluetoothd-gas.Po
-#	$(AM_V_CC)source='profiles/gap/gas.c' object='profiles/gap/bluetoothd-gas.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/gap/bluetoothd-gas.obj `if test -f 'profiles/gap/gas.c'; then $(CYGPATH_W) 'profiles/gap/gas.c'; else $(CYGPATH_W) '$(srcdir)/profiles/gap/gas.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/gap/bluetoothd-gas.obj -MD -MP -MF profiles/gap/$(DEPDIR)/bluetoothd-gas.Tpo -c -o profiles/gap/bluetoothd-gas.obj `if test -f 'profiles/gap/gas.c'; then $(CYGPATH_W) 'profiles/gap/gas.c'; else $(CYGPATH_W) '$(srcdir)/profiles/gap/gas.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/gap/$(DEPDIR)/bluetoothd-gas.Tpo profiles/gap/$(DEPDIR)/bluetoothd-gas.Po
+#	$(AM_V_CC)source='profiles/gap/gas.c' object='profiles/gap/bluetoothd-gas.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/gap/bluetoothd-gas.obj `if test -f 'profiles/gap/gas.c'; then $(CYGPATH_W) 'profiles/gap/gas.c'; else $(CYGPATH_W) '$(srcdir)/profiles/gap/gas.c'; fi`
 
 profiles/scanparam/bluetoothd-scan.o: profiles/scanparam/scan.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/scanparam/bluetoothd-scan.o -MD -MP -MF profiles/scanparam/$(DEPDIR)/bluetoothd-scan.Tpo -c -o profiles/scanparam/bluetoothd-scan.o `test -f 'profiles/scanparam/scan.c' || echo '$(srcdir)/'`profiles/scanparam/scan.c
-	$(AM_V_at)$(am__mv) profiles/scanparam/$(DEPDIR)/bluetoothd-scan.Tpo profiles/scanparam/$(DEPDIR)/bluetoothd-scan.Po
-#	$(AM_V_CC)source='profiles/scanparam/scan.c' object='profiles/scanparam/bluetoothd-scan.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/scanparam/bluetoothd-scan.o `test -f 'profiles/scanparam/scan.c' || echo '$(srcdir)/'`profiles/scanparam/scan.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/scanparam/bluetoothd-scan.o -MD -MP -MF profiles/scanparam/$(DEPDIR)/bluetoothd-scan.Tpo -c -o profiles/scanparam/bluetoothd-scan.o `test -f 'profiles/scanparam/scan.c' || echo '$(srcdir)/'`profiles/scanparam/scan.c
+#	$(AM_V_at)$(am__mv) profiles/scanparam/$(DEPDIR)/bluetoothd-scan.Tpo profiles/scanparam/$(DEPDIR)/bluetoothd-scan.Po
+#	$(AM_V_CC)source='profiles/scanparam/scan.c' object='profiles/scanparam/bluetoothd-scan.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/scanparam/bluetoothd-scan.o `test -f 'profiles/scanparam/scan.c' || echo '$(srcdir)/'`profiles/scanparam/scan.c
 
 profiles/scanparam/bluetoothd-scan.obj: profiles/scanparam/scan.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/scanparam/bluetoothd-scan.obj -MD -MP -MF profiles/scanparam/$(DEPDIR)/bluetoothd-scan.Tpo -c -o profiles/scanparam/bluetoothd-scan.obj `if test -f 'profiles/scanparam/scan.c'; then $(CYGPATH_W) 'profiles/scanparam/scan.c'; else $(CYGPATH_W) '$(srcdir)/profiles/scanparam/scan.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/scanparam/$(DEPDIR)/bluetoothd-scan.Tpo profiles/scanparam/$(DEPDIR)/bluetoothd-scan.Po
-#	$(AM_V_CC)source='profiles/scanparam/scan.c' object='profiles/scanparam/bluetoothd-scan.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/scanparam/bluetoothd-scan.obj `if test -f 'profiles/scanparam/scan.c'; then $(CYGPATH_W) 'profiles/scanparam/scan.c'; else $(CYGPATH_W) '$(srcdir)/profiles/scanparam/scan.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/scanparam/bluetoothd-scan.obj -MD -MP -MF profiles/scanparam/$(DEPDIR)/bluetoothd-scan.Tpo -c -o profiles/scanparam/bluetoothd-scan.obj `if test -f 'profiles/scanparam/scan.c'; then $(CYGPATH_W) 'profiles/scanparam/scan.c'; else $(CYGPATH_W) '$(srcdir)/profiles/scanparam/scan.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/scanparam/$(DEPDIR)/bluetoothd-scan.Tpo profiles/scanparam/$(DEPDIR)/bluetoothd-scan.Po
+#	$(AM_V_CC)source='profiles/scanparam/scan.c' object='profiles/scanparam/bluetoothd-scan.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/scanparam/bluetoothd-scan.obj `if test -f 'profiles/scanparam/scan.c'; then $(CYGPATH_W) 'profiles/scanparam/scan.c'; else $(CYGPATH_W) '$(srcdir)/profiles/scanparam/scan.c'; fi`
 
 profiles/deviceinfo/bluetoothd-deviceinfo.o: profiles/deviceinfo/deviceinfo.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/deviceinfo/bluetoothd-deviceinfo.o -MD -MP -MF profiles/deviceinfo/$(DEPDIR)/bluetoothd-deviceinfo.Tpo -c -o profiles/deviceinfo/bluetoothd-deviceinfo.o `test -f 'profiles/deviceinfo/deviceinfo.c' || echo '$(srcdir)/'`profiles/deviceinfo/deviceinfo.c
-	$(AM_V_at)$(am__mv) profiles/deviceinfo/$(DEPDIR)/bluetoothd-deviceinfo.Tpo profiles/deviceinfo/$(DEPDIR)/bluetoothd-deviceinfo.Po
-#	$(AM_V_CC)source='profiles/deviceinfo/deviceinfo.c' object='profiles/deviceinfo/bluetoothd-deviceinfo.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/deviceinfo/bluetoothd-deviceinfo.o `test -f 'profiles/deviceinfo/deviceinfo.c' || echo '$(srcdir)/'`profiles/deviceinfo/deviceinfo.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/deviceinfo/bluetoothd-deviceinfo.o -MD -MP -MF profiles/deviceinfo/$(DEPDIR)/bluetoothd-deviceinfo.Tpo -c -o profiles/deviceinfo/bluetoothd-deviceinfo.o `test -f 'profiles/deviceinfo/deviceinfo.c' || echo '$(srcdir)/'`profiles/deviceinfo/deviceinfo.c
+#	$(AM_V_at)$(am__mv) profiles/deviceinfo/$(DEPDIR)/bluetoothd-deviceinfo.Tpo profiles/deviceinfo/$(DEPDIR)/bluetoothd-deviceinfo.Po
+#	$(AM_V_CC)source='profiles/deviceinfo/deviceinfo.c' object='profiles/deviceinfo/bluetoothd-deviceinfo.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/deviceinfo/bluetoothd-deviceinfo.o `test -f 'profiles/deviceinfo/deviceinfo.c' || echo '$(srcdir)/'`profiles/deviceinfo/deviceinfo.c
 
 profiles/deviceinfo/bluetoothd-deviceinfo.obj: profiles/deviceinfo/deviceinfo.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/deviceinfo/bluetoothd-deviceinfo.obj -MD -MP -MF profiles/deviceinfo/$(DEPDIR)/bluetoothd-deviceinfo.Tpo -c -o profiles/deviceinfo/bluetoothd-deviceinfo.obj `if test -f 'profiles/deviceinfo/deviceinfo.c'; then $(CYGPATH_W) 'profiles/deviceinfo/deviceinfo.c'; else $(CYGPATH_W) '$(srcdir)/profiles/deviceinfo/deviceinfo.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/deviceinfo/$(DEPDIR)/bluetoothd-deviceinfo.Tpo profiles/deviceinfo/$(DEPDIR)/bluetoothd-deviceinfo.Po
-#	$(AM_V_CC)source='profiles/deviceinfo/deviceinfo.c' object='profiles/deviceinfo/bluetoothd-deviceinfo.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/deviceinfo/bluetoothd-deviceinfo.obj `if test -f 'profiles/deviceinfo/deviceinfo.c'; then $(CYGPATH_W) 'profiles/deviceinfo/deviceinfo.c'; else $(CYGPATH_W) '$(srcdir)/profiles/deviceinfo/deviceinfo.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/deviceinfo/bluetoothd-deviceinfo.obj -MD -MP -MF profiles/deviceinfo/$(DEPDIR)/bluetoothd-deviceinfo.Tpo -c -o profiles/deviceinfo/bluetoothd-deviceinfo.obj `if test -f 'profiles/deviceinfo/deviceinfo.c'; then $(CYGPATH_W) 'profiles/deviceinfo/deviceinfo.c'; else $(CYGPATH_W) '$(srcdir)/profiles/deviceinfo/deviceinfo.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/deviceinfo/$(DEPDIR)/bluetoothd-deviceinfo.Tpo profiles/deviceinfo/$(DEPDIR)/bluetoothd-deviceinfo.Po
+#	$(AM_V_CC)source='profiles/deviceinfo/deviceinfo.c' object='profiles/deviceinfo/bluetoothd-deviceinfo.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/deviceinfo/bluetoothd-deviceinfo.obj `if test -f 'profiles/deviceinfo/deviceinfo.c'; then $(CYGPATH_W) 'profiles/deviceinfo/deviceinfo.c'; else $(CYGPATH_W) '$(srcdir)/profiles/deviceinfo/deviceinfo.c'; fi`
 
 profiles/midi/bluetoothd-midi.o: profiles/midi/midi.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/midi/bluetoothd-midi.o -MD -MP -MF profiles/midi/$(DEPDIR)/bluetoothd-midi.Tpo -c -o profiles/midi/bluetoothd-midi.o `test -f 'profiles/midi/midi.c' || echo '$(srcdir)/'`profiles/midi/midi.c
-	$(AM_V_at)$(am__mv) profiles/midi/$(DEPDIR)/bluetoothd-midi.Tpo profiles/midi/$(DEPDIR)/bluetoothd-midi.Po
-#	$(AM_V_CC)source='profiles/midi/midi.c' object='profiles/midi/bluetoothd-midi.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/midi/bluetoothd-midi.o `test -f 'profiles/midi/midi.c' || echo '$(srcdir)/'`profiles/midi/midi.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/midi/bluetoothd-midi.o -MD -MP -MF profiles/midi/$(DEPDIR)/bluetoothd-midi.Tpo -c -o profiles/midi/bluetoothd-midi.o `test -f 'profiles/midi/midi.c' || echo '$(srcdir)/'`profiles/midi/midi.c
+#	$(AM_V_at)$(am__mv) profiles/midi/$(DEPDIR)/bluetoothd-midi.Tpo profiles/midi/$(DEPDIR)/bluetoothd-midi.Po
+#	$(AM_V_CC)source='profiles/midi/midi.c' object='profiles/midi/bluetoothd-midi.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/midi/bluetoothd-midi.o `test -f 'profiles/midi/midi.c' || echo '$(srcdir)/'`profiles/midi/midi.c
 
 profiles/midi/bluetoothd-midi.obj: profiles/midi/midi.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/midi/bluetoothd-midi.obj -MD -MP -MF profiles/midi/$(DEPDIR)/bluetoothd-midi.Tpo -c -o profiles/midi/bluetoothd-midi.obj `if test -f 'profiles/midi/midi.c'; then $(CYGPATH_W) 'profiles/midi/midi.c'; else $(CYGPATH_W) '$(srcdir)/profiles/midi/midi.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/midi/$(DEPDIR)/bluetoothd-midi.Tpo profiles/midi/$(DEPDIR)/bluetoothd-midi.Po
-#	$(AM_V_CC)source='profiles/midi/midi.c' object='profiles/midi/bluetoothd-midi.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/midi/bluetoothd-midi.obj `if test -f 'profiles/midi/midi.c'; then $(CYGPATH_W) 'profiles/midi/midi.c'; else $(CYGPATH_W) '$(srcdir)/profiles/midi/midi.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/midi/bluetoothd-midi.obj -MD -MP -MF profiles/midi/$(DEPDIR)/bluetoothd-midi.Tpo -c -o profiles/midi/bluetoothd-midi.obj `if test -f 'profiles/midi/midi.c'; then $(CYGPATH_W) 'profiles/midi/midi.c'; else $(CYGPATH_W) '$(srcdir)/profiles/midi/midi.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/midi/$(DEPDIR)/bluetoothd-midi.Tpo profiles/midi/$(DEPDIR)/bluetoothd-midi.Po
+#	$(AM_V_CC)source='profiles/midi/midi.c' object='profiles/midi/bluetoothd-midi.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/midi/bluetoothd-midi.obj `if test -f 'profiles/midi/midi.c'; then $(CYGPATH_W) 'profiles/midi/midi.c'; else $(CYGPATH_W) '$(srcdir)/profiles/midi/midi.c'; fi`
 
 profiles/midi/bluetoothd-libmidi.o: profiles/midi/libmidi.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/midi/bluetoothd-libmidi.o -MD -MP -MF profiles/midi/$(DEPDIR)/bluetoothd-libmidi.Tpo -c -o profiles/midi/bluetoothd-libmidi.o `test -f 'profiles/midi/libmidi.c' || echo '$(srcdir)/'`profiles/midi/libmidi.c
-	$(AM_V_at)$(am__mv) profiles/midi/$(DEPDIR)/bluetoothd-libmidi.Tpo profiles/midi/$(DEPDIR)/bluetoothd-libmidi.Po
-#	$(AM_V_CC)source='profiles/midi/libmidi.c' object='profiles/midi/bluetoothd-libmidi.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/midi/bluetoothd-libmidi.o `test -f 'profiles/midi/libmidi.c' || echo '$(srcdir)/'`profiles/midi/libmidi.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/midi/bluetoothd-libmidi.o -MD -MP -MF profiles/midi/$(DEPDIR)/bluetoothd-libmidi.Tpo -c -o profiles/midi/bluetoothd-libmidi.o `test -f 'profiles/midi/libmidi.c' || echo '$(srcdir)/'`profiles/midi/libmidi.c
+#	$(AM_V_at)$(am__mv) profiles/midi/$(DEPDIR)/bluetoothd-libmidi.Tpo profiles/midi/$(DEPDIR)/bluetoothd-libmidi.Po
+#	$(AM_V_CC)source='profiles/midi/libmidi.c' object='profiles/midi/bluetoothd-libmidi.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/midi/bluetoothd-libmidi.o `test -f 'profiles/midi/libmidi.c' || echo '$(srcdir)/'`profiles/midi/libmidi.c
 
 profiles/midi/bluetoothd-libmidi.obj: profiles/midi/libmidi.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/midi/bluetoothd-libmidi.obj -MD -MP -MF profiles/midi/$(DEPDIR)/bluetoothd-libmidi.Tpo -c -o profiles/midi/bluetoothd-libmidi.obj `if test -f 'profiles/midi/libmidi.c'; then $(CYGPATH_W) 'profiles/midi/libmidi.c'; else $(CYGPATH_W) '$(srcdir)/profiles/midi/libmidi.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/midi/$(DEPDIR)/bluetoothd-libmidi.Tpo profiles/midi/$(DEPDIR)/bluetoothd-libmidi.Po
-#	$(AM_V_CC)source='profiles/midi/libmidi.c' object='profiles/midi/bluetoothd-libmidi.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/midi/bluetoothd-libmidi.obj `if test -f 'profiles/midi/libmidi.c'; then $(CYGPATH_W) 'profiles/midi/libmidi.c'; else $(CYGPATH_W) '$(srcdir)/profiles/midi/libmidi.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT profiles/midi/bluetoothd-libmidi.obj -MD -MP -MF profiles/midi/$(DEPDIR)/bluetoothd-libmidi.Tpo -c -o profiles/midi/bluetoothd-libmidi.obj `if test -f 'profiles/midi/libmidi.c'; then $(CYGPATH_W) 'profiles/midi/libmidi.c'; else $(CYGPATH_W) '$(srcdir)/profiles/midi/libmidi.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/midi/$(DEPDIR)/bluetoothd-libmidi.Tpo profiles/midi/$(DEPDIR)/bluetoothd-libmidi.Po
+#	$(AM_V_CC)source='profiles/midi/libmidi.c' object='profiles/midi/bluetoothd-libmidi.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o profiles/midi/bluetoothd-libmidi.obj `if test -f 'profiles/midi/libmidi.c'; then $(CYGPATH_W) 'profiles/midi/libmidi.c'; else $(CYGPATH_W) '$(srcdir)/profiles/midi/libmidi.c'; fi`
 
 attrib/bluetoothd-att.o: attrib/att.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT attrib/bluetoothd-att.o -MD -MP -MF attrib/$(DEPDIR)/bluetoothd-att.Tpo -c -o attrib/bluetoothd-att.o `test -f 'attrib/att.c' || echo '$(srcdir)/'`attrib/att.c
-	$(AM_V_at)$(am__mv) attrib/$(DEPDIR)/bluetoothd-att.Tpo attrib/$(DEPDIR)/bluetoothd-att.Po
-#	$(AM_V_CC)source='attrib/att.c' object='attrib/bluetoothd-att.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o attrib/bluetoothd-att.o `test -f 'attrib/att.c' || echo '$(srcdir)/'`attrib/att.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT attrib/bluetoothd-att.o -MD -MP -MF attrib/$(DEPDIR)/bluetoothd-att.Tpo -c -o attrib/bluetoothd-att.o `test -f 'attrib/att.c' || echo '$(srcdir)/'`attrib/att.c
+#	$(AM_V_at)$(am__mv) attrib/$(DEPDIR)/bluetoothd-att.Tpo attrib/$(DEPDIR)/bluetoothd-att.Po
+#	$(AM_V_CC)source='attrib/att.c' object='attrib/bluetoothd-att.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o attrib/bluetoothd-att.o `test -f 'attrib/att.c' || echo '$(srcdir)/'`attrib/att.c
 
 attrib/bluetoothd-att.obj: attrib/att.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT attrib/bluetoothd-att.obj -MD -MP -MF attrib/$(DEPDIR)/bluetoothd-att.Tpo -c -o attrib/bluetoothd-att.obj `if test -f 'attrib/att.c'; then $(CYGPATH_W) 'attrib/att.c'; else $(CYGPATH_W) '$(srcdir)/attrib/att.c'; fi`
-	$(AM_V_at)$(am__mv) attrib/$(DEPDIR)/bluetoothd-att.Tpo attrib/$(DEPDIR)/bluetoothd-att.Po
-#	$(AM_V_CC)source='attrib/att.c' object='attrib/bluetoothd-att.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o attrib/bluetoothd-att.obj `if test -f 'attrib/att.c'; then $(CYGPATH_W) 'attrib/att.c'; else $(CYGPATH_W) '$(srcdir)/attrib/att.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT attrib/bluetoothd-att.obj -MD -MP -MF attrib/$(DEPDIR)/bluetoothd-att.Tpo -c -o attrib/bluetoothd-att.obj `if test -f 'attrib/att.c'; then $(CYGPATH_W) 'attrib/att.c'; else $(CYGPATH_W) '$(srcdir)/attrib/att.c'; fi`
+#	$(AM_V_at)$(am__mv) attrib/$(DEPDIR)/bluetoothd-att.Tpo attrib/$(DEPDIR)/bluetoothd-att.Po
+#	$(AM_V_CC)source='attrib/att.c' object='attrib/bluetoothd-att.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o attrib/bluetoothd-att.obj `if test -f 'attrib/att.c'; then $(CYGPATH_W) 'attrib/att.c'; else $(CYGPATH_W) '$(srcdir)/attrib/att.c'; fi`
 
 attrib/bluetoothd-gatt.o: attrib/gatt.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT attrib/bluetoothd-gatt.o -MD -MP -MF attrib/$(DEPDIR)/bluetoothd-gatt.Tpo -c -o attrib/bluetoothd-gatt.o `test -f 'attrib/gatt.c' || echo '$(srcdir)/'`attrib/gatt.c
-	$(AM_V_at)$(am__mv) attrib/$(DEPDIR)/bluetoothd-gatt.Tpo attrib/$(DEPDIR)/bluetoothd-gatt.Po
-#	$(AM_V_CC)source='attrib/gatt.c' object='attrib/bluetoothd-gatt.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o attrib/bluetoothd-gatt.o `test -f 'attrib/gatt.c' || echo '$(srcdir)/'`attrib/gatt.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT attrib/bluetoothd-gatt.o -MD -MP -MF attrib/$(DEPDIR)/bluetoothd-gatt.Tpo -c -o attrib/bluetoothd-gatt.o `test -f 'attrib/gatt.c' || echo '$(srcdir)/'`attrib/gatt.c
+#	$(AM_V_at)$(am__mv) attrib/$(DEPDIR)/bluetoothd-gatt.Tpo attrib/$(DEPDIR)/bluetoothd-gatt.Po
+#	$(AM_V_CC)source='attrib/gatt.c' object='attrib/bluetoothd-gatt.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o attrib/bluetoothd-gatt.o `test -f 'attrib/gatt.c' || echo '$(srcdir)/'`attrib/gatt.c
 
 attrib/bluetoothd-gatt.obj: attrib/gatt.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT attrib/bluetoothd-gatt.obj -MD -MP -MF attrib/$(DEPDIR)/bluetoothd-gatt.Tpo -c -o attrib/bluetoothd-gatt.obj `if test -f 'attrib/gatt.c'; then $(CYGPATH_W) 'attrib/gatt.c'; else $(CYGPATH_W) '$(srcdir)/attrib/gatt.c'; fi`
-	$(AM_V_at)$(am__mv) attrib/$(DEPDIR)/bluetoothd-gatt.Tpo attrib/$(DEPDIR)/bluetoothd-gatt.Po
-#	$(AM_V_CC)source='attrib/gatt.c' object='attrib/bluetoothd-gatt.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o attrib/bluetoothd-gatt.obj `if test -f 'attrib/gatt.c'; then $(CYGPATH_W) 'attrib/gatt.c'; else $(CYGPATH_W) '$(srcdir)/attrib/gatt.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT attrib/bluetoothd-gatt.obj -MD -MP -MF attrib/$(DEPDIR)/bluetoothd-gatt.Tpo -c -o attrib/bluetoothd-gatt.obj `if test -f 'attrib/gatt.c'; then $(CYGPATH_W) 'attrib/gatt.c'; else $(CYGPATH_W) '$(srcdir)/attrib/gatt.c'; fi`
+#	$(AM_V_at)$(am__mv) attrib/$(DEPDIR)/bluetoothd-gatt.Tpo attrib/$(DEPDIR)/bluetoothd-gatt.Po
+#	$(AM_V_CC)source='attrib/gatt.c' object='attrib/bluetoothd-gatt.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o attrib/bluetoothd-gatt.obj `if test -f 'attrib/gatt.c'; then $(CYGPATH_W) 'attrib/gatt.c'; else $(CYGPATH_W) '$(srcdir)/attrib/gatt.c'; fi`
 
 attrib/bluetoothd-gattrib.o: attrib/gattrib.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT attrib/bluetoothd-gattrib.o -MD -MP -MF attrib/$(DEPDIR)/bluetoothd-gattrib.Tpo -c -o attrib/bluetoothd-gattrib.o `test -f 'attrib/gattrib.c' || echo '$(srcdir)/'`attrib/gattrib.c
-	$(AM_V_at)$(am__mv) attrib/$(DEPDIR)/bluetoothd-gattrib.Tpo attrib/$(DEPDIR)/bluetoothd-gattrib.Po
-#	$(AM_V_CC)source='attrib/gattrib.c' object='attrib/bluetoothd-gattrib.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o attrib/bluetoothd-gattrib.o `test -f 'attrib/gattrib.c' || echo '$(srcdir)/'`attrib/gattrib.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT attrib/bluetoothd-gattrib.o -MD -MP -MF attrib/$(DEPDIR)/bluetoothd-gattrib.Tpo -c -o attrib/bluetoothd-gattrib.o `test -f 'attrib/gattrib.c' || echo '$(srcdir)/'`attrib/gattrib.c
+#	$(AM_V_at)$(am__mv) attrib/$(DEPDIR)/bluetoothd-gattrib.Tpo attrib/$(DEPDIR)/bluetoothd-gattrib.Po
+#	$(AM_V_CC)source='attrib/gattrib.c' object='attrib/bluetoothd-gattrib.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o attrib/bluetoothd-gattrib.o `test -f 'attrib/gattrib.c' || echo '$(srcdir)/'`attrib/gattrib.c
 
 attrib/bluetoothd-gattrib.obj: attrib/gattrib.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT attrib/bluetoothd-gattrib.obj -MD -MP -MF attrib/$(DEPDIR)/bluetoothd-gattrib.Tpo -c -o attrib/bluetoothd-gattrib.obj `if test -f 'attrib/gattrib.c'; then $(CYGPATH_W) 'attrib/gattrib.c'; else $(CYGPATH_W) '$(srcdir)/attrib/gattrib.c'; fi`
-	$(AM_V_at)$(am__mv) attrib/$(DEPDIR)/bluetoothd-gattrib.Tpo attrib/$(DEPDIR)/bluetoothd-gattrib.Po
-#	$(AM_V_CC)source='attrib/gattrib.c' object='attrib/bluetoothd-gattrib.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o attrib/bluetoothd-gattrib.obj `if test -f 'attrib/gattrib.c'; then $(CYGPATH_W) 'attrib/gattrib.c'; else $(CYGPATH_W) '$(srcdir)/attrib/gattrib.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT attrib/bluetoothd-gattrib.obj -MD -MP -MF attrib/$(DEPDIR)/bluetoothd-gattrib.Tpo -c -o attrib/bluetoothd-gattrib.obj `if test -f 'attrib/gattrib.c'; then $(CYGPATH_W) 'attrib/gattrib.c'; else $(CYGPATH_W) '$(srcdir)/attrib/gattrib.c'; fi`
+#	$(AM_V_at)$(am__mv) attrib/$(DEPDIR)/bluetoothd-gattrib.Tpo attrib/$(DEPDIR)/bluetoothd-gattrib.Po
+#	$(AM_V_CC)source='attrib/gattrib.c' object='attrib/bluetoothd-gattrib.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o attrib/bluetoothd-gattrib.obj `if test -f 'attrib/gattrib.c'; then $(CYGPATH_W) 'attrib/gattrib.c'; else $(CYGPATH_W) '$(srcdir)/attrib/gattrib.c'; fi`
 
 attrib/bluetoothd-gatt-service.o: attrib/gatt-service.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT attrib/bluetoothd-gatt-service.o -MD -MP -MF attrib/$(DEPDIR)/bluetoothd-gatt-service.Tpo -c -o attrib/bluetoothd-gatt-service.o `test -f 'attrib/gatt-service.c' || echo '$(srcdir)/'`attrib/gatt-service.c
-	$(AM_V_at)$(am__mv) attrib/$(DEPDIR)/bluetoothd-gatt-service.Tpo attrib/$(DEPDIR)/bluetoothd-gatt-service.Po
-#	$(AM_V_CC)source='attrib/gatt-service.c' object='attrib/bluetoothd-gatt-service.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o attrib/bluetoothd-gatt-service.o `test -f 'attrib/gatt-service.c' || echo '$(srcdir)/'`attrib/gatt-service.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT attrib/bluetoothd-gatt-service.o -MD -MP -MF attrib/$(DEPDIR)/bluetoothd-gatt-service.Tpo -c -o attrib/bluetoothd-gatt-service.o `test -f 'attrib/gatt-service.c' || echo '$(srcdir)/'`attrib/gatt-service.c
+#	$(AM_V_at)$(am__mv) attrib/$(DEPDIR)/bluetoothd-gatt-service.Tpo attrib/$(DEPDIR)/bluetoothd-gatt-service.Po
+#	$(AM_V_CC)source='attrib/gatt-service.c' object='attrib/bluetoothd-gatt-service.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o attrib/bluetoothd-gatt-service.o `test -f 'attrib/gatt-service.c' || echo '$(srcdir)/'`attrib/gatt-service.c
 
 attrib/bluetoothd-gatt-service.obj: attrib/gatt-service.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT attrib/bluetoothd-gatt-service.obj -MD -MP -MF attrib/$(DEPDIR)/bluetoothd-gatt-service.Tpo -c -o attrib/bluetoothd-gatt-service.obj `if test -f 'attrib/gatt-service.c'; then $(CYGPATH_W) 'attrib/gatt-service.c'; else $(CYGPATH_W) '$(srcdir)/attrib/gatt-service.c'; fi`
-	$(AM_V_at)$(am__mv) attrib/$(DEPDIR)/bluetoothd-gatt-service.Tpo attrib/$(DEPDIR)/bluetoothd-gatt-service.Po
-#	$(AM_V_CC)source='attrib/gatt-service.c' object='attrib/bluetoothd-gatt-service.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o attrib/bluetoothd-gatt-service.obj `if test -f 'attrib/gatt-service.c'; then $(CYGPATH_W) 'attrib/gatt-service.c'; else $(CYGPATH_W) '$(srcdir)/attrib/gatt-service.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT attrib/bluetoothd-gatt-service.obj -MD -MP -MF attrib/$(DEPDIR)/bluetoothd-gatt-service.Tpo -c -o attrib/bluetoothd-gatt-service.obj `if test -f 'attrib/gatt-service.c'; then $(CYGPATH_W) 'attrib/gatt-service.c'; else $(CYGPATH_W) '$(srcdir)/attrib/gatt-service.c'; fi`
+#	$(AM_V_at)$(am__mv) attrib/$(DEPDIR)/bluetoothd-gatt-service.Tpo attrib/$(DEPDIR)/bluetoothd-gatt-service.Po
+#	$(AM_V_CC)source='attrib/gatt-service.c' object='attrib/bluetoothd-gatt-service.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o attrib/bluetoothd-gatt-service.obj `if test -f 'attrib/gatt-service.c'; then $(CYGPATH_W) 'attrib/gatt-service.c'; else $(CYGPATH_W) '$(srcdir)/attrib/gatt-service.c'; fi`
 
 btio/bluetoothd-btio.o: btio/btio.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT btio/bluetoothd-btio.o -MD -MP -MF btio/$(DEPDIR)/bluetoothd-btio.Tpo -c -o btio/bluetoothd-btio.o `test -f 'btio/btio.c' || echo '$(srcdir)/'`btio/btio.c
-	$(AM_V_at)$(am__mv) btio/$(DEPDIR)/bluetoothd-btio.Tpo btio/$(DEPDIR)/bluetoothd-btio.Po
-#	$(AM_V_CC)source='btio/btio.c' object='btio/bluetoothd-btio.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o btio/bluetoothd-btio.o `test -f 'btio/btio.c' || echo '$(srcdir)/'`btio/btio.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT btio/bluetoothd-btio.o -MD -MP -MF btio/$(DEPDIR)/bluetoothd-btio.Tpo -c -o btio/bluetoothd-btio.o `test -f 'btio/btio.c' || echo '$(srcdir)/'`btio/btio.c
+#	$(AM_V_at)$(am__mv) btio/$(DEPDIR)/bluetoothd-btio.Tpo btio/$(DEPDIR)/bluetoothd-btio.Po
+#	$(AM_V_CC)source='btio/btio.c' object='btio/bluetoothd-btio.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o btio/bluetoothd-btio.o `test -f 'btio/btio.c' || echo '$(srcdir)/'`btio/btio.c
 
 btio/bluetoothd-btio.obj: btio/btio.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT btio/bluetoothd-btio.obj -MD -MP -MF btio/$(DEPDIR)/bluetoothd-btio.Tpo -c -o btio/bluetoothd-btio.obj `if test -f 'btio/btio.c'; then $(CYGPATH_W) 'btio/btio.c'; else $(CYGPATH_W) '$(srcdir)/btio/btio.c'; fi`
-	$(AM_V_at)$(am__mv) btio/$(DEPDIR)/bluetoothd-btio.Tpo btio/$(DEPDIR)/bluetoothd-btio.Po
-#	$(AM_V_CC)source='btio/btio.c' object='btio/bluetoothd-btio.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o btio/bluetoothd-btio.obj `if test -f 'btio/btio.c'; then $(CYGPATH_W) 'btio/btio.c'; else $(CYGPATH_W) '$(srcdir)/btio/btio.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT btio/bluetoothd-btio.obj -MD -MP -MF btio/$(DEPDIR)/bluetoothd-btio.Tpo -c -o btio/bluetoothd-btio.obj `if test -f 'btio/btio.c'; then $(CYGPATH_W) 'btio/btio.c'; else $(CYGPATH_W) '$(srcdir)/btio/btio.c'; fi`
+#	$(AM_V_at)$(am__mv) btio/$(DEPDIR)/bluetoothd-btio.Tpo btio/$(DEPDIR)/bluetoothd-btio.Po
+#	$(AM_V_CC)source='btio/btio.c' object='btio/bluetoothd-btio.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o btio/bluetoothd-btio.obj `if test -f 'btio/btio.c'; then $(CYGPATH_W) 'btio/btio.c'; else $(CYGPATH_W) '$(srcdir)/btio/btio.c'; fi`
 
 src/bluetoothd-main.o: src/main.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-main.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-main.Tpo -c -o src/bluetoothd-main.o `test -f 'src/main.c' || echo '$(srcdir)/'`src/main.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-main.Tpo src/$(DEPDIR)/bluetoothd-main.Po
-#	$(AM_V_CC)source='src/main.c' object='src/bluetoothd-main.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-main.o `test -f 'src/main.c' || echo '$(srcdir)/'`src/main.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-main.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-main.Tpo -c -o src/bluetoothd-main.o `test -f 'src/main.c' || echo '$(srcdir)/'`src/main.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-main.Tpo src/$(DEPDIR)/bluetoothd-main.Po
+#	$(AM_V_CC)source='src/main.c' object='src/bluetoothd-main.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-main.o `test -f 'src/main.c' || echo '$(srcdir)/'`src/main.c
 
 src/bluetoothd-main.obj: src/main.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-main.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-main.Tpo -c -o src/bluetoothd-main.obj `if test -f 'src/main.c'; then $(CYGPATH_W) 'src/main.c'; else $(CYGPATH_W) '$(srcdir)/src/main.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-main.Tpo src/$(DEPDIR)/bluetoothd-main.Po
-#	$(AM_V_CC)source='src/main.c' object='src/bluetoothd-main.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-main.obj `if test -f 'src/main.c'; then $(CYGPATH_W) 'src/main.c'; else $(CYGPATH_W) '$(srcdir)/src/main.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-main.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-main.Tpo -c -o src/bluetoothd-main.obj `if test -f 'src/main.c'; then $(CYGPATH_W) 'src/main.c'; else $(CYGPATH_W) '$(srcdir)/src/main.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-main.Tpo src/$(DEPDIR)/bluetoothd-main.Po
+#	$(AM_V_CC)source='src/main.c' object='src/bluetoothd-main.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-main.obj `if test -f 'src/main.c'; then $(CYGPATH_W) 'src/main.c'; else $(CYGPATH_W) '$(srcdir)/src/main.c'; fi`
 
 src/bluetoothd-log.o: src/log.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-log.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-log.Tpo -c -o src/bluetoothd-log.o `test -f 'src/log.c' || echo '$(srcdir)/'`src/log.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-log.Tpo src/$(DEPDIR)/bluetoothd-log.Po
-#	$(AM_V_CC)source='src/log.c' object='src/bluetoothd-log.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-log.o `test -f 'src/log.c' || echo '$(srcdir)/'`src/log.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-log.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-log.Tpo -c -o src/bluetoothd-log.o `test -f 'src/log.c' || echo '$(srcdir)/'`src/log.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-log.Tpo src/$(DEPDIR)/bluetoothd-log.Po
+#	$(AM_V_CC)source='src/log.c' object='src/bluetoothd-log.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-log.o `test -f 'src/log.c' || echo '$(srcdir)/'`src/log.c
 
 src/bluetoothd-log.obj: src/log.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-log.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-log.Tpo -c -o src/bluetoothd-log.obj `if test -f 'src/log.c'; then $(CYGPATH_W) 'src/log.c'; else $(CYGPATH_W) '$(srcdir)/src/log.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-log.Tpo src/$(DEPDIR)/bluetoothd-log.Po
-#	$(AM_V_CC)source='src/log.c' object='src/bluetoothd-log.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-log.obj `if test -f 'src/log.c'; then $(CYGPATH_W) 'src/log.c'; else $(CYGPATH_W) '$(srcdir)/src/log.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-log.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-log.Tpo -c -o src/bluetoothd-log.obj `if test -f 'src/log.c'; then $(CYGPATH_W) 'src/log.c'; else $(CYGPATH_W) '$(srcdir)/src/log.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-log.Tpo src/$(DEPDIR)/bluetoothd-log.Po
+#	$(AM_V_CC)source='src/log.c' object='src/bluetoothd-log.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-log.obj `if test -f 'src/log.c'; then $(CYGPATH_W) 'src/log.c'; else $(CYGPATH_W) '$(srcdir)/src/log.c'; fi`
 
 src/bluetoothd-backtrace.o: src/backtrace.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-backtrace.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-backtrace.Tpo -c -o src/bluetoothd-backtrace.o `test -f 'src/backtrace.c' || echo '$(srcdir)/'`src/backtrace.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-backtrace.Tpo src/$(DEPDIR)/bluetoothd-backtrace.Po
-#	$(AM_V_CC)source='src/backtrace.c' object='src/bluetoothd-backtrace.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-backtrace.o `test -f 'src/backtrace.c' || echo '$(srcdir)/'`src/backtrace.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-backtrace.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-backtrace.Tpo -c -o src/bluetoothd-backtrace.o `test -f 'src/backtrace.c' || echo '$(srcdir)/'`src/backtrace.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-backtrace.Tpo src/$(DEPDIR)/bluetoothd-backtrace.Po
+#	$(AM_V_CC)source='src/backtrace.c' object='src/bluetoothd-backtrace.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-backtrace.o `test -f 'src/backtrace.c' || echo '$(srcdir)/'`src/backtrace.c
 
 src/bluetoothd-backtrace.obj: src/backtrace.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-backtrace.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-backtrace.Tpo -c -o src/bluetoothd-backtrace.obj `if test -f 'src/backtrace.c'; then $(CYGPATH_W) 'src/backtrace.c'; else $(CYGPATH_W) '$(srcdir)/src/backtrace.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-backtrace.Tpo src/$(DEPDIR)/bluetoothd-backtrace.Po
-#	$(AM_V_CC)source='src/backtrace.c' object='src/bluetoothd-backtrace.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-backtrace.obj `if test -f 'src/backtrace.c'; then $(CYGPATH_W) 'src/backtrace.c'; else $(CYGPATH_W) '$(srcdir)/src/backtrace.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-backtrace.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-backtrace.Tpo -c -o src/bluetoothd-backtrace.obj `if test -f 'src/backtrace.c'; then $(CYGPATH_W) 'src/backtrace.c'; else $(CYGPATH_W) '$(srcdir)/src/backtrace.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-backtrace.Tpo src/$(DEPDIR)/bluetoothd-backtrace.Po
+#	$(AM_V_CC)source='src/backtrace.c' object='src/bluetoothd-backtrace.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-backtrace.obj `if test -f 'src/backtrace.c'; then $(CYGPATH_W) 'src/backtrace.c'; else $(CYGPATH_W) '$(srcdir)/src/backtrace.c'; fi`
 
 src/bluetoothd-systemd.o: src/systemd.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-systemd.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-systemd.Tpo -c -o src/bluetoothd-systemd.o `test -f 'src/systemd.c' || echo '$(srcdir)/'`src/systemd.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-systemd.Tpo src/$(DEPDIR)/bluetoothd-systemd.Po
-#	$(AM_V_CC)source='src/systemd.c' object='src/bluetoothd-systemd.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-systemd.o `test -f 'src/systemd.c' || echo '$(srcdir)/'`src/systemd.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-systemd.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-systemd.Tpo -c -o src/bluetoothd-systemd.o `test -f 'src/systemd.c' || echo '$(srcdir)/'`src/systemd.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-systemd.Tpo src/$(DEPDIR)/bluetoothd-systemd.Po
+#	$(AM_V_CC)source='src/systemd.c' object='src/bluetoothd-systemd.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-systemd.o `test -f 'src/systemd.c' || echo '$(srcdir)/'`src/systemd.c
 
 src/bluetoothd-systemd.obj: src/systemd.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-systemd.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-systemd.Tpo -c -o src/bluetoothd-systemd.obj `if test -f 'src/systemd.c'; then $(CYGPATH_W) 'src/systemd.c'; else $(CYGPATH_W) '$(srcdir)/src/systemd.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-systemd.Tpo src/$(DEPDIR)/bluetoothd-systemd.Po
-#	$(AM_V_CC)source='src/systemd.c' object='src/bluetoothd-systemd.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-systemd.obj `if test -f 'src/systemd.c'; then $(CYGPATH_W) 'src/systemd.c'; else $(CYGPATH_W) '$(srcdir)/src/systemd.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-systemd.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-systemd.Tpo -c -o src/bluetoothd-systemd.obj `if test -f 'src/systemd.c'; then $(CYGPATH_W) 'src/systemd.c'; else $(CYGPATH_W) '$(srcdir)/src/systemd.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-systemd.Tpo src/$(DEPDIR)/bluetoothd-systemd.Po
+#	$(AM_V_CC)source='src/systemd.c' object='src/bluetoothd-systemd.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-systemd.obj `if test -f 'src/systemd.c'; then $(CYGPATH_W) 'src/systemd.c'; else $(CYGPATH_W) '$(srcdir)/src/systemd.c'; fi`
 
 src/bluetoothd-rfkill.o: src/rfkill.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-rfkill.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-rfkill.Tpo -c -o src/bluetoothd-rfkill.o `test -f 'src/rfkill.c' || echo '$(srcdir)/'`src/rfkill.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-rfkill.Tpo src/$(DEPDIR)/bluetoothd-rfkill.Po
-#	$(AM_V_CC)source='src/rfkill.c' object='src/bluetoothd-rfkill.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-rfkill.o `test -f 'src/rfkill.c' || echo '$(srcdir)/'`src/rfkill.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-rfkill.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-rfkill.Tpo -c -o src/bluetoothd-rfkill.o `test -f 'src/rfkill.c' || echo '$(srcdir)/'`src/rfkill.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-rfkill.Tpo src/$(DEPDIR)/bluetoothd-rfkill.Po
+#	$(AM_V_CC)source='src/rfkill.c' object='src/bluetoothd-rfkill.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-rfkill.o `test -f 'src/rfkill.c' || echo '$(srcdir)/'`src/rfkill.c
 
 src/bluetoothd-rfkill.obj: src/rfkill.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-rfkill.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-rfkill.Tpo -c -o src/bluetoothd-rfkill.obj `if test -f 'src/rfkill.c'; then $(CYGPATH_W) 'src/rfkill.c'; else $(CYGPATH_W) '$(srcdir)/src/rfkill.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-rfkill.Tpo src/$(DEPDIR)/bluetoothd-rfkill.Po
-#	$(AM_V_CC)source='src/rfkill.c' object='src/bluetoothd-rfkill.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-rfkill.obj `if test -f 'src/rfkill.c'; then $(CYGPATH_W) 'src/rfkill.c'; else $(CYGPATH_W) '$(srcdir)/src/rfkill.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-rfkill.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-rfkill.Tpo -c -o src/bluetoothd-rfkill.obj `if test -f 'src/rfkill.c'; then $(CYGPATH_W) 'src/rfkill.c'; else $(CYGPATH_W) '$(srcdir)/src/rfkill.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-rfkill.Tpo src/$(DEPDIR)/bluetoothd-rfkill.Po
+#	$(AM_V_CC)source='src/rfkill.c' object='src/bluetoothd-rfkill.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-rfkill.obj `if test -f 'src/rfkill.c'; then $(CYGPATH_W) 'src/rfkill.c'; else $(CYGPATH_W) '$(srcdir)/src/rfkill.c'; fi`
 
 src/bluetoothd-sdpd-server.o: src/sdpd-server.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-sdpd-server.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-sdpd-server.Tpo -c -o src/bluetoothd-sdpd-server.o `test -f 'src/sdpd-server.c' || echo '$(srcdir)/'`src/sdpd-server.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-sdpd-server.Tpo src/$(DEPDIR)/bluetoothd-sdpd-server.Po
-#	$(AM_V_CC)source='src/sdpd-server.c' object='src/bluetoothd-sdpd-server.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-sdpd-server.o `test -f 'src/sdpd-server.c' || echo '$(srcdir)/'`src/sdpd-server.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-sdpd-server.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-sdpd-server.Tpo -c -o src/bluetoothd-sdpd-server.o `test -f 'src/sdpd-server.c' || echo '$(srcdir)/'`src/sdpd-server.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-sdpd-server.Tpo src/$(DEPDIR)/bluetoothd-sdpd-server.Po
+#	$(AM_V_CC)source='src/sdpd-server.c' object='src/bluetoothd-sdpd-server.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-sdpd-server.o `test -f 'src/sdpd-server.c' || echo '$(srcdir)/'`src/sdpd-server.c
 
 src/bluetoothd-sdpd-server.obj: src/sdpd-server.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-sdpd-server.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-sdpd-server.Tpo -c -o src/bluetoothd-sdpd-server.obj `if test -f 'src/sdpd-server.c'; then $(CYGPATH_W) 'src/sdpd-server.c'; else $(CYGPATH_W) '$(srcdir)/src/sdpd-server.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-sdpd-server.Tpo src/$(DEPDIR)/bluetoothd-sdpd-server.Po
-#	$(AM_V_CC)source='src/sdpd-server.c' object='src/bluetoothd-sdpd-server.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-sdpd-server.obj `if test -f 'src/sdpd-server.c'; then $(CYGPATH_W) 'src/sdpd-server.c'; else $(CYGPATH_W) '$(srcdir)/src/sdpd-server.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-sdpd-server.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-sdpd-server.Tpo -c -o src/bluetoothd-sdpd-server.obj `if test -f 'src/sdpd-server.c'; then $(CYGPATH_W) 'src/sdpd-server.c'; else $(CYGPATH_W) '$(srcdir)/src/sdpd-server.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-sdpd-server.Tpo src/$(DEPDIR)/bluetoothd-sdpd-server.Po
+#	$(AM_V_CC)source='src/sdpd-server.c' object='src/bluetoothd-sdpd-server.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-sdpd-server.obj `if test -f 'src/sdpd-server.c'; then $(CYGPATH_W) 'src/sdpd-server.c'; else $(CYGPATH_W) '$(srcdir)/src/sdpd-server.c'; fi`
 
 src/bluetoothd-sdpd-request.o: src/sdpd-request.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-sdpd-request.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-sdpd-request.Tpo -c -o src/bluetoothd-sdpd-request.o `test -f 'src/sdpd-request.c' || echo '$(srcdir)/'`src/sdpd-request.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-sdpd-request.Tpo src/$(DEPDIR)/bluetoothd-sdpd-request.Po
-#	$(AM_V_CC)source='src/sdpd-request.c' object='src/bluetoothd-sdpd-request.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-sdpd-request.o `test -f 'src/sdpd-request.c' || echo '$(srcdir)/'`src/sdpd-request.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-sdpd-request.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-sdpd-request.Tpo -c -o src/bluetoothd-sdpd-request.o `test -f 'src/sdpd-request.c' || echo '$(srcdir)/'`src/sdpd-request.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-sdpd-request.Tpo src/$(DEPDIR)/bluetoothd-sdpd-request.Po
+#	$(AM_V_CC)source='src/sdpd-request.c' object='src/bluetoothd-sdpd-request.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-sdpd-request.o `test -f 'src/sdpd-request.c' || echo '$(srcdir)/'`src/sdpd-request.c
 
 src/bluetoothd-sdpd-request.obj: src/sdpd-request.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-sdpd-request.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-sdpd-request.Tpo -c -o src/bluetoothd-sdpd-request.obj `if test -f 'src/sdpd-request.c'; then $(CYGPATH_W) 'src/sdpd-request.c'; else $(CYGPATH_W) '$(srcdir)/src/sdpd-request.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-sdpd-request.Tpo src/$(DEPDIR)/bluetoothd-sdpd-request.Po
-#	$(AM_V_CC)source='src/sdpd-request.c' object='src/bluetoothd-sdpd-request.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-sdpd-request.obj `if test -f 'src/sdpd-request.c'; then $(CYGPATH_W) 'src/sdpd-request.c'; else $(CYGPATH_W) '$(srcdir)/src/sdpd-request.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-sdpd-request.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-sdpd-request.Tpo -c -o src/bluetoothd-sdpd-request.obj `if test -f 'src/sdpd-request.c'; then $(CYGPATH_W) 'src/sdpd-request.c'; else $(CYGPATH_W) '$(srcdir)/src/sdpd-request.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-sdpd-request.Tpo src/$(DEPDIR)/bluetoothd-sdpd-request.Po
+#	$(AM_V_CC)source='src/sdpd-request.c' object='src/bluetoothd-sdpd-request.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-sdpd-request.obj `if test -f 'src/sdpd-request.c'; then $(CYGPATH_W) 'src/sdpd-request.c'; else $(CYGPATH_W) '$(srcdir)/src/sdpd-request.c'; fi`
 
 src/bluetoothd-sdpd-service.o: src/sdpd-service.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-sdpd-service.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-sdpd-service.Tpo -c -o src/bluetoothd-sdpd-service.o `test -f 'src/sdpd-service.c' || echo '$(srcdir)/'`src/sdpd-service.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-sdpd-service.Tpo src/$(DEPDIR)/bluetoothd-sdpd-service.Po
-#	$(AM_V_CC)source='src/sdpd-service.c' object='src/bluetoothd-sdpd-service.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-sdpd-service.o `test -f 'src/sdpd-service.c' || echo '$(srcdir)/'`src/sdpd-service.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-sdpd-service.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-sdpd-service.Tpo -c -o src/bluetoothd-sdpd-service.o `test -f 'src/sdpd-service.c' || echo '$(srcdir)/'`src/sdpd-service.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-sdpd-service.Tpo src/$(DEPDIR)/bluetoothd-sdpd-service.Po
+#	$(AM_V_CC)source='src/sdpd-service.c' object='src/bluetoothd-sdpd-service.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-sdpd-service.o `test -f 'src/sdpd-service.c' || echo '$(srcdir)/'`src/sdpd-service.c
 
 src/bluetoothd-sdpd-service.obj: src/sdpd-service.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-sdpd-service.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-sdpd-service.Tpo -c -o src/bluetoothd-sdpd-service.obj `if test -f 'src/sdpd-service.c'; then $(CYGPATH_W) 'src/sdpd-service.c'; else $(CYGPATH_W) '$(srcdir)/src/sdpd-service.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-sdpd-service.Tpo src/$(DEPDIR)/bluetoothd-sdpd-service.Po
-#	$(AM_V_CC)source='src/sdpd-service.c' object='src/bluetoothd-sdpd-service.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-sdpd-service.obj `if test -f 'src/sdpd-service.c'; then $(CYGPATH_W) 'src/sdpd-service.c'; else $(CYGPATH_W) '$(srcdir)/src/sdpd-service.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-sdpd-service.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-sdpd-service.Tpo -c -o src/bluetoothd-sdpd-service.obj `if test -f 'src/sdpd-service.c'; then $(CYGPATH_W) 'src/sdpd-service.c'; else $(CYGPATH_W) '$(srcdir)/src/sdpd-service.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-sdpd-service.Tpo src/$(DEPDIR)/bluetoothd-sdpd-service.Po
+#	$(AM_V_CC)source='src/sdpd-service.c' object='src/bluetoothd-sdpd-service.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-sdpd-service.obj `if test -f 'src/sdpd-service.c'; then $(CYGPATH_W) 'src/sdpd-service.c'; else $(CYGPATH_W) '$(srcdir)/src/sdpd-service.c'; fi`
 
 src/bluetoothd-sdpd-database.o: src/sdpd-database.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-sdpd-database.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-sdpd-database.Tpo -c -o src/bluetoothd-sdpd-database.o `test -f 'src/sdpd-database.c' || echo '$(srcdir)/'`src/sdpd-database.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-sdpd-database.Tpo src/$(DEPDIR)/bluetoothd-sdpd-database.Po
-#	$(AM_V_CC)source='src/sdpd-database.c' object='src/bluetoothd-sdpd-database.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-sdpd-database.o `test -f 'src/sdpd-database.c' || echo '$(srcdir)/'`src/sdpd-database.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-sdpd-database.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-sdpd-database.Tpo -c -o src/bluetoothd-sdpd-database.o `test -f 'src/sdpd-database.c' || echo '$(srcdir)/'`src/sdpd-database.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-sdpd-database.Tpo src/$(DEPDIR)/bluetoothd-sdpd-database.Po
+#	$(AM_V_CC)source='src/sdpd-database.c' object='src/bluetoothd-sdpd-database.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-sdpd-database.o `test -f 'src/sdpd-database.c' || echo '$(srcdir)/'`src/sdpd-database.c
 
 src/bluetoothd-sdpd-database.obj: src/sdpd-database.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-sdpd-database.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-sdpd-database.Tpo -c -o src/bluetoothd-sdpd-database.obj `if test -f 'src/sdpd-database.c'; then $(CYGPATH_W) 'src/sdpd-database.c'; else $(CYGPATH_W) '$(srcdir)/src/sdpd-database.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-sdpd-database.Tpo src/$(DEPDIR)/bluetoothd-sdpd-database.Po
-#	$(AM_V_CC)source='src/sdpd-database.c' object='src/bluetoothd-sdpd-database.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-sdpd-database.obj `if test -f 'src/sdpd-database.c'; then $(CYGPATH_W) 'src/sdpd-database.c'; else $(CYGPATH_W) '$(srcdir)/src/sdpd-database.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-sdpd-database.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-sdpd-database.Tpo -c -o src/bluetoothd-sdpd-database.obj `if test -f 'src/sdpd-database.c'; then $(CYGPATH_W) 'src/sdpd-database.c'; else $(CYGPATH_W) '$(srcdir)/src/sdpd-database.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-sdpd-database.Tpo src/$(DEPDIR)/bluetoothd-sdpd-database.Po
+#	$(AM_V_CC)source='src/sdpd-database.c' object='src/bluetoothd-sdpd-database.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-sdpd-database.obj `if test -f 'src/sdpd-database.c'; then $(CYGPATH_W) 'src/sdpd-database.c'; else $(CYGPATH_W) '$(srcdir)/src/sdpd-database.c'; fi`
 
 src/bluetoothd-attrib-server.o: src/attrib-server.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-attrib-server.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-attrib-server.Tpo -c -o src/bluetoothd-attrib-server.o `test -f 'src/attrib-server.c' || echo '$(srcdir)/'`src/attrib-server.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-attrib-server.Tpo src/$(DEPDIR)/bluetoothd-attrib-server.Po
-#	$(AM_V_CC)source='src/attrib-server.c' object='src/bluetoothd-attrib-server.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-attrib-server.o `test -f 'src/attrib-server.c' || echo '$(srcdir)/'`src/attrib-server.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-attrib-server.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-attrib-server.Tpo -c -o src/bluetoothd-attrib-server.o `test -f 'src/attrib-server.c' || echo '$(srcdir)/'`src/attrib-server.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-attrib-server.Tpo src/$(DEPDIR)/bluetoothd-attrib-server.Po
+#	$(AM_V_CC)source='src/attrib-server.c' object='src/bluetoothd-attrib-server.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-attrib-server.o `test -f 'src/attrib-server.c' || echo '$(srcdir)/'`src/attrib-server.c
 
 src/bluetoothd-attrib-server.obj: src/attrib-server.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-attrib-server.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-attrib-server.Tpo -c -o src/bluetoothd-attrib-server.obj `if test -f 'src/attrib-server.c'; then $(CYGPATH_W) 'src/attrib-server.c'; else $(CYGPATH_W) '$(srcdir)/src/attrib-server.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-attrib-server.Tpo src/$(DEPDIR)/bluetoothd-attrib-server.Po
-#	$(AM_V_CC)source='src/attrib-server.c' object='src/bluetoothd-attrib-server.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-attrib-server.obj `if test -f 'src/attrib-server.c'; then $(CYGPATH_W) 'src/attrib-server.c'; else $(CYGPATH_W) '$(srcdir)/src/attrib-server.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-attrib-server.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-attrib-server.Tpo -c -o src/bluetoothd-attrib-server.obj `if test -f 'src/attrib-server.c'; then $(CYGPATH_W) 'src/attrib-server.c'; else $(CYGPATH_W) '$(srcdir)/src/attrib-server.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-attrib-server.Tpo src/$(DEPDIR)/bluetoothd-attrib-server.Po
+#	$(AM_V_CC)source='src/attrib-server.c' object='src/bluetoothd-attrib-server.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-attrib-server.obj `if test -f 'src/attrib-server.c'; then $(CYGPATH_W) 'src/attrib-server.c'; else $(CYGPATH_W) '$(srcdir)/src/attrib-server.c'; fi`
 
 src/bluetoothd-gatt-database.o: src/gatt-database.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-gatt-database.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-gatt-database.Tpo -c -o src/bluetoothd-gatt-database.o `test -f 'src/gatt-database.c' || echo '$(srcdir)/'`src/gatt-database.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-gatt-database.Tpo src/$(DEPDIR)/bluetoothd-gatt-database.Po
-#	$(AM_V_CC)source='src/gatt-database.c' object='src/bluetoothd-gatt-database.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-gatt-database.o `test -f 'src/gatt-database.c' || echo '$(srcdir)/'`src/gatt-database.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-gatt-database.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-gatt-database.Tpo -c -o src/bluetoothd-gatt-database.o `test -f 'src/gatt-database.c' || echo '$(srcdir)/'`src/gatt-database.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-gatt-database.Tpo src/$(DEPDIR)/bluetoothd-gatt-database.Po
+#	$(AM_V_CC)source='src/gatt-database.c' object='src/bluetoothd-gatt-database.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-gatt-database.o `test -f 'src/gatt-database.c' || echo '$(srcdir)/'`src/gatt-database.c
 
 src/bluetoothd-gatt-database.obj: src/gatt-database.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-gatt-database.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-gatt-database.Tpo -c -o src/bluetoothd-gatt-database.obj `if test -f 'src/gatt-database.c'; then $(CYGPATH_W) 'src/gatt-database.c'; else $(CYGPATH_W) '$(srcdir)/src/gatt-database.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-gatt-database.Tpo src/$(DEPDIR)/bluetoothd-gatt-database.Po
-#	$(AM_V_CC)source='src/gatt-database.c' object='src/bluetoothd-gatt-database.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-gatt-database.obj `if test -f 'src/gatt-database.c'; then $(CYGPATH_W) 'src/gatt-database.c'; else $(CYGPATH_W) '$(srcdir)/src/gatt-database.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-gatt-database.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-gatt-database.Tpo -c -o src/bluetoothd-gatt-database.obj `if test -f 'src/gatt-database.c'; then $(CYGPATH_W) 'src/gatt-database.c'; else $(CYGPATH_W) '$(srcdir)/src/gatt-database.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-gatt-database.Tpo src/$(DEPDIR)/bluetoothd-gatt-database.Po
+#	$(AM_V_CC)source='src/gatt-database.c' object='src/bluetoothd-gatt-database.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-gatt-database.obj `if test -f 'src/gatt-database.c'; then $(CYGPATH_W) 'src/gatt-database.c'; else $(CYGPATH_W) '$(srcdir)/src/gatt-database.c'; fi`
 
 src/bluetoothd-sdp-xml.o: src/sdp-xml.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-sdp-xml.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-sdp-xml.Tpo -c -o src/bluetoothd-sdp-xml.o `test -f 'src/sdp-xml.c' || echo '$(srcdir)/'`src/sdp-xml.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-sdp-xml.Tpo src/$(DEPDIR)/bluetoothd-sdp-xml.Po
-#	$(AM_V_CC)source='src/sdp-xml.c' object='src/bluetoothd-sdp-xml.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-sdp-xml.o `test -f 'src/sdp-xml.c' || echo '$(srcdir)/'`src/sdp-xml.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-sdp-xml.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-sdp-xml.Tpo -c -o src/bluetoothd-sdp-xml.o `test -f 'src/sdp-xml.c' || echo '$(srcdir)/'`src/sdp-xml.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-sdp-xml.Tpo src/$(DEPDIR)/bluetoothd-sdp-xml.Po
+#	$(AM_V_CC)source='src/sdp-xml.c' object='src/bluetoothd-sdp-xml.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-sdp-xml.o `test -f 'src/sdp-xml.c' || echo '$(srcdir)/'`src/sdp-xml.c
 
 src/bluetoothd-sdp-xml.obj: src/sdp-xml.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-sdp-xml.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-sdp-xml.Tpo -c -o src/bluetoothd-sdp-xml.obj `if test -f 'src/sdp-xml.c'; then $(CYGPATH_W) 'src/sdp-xml.c'; else $(CYGPATH_W) '$(srcdir)/src/sdp-xml.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-sdp-xml.Tpo src/$(DEPDIR)/bluetoothd-sdp-xml.Po
-#	$(AM_V_CC)source='src/sdp-xml.c' object='src/bluetoothd-sdp-xml.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-sdp-xml.obj `if test -f 'src/sdp-xml.c'; then $(CYGPATH_W) 'src/sdp-xml.c'; else $(CYGPATH_W) '$(srcdir)/src/sdp-xml.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-sdp-xml.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-sdp-xml.Tpo -c -o src/bluetoothd-sdp-xml.obj `if test -f 'src/sdp-xml.c'; then $(CYGPATH_W) 'src/sdp-xml.c'; else $(CYGPATH_W) '$(srcdir)/src/sdp-xml.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-sdp-xml.Tpo src/$(DEPDIR)/bluetoothd-sdp-xml.Po
+#	$(AM_V_CC)source='src/sdp-xml.c' object='src/bluetoothd-sdp-xml.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-sdp-xml.obj `if test -f 'src/sdp-xml.c'; then $(CYGPATH_W) 'src/sdp-xml.c'; else $(CYGPATH_W) '$(srcdir)/src/sdp-xml.c'; fi`
 
 src/bluetoothd-sdp-client.o: src/sdp-client.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-sdp-client.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-sdp-client.Tpo -c -o src/bluetoothd-sdp-client.o `test -f 'src/sdp-client.c' || echo '$(srcdir)/'`src/sdp-client.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-sdp-client.Tpo src/$(DEPDIR)/bluetoothd-sdp-client.Po
-#	$(AM_V_CC)source='src/sdp-client.c' object='src/bluetoothd-sdp-client.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-sdp-client.o `test -f 'src/sdp-client.c' || echo '$(srcdir)/'`src/sdp-client.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-sdp-client.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-sdp-client.Tpo -c -o src/bluetoothd-sdp-client.o `test -f 'src/sdp-client.c' || echo '$(srcdir)/'`src/sdp-client.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-sdp-client.Tpo src/$(DEPDIR)/bluetoothd-sdp-client.Po
+#	$(AM_V_CC)source='src/sdp-client.c' object='src/bluetoothd-sdp-client.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-sdp-client.o `test -f 'src/sdp-client.c' || echo '$(srcdir)/'`src/sdp-client.c
 
 src/bluetoothd-sdp-client.obj: src/sdp-client.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-sdp-client.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-sdp-client.Tpo -c -o src/bluetoothd-sdp-client.obj `if test -f 'src/sdp-client.c'; then $(CYGPATH_W) 'src/sdp-client.c'; else $(CYGPATH_W) '$(srcdir)/src/sdp-client.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-sdp-client.Tpo src/$(DEPDIR)/bluetoothd-sdp-client.Po
-#	$(AM_V_CC)source='src/sdp-client.c' object='src/bluetoothd-sdp-client.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-sdp-client.obj `if test -f 'src/sdp-client.c'; then $(CYGPATH_W) 'src/sdp-client.c'; else $(CYGPATH_W) '$(srcdir)/src/sdp-client.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-sdp-client.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-sdp-client.Tpo -c -o src/bluetoothd-sdp-client.obj `if test -f 'src/sdp-client.c'; then $(CYGPATH_W) 'src/sdp-client.c'; else $(CYGPATH_W) '$(srcdir)/src/sdp-client.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-sdp-client.Tpo src/$(DEPDIR)/bluetoothd-sdp-client.Po
+#	$(AM_V_CC)source='src/sdp-client.c' object='src/bluetoothd-sdp-client.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-sdp-client.obj `if test -f 'src/sdp-client.c'; then $(CYGPATH_W) 'src/sdp-client.c'; else $(CYGPATH_W) '$(srcdir)/src/sdp-client.c'; fi`
 
 src/bluetoothd-textfile.o: src/textfile.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-textfile.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-textfile.Tpo -c -o src/bluetoothd-textfile.o `test -f 'src/textfile.c' || echo '$(srcdir)/'`src/textfile.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-textfile.Tpo src/$(DEPDIR)/bluetoothd-textfile.Po
-#	$(AM_V_CC)source='src/textfile.c' object='src/bluetoothd-textfile.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-textfile.o `test -f 'src/textfile.c' || echo '$(srcdir)/'`src/textfile.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-textfile.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-textfile.Tpo -c -o src/bluetoothd-textfile.o `test -f 'src/textfile.c' || echo '$(srcdir)/'`src/textfile.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-textfile.Tpo src/$(DEPDIR)/bluetoothd-textfile.Po
+#	$(AM_V_CC)source='src/textfile.c' object='src/bluetoothd-textfile.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-textfile.o `test -f 'src/textfile.c' || echo '$(srcdir)/'`src/textfile.c
 
 src/bluetoothd-textfile.obj: src/textfile.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-textfile.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-textfile.Tpo -c -o src/bluetoothd-textfile.obj `if test -f 'src/textfile.c'; then $(CYGPATH_W) 'src/textfile.c'; else $(CYGPATH_W) '$(srcdir)/src/textfile.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-textfile.Tpo src/$(DEPDIR)/bluetoothd-textfile.Po
-#	$(AM_V_CC)source='src/textfile.c' object='src/bluetoothd-textfile.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-textfile.obj `if test -f 'src/textfile.c'; then $(CYGPATH_W) 'src/textfile.c'; else $(CYGPATH_W) '$(srcdir)/src/textfile.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-textfile.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-textfile.Tpo -c -o src/bluetoothd-textfile.obj `if test -f 'src/textfile.c'; then $(CYGPATH_W) 'src/textfile.c'; else $(CYGPATH_W) '$(srcdir)/src/textfile.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-textfile.Tpo src/$(DEPDIR)/bluetoothd-textfile.Po
+#	$(AM_V_CC)source='src/textfile.c' object='src/bluetoothd-textfile.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-textfile.obj `if test -f 'src/textfile.c'; then $(CYGPATH_W) 'src/textfile.c'; else $(CYGPATH_W) '$(srcdir)/src/textfile.c'; fi`
 
 src/bluetoothd-uuid-helper.o: src/uuid-helper.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-uuid-helper.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-uuid-helper.Tpo -c -o src/bluetoothd-uuid-helper.o `test -f 'src/uuid-helper.c' || echo '$(srcdir)/'`src/uuid-helper.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-uuid-helper.Tpo src/$(DEPDIR)/bluetoothd-uuid-helper.Po
-#	$(AM_V_CC)source='src/uuid-helper.c' object='src/bluetoothd-uuid-helper.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-uuid-helper.o `test -f 'src/uuid-helper.c' || echo '$(srcdir)/'`src/uuid-helper.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-uuid-helper.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-uuid-helper.Tpo -c -o src/bluetoothd-uuid-helper.o `test -f 'src/uuid-helper.c' || echo '$(srcdir)/'`src/uuid-helper.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-uuid-helper.Tpo src/$(DEPDIR)/bluetoothd-uuid-helper.Po
+#	$(AM_V_CC)source='src/uuid-helper.c' object='src/bluetoothd-uuid-helper.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-uuid-helper.o `test -f 'src/uuid-helper.c' || echo '$(srcdir)/'`src/uuid-helper.c
 
 src/bluetoothd-uuid-helper.obj: src/uuid-helper.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-uuid-helper.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-uuid-helper.Tpo -c -o src/bluetoothd-uuid-helper.obj `if test -f 'src/uuid-helper.c'; then $(CYGPATH_W) 'src/uuid-helper.c'; else $(CYGPATH_W) '$(srcdir)/src/uuid-helper.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-uuid-helper.Tpo src/$(DEPDIR)/bluetoothd-uuid-helper.Po
-#	$(AM_V_CC)source='src/uuid-helper.c' object='src/bluetoothd-uuid-helper.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-uuid-helper.obj `if test -f 'src/uuid-helper.c'; then $(CYGPATH_W) 'src/uuid-helper.c'; else $(CYGPATH_W) '$(srcdir)/src/uuid-helper.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-uuid-helper.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-uuid-helper.Tpo -c -o src/bluetoothd-uuid-helper.obj `if test -f 'src/uuid-helper.c'; then $(CYGPATH_W) 'src/uuid-helper.c'; else $(CYGPATH_W) '$(srcdir)/src/uuid-helper.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-uuid-helper.Tpo src/$(DEPDIR)/bluetoothd-uuid-helper.Po
+#	$(AM_V_CC)source='src/uuid-helper.c' object='src/bluetoothd-uuid-helper.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-uuid-helper.obj `if test -f 'src/uuid-helper.c'; then $(CYGPATH_W) 'src/uuid-helper.c'; else $(CYGPATH_W) '$(srcdir)/src/uuid-helper.c'; fi`
 
 src/bluetoothd-plugin.o: src/plugin.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-plugin.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-plugin.Tpo -c -o src/bluetoothd-plugin.o `test -f 'src/plugin.c' || echo '$(srcdir)/'`src/plugin.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-plugin.Tpo src/$(DEPDIR)/bluetoothd-plugin.Po
-#	$(AM_V_CC)source='src/plugin.c' object='src/bluetoothd-plugin.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-plugin.o `test -f 'src/plugin.c' || echo '$(srcdir)/'`src/plugin.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-plugin.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-plugin.Tpo -c -o src/bluetoothd-plugin.o `test -f 'src/plugin.c' || echo '$(srcdir)/'`src/plugin.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-plugin.Tpo src/$(DEPDIR)/bluetoothd-plugin.Po
+#	$(AM_V_CC)source='src/plugin.c' object='src/bluetoothd-plugin.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-plugin.o `test -f 'src/plugin.c' || echo '$(srcdir)/'`src/plugin.c
 
 src/bluetoothd-plugin.obj: src/plugin.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-plugin.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-plugin.Tpo -c -o src/bluetoothd-plugin.obj `if test -f 'src/plugin.c'; then $(CYGPATH_W) 'src/plugin.c'; else $(CYGPATH_W) '$(srcdir)/src/plugin.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-plugin.Tpo src/$(DEPDIR)/bluetoothd-plugin.Po
-#	$(AM_V_CC)source='src/plugin.c' object='src/bluetoothd-plugin.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-plugin.obj `if test -f 'src/plugin.c'; then $(CYGPATH_W) 'src/plugin.c'; else $(CYGPATH_W) '$(srcdir)/src/plugin.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-plugin.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-plugin.Tpo -c -o src/bluetoothd-plugin.obj `if test -f 'src/plugin.c'; then $(CYGPATH_W) 'src/plugin.c'; else $(CYGPATH_W) '$(srcdir)/src/plugin.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-plugin.Tpo src/$(DEPDIR)/bluetoothd-plugin.Po
+#	$(AM_V_CC)source='src/plugin.c' object='src/bluetoothd-plugin.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-plugin.obj `if test -f 'src/plugin.c'; then $(CYGPATH_W) 'src/plugin.c'; else $(CYGPATH_W) '$(srcdir)/src/plugin.c'; fi`
 
 src/bluetoothd-storage.o: src/storage.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-storage.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-storage.Tpo -c -o src/bluetoothd-storage.o `test -f 'src/storage.c' || echo '$(srcdir)/'`src/storage.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-storage.Tpo src/$(DEPDIR)/bluetoothd-storage.Po
-#	$(AM_V_CC)source='src/storage.c' object='src/bluetoothd-storage.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-storage.o `test -f 'src/storage.c' || echo '$(srcdir)/'`src/storage.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-storage.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-storage.Tpo -c -o src/bluetoothd-storage.o `test -f 'src/storage.c' || echo '$(srcdir)/'`src/storage.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-storage.Tpo src/$(DEPDIR)/bluetoothd-storage.Po
+#	$(AM_V_CC)source='src/storage.c' object='src/bluetoothd-storage.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-storage.o `test -f 'src/storage.c' || echo '$(srcdir)/'`src/storage.c
 
 src/bluetoothd-storage.obj: src/storage.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-storage.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-storage.Tpo -c -o src/bluetoothd-storage.obj `if test -f 'src/storage.c'; then $(CYGPATH_W) 'src/storage.c'; else $(CYGPATH_W) '$(srcdir)/src/storage.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-storage.Tpo src/$(DEPDIR)/bluetoothd-storage.Po
-#	$(AM_V_CC)source='src/storage.c' object='src/bluetoothd-storage.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-storage.obj `if test -f 'src/storage.c'; then $(CYGPATH_W) 'src/storage.c'; else $(CYGPATH_W) '$(srcdir)/src/storage.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-storage.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-storage.Tpo -c -o src/bluetoothd-storage.obj `if test -f 'src/storage.c'; then $(CYGPATH_W) 'src/storage.c'; else $(CYGPATH_W) '$(srcdir)/src/storage.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-storage.Tpo src/$(DEPDIR)/bluetoothd-storage.Po
+#	$(AM_V_CC)source='src/storage.c' object='src/bluetoothd-storage.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-storage.obj `if test -f 'src/storage.c'; then $(CYGPATH_W) 'src/storage.c'; else $(CYGPATH_W) '$(srcdir)/src/storage.c'; fi`
 
 src/bluetoothd-advertising.o: src/advertising.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-advertising.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-advertising.Tpo -c -o src/bluetoothd-advertising.o `test -f 'src/advertising.c' || echo '$(srcdir)/'`src/advertising.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-advertising.Tpo src/$(DEPDIR)/bluetoothd-advertising.Po
-#	$(AM_V_CC)source='src/advertising.c' object='src/bluetoothd-advertising.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-advertising.o `test -f 'src/advertising.c' || echo '$(srcdir)/'`src/advertising.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-advertising.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-advertising.Tpo -c -o src/bluetoothd-advertising.o `test -f 'src/advertising.c' || echo '$(srcdir)/'`src/advertising.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-advertising.Tpo src/$(DEPDIR)/bluetoothd-advertising.Po
+#	$(AM_V_CC)source='src/advertising.c' object='src/bluetoothd-advertising.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-advertising.o `test -f 'src/advertising.c' || echo '$(srcdir)/'`src/advertising.c
 
 src/bluetoothd-advertising.obj: src/advertising.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-advertising.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-advertising.Tpo -c -o src/bluetoothd-advertising.obj `if test -f 'src/advertising.c'; then $(CYGPATH_W) 'src/advertising.c'; else $(CYGPATH_W) '$(srcdir)/src/advertising.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-advertising.Tpo src/$(DEPDIR)/bluetoothd-advertising.Po
-#	$(AM_V_CC)source='src/advertising.c' object='src/bluetoothd-advertising.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-advertising.obj `if test -f 'src/advertising.c'; then $(CYGPATH_W) 'src/advertising.c'; else $(CYGPATH_W) '$(srcdir)/src/advertising.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-advertising.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-advertising.Tpo -c -o src/bluetoothd-advertising.obj `if test -f 'src/advertising.c'; then $(CYGPATH_W) 'src/advertising.c'; else $(CYGPATH_W) '$(srcdir)/src/advertising.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-advertising.Tpo src/$(DEPDIR)/bluetoothd-advertising.Po
+#	$(AM_V_CC)source='src/advertising.c' object='src/bluetoothd-advertising.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-advertising.obj `if test -f 'src/advertising.c'; then $(CYGPATH_W) 'src/advertising.c'; else $(CYGPATH_W) '$(srcdir)/src/advertising.c'; fi`
 
 src/bluetoothd-agent.o: src/agent.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-agent.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-agent.Tpo -c -o src/bluetoothd-agent.o `test -f 'src/agent.c' || echo '$(srcdir)/'`src/agent.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-agent.Tpo src/$(DEPDIR)/bluetoothd-agent.Po
-#	$(AM_V_CC)source='src/agent.c' object='src/bluetoothd-agent.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-agent.o `test -f 'src/agent.c' || echo '$(srcdir)/'`src/agent.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-agent.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-agent.Tpo -c -o src/bluetoothd-agent.o `test -f 'src/agent.c' || echo '$(srcdir)/'`src/agent.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-agent.Tpo src/$(DEPDIR)/bluetoothd-agent.Po
+#	$(AM_V_CC)source='src/agent.c' object='src/bluetoothd-agent.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-agent.o `test -f 'src/agent.c' || echo '$(srcdir)/'`src/agent.c
 
 src/bluetoothd-agent.obj: src/agent.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-agent.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-agent.Tpo -c -o src/bluetoothd-agent.obj `if test -f 'src/agent.c'; then $(CYGPATH_W) 'src/agent.c'; else $(CYGPATH_W) '$(srcdir)/src/agent.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-agent.Tpo src/$(DEPDIR)/bluetoothd-agent.Po
-#	$(AM_V_CC)source='src/agent.c' object='src/bluetoothd-agent.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-agent.obj `if test -f 'src/agent.c'; then $(CYGPATH_W) 'src/agent.c'; else $(CYGPATH_W) '$(srcdir)/src/agent.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-agent.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-agent.Tpo -c -o src/bluetoothd-agent.obj `if test -f 'src/agent.c'; then $(CYGPATH_W) 'src/agent.c'; else $(CYGPATH_W) '$(srcdir)/src/agent.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-agent.Tpo src/$(DEPDIR)/bluetoothd-agent.Po
+#	$(AM_V_CC)source='src/agent.c' object='src/bluetoothd-agent.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-agent.obj `if test -f 'src/agent.c'; then $(CYGPATH_W) 'src/agent.c'; else $(CYGPATH_W) '$(srcdir)/src/agent.c'; fi`
 
 src/bluetoothd-error.o: src/error.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-error.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-error.Tpo -c -o src/bluetoothd-error.o `test -f 'src/error.c' || echo '$(srcdir)/'`src/error.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-error.Tpo src/$(DEPDIR)/bluetoothd-error.Po
-#	$(AM_V_CC)source='src/error.c' object='src/bluetoothd-error.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-error.o `test -f 'src/error.c' || echo '$(srcdir)/'`src/error.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-error.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-error.Tpo -c -o src/bluetoothd-error.o `test -f 'src/error.c' || echo '$(srcdir)/'`src/error.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-error.Tpo src/$(DEPDIR)/bluetoothd-error.Po
+#	$(AM_V_CC)source='src/error.c' object='src/bluetoothd-error.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-error.o `test -f 'src/error.c' || echo '$(srcdir)/'`src/error.c
 
 src/bluetoothd-error.obj: src/error.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-error.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-error.Tpo -c -o src/bluetoothd-error.obj `if test -f 'src/error.c'; then $(CYGPATH_W) 'src/error.c'; else $(CYGPATH_W) '$(srcdir)/src/error.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-error.Tpo src/$(DEPDIR)/bluetoothd-error.Po
-#	$(AM_V_CC)source='src/error.c' object='src/bluetoothd-error.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-error.obj `if test -f 'src/error.c'; then $(CYGPATH_W) 'src/error.c'; else $(CYGPATH_W) '$(srcdir)/src/error.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-error.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-error.Tpo -c -o src/bluetoothd-error.obj `if test -f 'src/error.c'; then $(CYGPATH_W) 'src/error.c'; else $(CYGPATH_W) '$(srcdir)/src/error.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-error.Tpo src/$(DEPDIR)/bluetoothd-error.Po
+#	$(AM_V_CC)source='src/error.c' object='src/bluetoothd-error.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-error.obj `if test -f 'src/error.c'; then $(CYGPATH_W) 'src/error.c'; else $(CYGPATH_W) '$(srcdir)/src/error.c'; fi`
 
 src/bluetoothd-adapter.o: src/adapter.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-adapter.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-adapter.Tpo -c -o src/bluetoothd-adapter.o `test -f 'src/adapter.c' || echo '$(srcdir)/'`src/adapter.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-adapter.Tpo src/$(DEPDIR)/bluetoothd-adapter.Po
-#	$(AM_V_CC)source='src/adapter.c' object='src/bluetoothd-adapter.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-adapter.o `test -f 'src/adapter.c' || echo '$(srcdir)/'`src/adapter.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-adapter.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-adapter.Tpo -c -o src/bluetoothd-adapter.o `test -f 'src/adapter.c' || echo '$(srcdir)/'`src/adapter.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-adapter.Tpo src/$(DEPDIR)/bluetoothd-adapter.Po
+#	$(AM_V_CC)source='src/adapter.c' object='src/bluetoothd-adapter.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-adapter.o `test -f 'src/adapter.c' || echo '$(srcdir)/'`src/adapter.c
 
 src/bluetoothd-adapter.obj: src/adapter.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-adapter.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-adapter.Tpo -c -o src/bluetoothd-adapter.obj `if test -f 'src/adapter.c'; then $(CYGPATH_W) 'src/adapter.c'; else $(CYGPATH_W) '$(srcdir)/src/adapter.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-adapter.Tpo src/$(DEPDIR)/bluetoothd-adapter.Po
-#	$(AM_V_CC)source='src/adapter.c' object='src/bluetoothd-adapter.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-adapter.obj `if test -f 'src/adapter.c'; then $(CYGPATH_W) 'src/adapter.c'; else $(CYGPATH_W) '$(srcdir)/src/adapter.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-adapter.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-adapter.Tpo -c -o src/bluetoothd-adapter.obj `if test -f 'src/adapter.c'; then $(CYGPATH_W) 'src/adapter.c'; else $(CYGPATH_W) '$(srcdir)/src/adapter.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-adapter.Tpo src/$(DEPDIR)/bluetoothd-adapter.Po
+#	$(AM_V_CC)source='src/adapter.c' object='src/bluetoothd-adapter.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-adapter.obj `if test -f 'src/adapter.c'; then $(CYGPATH_W) 'src/adapter.c'; else $(CYGPATH_W) '$(srcdir)/src/adapter.c'; fi`
 
 src/bluetoothd-profile.o: src/profile.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-profile.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-profile.Tpo -c -o src/bluetoothd-profile.o `test -f 'src/profile.c' || echo '$(srcdir)/'`src/profile.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-profile.Tpo src/$(DEPDIR)/bluetoothd-profile.Po
-#	$(AM_V_CC)source='src/profile.c' object='src/bluetoothd-profile.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-profile.o `test -f 'src/profile.c' || echo '$(srcdir)/'`src/profile.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-profile.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-profile.Tpo -c -o src/bluetoothd-profile.o `test -f 'src/profile.c' || echo '$(srcdir)/'`src/profile.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-profile.Tpo src/$(DEPDIR)/bluetoothd-profile.Po
+#	$(AM_V_CC)source='src/profile.c' object='src/bluetoothd-profile.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-profile.o `test -f 'src/profile.c' || echo '$(srcdir)/'`src/profile.c
 
 src/bluetoothd-profile.obj: src/profile.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-profile.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-profile.Tpo -c -o src/bluetoothd-profile.obj `if test -f 'src/profile.c'; then $(CYGPATH_W) 'src/profile.c'; else $(CYGPATH_W) '$(srcdir)/src/profile.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-profile.Tpo src/$(DEPDIR)/bluetoothd-profile.Po
-#	$(AM_V_CC)source='src/profile.c' object='src/bluetoothd-profile.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-profile.obj `if test -f 'src/profile.c'; then $(CYGPATH_W) 'src/profile.c'; else $(CYGPATH_W) '$(srcdir)/src/profile.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-profile.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-profile.Tpo -c -o src/bluetoothd-profile.obj `if test -f 'src/profile.c'; then $(CYGPATH_W) 'src/profile.c'; else $(CYGPATH_W) '$(srcdir)/src/profile.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-profile.Tpo src/$(DEPDIR)/bluetoothd-profile.Po
+#	$(AM_V_CC)source='src/profile.c' object='src/bluetoothd-profile.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-profile.obj `if test -f 'src/profile.c'; then $(CYGPATH_W) 'src/profile.c'; else $(CYGPATH_W) '$(srcdir)/src/profile.c'; fi`
 
 src/bluetoothd-service.o: src/service.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-service.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-service.Tpo -c -o src/bluetoothd-service.o `test -f 'src/service.c' || echo '$(srcdir)/'`src/service.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-service.Tpo src/$(DEPDIR)/bluetoothd-service.Po
-#	$(AM_V_CC)source='src/service.c' object='src/bluetoothd-service.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-service.o `test -f 'src/service.c' || echo '$(srcdir)/'`src/service.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-service.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-service.Tpo -c -o src/bluetoothd-service.o `test -f 'src/service.c' || echo '$(srcdir)/'`src/service.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-service.Tpo src/$(DEPDIR)/bluetoothd-service.Po
+#	$(AM_V_CC)source='src/service.c' object='src/bluetoothd-service.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-service.o `test -f 'src/service.c' || echo '$(srcdir)/'`src/service.c
 
 src/bluetoothd-service.obj: src/service.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-service.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-service.Tpo -c -o src/bluetoothd-service.obj `if test -f 'src/service.c'; then $(CYGPATH_W) 'src/service.c'; else $(CYGPATH_W) '$(srcdir)/src/service.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-service.Tpo src/$(DEPDIR)/bluetoothd-service.Po
-#	$(AM_V_CC)source='src/service.c' object='src/bluetoothd-service.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-service.obj `if test -f 'src/service.c'; then $(CYGPATH_W) 'src/service.c'; else $(CYGPATH_W) '$(srcdir)/src/service.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-service.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-service.Tpo -c -o src/bluetoothd-service.obj `if test -f 'src/service.c'; then $(CYGPATH_W) 'src/service.c'; else $(CYGPATH_W) '$(srcdir)/src/service.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-service.Tpo src/$(DEPDIR)/bluetoothd-service.Po
+#	$(AM_V_CC)source='src/service.c' object='src/bluetoothd-service.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-service.obj `if test -f 'src/service.c'; then $(CYGPATH_W) 'src/service.c'; else $(CYGPATH_W) '$(srcdir)/src/service.c'; fi`
 
 src/bluetoothd-gatt-client.o: src/gatt-client.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-gatt-client.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-gatt-client.Tpo -c -o src/bluetoothd-gatt-client.o `test -f 'src/gatt-client.c' || echo '$(srcdir)/'`src/gatt-client.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-gatt-client.Tpo src/$(DEPDIR)/bluetoothd-gatt-client.Po
-#	$(AM_V_CC)source='src/gatt-client.c' object='src/bluetoothd-gatt-client.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-gatt-client.o `test -f 'src/gatt-client.c' || echo '$(srcdir)/'`src/gatt-client.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-gatt-client.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-gatt-client.Tpo -c -o src/bluetoothd-gatt-client.o `test -f 'src/gatt-client.c' || echo '$(srcdir)/'`src/gatt-client.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-gatt-client.Tpo src/$(DEPDIR)/bluetoothd-gatt-client.Po
+#	$(AM_V_CC)source='src/gatt-client.c' object='src/bluetoothd-gatt-client.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-gatt-client.o `test -f 'src/gatt-client.c' || echo '$(srcdir)/'`src/gatt-client.c
 
 src/bluetoothd-gatt-client.obj: src/gatt-client.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-gatt-client.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-gatt-client.Tpo -c -o src/bluetoothd-gatt-client.obj `if test -f 'src/gatt-client.c'; then $(CYGPATH_W) 'src/gatt-client.c'; else $(CYGPATH_W) '$(srcdir)/src/gatt-client.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-gatt-client.Tpo src/$(DEPDIR)/bluetoothd-gatt-client.Po
-#	$(AM_V_CC)source='src/gatt-client.c' object='src/bluetoothd-gatt-client.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-gatt-client.obj `if test -f 'src/gatt-client.c'; then $(CYGPATH_W) 'src/gatt-client.c'; else $(CYGPATH_W) '$(srcdir)/src/gatt-client.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-gatt-client.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-gatt-client.Tpo -c -o src/bluetoothd-gatt-client.obj `if test -f 'src/gatt-client.c'; then $(CYGPATH_W) 'src/gatt-client.c'; else $(CYGPATH_W) '$(srcdir)/src/gatt-client.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-gatt-client.Tpo src/$(DEPDIR)/bluetoothd-gatt-client.Po
+#	$(AM_V_CC)source='src/gatt-client.c' object='src/bluetoothd-gatt-client.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-gatt-client.obj `if test -f 'src/gatt-client.c'; then $(CYGPATH_W) 'src/gatt-client.c'; else $(CYGPATH_W) '$(srcdir)/src/gatt-client.c'; fi`
 
 src/bluetoothd-device.o: src/device.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-device.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-device.Tpo -c -o src/bluetoothd-device.o `test -f 'src/device.c' || echo '$(srcdir)/'`src/device.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-device.Tpo src/$(DEPDIR)/bluetoothd-device.Po
-#	$(AM_V_CC)source='src/device.c' object='src/bluetoothd-device.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-device.o `test -f 'src/device.c' || echo '$(srcdir)/'`src/device.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-device.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-device.Tpo -c -o src/bluetoothd-device.o `test -f 'src/device.c' || echo '$(srcdir)/'`src/device.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-device.Tpo src/$(DEPDIR)/bluetoothd-device.Po
+#	$(AM_V_CC)source='src/device.c' object='src/bluetoothd-device.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-device.o `test -f 'src/device.c' || echo '$(srcdir)/'`src/device.c
 
 src/bluetoothd-device.obj: src/device.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-device.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-device.Tpo -c -o src/bluetoothd-device.obj `if test -f 'src/device.c'; then $(CYGPATH_W) 'src/device.c'; else $(CYGPATH_W) '$(srcdir)/src/device.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-device.Tpo src/$(DEPDIR)/bluetoothd-device.Po
-#	$(AM_V_CC)source='src/device.c' object='src/bluetoothd-device.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-device.obj `if test -f 'src/device.c'; then $(CYGPATH_W) 'src/device.c'; else $(CYGPATH_W) '$(srcdir)/src/device.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-device.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-device.Tpo -c -o src/bluetoothd-device.obj `if test -f 'src/device.c'; then $(CYGPATH_W) 'src/device.c'; else $(CYGPATH_W) '$(srcdir)/src/device.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-device.Tpo src/$(DEPDIR)/bluetoothd-device.Po
+#	$(AM_V_CC)source='src/device.c' object='src/bluetoothd-device.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-device.obj `if test -f 'src/device.c'; then $(CYGPATH_W) 'src/device.c'; else $(CYGPATH_W) '$(srcdir)/src/device.c'; fi`
 
 src/bluetoothd-dbus-common.o: src/dbus-common.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-dbus-common.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-dbus-common.Tpo -c -o src/bluetoothd-dbus-common.o `test -f 'src/dbus-common.c' || echo '$(srcdir)/'`src/dbus-common.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-dbus-common.Tpo src/$(DEPDIR)/bluetoothd-dbus-common.Po
-#	$(AM_V_CC)source='src/dbus-common.c' object='src/bluetoothd-dbus-common.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-dbus-common.o `test -f 'src/dbus-common.c' || echo '$(srcdir)/'`src/dbus-common.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-dbus-common.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-dbus-common.Tpo -c -o src/bluetoothd-dbus-common.o `test -f 'src/dbus-common.c' || echo '$(srcdir)/'`src/dbus-common.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-dbus-common.Tpo src/$(DEPDIR)/bluetoothd-dbus-common.Po
+#	$(AM_V_CC)source='src/dbus-common.c' object='src/bluetoothd-dbus-common.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-dbus-common.o `test -f 'src/dbus-common.c' || echo '$(srcdir)/'`src/dbus-common.c
 
 src/bluetoothd-dbus-common.obj: src/dbus-common.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-dbus-common.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-dbus-common.Tpo -c -o src/bluetoothd-dbus-common.obj `if test -f 'src/dbus-common.c'; then $(CYGPATH_W) 'src/dbus-common.c'; else $(CYGPATH_W) '$(srcdir)/src/dbus-common.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-dbus-common.Tpo src/$(DEPDIR)/bluetoothd-dbus-common.Po
-#	$(AM_V_CC)source='src/dbus-common.c' object='src/bluetoothd-dbus-common.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-dbus-common.obj `if test -f 'src/dbus-common.c'; then $(CYGPATH_W) 'src/dbus-common.c'; else $(CYGPATH_W) '$(srcdir)/src/dbus-common.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-dbus-common.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-dbus-common.Tpo -c -o src/bluetoothd-dbus-common.obj `if test -f 'src/dbus-common.c'; then $(CYGPATH_W) 'src/dbus-common.c'; else $(CYGPATH_W) '$(srcdir)/src/dbus-common.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-dbus-common.Tpo src/$(DEPDIR)/bluetoothd-dbus-common.Po
+#	$(AM_V_CC)source='src/dbus-common.c' object='src/bluetoothd-dbus-common.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-dbus-common.obj `if test -f 'src/dbus-common.c'; then $(CYGPATH_W) 'src/dbus-common.c'; else $(CYGPATH_W) '$(srcdir)/src/dbus-common.c'; fi`
 
 src/bluetoothd-eir.o: src/eir.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-eir.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-eir.Tpo -c -o src/bluetoothd-eir.o `test -f 'src/eir.c' || echo '$(srcdir)/'`src/eir.c
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-eir.Tpo src/$(DEPDIR)/bluetoothd-eir.Po
-#	$(AM_V_CC)source='src/eir.c' object='src/bluetoothd-eir.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-eir.o `test -f 'src/eir.c' || echo '$(srcdir)/'`src/eir.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-eir.o -MD -MP -MF src/$(DEPDIR)/bluetoothd-eir.Tpo -c -o src/bluetoothd-eir.o `test -f 'src/eir.c' || echo '$(srcdir)/'`src/eir.c
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-eir.Tpo src/$(DEPDIR)/bluetoothd-eir.Po
+#	$(AM_V_CC)source='src/eir.c' object='src/bluetoothd-eir.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-eir.o `test -f 'src/eir.c' || echo '$(srcdir)/'`src/eir.c
 
 src/bluetoothd-eir.obj: src/eir.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-eir.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-eir.Tpo -c -o src/bluetoothd-eir.obj `if test -f 'src/eir.c'; then $(CYGPATH_W) 'src/eir.c'; else $(CYGPATH_W) '$(srcdir)/src/eir.c'; fi`
-	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-eir.Tpo src/$(DEPDIR)/bluetoothd-eir.Po
-#	$(AM_V_CC)source='src/eir.c' object='src/bluetoothd-eir.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-eir.obj `if test -f 'src/eir.c'; then $(CYGPATH_W) 'src/eir.c'; else $(CYGPATH_W) '$(srcdir)/src/eir.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -MT src/bluetoothd-eir.obj -MD -MP -MF src/$(DEPDIR)/bluetoothd-eir.Tpo -c -o src/bluetoothd-eir.obj `if test -f 'src/eir.c'; then $(CYGPATH_W) 'src/eir.c'; else $(CYGPATH_W) '$(srcdir)/src/eir.c'; fi`
+#	$(AM_V_at)$(am__mv) src/$(DEPDIR)/bluetoothd-eir.Tpo src/$(DEPDIR)/bluetoothd-eir.Po
+#	$(AM_V_CC)source='src/eir.c' object='src/bluetoothd-eir.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(src_bluetoothd_CFLAGS) $(CFLAGS) -c -o src/bluetoothd-eir.obj `if test -f 'src/eir.c'; then $(CYGPATH_W) 'src/eir.c'; else $(CYGPATH_W) '$(srcdir)/src/eir.c'; fi`
 
 unit/unit_test_midi-test-midi.o: unit/test-midi.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(unit_test_midi_CFLAGS) $(CFLAGS) -MT unit/unit_test_midi-test-midi.o -MD -MP -MF unit/$(DEPDIR)/unit_test_midi-test-midi.Tpo -c -o unit/unit_test_midi-test-midi.o `test -f 'unit/test-midi.c' || echo '$(srcdir)/'`unit/test-midi.c
-	$(AM_V_at)$(am__mv) unit/$(DEPDIR)/unit_test_midi-test-midi.Tpo unit/$(DEPDIR)/unit_test_midi-test-midi.Po
-#	$(AM_V_CC)source='unit/test-midi.c' object='unit/unit_test_midi-test-midi.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(unit_test_midi_CFLAGS) $(CFLAGS) -c -o unit/unit_test_midi-test-midi.o `test -f 'unit/test-midi.c' || echo '$(srcdir)/'`unit/test-midi.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(unit_test_midi_CFLAGS) $(CFLAGS) -MT unit/unit_test_midi-test-midi.o -MD -MP -MF unit/$(DEPDIR)/unit_test_midi-test-midi.Tpo -c -o unit/unit_test_midi-test-midi.o `test -f 'unit/test-midi.c' || echo '$(srcdir)/'`unit/test-midi.c
+#	$(AM_V_at)$(am__mv) unit/$(DEPDIR)/unit_test_midi-test-midi.Tpo unit/$(DEPDIR)/unit_test_midi-test-midi.Po
+#	$(AM_V_CC)source='unit/test-midi.c' object='unit/unit_test_midi-test-midi.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(unit_test_midi_CFLAGS) $(CFLAGS) -c -o unit/unit_test_midi-test-midi.o `test -f 'unit/test-midi.c' || echo '$(srcdir)/'`unit/test-midi.c
 
 unit/unit_test_midi-test-midi.obj: unit/test-midi.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(unit_test_midi_CFLAGS) $(CFLAGS) -MT unit/unit_test_midi-test-midi.obj -MD -MP -MF unit/$(DEPDIR)/unit_test_midi-test-midi.Tpo -c -o unit/unit_test_midi-test-midi.obj `if test -f 'unit/test-midi.c'; then $(CYGPATH_W) 'unit/test-midi.c'; else $(CYGPATH_W) '$(srcdir)/unit/test-midi.c'; fi`
-	$(AM_V_at)$(am__mv) unit/$(DEPDIR)/unit_test_midi-test-midi.Tpo unit/$(DEPDIR)/unit_test_midi-test-midi.Po
-#	$(AM_V_CC)source='unit/test-midi.c' object='unit/unit_test_midi-test-midi.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(unit_test_midi_CFLAGS) $(CFLAGS) -c -o unit/unit_test_midi-test-midi.obj `if test -f 'unit/test-midi.c'; then $(CYGPATH_W) 'unit/test-midi.c'; else $(CYGPATH_W) '$(srcdir)/unit/test-midi.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(unit_test_midi_CFLAGS) $(CFLAGS) -MT unit/unit_test_midi-test-midi.obj -MD -MP -MF unit/$(DEPDIR)/unit_test_midi-test-midi.Tpo -c -o unit/unit_test_midi-test-midi.obj `if test -f 'unit/test-midi.c'; then $(CYGPATH_W) 'unit/test-midi.c'; else $(CYGPATH_W) '$(srcdir)/unit/test-midi.c'; fi`
+#	$(AM_V_at)$(am__mv) unit/$(DEPDIR)/unit_test_midi-test-midi.Tpo unit/$(DEPDIR)/unit_test_midi-test-midi.Po
+#	$(AM_V_CC)source='unit/test-midi.c' object='unit/unit_test_midi-test-midi.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(unit_test_midi_CFLAGS) $(CFLAGS) -c -o unit/unit_test_midi-test-midi.obj `if test -f 'unit/test-midi.c'; then $(CYGPATH_W) 'unit/test-midi.c'; else $(CYGPATH_W) '$(srcdir)/unit/test-midi.c'; fi`
 
 profiles/midi/unit_test_midi-libmidi.o: profiles/midi/libmidi.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(unit_test_midi_CFLAGS) $(CFLAGS) -MT profiles/midi/unit_test_midi-libmidi.o -MD -MP -MF profiles/midi/$(DEPDIR)/unit_test_midi-libmidi.Tpo -c -o profiles/midi/unit_test_midi-libmidi.o `test -f 'profiles/midi/libmidi.c' || echo '$(srcdir)/'`profiles/midi/libmidi.c
-	$(AM_V_at)$(am__mv) profiles/midi/$(DEPDIR)/unit_test_midi-libmidi.Tpo profiles/midi/$(DEPDIR)/unit_test_midi-libmidi.Po
-#	$(AM_V_CC)source='profiles/midi/libmidi.c' object='profiles/midi/unit_test_midi-libmidi.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(unit_test_midi_CFLAGS) $(CFLAGS) -c -o profiles/midi/unit_test_midi-libmidi.o `test -f 'profiles/midi/libmidi.c' || echo '$(srcdir)/'`profiles/midi/libmidi.c
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(unit_test_midi_CFLAGS) $(CFLAGS) -MT profiles/midi/unit_test_midi-libmidi.o -MD -MP -MF profiles/midi/$(DEPDIR)/unit_test_midi-libmidi.Tpo -c -o profiles/midi/unit_test_midi-libmidi.o `test -f 'profiles/midi/libmidi.c' || echo '$(srcdir)/'`profiles/midi/libmidi.c
+#	$(AM_V_at)$(am__mv) profiles/midi/$(DEPDIR)/unit_test_midi-libmidi.Tpo profiles/midi/$(DEPDIR)/unit_test_midi-libmidi.Po
+#	$(AM_V_CC)source='profiles/midi/libmidi.c' object='profiles/midi/unit_test_midi-libmidi.o' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(unit_test_midi_CFLAGS) $(CFLAGS) -c -o profiles/midi/unit_test_midi-libmidi.o `test -f 'profiles/midi/libmidi.c' || echo '$(srcdir)/'`profiles/midi/libmidi.c
 
 profiles/midi/unit_test_midi-libmidi.obj: profiles/midi/libmidi.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(unit_test_midi_CFLAGS) $(CFLAGS) -MT profiles/midi/unit_test_midi-libmidi.obj -MD -MP -MF profiles/midi/$(DEPDIR)/unit_test_midi-libmidi.Tpo -c -o profiles/midi/unit_test_midi-libmidi.obj `if test -f 'profiles/midi/libmidi.c'; then $(CYGPATH_W) 'profiles/midi/libmidi.c'; else $(CYGPATH_W) '$(srcdir)/profiles/midi/libmidi.c'; fi`
-	$(AM_V_at)$(am__mv) profiles/midi/$(DEPDIR)/unit_test_midi-libmidi.Tpo profiles/midi/$(DEPDIR)/unit_test_midi-libmidi.Po
-#	$(AM_V_CC)source='profiles/midi/libmidi.c' object='profiles/midi/unit_test_midi-libmidi.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(unit_test_midi_CFLAGS) $(CFLAGS) -c -o profiles/midi/unit_test_midi-libmidi.obj `if test -f 'profiles/midi/libmidi.c'; then $(CYGPATH_W) 'profiles/midi/libmidi.c'; else $(CYGPATH_W) '$(srcdir)/profiles/midi/libmidi.c'; fi`
+#	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(unit_test_midi_CFLAGS) $(CFLAGS) -MT profiles/midi/unit_test_midi-libmidi.obj -MD -MP -MF profiles/midi/$(DEPDIR)/unit_test_midi-libmidi.Tpo -c -o profiles/midi/unit_test_midi-libmidi.obj `if test -f 'profiles/midi/libmidi.c'; then $(CYGPATH_W) 'profiles/midi/libmidi.c'; else $(CYGPATH_W) '$(srcdir)/profiles/midi/libmidi.c'; fi`
+#	$(AM_V_at)$(am__mv) profiles/midi/$(DEPDIR)/unit_test_midi-libmidi.Tpo profiles/midi/$(DEPDIR)/unit_test_midi-libmidi.Po
+#	$(AM_V_CC)source='profiles/midi/libmidi.c' object='profiles/midi/unit_test_midi-libmidi.obj' libtool=no 
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(unit_test_midi_CFLAGS) $(CFLAGS) -c -o profiles/midi/unit_test_midi-libmidi.obj `if test -f 'profiles/midi/libmidi.c'; then $(CYGPATH_W) 'profiles/midi/libmidi.c'; else $(CYGPATH_W) '$(srcdir)/profiles/midi/libmidi.c'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo
