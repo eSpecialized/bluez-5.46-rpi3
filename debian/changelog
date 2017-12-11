@@ -1,3 +1,8 @@
+bluez (5.47) unstable; urgency=medium
+  * Non-maintainer upload by Bill Thompson
+
+ -- Bill Thompson <wthomps@willandnora.com>  Sun, 10 Dec 2017 21:10:00 +0800
+
 bluez (5.46) unstable; urgency=low
 
   * debian update for newer BLE features

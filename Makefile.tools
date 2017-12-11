@@ -13,6 +13,30 @@ client_bluetoothctl_LDADD = gdbus/libgdbus-internal.la src/libshared-glib.la \
 				@GLIB_LIBS@ @DBUS_LIBS@ -lreadline
 endif
 
+if MESH
+bin_PROGRAMS += mesh/meshctl
+
+mesh_meshctl_SOURCES = mesh/main.c \
+				mesh/mesh-net.h \
+				mesh/node.h mesh/node.c \
+				mesh/gatt.h mesh/gatt.c \
+				mesh/crypto.h mesh/crypto.c \
+				mesh/keys.h \
+				mesh/net.h mesh/net.c \
+				mesh/prov.h mesh/prov.c \
+				mesh/util.h mesh/util.c \
+				mesh/agent.h mesh/agent.c \
+				mesh/prov-db.h mesh/prov-db.c \
+				mesh/config-model.h mesh/config-client.c \
+				mesh/config-server.c \
+				mesh/onoff-model.h mesh/onoff-model.c \
+				client/display.h client/display.c \
+				monitor/uuid.h monitor/uuid.c
+mesh_meshctl_LDADD = gdbus/libgdbus-internal.la src/libshared-glib.la \
+				lib/libbluetooth-internal.la \
+				@GLIB_LIBS@ @DBUS_LIBS@ -ljson-c -lreadline
+endif
+
 if MONITOR
 bin_PROGRAMS += monitor/btmon
 
@@ -161,7 +185,7 @@ bin_PROGRAMS += tools/rctest tools/l2test tools/l2ping tools/bccmd \
 noinst_PROGRAMS += tools/bdaddr tools/avinfo tools/avtest \
 			tools/scotest tools/amptest tools/hwdb \
 			tools/hcieventmask tools/hcisecfilter \
-			tools/btinfo \
+			tools/btinfo tools/btconfig \
 			tools/btsnoop tools/btproxy \
 			tools/btiotest tools/bneptest tools/mcaptest \
 			tools/cltest tools/oobtest tools/advtest \
@@ -191,6 +215,9 @@ tools_btinfo_LDADD = src/libshared-mainloop.la
 
 tools_btattach_SOURCES = tools/btattach.c monitor/bt.h
 tools_btattach_LDADD = src/libshared-mainloop.la
+
+tools_btconfig_SOURCES = tools/btconfig.c
+tools_btconfig_LDADD = src/libshared-mainloop.la
 
 tools_btsnoop_SOURCES = tools/btsnoop.c
 tools_btsnoop_LDADD = src/libshared-mainloop.la
@@ -263,7 +290,7 @@ tools_mpris_proxy_SOURCES = tools/mpris-proxy.c
 tools_mpris_proxy_LDADD = gdbus/libgdbus-internal.la @GLIB_LIBS@ @DBUS_LIBS@
 
 tools_gatt_service_SOURCES = tools/gatt-service.c
-tools_gatt_service_LDADD = @GLIB_LIBS@ @DBUS_LIBS@ gdbus/libgdbus-internal.la -lpthread
+tools_gatt_service_LDADD = @GLIB_LIBS@ @DBUS_LIBS@ gdbus/libgdbus-internal.la
 
 profiles_iap_iapd_SOURCES = profiles/iap/main.c
 profiles_iap_iapd_LDADD = gdbus/libgdbus-internal.la @GLIB_LIBS@ @DBUS_LIBS@
@@ -411,13 +438,11 @@ test_scripts += test/sap_client.py test/bluezutils.py \
 		test/test-discovery test/test-manager test/test-adapter \
 		test/test-device test/simple-agent \
 		test/simple-endpoint test/test-sap-server \
-		test/test-proximity test/test-network \
-		test/test-thermometer test/test-profile test/test-health \
+		test/test-network test/test-profile test/test-health \
 		test/test-health-sink test/service-record.dtd \
 		test/service-did.xml test/service-spp.xml test/service-opp.xml \
 		test/service-ftp.xml test/simple-player test/test-nap \
-		test/test-heartrate test/test-alert test/test-hfp \
-		test/test-cyclingspeed test/opp-client test/ftp-client \
+		test/test-hfp test/opp-client test/ftp-client \
 		test/pbap-client test/map-client test/example-advertisement \
 		test/example-gatt-server test/example-gatt-client \
 		test/test-gatt-profile

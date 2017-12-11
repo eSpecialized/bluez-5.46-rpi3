@@ -4,8 +4,9 @@
 0002-autopair-Don-t-handle-the-iCade.patch
 0004-agent-Assert-possible-infinite-loop.patch
 bluetooth.conf.patch
+main.conf.patch
 change_path_of_hogsuspend.patch
 fix_udevadm_in_hid2hci.patch
+fix-typo-in-src-main.conf.patch
 org.bluez.obex.service.in.patch
-hciattach_bcm43xx.patch
-main.conf.patch
+CVE-2017-1000250.patch

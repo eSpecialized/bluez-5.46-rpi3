@@ -155,6 +155,7 @@ struct discovery_filter {
 	uint16_t pathloss;
 	int16_t rssi;
 	GSList *uuids;
+	bool duplicate;
 };
 
 struct watch_client {
@@ -2135,7 +2136,7 @@ static DBusMessage *start_discovery(DBusConnection *conn,
 	return dbus_message_new_method_return(msg);
 }
 
-static bool parse_uuids(DBusMessageIter *value, GSList **uuids)
+static bool parse_uuids(DBusMessageIter *value, struct discovery_filter *filter)
 {
 	DBusMessageIter arriter;
 
@@ -2160,7 +2161,7 @@ static bool parse_uuids(DBusMessageIter *value, GSList **uuids)
 		bt_uuid_to_uuid128(&uuid, &u128);
 		bt_uuid_to_string(&u128, uuidstr, sizeof(uuidstr));
 
-		*uuids = g_slist_prepend(*uuids, strdup(uuidstr));
+		filter->uuids = g_slist_prepend(filter->uuids, strdup(uuidstr));
 
 		dbus_message_iter_next(&arriter);
 	}
@@ -2168,33 +2169,35 @@ static bool parse_uuids(DBusMessageIter *value, GSList **uuids)
 	return true;
 }
 
-static bool parse_rssi(DBusMessageIter *value, int16_t *rssi)
+static bool parse_rssi(DBusMessageIter *value, struct discovery_filter *filter)
 {
 	if (dbus_message_iter_get_arg_type(value) != DBUS_TYPE_INT16)
 		return false;
 
-	dbus_message_iter_get_basic(value, rssi);
+	dbus_message_iter_get_basic(value, &filter->rssi);
 	/* -127 <= RSSI <= +20 (spec V4.2 [Vol 2, Part E] 7.7.65.2) */
-	if (*rssi > 20 || *rssi < -127)
+	if (filter->rssi > 20 || filter->rssi < -127)
 		return false;
 
 	return true;
 }
 
-static bool parse_pathloss(DBusMessageIter *value, uint16_t *pathloss)
+static bool parse_pathloss(DBusMessageIter *value,
+				struct discovery_filter *filter)
 {
 	if (dbus_message_iter_get_arg_type(value) != DBUS_TYPE_UINT16)
 		return false;
 
-	dbus_message_iter_get_basic(value, pathloss);
+	dbus_message_iter_get_basic(value, &filter->pathloss);
 	/* pathloss filter must be smaller that PATHLOSS_MAX */
-	if (*pathloss > PATHLOSS_MAX)
+	if (filter->pathloss > PATHLOSS_MAX)
 		return false;
 
 	return true;
 }
 
-static bool parse_transport(DBusMessageIter *value, uint8_t *transport)
+static bool parse_transport(DBusMessageIter *value, 
+					struct discovery_filter *filter)
 {
 	char *transport_str;
 
@@ -2204,29 +2207,47 @@ static bool parse_transport(DBusMessageIter *value, uint8_t *transport)
 	dbus_message_iter_get_basic(value, &transport_str);
 
 	if (!strcmp(transport_str, "bredr"))
-		*transport = SCAN_TYPE_BREDR;
+		filter->type = SCAN_TYPE_BREDR;
 	else if (!strcmp(transport_str, "le"))
-		*transport = SCAN_TYPE_LE;
+		filter->type = SCAN_TYPE_LE;
 	else if (strcmp(transport_str, "auto"))
 		return false;
 
 	return true;
 }
 
+static bool parse_duplicate_data(DBusMessageIter *value,
+					struct discovery_filter *filter)
+{
+	if (dbus_message_iter_get_arg_type(value) != DBUS_TYPE_BOOLEAN)
+		return false;
+
+	dbus_message_iter_get_basic(value, &filter->duplicate);
+
+	return true;
+}
+
+struct filter_parser {
+	const char *name;
+	bool (*func)(DBusMessageIter *iter, struct discovery_filter *filter);
+} parsers[] = {
+	{ "UUIDs", parse_uuids },
+	{ "RSSI", parse_rssi },
+	{ "Pathloss", parse_pathloss },
+	{ "Transport", parse_transport },
+	{ "DuplicateData", parse_duplicate_data },
+	{ }
+};
+
 static bool parse_discovery_filter_entry(char *key, DBusMessageIter *value,
 						struct discovery_filter *filter)
 {
-	if (!strcmp("UUIDs", key))
-		return parse_uuids(value, &filter->uuids);
+	struct filter_parser *parser;
 
-	if (!strcmp("RSSI", key))
-		return parse_rssi(value, &filter->rssi);
-
-	if (!strcmp("Pathloss", key))
-		return parse_pathloss(value, &filter->pathloss);
-
-	if (!strcmp("Transport", key))
-		return parse_transport(value, &filter->type);
+	for (parser = parsers; parser && parser->name; parser++) {
+		if (!strcmp(parser->name, key))
+			return parser->func(value, filter);
+	}
 
 	DBG("Unknown key parameter: %s!\n", key);
 	return false;
@@ -2253,6 +2274,7 @@ static bool parse_discovery_filter_dict(struct btd_adapter *adapter,
 	(*filter)->pathloss = DISTANCE_VAL_INVALID;
 	(*filter)->rssi = DISTANCE_VAL_INVALID;
 	(*filter)->type = get_scan_type(adapter);
+	(*filter)->duplicate = false;
 
 	dbus_message_iter_init(msg, &iter);
 	if (dbus_message_iter_get_arg_type(&iter) != DBUS_TYPE_ARRAY ||
@@ -2297,8 +2319,9 @@ static bool parse_discovery_filter_dict(struct btd_adapter *adapter,
 	    (*filter)->rssi != DISTANCE_VAL_INVALID)
 		goto invalid_args;
 
-	DBG("filtered discovery params: transport: %d rssi: %d pathloss: %d",
-	    (*filter)->type, (*filter)->rssi, (*filter)->pathloss);
+	DBG("filtered discovery params: transport: %d rssi: %d pathloss: %d "
+		" duplicate data: %s ", (*filter)->type, (*filter)->rssi,
+		(*filter)->pathloss, (*filter)->duplicate ? "true" : "false");
 
 	return true;
 
@@ -2936,6 +2959,30 @@ static DBusMessage *remove_device(DBusConnection *conn,
 	return NULL;
 }
 
+static DBusMessage *get_discovery_filters(DBusConnection *conn,
+					DBusMessage *msg, void *user_data)
+{
+	DBusMessage *reply;
+	DBusMessageIter iter, array;
+	struct filter_parser *parser;
+
+	reply = dbus_message_new_method_return(msg);
+
+	dbus_message_iter_init_append(reply, &iter);
+
+	dbus_message_iter_open_container(&iter, DBUS_TYPE_ARRAY,
+					DBUS_TYPE_STRING_AS_STRING, &array);
+
+	for (parser = parsers; parser && parser->name; parser++) {
+		dbus_message_iter_append_basic(&array, DBUS_TYPE_STRING,
+							&parser->name);
+	}
+
+	dbus_message_iter_close_container(&iter, &array);
+
+	return reply;
+}
+
 static const GDBusMethodTable adapter_methods[] = {
 	{ GDBUS_METHOD("StartDiscovery", NULL, NULL, start_discovery) },
 	{ GDBUS_METHOD("SetDiscoveryFilter",
@@ -2944,6 +2991,9 @@ static const GDBusMethodTable adapter_methods[] = {
 	{ GDBUS_METHOD("StopDiscovery", NULL, NULL, stop_discovery) },
 	{ GDBUS_ASYNC_METHOD("RemoveDevice",
 			GDBUS_ARGS({ "device", "o" }), NULL, remove_device) },
+	{ GDBUS_METHOD("GetDiscoveryFilters", NULL,
+			GDBUS_ARGS({ "filters", "as" }),
+			get_discovery_filters) },
 	{ }
 };
 
@@ -5568,6 +5618,17 @@ static bool is_filter_match(GSList *discovery_filter, struct eir_data *eir_data,
 	return got_match;
 }
 
+static void filter_duplicate_data(void *data, void *user_data)
+{
+	struct watch_client *client = data;
+	bool *duplicate = user_data;
+
+	if (*duplicate || !client->discovery_filter)
+		return;
+
+	*duplicate = client->discovery_filter->duplicate;
+}
+
 static void update_found_devices(struct btd_adapter *adapter,
 					const bdaddr_t *bdaddr,
 					uint8_t bdaddr_type, int8_t rssi,
@@ -5579,6 +5640,7 @@ static void update_found_devices(struct btd_adapter *adapter,
 	struct eir_data eir_data;
 	bool name_known, discoverable;
 	char addr[18];
+	bool duplicate = false;
 
 	memset(&eir_data, 0, sizeof(eir_data));
 	eir_parse(&eir_data, data, data_len);
@@ -5678,13 +5740,17 @@ static void update_found_devices(struct btd_adapter *adapter,
 
 	device_add_eir_uuids(dev, eir_data.services);
 
+	if (adapter->discovery_list)
+		g_slist_foreach(adapter->discovery_list, filter_duplicate_data,
+								&duplicate);
+
 	if (eir_data.msd_list) {
-		device_set_manufacturer_data(dev, eir_data.msd_list);
+		device_set_manufacturer_data(dev, eir_data.msd_list, duplicate);
 		adapter_msd_notify(adapter, dev, eir_data.msd_list);
 	}
 
 	if (eir_data.sd_list)
-		device_set_service_data(dev, eir_data.sd_list);
+		device_set_service_data(dev, eir_data.sd_list, duplicate);
 
 	if (bdaddr_type != BDADDR_BREDR)
 		device_set_flags(dev, eir_data.flags);

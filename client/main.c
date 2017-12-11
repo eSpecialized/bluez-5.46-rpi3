@@ -62,16 +62,22 @@ static char *auto_register_agent = NULL;
 
 struct adapter {
 	GDBusProxy *proxy;
+	GDBusProxy *ad_proxy;
 	GList *devices;
 };
 
 static struct adapter *default_ctrl;
 static GDBusProxy *default_dev;
 static GDBusProxy *default_attr;
-static GDBusProxy *ad_manager;
 static GList *ctrl_list;
 
 static guint input = 0;
+
+static const char * const mode_arguments[] = {
+	"on",
+	"off",
+	NULL
+};
 
 static const char * const agent_arguments[] = {
 	"on",
@@ -203,6 +209,72 @@ static void print_device(GDBusProxy *proxy, const char *description)
 				address, name);
 }
 
+static void print_fixed_iter(const char *label, const char *name,
+						DBusMessageIter *iter)
+{
+	dbus_bool_t *valbool;
+	dbus_uint32_t *valu32;
+	dbus_uint16_t *valu16;
+	dbus_int16_t *vals16;
+	unsigned char *byte;
+	int len;
+
+	switch (dbus_message_iter_get_arg_type(iter)) {
+	case DBUS_TYPE_BOOLEAN:
+		dbus_message_iter_get_fixed_array(iter, &valbool, &len);
+
+		if (len <= 0)
+			return;
+
+		rl_printf("%s%s:\n", label, name);
+		rl_hexdump((void *)valbool, len * sizeof(*valbool));
+
+		break;
+	case DBUS_TYPE_UINT32:
+		dbus_message_iter_get_fixed_array(iter, &valu32, &len);
+
+		if (len <= 0)
+			return;
+
+		rl_printf("%s%s:\n", label, name);
+		rl_hexdump((void *)valu32, len * sizeof(*valu32));
+
+		break;
+	case DBUS_TYPE_UINT16:
+		dbus_message_iter_get_fixed_array(iter, &valu16, &len);
+
+		if (len <= 0)
+			return;
+
+		rl_printf("%s%s:\n", label, name);
+		rl_hexdump((void *)valu16, len * sizeof(*valu16));
+
+		break;
+	case DBUS_TYPE_INT16:
+		dbus_message_iter_get_fixed_array(iter, &vals16, &len);
+
+		if (len <= 0)
+			return;
+
+		rl_printf("%s%s:\n", label, name);
+		rl_hexdump((void *)vals16, len * sizeof(*vals16));
+
+		break;
+	case DBUS_TYPE_BYTE:
+		dbus_message_iter_get_fixed_array(iter, &byte, &len);
+
+		if (len <= 0)
+			return;
+
+		rl_printf("%s%s:\n", label, name);
+		rl_hexdump((void *)byte, len * sizeof(*byte));
+
+		break;
+	default:
+		return;
+	};
+}
+
 static void print_iter(const char *label, const char *name,
 						DBusMessageIter *iter)
 {
@@ -236,7 +308,7 @@ static void print_iter(const char *label, const char *name,
 		break;
 	case DBUS_TYPE_UINT32:
 		dbus_message_iter_get_basic(iter, &valu32);
-		rl_printf("%s%s: 0x%06x\n", label, name, valu32);
+		rl_printf("%s%s: 0x%08x\n", label, name, valu32);
 		break;
 	case DBUS_TYPE_UINT16:
 		dbus_message_iter_get_basic(iter, &valu16);
@@ -256,6 +328,13 @@ static void print_iter(const char *label, const char *name,
 		break;
 	case DBUS_TYPE_ARRAY:
 		dbus_message_iter_recurse(iter, &subiter);
+
+		if (dbus_type_is_fixed(
+				dbus_message_iter_get_arg_type(&subiter))) {
+			print_fixed_iter(label, name, &subiter);
+			break;
+		}
+
 		while (dbus_message_iter_get_arg_type(&subiter) !=
 							DBUS_TYPE_INVALID) {
 			print_iter(label, name, &subiter);
@@ -446,17 +525,40 @@ static void device_added(GDBusProxy *proxy)
 	}
 }
 
-static void adapter_added(GDBusProxy *proxy)
+static struct adapter *find_ctrl(GList *source, const char *path);
+
+static struct adapter *adapter_new(GDBusProxy *proxy)
 {
 	struct adapter *adapter = g_malloc0(sizeof(struct adapter));
 
-	adapter->proxy = proxy;
 	ctrl_list = g_list_append(ctrl_list, adapter);
 
 	if (!default_ctrl)
 		default_ctrl = adapter;
 
+	return adapter;
+}
+
+static void adapter_added(GDBusProxy *proxy)
+{
+	struct adapter *adapter;
+	adapter = find_ctrl(ctrl_list, g_dbus_proxy_get_path(proxy));
+	if (!adapter)
+		adapter = adapter_new(proxy);
+
+	adapter->proxy = proxy;
+
 	print_adapter(proxy, COLORED_NEW);
+}
+
+static void ad_manager_added(GDBusProxy *proxy)
+{
+	struct adapter *adapter;
+	adapter = find_ctrl(ctrl_list, g_dbus_proxy_get_path(proxy));
+	if (!adapter)
+		adapter = adapter_new(proxy);
+
+	adapter->ad_proxy = proxy;
 }
 
 static void proxy_added(GDBusProxy *proxy, void *user_data)
@@ -487,7 +589,7 @@ static void proxy_added(GDBusProxy *proxy, void *user_data)
 	} else if (!strcmp(interface, "org.bluez.GattManager1")) {
 		gatt_add_manager(proxy);
 	} else if (!strcmp(interface, "org.bluez.LEAdvertisingManager1")) {
-		ad_manager = proxy;
+		ad_manager_added(proxy);
 	}
 }
 
@@ -576,17 +678,31 @@ static void proxy_removed(GDBusProxy *proxy, void *user_data)
 	} else if (!strcmp(interface, "org.bluez.GattManager1")) {
 		gatt_remove_manager(proxy);
 	} else if (!strcmp(interface, "org.bluez.LEAdvertisingManager1")) {
-		if (ad_manager == proxy) {
-			agent_manager = NULL;
+		if(!dbus_conn){
 			ad_unregister(dbus_conn, NULL);
 		}
 	}
+}
+
+static struct adapter *find_ctrl(GList *source, const char *path)
+{
+	GList *list;
+
+	for (list = g_list_first(source); list; list = g_list_next(list)) {
+		struct adapter *adapter = list->data;
+
+		if (!strcasecmp(g_dbus_proxy_get_path(adapter->proxy), path))
+			return adapter;
+	}
+
+	return NULL;
 }
 
 static void property_changed(GDBusProxy *proxy, const char *name,
 					DBusMessageIter *iter, void *user_data)
 {
 	const char *interface;
+	struct adapter *ctrl;
 
 	interface = g_dbus_proxy_get_interface(proxy);
 
@@ -632,6 +748,27 @@ static void property_changed(GDBusProxy *proxy, const char *name,
 			dbus_message_iter_get_basic(&addr_iter, &address);
 			str = g_strdup_printf("[" COLORED_CHG
 						"] Controller %s ", address);
+		} else
+			str = g_strdup("");
+
+		print_iter(str, name, iter);
+		g_free(str);
+	} else if (!strcmp(interface, "org.bluez.LEAdvertisingManager1")) {
+		DBusMessageIter addr_iter;
+		char *str;
+
+		ctrl = find_ctrl(ctrl_list, g_dbus_proxy_get_path(proxy));
+		if (!ctrl)
+			return;
+
+		if (g_dbus_proxy_get_property(ctrl->proxy, "Address",
+						&addr_iter) == TRUE) {
+			const char *address;
+
+			dbus_message_iter_get_basic(&addr_iter, &address);
+			str = g_strdup_printf("[" COLORED_CHG
+						"] Controller %s ",
+						address);
 		} else
 			str = g_strdup("");
 
@@ -1153,6 +1290,7 @@ struct set_discovery_filter_args {
 	dbus_int16_t pathloss;
 	char **uuids;
 	size_t uuids_len;
+	dbus_bool_t duplicate;
 };
 
 static void set_discovery_filter_setup(DBusMessageIter *iter, void *user_data)
@@ -1180,6 +1318,10 @@ static void set_discovery_filter_setup(DBusMessageIter *iter, void *user_data)
 		dict_append_entry(&dict, "Transport", DBUS_TYPE_STRING,
 						&args->transport);
 
+	if (args->duplicate)
+		dict_append_entry(&dict, "DuplicateData", DBUS_TYPE_BOOLEAN,
+						&args->duplicate);
+
 	dbus_message_iter_close_container(iter, &dict);
 }
 
@@ -1203,6 +1345,7 @@ static gint filtered_scan_pathloss = DISTANCE_VAL_INVALID;
 static char **filtered_scan_uuids;
 static size_t filtered_scan_uuids_len;
 static char *filtered_scan_transport;
+static bool filtered_scan_duplicate_data;
 
 static void cmd_set_scan_filter_commit(void)
 {
@@ -1214,6 +1357,7 @@ static void cmd_set_scan_filter_commit(void)
 	args.transport = filtered_scan_transport;
 	args.uuids = filtered_scan_uuids;
 	args.uuids_len = filtered_scan_uuids_len;
+	args.duplicate = filtered_scan_duplicate_data;
 
 	if (check_default_ctrl() == FALSE)
 		return;
@@ -1279,6 +1423,22 @@ static void cmd_set_scan_filter_transport(const char *arg)
 		filtered_scan_transport = NULL;
 	else
 		filtered_scan_transport = g_strdup(arg);
+
+	cmd_set_scan_filter_commit();
+}
+
+static void cmd_set_scan_filter_duplicate_data(const char *arg)
+{
+	if (!arg || !strlen(arg))
+		filtered_scan_duplicate_data = false;
+	else if (!strcmp(arg, "on"))
+		filtered_scan_duplicate_data = true;
+	else if (!strcmp(arg, "off"))
+		filtered_scan_duplicate_data = false;
+	else {
+		rl_printf("Invalid option: %s\n", arg);
+		return;
+	}
 
 	cmd_set_scan_filter_commit();
 }
@@ -2103,7 +2263,8 @@ static char *attribute_generator(const char *text, int state)
 	return gatt_attribute_generator(text, state);
 }
 
-static char *capability_generator(const char *text, int state)
+static char *argument_generator(const char *text, int state,
+					const char * const *args_list)
 {
 	static int index, len;
 	const char *arg;
@@ -2113,7 +2274,7 @@ static char *capability_generator(const char *text, int state)
 		len = strlen(text);
 	}
 
-	while ((arg = agent_arguments[index])) {
+	while ((arg = args_list[index])) {
 		index++;
 
 		if (!strncmp(arg, text, len))
@@ -2121,6 +2282,16 @@ static char *capability_generator(const char *text, int state)
 	}
 
 	return NULL;
+}
+
+static char *mode_generator(const char *text, int state)
+{
+	return argument_generator(text, state, mode_arguments);
+}
+
+static char *capability_generator(const char *text, int state)
+{
+	return argument_generator(text, state, agent_arguments);
 }
 
 static gboolean parse_argument_advertise(const char *arg, dbus_bool_t *value,
@@ -2164,50 +2335,35 @@ static void cmd_advertise(const char *arg)
 	if (parse_argument_advertise(arg, &enable, &type) == FALSE)
 		return;
 
-	if (!ad_manager) {
+	if (!default_ctrl || !default_ctrl->ad_proxy) {
 		rl_printf("LEAdvertisingManager not found\n");
 		return;
 	}
 
 	if (enable == TRUE)
-		ad_register(dbus_conn, ad_manager, type);
+		ad_register(dbus_conn, default_ctrl->ad_proxy, type);
 	else
-		ad_unregister(dbus_conn, ad_manager);
+		ad_unregister(dbus_conn, default_ctrl->ad_proxy);
 }
 
 static char *ad_generator(const char *text, int state)
 {
-	static int index, len;
-	const char *arg;
-
-	if (!state) {
-		index = 0;
-		len = strlen(text);
-	}
-
-	while ((arg = ad_arguments[index])) {
-		index++;
-
-		if (!strncmp(arg, text, len))
-			return strdup(arg);
-	}
-
-	return NULL;
+	return argument_generator(text, state, ad_arguments);
 }
 
 static void cmd_set_advertise_uuids(const char *arg)
 {
-	ad_advertise_uuids(arg);
+	ad_advertise_uuids(dbus_conn, arg);
 }
 
 static void cmd_set_advertise_service(const char *arg)
 {
-	ad_advertise_service(arg);
+	ad_advertise_service(dbus_conn, arg);
 }
 
 static void cmd_set_advertise_manufacturer(const char *arg)
 {
-	ad_advertise_manufacturer(arg);
+	ad_advertise_manufacturer(dbus_conn, arg);
 }
 
 static void cmd_set_advertise_tx_power(const char *arg)
@@ -2218,16 +2374,65 @@ static void cmd_set_advertise_tx_power(const char *arg)
 	}
 
 	if (strcmp(arg, "on") == 0 || strcmp(arg, "yes") == 0) {
-		ad_advertise_tx_power(TRUE);
+		ad_advertise_tx_power(dbus_conn, true);
 		return;
 	}
 
 	if (strcmp(arg, "off") == 0 || strcmp(arg, "no") == 0) {
-		ad_advertise_tx_power(FALSE);
+		ad_advertise_tx_power(dbus_conn, false);
 		return;
 	}
 
 	rl_printf("Invalid argument\n");
+}
+
+static void cmd_set_advertise_name(const char *arg)
+{
+	if (arg == NULL || strlen(arg) == 0) {
+		rl_printf("Missing on/off argument\n");
+		return;
+	}
+
+	if (strcmp(arg, "on") == 0 || strcmp(arg, "yes") == 0) {
+		ad_advertise_name(dbus_conn, true);
+		return;
+	}
+
+	if (strcmp(arg, "off") == 0 || strcmp(arg, "no") == 0) {
+		ad_advertise_name(dbus_conn, false);
+		return;
+	}
+
+	ad_advertise_local_name(dbus_conn, arg);
+}
+
+static void cmd_set_advertise_appearance(const char *arg)
+{
+	long int value;
+	char *endptr = NULL;
+
+	if (arg == NULL || strlen(arg) == 0) {
+		rl_printf("Missing value argument\n");
+		return;
+	}
+
+	if (strcmp(arg, "on") == 0 || strcmp(arg, "yes") == 0) {
+		ad_advertise_appearance(dbus_conn, true);
+		return;
+	}
+
+	if (strcmp(arg, "off") == 0 || strcmp(arg, "no") == 0) {
+		ad_advertise_appearance(dbus_conn, false);
+		return;
+	}
+
+	value = strtol(arg, &endptr, 0);
+	if (!endptr || *endptr != '\0' || value > UINT16_MAX) {
+		rl_printf("Invalid argument\n");
+		return;
+	}
+
+	ad_advertise_local_appearance(dbus_conn, value);
 }
 
 static const struct {
@@ -2250,11 +2455,14 @@ static const struct {
 					"Set controller alias" },
 	{ "reset-alias",  NULL,       cmd_reset_alias,
 					"Reset controller alias" },
-	{ "power",        "<on/off>", cmd_power, "Set controller power" },
+	{ "power",        "<on/off>", cmd_power, "Set controller power",
+							mode_generator },
 	{ "pairable",     "<on/off>", cmd_pairable,
-					"Set controller pairable mode" },
+					"Set controller pairable mode",
+							mode_generator },
 	{ "discoverable", "<on/off>", cmd_discoverable,
-					"Set controller discoverable mode" },
+					"Set controller discoverable mode",
+							mode_generator },
 	{ "agent",        "<on/off/capability>", cmd_agent,
 				"Enable/disable agent with given capability",
 							capability_generator},
@@ -2273,7 +2481,12 @@ static const struct {
 			"Set advertise manufacturer data" },
 	{ "set-advertise-tx-power", "<on/off>",
 			cmd_set_advertise_tx_power,
-			"Enable/disable TX power to be advertised" },
+			"Enable/disable TX power to be advertised",
+							mode_generator },
+	{ "set-advertise-name", "<on/off/name>", cmd_set_advertise_name,
+			"Enable/disable local name to be advertised" },
+	{ "set-advertise-appearance", "<value>", cmd_set_advertise_appearance,
+			"Set custom appearance to be advertised" },
 	{ "set-scan-filter-uuids", "[uuid1 uuid2 ...]",
 			cmd_set_scan_filter_uuids, "Set scan filter uuids" },
 	{ "set-scan-filter-rssi", "[rssi]", cmd_set_scan_filter_rssi,
@@ -2283,9 +2496,14 @@ static const struct {
 				"Set scan filter pathloss, and clears rssi" },
 	{ "set-scan-filter-transport", "[transport]",
 		cmd_set_scan_filter_transport, "Set scan filter transport" },
+	{ "set-scan-filter-duplicate-data", "[on/off]",
+			cmd_set_scan_filter_duplicate_data,
+				"Set scan filter duplicate data",
+				mode_generator },
 	{ "set-scan-filter-clear", "", cmd_set_scan_filter_clear,
 						"Clears discovery filter." },
-	{ "scan",         "<on/off>", cmd_scan, "Scan for devices" },
+	{ "scan",         "<on/off>", cmd_scan, "Scan for devices",
+							mode_generator },
 	{ "info",         "[dev]",    cmd_info, "Device information",
 							dev_generator },
 	{ "pair",         "[dev]",    cmd_pair, "Pair with device",
@@ -2322,7 +2540,8 @@ static const struct {
 					"Acquire Notify file descriptor" },
 	{ "release-notify", NULL, cmd_release_notify,
 					"Release Notify file descriptor" },
-	{ "notify",       "<on/off>", cmd_notify, "Notify attribute value" },
+	{ "notify",       "<on/off>", cmd_notify, "Notify attribute value",
+							mode_generator },
 	{ "register-application", "[UUID ...]", cmd_register_app,
 						"Register profile to connect" },
 	{ "unregister-application", NULL, cmd_unregister_app,
@@ -2420,9 +2639,6 @@ static void rl_handler(char *input)
 	}
 
 	if (!strlen(input))
-		goto done;
-
-	if (agent_input(dbus_conn, input) == TRUE)
 		goto done;
 
 	if (!rl_release_prompt(input))
